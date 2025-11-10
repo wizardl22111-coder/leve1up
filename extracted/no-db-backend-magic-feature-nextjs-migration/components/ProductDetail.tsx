@@ -94,7 +94,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
   const getProductImage = () => product.image ?? product.product_image ?? '/placeholder.jpg';
 
   // Helper function to get unified product price
-  const getProductPrice = () => product.price ?? product.product_price ?? 0;
+  const getProductPrice = () => product.price ?? 0;
 
   // حساب السعر باستخدام النظام الموحد
   const priceCalc = calculatePrice(getProductPrice());
