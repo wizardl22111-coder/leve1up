@@ -3,7 +3,7 @@ import { Footer } from "../components/Footer";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import { Star, ShoppingCart, Heart } from "lucide-react";
-import { useParams } from "react-router-dom";
+import { useRouter } from "next/router";
 
 const productData: Record<string, any> = {
   "1": {
@@ -33,8 +33,9 @@ const productData: Record<string, any> = {
 };
 
 const ProductDetail = () => {
-  const { id } = useParams();
-  const product = productData[id || "1"];
+  const router = useRouter();
+  const { id } = router.query;
+  const product = productData[id as string || "1"];
 
   if (!product) {
     return <div>المنتج غير موجود</div>;
