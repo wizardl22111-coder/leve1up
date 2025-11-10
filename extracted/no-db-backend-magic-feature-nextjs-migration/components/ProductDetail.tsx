@@ -134,7 +134,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
 
   const handlePayment = () => {
     // التوجيه إلى صفحة checkout مع السعر المحسوب حسب العملة المختارة
-    const checkoutUrl = `/checkout?product=${productId}&name=${encodeURIComponent(productName)}&price=${priceCalc.finalPrice.toFixed(2)}&currency=${currency}`;
+    const checkoutUrl = `/checkout?product=${productId}&name=${encodeURIComponent(productName)}&price=${priceCalc.toFixed(2)}&currency=${currency}`;
     window.location.href = checkoutUrl;
   };
 
