@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "name": "أحمد محمد",
+    "rating": 5,
+    "comment": "منتج ممتاز وخدمة رائعة",
+    "avatar": "/placeholder.svg"
+  },
+  {
+    "id": 2,
+    "name": "فاطمة علي",
+    "rating": 4,
+    "comment": "جودة عالية وسعر مناسب",
+    "avatar": "/placeholder.svg"
+  },
+  {
+    "id": 3,
+    "name": "محمد حسن",
+    "rating": 5,
+    "comment": "أنصح بالشراء من هنا",
+    "avatar": "/placeholder.svg"
+  }
+]
+
