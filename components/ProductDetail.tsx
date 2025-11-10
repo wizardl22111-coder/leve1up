@@ -494,6 +494,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
         isOpen={showFreeModal}
         onClose={() => setShowFreeModal(false)}
         productName={productName}
+        productId={productId}
         downloadUrl={(product as any).download_url}
       />
     </section>

@@ -7,10 +7,11 @@ interface FreeProductModalProps {
   isOpen: boolean;
   onClose: () => void;
   productName: string;
+  productId: number;
   downloadUrl?: string;
 }
 
-export default function FreeProductModal({ isOpen, onClose, productName, downloadUrl }: FreeProductModalProps) {
+export default function FreeProductModal({ isOpen, onClose, productName, productId, downloadUrl }: FreeProductModalProps) {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,7 +31,7 @@ export default function FreeProductModal({ isOpen, onClose, productName, downloa
         body: JSON.stringify({
           email,
           phone,
-          productId: 1, // Free product ID
+          productId: productId,
           productName,
           downloadUrl: downloadUrl || '',
         }),
@@ -46,7 +47,7 @@ export default function FreeProductModal({ isOpen, onClose, productName, downloa
       const params = new URLSearchParams({
         orderId: data.orderId,
         token: data.token,
-        productId: '1',
+        productId: productId.toString(),
         productName,
         productImage: '/images/product1.jpg',
         price: '0',

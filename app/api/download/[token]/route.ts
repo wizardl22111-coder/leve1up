@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { findOrderBySessionId } from '@/lib/orders-store';
+import products from '@/data/products.json';
 
 export async function GET(
   request: NextRequest,
@@ -44,14 +45,14 @@ export async function GET(
       );
     }
 
-    // ✨ إذا كان هناك productId محدد، نبحث عن المنتج في items
+    // ✨ إذا كان هناك productId محدد، نبحث عن المنتج في items والحصول على الرابط الصحيح من products.json
     let downloadUrl = order.downloadUrl;
     let productName = order.items?.[0]?.name || 'product';
     
     if (productId && order.items) {
-      const product = order.items.find((item: any) => item.id.toString() === productId);
+      const orderProduct = order.items.find((item: any) => item.id.toString() === productId);
       
-      if (!product) {
+      if (!orderProduct) {
         console.log('❌ Product not found in order. Product ID:', productId);
         return new NextResponse(
           JSON.stringify({ 
@@ -64,9 +65,20 @@ export async function GET(
         );
       }
       
-      // استخدم رابط التحميل الخاص بالمنتج إذا كان متوفراً
-      downloadUrl = product.downloadUrl || product.image || downloadUrl;
-      productName = product.name;
+      // البحث عن المنتج في products.json للحصول على الرابط الصحيح
+      const productData = products.find((p: any) => p.product_id.toString() === productId);
+      
+      if (productData) {
+        downloadUrl = productData.download_url;
+        productName = productData.product_name;
+        console.log('✅ Product found in products.json:', productName);
+        console.log('✅ Using correct download URL:', downloadUrl);
+      } else {
+        // استخدم رابط التحميل الخاص بالمنتج من الطلب كـ fallback
+        downloadUrl = orderProduct.downloadUrl || orderProduct.image || downloadUrl;
+        productName = orderProduct.name;
+        console.log('⚠️ Product not found in products.json, using order data');
+      }
       
       console.log('✅ Product found:', productName, 'Download URL:', downloadUrl);
     }
