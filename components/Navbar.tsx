@@ -1,6 +1,6 @@
 import { ShoppingCart, Heart, User, Globe } from "lucide-react";
-import { Button } from "./button";
-import { Link } from "react-router-dom";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 export const Navbar = () => {
   return (

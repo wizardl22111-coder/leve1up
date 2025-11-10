@@ -1,8 +1,8 @@
-import { Card, CardContent, CardFooter, CardHeader } from "./card";
-import { Button } from "./button";
-import { Badge } from "./badge";
+import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
 import { Star, ShoppingCart } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const products = [
   {

@@ -1,4 +1,4 @@
-import { Card, CardContent } from "./card";
+import { Card, CardContent } from "./ui/card";
 import { useEffect, useRef } from "react";
 
 const reviews = [

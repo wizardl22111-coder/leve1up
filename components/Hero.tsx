@@ -1,4 +1,4 @@
-import { Button } from "./button";
+import { Button } from "./ui/button";
 import { ArrowLeft } from "lucide-react";
 
 export const Hero = () => {
