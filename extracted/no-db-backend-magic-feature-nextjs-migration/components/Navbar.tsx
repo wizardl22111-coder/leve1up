@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, ShoppingCart, Heart, Globe, Home, Package, Mail, Receipt } from 'lucide-react';
-import { useApp } from '../contexts/AppContext';
+import { useApp } from '@/contexts/AppContext';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export function Navbar() {
+export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showCurrencyMenu, setShowCurrencyMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

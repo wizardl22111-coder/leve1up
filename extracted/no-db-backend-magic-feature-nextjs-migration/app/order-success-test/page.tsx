@@ -29,7 +29,7 @@ interface OrderRecord {
 
 function TestOrderContent() {
   const searchParams = useSearchParams();
-  const paymentId = searchParams?.get('payment_id');
+  const paymentId = searchParams.get('payment_id');
   
   const [loading, setLoading] = useState(true);
   const [recordData, setRecordData] = useState<OrderRecord | null>(null);
@@ -251,3 +251,4 @@ export default function TestOrderSuccessPage() {
     </Suspense>
   );
 }
+

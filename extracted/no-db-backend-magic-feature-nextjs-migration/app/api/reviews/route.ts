@@ -123,7 +123,7 @@ export async function POST(req: NextRequest) {
       orderId,
       productId,
       productName,
-      name: customerName,
+      customerName,
       customerEmail,
       rating,
       comment,
@@ -145,3 +145,4 @@ export async function POST(req: NextRequest) {
     }, { status: 500 });
   }
 }
+

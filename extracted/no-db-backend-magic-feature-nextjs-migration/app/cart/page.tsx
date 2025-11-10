@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, CreditCard } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import Link from 'next/link';

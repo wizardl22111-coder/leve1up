@@ -93,23 +93,20 @@ export default function ProductDetail({ product }: { product?: Product }) {
   // Helper function to get unified product image
   const getProductImage = () => product.image ?? product.product_image ?? '/placeholder.jpg';
 
-  // Helper function to get unified product price
-  const getProductPrice = () => product.price ?? 0;
-
   // حساب السعر باستخدام النظام الموحد
-  const priceCalc = calculatePrice(getProductPrice());
+  const priceCalc = calculatePrice(product, currency);
   const productId = getProductId();
   const productName = getProductName();
   const productImage = getProductImage();
 
-  // Get testimonials for this product (using all testimonials since productId doesn't exist)
-  const productTestimonials = testimonials;
+  // Get testimonials for this product
+  const productTestimonials = testimonials.filter(t => t.productId === productId);
 
   const isInWishlist = wishlist.includes(productId);
 
   const handleAddToCart = () => {
     // Check if product is free
-    if (priceCalc === 0 && (product as any).isFree) {
+    if (priceCalc.finalPrice === 0 && (product as any).isFree) {
       setShowFreeModal(true);
       return;
     }
@@ -119,22 +116,22 @@ export default function ProductDetail({ product }: { product?: Product }) {
     addToCart({
       id: productId,
       name: productName,
-      price: priceCalc, // السعر المحسوب
+      price: priceCalc.discountedPrice, // السعر بـ SAR بعد الخصم
       image: productImage,
     });
-    showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'success');
+    showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'cart');
   };
 
   const handleWishlist = () => {
     if (!isInWishlist) {
       addToWishlist(productId);
-      showToast('تمت إضافة المنتج إلى قائمة الأمنيات! ❤️', 'info');
+      showToast('تمت إضافة المنتج إلى قائمة الأمنيات! ❤️', 'wishlist');
     }
   };
 
   const handlePayment = () => {
     // التوجيه إلى صفحة checkout مع السعر المحسوب حسب العملة المختارة
-    const checkoutUrl = `/checkout?product=${productId}&name=${encodeURIComponent(productName)}&price=${priceCalc.toFixed(2)}&currency=${currency}`;
+    const checkoutUrl = `/checkout?product=${productId}&name=${encodeURIComponent(productName)}&price=${priceCalc.finalPrice.toFixed(2)}&currency=${currency}`;
     window.location.href = checkoutUrl;
   };
 
