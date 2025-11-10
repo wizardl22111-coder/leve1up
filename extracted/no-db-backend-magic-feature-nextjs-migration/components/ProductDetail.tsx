@@ -109,7 +109,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
 
   const handleAddToCart = () => {
     // Check if product is free
-    if (priceCalc.finalPrice === 0 && (product as any).isFree) {
+    if (priceCalc === 0 && (product as any).isFree) {
       setShowFreeModal(true);
       return;
     }
