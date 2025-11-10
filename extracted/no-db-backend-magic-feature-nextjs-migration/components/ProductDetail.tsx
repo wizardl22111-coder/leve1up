@@ -119,7 +119,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
     addToCart({
       id: productId,
       name: productName,
-      price: priceCalc.discountedPrice, // السعر بـ SAR بعد الخصم
+      price: priceCalc, // السعر المحسوب
       image: productImage,
     });
     showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'cart');
