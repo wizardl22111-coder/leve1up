@@ -1,49 +1,127 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Star } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { Star, Send, User, Mail, MessageSquare, AlertCircle, CheckCircle } from 'lucide-react';
 
 interface ReviewFormProps {
-  orderId: string;
   productId: number;
   productName: string;
-  customerName: string;
-  customerEmail: string;
-  onSuccess?: () => void;
+  onReviewAdded?: (review: any) => void;
+  className?: string;
 }
 
-export default function ReviewForm({
-  orderId,
-  productId,
-  productName,
-  customerName,
-  customerEmail,
-  onSuccess,
+export default function ReviewForm({ 
+  productId, 
+  productName, 
+  onReviewAdded,
+  className = '' 
 }: ReviewFormProps) {
-  const [rating, setRating] = useState(0);
-  const [hoveredRating, setHoveredRating] = useState(0);
-  const [comment, setComment] = useState("");
+  const [formData, setFormData] = useState({
+    authorEmail: '',
+    authorName: '',
+    rating: 0,
+    title: '',
+    reviewBody: '',
+  });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<{
-    type: "success" | "error";
+    type: 'success' | 'error' | 'info';
     text: string;
+    details?: string;
   } | null>(null);
+
+  const [hoveredRating, setHoveredRating] = useState(0);
+
+  // جلب البريد الإلكتروني من localStorage عند تحميل المكون
+  useEffect(() => {
+    const savedEmail = localStorage.getItem('customerEmail') || 
+                      localStorage.getItem('userEmail') || 
+                      localStorage.getItem('email') || '';
+    
+    const savedName = localStorage.getItem('customerName') || 
+                     localStorage.getItem('userName') || 
+                     localStorage.getItem('name') || '';
+
+    if (savedEmail) {
+      setFormData(prev => ({
+        ...prev,
+        authorEmail: savedEmail,
+        authorName: savedName,
+      }));
+    }
+  }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+    
+    // مسح الرسائل عند التعديل
+    if (message) {
+      setMessage(null);
+    }
+  };
+
+  const handleRatingClick = (rating: number) => {
+    setFormData(prev => ({
+      ...prev,
+      rating,
+    }));
+    
+    if (message) {
+      setMessage(null);
+    }
+  };
+
+  const validateForm = (): string | null => {
+    if (!formData.authorEmail.trim()) {
+      return 'البريد الإلكتروني مطلوب';
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.authorEmail)) {
+      return 'البريد الإلكتروني غير صحيح';
+    }
+
+    if (!formData.authorName.trim()) {
+      return 'الاسم مطلوب';
+    }
+
+    if (formData.rating === 0) {
+      return 'يرجى اختيار تقييم من 1 إلى 5 نجوم';
+    }
+
+    if (!formData.title.trim()) {
+      return 'عنوان التقييم مطلوب';
+    }
+
+    if (formData.title.length > 100) {
+      return 'عنوان التقييم يجب أن يكون أقل من 100 حرف';
+    }
+
+    if (!formData.reviewBody.trim()) {
+      return 'محتوى التقييم مطلوب';
+    }
+
+    if (formData.reviewBody.length > 1000) {
+      return 'محتوى التقييم يجب أن يكون أقل من 1000 حرف';
+    }
+
+    return null;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (rating === 0) {
+    
+    // التحقق من صحة البيانات
+    const validationError = validateForm();
+    if (validationError) {
       setMessage({
-        type: "error",
-        text: "يرجى اختيار تقييم",
-      });
-      return;
-    }
-
-    if (comment.trim().length < 10) {
-      setMessage({
-        type: "error",
-        text: "يرجى كتابة تعليق لا يقل عن 10 أحرف",
+        type: 'error',
+        text: validationError,
       });
       return;
     }
@@ -52,19 +130,14 @@ export default function ReviewForm({
     setMessage(null);
 
     try {
-      const response = await fetch("/api/reviews", {
-        method: "POST",
+      const response = await fetch('/api/reviews', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          orderId,
           productId,
-          productName,
-          customerName,
-          customerEmail,
-          rating,
-          comment: comment.trim(),
+          ...formData,
         }),
       });
 
@@ -72,156 +145,235 @@ export default function ReviewForm({
 
       if (data.success) {
         setMessage({
-          type: "success",
-          text: data.message,
+          type: 'success',
+          text: data.message || 'تم إضافة التقييم بنجاح!',
         });
-        
+
+        // حفظ البيانات في localStorage للمرات القادمة
+        localStorage.setItem('customerEmail', formData.authorEmail);
+        localStorage.setItem('customerName', formData.authorName);
+
         // إعادة تعيين النموذج
-        setRating(0);
-        setComment("");
-        
-        if (onSuccess) {
-          setTimeout(onSuccess, 2000);
+        setFormData(prev => ({
+          ...prev,
+          rating: 0,
+          title: '',
+          reviewBody: '',
+        }));
+
+        // إشعار المكون الأب
+        if (onReviewAdded && data.review) {
+          onReviewAdded(data.review);
         }
+
       } else {
         setMessage({
-          type: "error",
-          text: data.message || "حدث خطأ أثناء إرسال التقييم",
+          type: 'error',
+          text: data.message || 'حدث خطأ أثناء إضافة التقييم',
+          details: data.details,
         });
       }
+
     } catch (error) {
+      console.error('Error submitting review:', error);
       setMessage({
-        type: "error",
-        text: "حدث خطأ في الاتصال. يرجى المحاولة لاحقاً",
+        type: 'error',
+        text: 'حدث خطأ في الاتصال',
+        details: 'يرجى التحقق من اتصال الإنترنت والمحاولة مرة أخرى',
       });
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const renderStars = (interactive: boolean = false) => {
+    const rating = interactive ? (hoveredRating || formData.rating) : formData.rating;
+    
+    return (
+      <div className="flex gap-1">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <button
+            key={star}
+            type="button"
+            onClick={() => interactive && handleRatingClick(star)}
+            onMouseEnter={() => interactive && setHoveredRating(star)}
+            onMouseLeave={() => interactive && setHoveredRating(0)}
+            className={`transition-colors ${
+              interactive 
+                ? 'hover:scale-110 transform transition-transform' 
+                : 'cursor-default'
+            }`}
+            disabled={!interactive}
+          >
+            <Star
+              className={`w-8 h-8 ${
+                star <= rating
+                  ? 'fill-yellow-400 text-yellow-400'
+                  : 'text-gray-300'
+              }`}
+            />
+          </button>
+        ))}
+      </div>
+    );
+  };
+
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 max-w-2xl mx-auto">
-      <h2 className="text-2xl font-bold mb-2 text-gray-800">
-        ⭐ قيّم تجربتك
-      </h2>
-      <p className="text-gray-600 mb-6">
-        منتج: <span className="font-semibold">{productName}</span>
-      </p>
+    <div className={`bg-dark-400 rounded-2xl border border-primary-300/20 p-6 ${className}`}>
+      <div className="mb-6">
+        <h3 className="text-xl font-bold text-white mb-2">
+          شارك تقييمك لـ "{productName}"
+        </h3>
+        <p className="text-gray-400 text-sm">
+          ساعد الآخرين في اتخاذ قرار الشراء من خلال مشاركة تجربتك مع هذا المنتج
+        </p>
+      </div>
+
+      {/* رسائل التنبيه */}
+      {message && (
+        <div className={`mb-6 p-4 rounded-xl border flex items-start gap-3 ${
+          message.type === 'success' 
+            ? 'bg-green-500/10 border-green-500/20 text-green-400'
+            : message.type === 'error'
+            ? 'bg-red-500/10 border-red-500/20 text-red-400'
+            : 'bg-blue-500/10 border-blue-500/20 text-blue-400'
+        }`}>
+          {message.type === 'success' ? (
+            <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+          ) : (
+            <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+          )}
+          <div>
+            <p className="font-medium">{message.text}</p>
+            {message.details && (
+              <p className="text-sm opacity-80 mt-1">{message.details}</p>
+            )}
+          </div>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* اختيار التقييم */}
+        {/* البريد الإلكتروني */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            التقييم <span className="text-red-500">*</span>
+          <label className="block text-sm font-medium text-gray-300 mb-2">
+            البريد الإلكتروني *
           </label>
-          <div className="flex gap-2">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <button
-                key={star}
-                type="button"
-                onClick={() => setRating(star)}
-                onMouseEnter={() => setHoveredRating(star)}
-                onMouseLeave={() => setHoveredRating(0)}
-                className="transition-transform hover:scale-110"
-              >
-                <Star
-                  size={36}
-                  className={`${
-                    star <= (hoveredRating || rating)
-                      ? "fill-yellow-400 text-yellow-400"
-                      : "text-gray-300"
-                  } transition-colors`}
-                />
-              </button>
-            ))}
+          <div className="relative">
+            <Mail className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <input
+              type="email"
+              name="authorEmail"
+              value={formData.authorEmail}
+              onChange={handleInputChange}
+              required
+              placeholder="your@email.com"
+              className="w-full pr-10 pl-4 py-3 bg-dark-300 border border-primary-300/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-primary-300/50 transition-colors"
+            />
           </div>
-          {rating > 0 && (
-            <p className="text-sm text-gray-600 mt-2">
-              {rating === 5 && "⭐ ممتاز!"}
-              {rating === 4 && "👍 جيد جداً"}
-              {rating === 3 && "😊 جيد"}
-              {rating === 2 && "😐 مقبول"}
-              {rating === 1 && "😞 ضعيف"}
-            </p>
-          )}
         </div>
 
-        {/* التعليق */}
+        {/* الاسم */}
         <div>
-          <label
-            htmlFor="comment"
-            className="block text-sm font-medium text-gray-700 mb-2"
-          >
-            تعليقك <span className="text-red-500">*</span>
+          <label className="block text-sm font-medium text-gray-300 mb-2">
+            الاسم *
           </label>
-          <textarea
-            id="comment"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            placeholder="شاركنا تجربتك مع المنتج..."
-            rows={5}
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-            maxLength={500}
+          <div className="relative">
+            <User className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <input
+              type="text"
+              name="authorName"
+              value={formData.authorName}
+              onChange={handleInputChange}
+              required
+              placeholder="اسمك الكريم"
+              className="w-full pr-10 pl-4 py-3 bg-dark-300 border border-primary-300/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-primary-300/50 transition-colors"
+            />
+          </div>
+        </div>
+
+        {/* التقييم بالنجوم */}
+        <div>
+          <label className="block text-sm font-medium text-gray-300 mb-3">
+            التقييم *
+          </label>
+          <div className="flex items-center gap-4">
+            {renderStars(true)}
+            <span className="text-gray-400 text-sm">
+              {formData.rating > 0 ? `${formData.rating} من 5` : 'اختر تقييمك'}
+            </span>
+          </div>
+        </div>
+
+        {/* عنوان التقييم */}
+        <div>
+          <label className="block text-sm font-medium text-gray-300 mb-2">
+            عنوان التقييم *
+          </label>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleInputChange}
+            required
+            maxLength={100}
+            placeholder="مثال: منتج ممتاز وأنصح به"
+            className="w-full px-4 py-3 bg-dark-300 border border-primary-300/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-primary-300/50 transition-colors"
           />
-          <p className="text-sm text-gray-500 mt-1">
-            {comment.length} / 500 حرف
-          </p>
+          <div className="text-xs text-gray-500 mt-1 text-left">
+            {formData.title.length}/100
+          </div>
         </div>
 
-        {/* رسالة النجاح أو الخطأ */}
-        {message && (
-          <div
-            className={`p-4 rounded-lg ${
-              message.type === "success"
-                ? "bg-green-50 text-green-800 border border-green-200"
-                : "bg-red-50 text-red-800 border border-red-200"
-            }`}
-          >
-            {message.text}
+        {/* محتوى التقييم */}
+        <div>
+          <label className="block text-sm font-medium text-gray-300 mb-2">
+            تفاصيل التقييم *
+          </label>
+          <div className="relative">
+            <MessageSquare className="absolute right-3 top-3 w-5 h-5 text-gray-400" />
+            <textarea
+              name="reviewBody"
+              value={formData.reviewBody}
+              onChange={handleInputChange}
+              required
+              maxLength={1000}
+              rows={4}
+              placeholder="شارك تجربتك مع المنتج... ما الذي أعجبك؟ هل حقق توقعاتك؟"
+              className="w-full pr-10 pl-4 py-3 bg-dark-300 border border-primary-300/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-primary-300/50 transition-colors resize-none"
+            />
           </div>
-        )}
+          <div className="text-xs text-gray-500 mt-1 text-left">
+            {formData.reviewBody.length}/1000
+          </div>
+        </div>
 
         {/* زر الإرسال */}
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+          className="w-full bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-primary-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           {isSubmitting ? (
-            <span className="flex items-center justify-center gap-2">
-              <svg
-                className="animate-spin h-5 w-5"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                />
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                />
-              </svg>
+            <>
+              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
               جاري الإرسال...
-            </span>
+            </>
           ) : (
-            "إرسال التقييم"
+            <>
+              <Send className="w-5 h-5" />
+              إرسال التقييم
+            </>
           )}
         </button>
-
-        {/* ملاحظة */}
-        <p className="text-xs text-gray-500 text-center">
-          💡 سيتم مراجعة تقييمك قبل نشره في الموقع
-        </p>
       </form>
+
+      {/* ملاحظة */}
+      <div className="mt-4 p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+        <p className="text-blue-400 text-sm flex items-start gap-2">
+          <AlertCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
+          يمكنك إضافة تقييم واحد فقط لكل منتج. تأكد من أنك اشتريت المنتج قبل إضافة التقييم.
+        </p>
+      </div>
     </div>
   );
 }
-

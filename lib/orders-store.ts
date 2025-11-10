@@ -321,6 +321,46 @@ export function getOrdersByEmail(email: string): Order[] {
 }
 
 /**
+ * 🔍 البحث عن طلبات عميل معين (async version for Redis)
+ */
+export async function findOrdersByCustomerEmail(email: string): Promise<Order[]> {
+  if (isRedisAvailable()) {
+    try {
+      // في Redis، نحتاج للبحث في جميع الطلبات (هذا ليس مثالياً، لكنه يعمل)
+      // في التطبيق الحقيقي، يمكن إنشاء index للعملاء
+      
+      // للآن، سنستخدم الـ fallback للبحث
+      return getOrdersByEmail(email);
+    } catch (error) {
+      console.error('❌ Redis Error during findOrdersByCustomerEmail, falling back to memory:', error);
+    }
+  }
+  
+  // Fallback: استخدام الدالة الموجودة
+  return getOrdersByEmail(email);
+}
+
+/**
+ * 🔍 التحقق من شراء عميل لمنتج معين
+ */
+export async function hasCustomerPurchasedProduct(email: string, productId: number): Promise<boolean> {
+  const orders = await findOrdersByCustomerEmail(email);
+  
+  return orders.some(order => {
+    // التحقق من حالة الطلب (مدفوع أو مكتمل أو مجاني)
+    const isValidStatus = ['paid', 'completed'].includes(order.status) || order.amount === 0;
+    
+    if (!isValidStatus) return false;
+    
+    // التحقق من وجود المنتج في الطلب
+    return order.items?.some(item => {
+      const itemId = typeof item.id === 'string' ? parseInt(item.id) : item.id;
+      return itemId === productId;
+    }) || false;
+  });
+}
+
+/**
  * مسح جميع الطلبات (للتطوير فقط)
  */
 export function clearAllOrders(): void {

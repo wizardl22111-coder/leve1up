@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
-  getAllReviews,
-  getApprovedReviews,
-  getProductReviews,
+  getReviewsByProductId,
   addReview,
-  hasCustomerPurchasedProduct,
-  hasCustomerReviewedProduct,
-} from "@/lib/reviews";
+  hasUserReviewedProduct,
+  getReviewSummary,
+} from "@/lib/reviews-store";
+import { hasCustomerPurchasedProduct } from "@/lib/orders-store";
 
 /**
  * 💬 API لإدارة التقييمات
@@ -26,26 +25,53 @@ export async function GET(req: NextRequest) {
   try {
     const searchParams = req.nextUrl.searchParams;
     const productId = searchParams.get("productId");
+    const includeSummary = searchParams.get("includeSummary") === "true";
 
-    if (productId) {
-      // جلب تقييمات منتج معين
-      const reviews = getProductReviews(parseInt(productId));
-      
+    if (!productId) {
       return NextResponse.json({
-        success: true,
-        reviews,
-        count: reviews.length,
-      });
+        success: false,
+        message: "معرف المنتج مطلوب",
+      }, { status: 400 });
     }
 
-    // جلب جميع التقييمات المعتمدة
-    const reviews = getApprovedReviews();
+    const productIdNum = parseInt(productId);
+    if (isNaN(productIdNum)) {
+      return NextResponse.json({
+        success: false,
+        message: "معرف المنتج غير صحيح",
+      }, { status: 400 });
+    }
+
+    console.log(`🔍 Fetching reviews for product: ${productIdNum}`);
+
+    // جلب تقييمات منتج معين
+    const reviews = await getReviewsByProductId(productIdNum, true);
     
-    return NextResponse.json({
+    let response: any = {
       success: true,
-      reviews,
+      reviews: reviews.map(review => ({
+        id: review.id,
+        rating: review.rating,
+        title: review.title,
+        body: review.body,
+        authorName: review.authorName || 'مستخدم',
+        createdAt: review.createdAt,
+        verified: review.verified || false,
+        helpful: review.helpful || 0,
+      })),
       count: reviews.length,
-    });
+    };
+
+    // إضافة الملخص إذا طُلب
+    if (includeSummary) {
+      const summary = await getReviewSummary(productIdNum);
+      response.summary = summary;
+      console.log(`📊 Review summary: ${summary.totalReviews} reviews, avg: ${summary.averageRating}`);
+    }
+
+    console.log(`✅ Found ${reviews.length} reviews for product ${productIdNum}`);
+
+    return NextResponse.json(response);
 
   } catch (error: any) {
     console.error("❌ Error fetching reviews:", error);
@@ -65,74 +91,111 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const {
-      orderId,
       productId,
-      productName,
-      customerName,
-      customerEmail,
+      authorEmail,
+      authorName,
       rating,
-      comment,
+      title,
+      reviewBody,
     } = body;
 
     // 1️⃣ التحقق من البيانات المطلوبة
-    if (!orderId || !productId || !productName || !customerName || !customerEmail || !rating || !comment) {
+    if (!productId || !authorEmail || !rating || !title || !reviewBody) {
       return NextResponse.json({
         success: false,
         message: "جميع الحقول مطلوبة",
+        details: "يجب تقديم معرف المنتج والبريد الإلكتروني والتقييم والعنوان والمحتوى"
       }, { status: 400 });
     }
 
     // 2️⃣ التحقق من صحة التقييم (1-5)
-    if (rating < 1 || rating > 5) {
+    if (rating < 1 || rating > 5 || !Number.isInteger(rating)) {
       return NextResponse.json({
         success: false,
-        message: "التقييم يجب أن يكون بين 1 و 5",
+        message: "التقييم يجب أن يكون رقماً صحيحاً بين 1 و 5",
       }, { status: 400 });
     }
 
-    // 3️⃣ التحقق من صحة البريد الإلكتروني
-    if (!customerEmail.includes('@')) {
+    // 3️⃣ التحقق من طول النصوص
+    if (title.length > 100) {
+      return NextResponse.json({
+        success: false,
+        message: "عنوان التقييم يجب أن يكون أقل من 100 حرف",
+      }, { status: 400 });
+    }
+
+    if (reviewBody.length > 1000) {
+      return NextResponse.json({
+        success: false,
+        message: "محتوى التقييم يجب أن يكون أقل من 1000 حرف",
+      }, { status: 400 });
+    }
+
+    // 4️⃣ التحقق من صحة البريد الإلكتروني
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(authorEmail)) {
       return NextResponse.json({
         success: false,
         message: "البريد الإلكتروني غير صحيح",
       }, { status: 400 });
     }
 
-    // 4️⃣ التحقق من أن العميل اشترى المنتج
-    const hasPurchased = hasCustomerPurchasedProduct(customerEmail, productId);
+    console.log(`🔍 Checking purchase for email: ${authorEmail}, product: ${productId}`);
+
+    // 5️⃣ التحقق من أن المستخدم اشترى المنتج فعلاً
+    const hasPurchased = await hasCustomerPurchasedProduct(authorEmail, parseInt(productId));
     
     if (!hasPurchased) {
+      console.log(`❌ User ${authorEmail} has not purchased product ${productId}`);
       return NextResponse.json({
         success: false,
-        message: "يجب شراء المنتج أولاً قبل التقييم",
+        message: "لا يمكنك تقييم هذا المنتج",
+        details: "يجب شراء المنتج أولاً قبل إضافة تقييم"
       }, { status: 403 });
     }
 
-    // 5️⃣ التحقق من أن العميل لم يقيّم المنتج من قبل
-    const hasReviewed = hasCustomerReviewedProduct(customerEmail, productId);
+    console.log(`✅ Purchase verified for ${authorEmail} on product ${productId}`);
+
+    // 6️⃣ التحقق من عدم وجود تقييم سابق من نفس المستخدم
+    const hasReviewed = await hasUserReviewedProduct(authorEmail, parseInt(productId));
     
     if (hasReviewed) {
+      console.log(`❌ User ${authorEmail} already reviewed product ${productId}`);
       return NextResponse.json({
         success: false,
         message: "لقد قمت بتقييم هذا المنتج من قبل",
+        details: "يمكن إضافة تقييم واحد فقط لكل منتج"
       }, { status: 409 });
     }
 
-    // 6️⃣ إضافة التقييم
-    const newReview = addReview({
-      orderId,
-      productId,
-      productName,
-      customerName,
-      customerEmail,
-      rating,
-      comment,
+    console.log(`✅ No previous review found, proceeding with review creation`);
+
+    // 7️⃣ إضافة التقييم
+    const newReview = await addReview({
+      productId: parseInt(productId),
+      authorEmail,
+      authorName: authorName || 'مستخدم',
+      rating: parseInt(rating),
+      title: title.trim(),
+      body: reviewBody.trim(),
+      approved: true, // يمكن تغييرها حسب الحاجة
+      verified: true, // تم التحقق من الشراء
     });
+
+    console.log(`🌟 Review created successfully: ${newReview.id}`);
 
     return NextResponse.json({
       success: true,
-      message: "شكراً لك! تم إرسال تقييمك بنجاح وسيظهر بعد المراجعة",
-      review: newReview,
+      message: "تم إضافة التقييم بنجاح! شكراً لك على مشاركة رأيك.",
+      review: {
+        id: newReview.id,
+        rating: newReview.rating,
+        title: newReview.title,
+        body: newReview.body,
+        authorName: newReview.authorName,
+        createdAt: newReview.createdAt,
+        verified: newReview.verified,
+      }
     }, { status: 201 });
 
   } catch (error: any) {
@@ -141,8 +204,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       success: false,
       message: "حدث خطأ أثناء إضافة التقييم",
-      error: error.message,
+      details: "يرجى المحاولة مرة أخرى لاحقاً"
     }, { status: 500 });
   }
 }
-
