@@ -12,7 +12,7 @@ export default function ProductGrid() {
   const { currency, addToCart, addToWishlist, wishlist } = useApp();
 
   // Helper function to get unified product ID
-  const getProductId = (product: any) => product.id ?? product.product_id ?? 0;
+  const getProductId = (product: any) => product.product_id ?? product.id ?? 1;
 
   // Helper function to get unified product name
   const getProductName = (product: any) => product.name ?? product.product_name ?? 'منتج';

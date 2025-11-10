@@ -85,7 +85,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
   }
 
   // Helper function to get unified product ID
-  const getProductId = () => product.id ?? product.product_id ?? 0;
+  const getProductId = () => product.product_id ?? product.id ?? 1;
 
   // Helper function to get unified product name
   const getProductName = () => product.name ?? product.product_name ?? 'منتج';
