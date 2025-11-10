@@ -102,8 +102,8 @@ export default function ProductDetail({ product }: { product?: Product }) {
   const productName = getProductName();
   const productImage = getProductImage();
 
-  // Get testimonials for this product
-  const productTestimonials = testimonials.filter(t => t.productId === productId);
+  // Get testimonials for this product (using all testimonials since productId doesn't exist)
+  const productTestimonials = testimonials;
 
   const isInWishlist = wishlist.includes(productId);
 
