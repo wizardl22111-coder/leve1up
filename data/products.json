@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "منتج رقم 1",
+    "price": 99.99,
+    "description": "وصف المنتج الأول",
+    "image": "/placeholder.svg",
+    "category": "فئة أ"
+  },
+  {
+    "id": 2,
+    "name": "منتج رقم 2", 
+    "price": 149.99,
+    "description": "وصف المنتج الثاني",
+    "image": "/placeholder.svg",
+    "category": "فئة ب"
+  },
+  {
+    "id": 3,
+    "name": "منتج رقم 3",
+    "price": 199.99,
+    "description": "وصف المنتج الثالث",
+    "image": "/placeholder.svg",
+    "category": "فئة أ"
+  }
+]
+
