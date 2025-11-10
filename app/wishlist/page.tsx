@@ -15,7 +15,7 @@ export default function WishlistPage() {
   const [wishlistProducts, setWishlistProducts] = useState<any[]>([]);
 
   useEffect(() => {
-    const filteredProducts = products.filter(p => wishlist.includes(p.product_id));
+    const filteredProducts = products.filter(p => wishlist.includes(p.id));
     setWishlistProducts(filteredProducts);
   }, [wishlist]);
 
@@ -54,17 +54,17 @@ export default function WishlistPage() {
   const handleAddToCart = (product: any) => {
     const price = getPrice(product);
     addToCart({
-      id: product.product_id,
-      name: product.product_name,
+      id: product.id,
+      name: product.name,
       price: price,
-      image: product.product_image,
+      image: product.image,
     });
-    showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'cart');
+    showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'success');
   };
 
   const handleRemoveFromWishlist = (productId: number) => {
     removeFromWishlist(productId);
-    showToast('تمت إزالة المنتج من المفضلة', 'wishlist');
+    showToast('تمت إزالة المنتج من المفضلة', 'info');
   };
 
   if (wishlistProducts.length === 0) {

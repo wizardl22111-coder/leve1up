@@ -5,7 +5,7 @@ import { ChevronDown, ChevronUp, HelpCircle, MessageCircleQuestion } from 'lucid
 import faq from '../data/faq.json';
 import Link from 'next/link';
 
-export default function FAQSection() {
+export const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
@@ -88,4 +88,3 @@ export default function FAQSection() {
     </section>
   );
 }
-

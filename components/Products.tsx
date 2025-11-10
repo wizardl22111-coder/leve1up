@@ -47,7 +47,7 @@ export const Products = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product) => (
             <Card key={product.id} className="group overflow-hidden hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 bg-card border-border">
-              <Link to={`/product/${product.id}`}>
+              <Link href={`/product/${product.id}`}>
                 <CardHeader className="p-0">
                   <div className="relative overflow-hidden aspect-square">
                     <img 
@@ -63,7 +63,7 @@ export const Products = () => {
               </Link>
 
               <CardContent className="p-6 space-y-3">
-                <Link to={`/product/${product.id}`}>
+                <Link href={`/product/${product.id}`}>
                   <h3 className="text-xl font-bold text-foreground hover:text-primary transition-colors line-clamp-2">
                     {product.title}
                   </h3>

@@ -53,7 +53,7 @@ function getExpiryTimestamp(minutes: number = 10): string {
 function matchProduct(productId?: number, message?: string) {
   // محاولة المطابقة بـ product_id أولاً
   if (productId) {
-    const product = products.find(p => p.product_id === productId && p.active);
+    const product = products.find(p => p.id === productId );
     if (product) return product;
   }
   
@@ -61,19 +61,19 @@ function matchProduct(productId?: number, message?: string) {
   if (message) {
     const messageLower = message.toLowerCase();
     const product = products.find(p => {
-      const nameLower = p.product_name.toLowerCase();
-      const nameEnLower = p.product_name_en.toLowerCase();
+      const nameLower = p.name.toLowerCase();
+      const nameEnLower = p.name.toLowerCase();
       return (nameLower.includes(messageLower) || 
               messageLower.includes(nameLower) ||
               nameEnLower.includes(messageLower) ||
               messageLower.includes(nameEnLower)) && 
-             p.active;
+              messageLower.includes(nameEnLower);
     });
     if (product) return product;
   }
   
   // إذا لم يتم العثور، إرجاع المنتج الافتراضي (الأول)
-  return products.find(p => p.active) || products[0];
+  return  products[0];
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -115,7 +115,6 @@ export async function POST(req: NextRequest) {
       id: paymentId,
       status,
       amount: amountInFils,
-      currency_code: currencyCode,
       customer_email: customerEmail,
       customer_name: customerName,
       message,
@@ -127,7 +126,6 @@ export async function POST(req: NextRequest) {
     console.log(`  💳 Payment ID: ${paymentId}`);
     console.log(`  📊 Status: ${status}`);
     console.log(`  💰 Amount: ${amountInFils} fils`);
-    console.log(`  💵 Currency: ${currencyCode}`);
     console.log(`  📧 Customer Email: ${customerEmail}`);
     console.log(`  👤 Customer Name: ${customerName}`);
     console.log(`  💬 Message: ${message}`);
@@ -150,11 +148,8 @@ export async function POST(req: NextRequest) {
     
     console.log("─".repeat(80));
     console.log("📦 PRODUCT MATCHED:");
-    console.log(`  🆔 Product ID: ${matchedProduct.product_id}`);
-    console.log(`  📝 Name: ${matchedProduct.product_name}`);
-    console.log(`  📥 Download URL: ${matchedProduct.download_url}`);
-    console.log(`  📄 Filename: ${matchedProduct.filename}`);
-    console.log(`  💰 Price: ${matchedProduct.price} ${matchedProduct.currency}`);
+    console.log(`  🆔 Product ID: ${matchedProduct.id}`);
+    console.log(`  📝 Name: ${matchedProduct.name}`);
     
     // ────────────────────────────────────────────────────────────────────────
     // الخطوة 4: توليد Token ورقم الطلب
@@ -187,19 +182,15 @@ export async function POST(req: NextRequest) {
       status: status,
       
       // معلومات المنتج
-      product_id: matchedProduct.product_id,
-      product_name: matchedProduct.product_name,
-      product_image: matchedProduct.product_image,
+      product_id: matchedProduct.id,
+      product_name: matchedProduct.name,
+      product_image: matchedProduct.image,
       
       // معلومات المبلغ
       amount: amount,
-      currency: currencyCode || matchedProduct.currency,
       amount_in_fils: amountInFils,
       
       // معلومات التحميل (محفوظة للسيرفر فقط)
-      download_url: matchedProduct.download_url,
-      filename: matchedProduct.filename,
-      file_size_mb: matchedProduct.file_size_mb,
       
       // معلومات الأمان
       access_token: accessToken,
@@ -261,7 +252,6 @@ export async function POST(req: NextRequest) {
     console.log(`✅ Payment saved and token: ${accessToken}`);
     console.log(`💳 Payment ID: ${paymentId}`);
     console.log(`📦 Order Number: ${orderNumber}`);
-    console.log(`💰 Amount: ${amount} ${currencyCode || matchedProduct.currency}`);
     console.log(`⏱️ Processing time: ${duration}ms`);
     console.log("─".repeat(80));
     
@@ -287,9 +277,8 @@ export async function POST(req: NextRequest) {
       access_token: accessToken,
       expires_at: expiresAt,
       redirect_url: redirectUrl,
-      product_name: matchedProduct.product_name,
+      product_name: matchedProduct.name,
       amount: amount,
-      currency: currencyCode || matchedProduct.currency
     }, { status: 200 });
     
   } catch (error: any) {

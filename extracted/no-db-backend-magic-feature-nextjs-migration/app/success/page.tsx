@@ -33,9 +33,9 @@ function SuccessPageContent() {
   const WHATSAPP_MESSAGE = "مرحباً، لدي استفسار بخصوص طلبي";
 
   useEffect(() => {
-    const session = searchParams.get("session"); // ✅ استخدام session بدلاً من payment_intent
-    const payment_intent = searchParams.get("payment_intent"); // للتوافق مع الطلبات القديمة
-    const token = searchParams.get("token");
+    const session = searchParams?.get("session"); // ✅ استخدام session بدلاً من payment_intent
+    const payment_intent = searchParams?.get("payment_intent"); // للتوافق مع الطلبات القديمة
+    const token = searchParams?.get("token");
     
     const fetchOrderData = async () => {
       try {

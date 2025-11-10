@@ -1,5 +1,5 @@
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
 import { Shield, Lock, Eye, UserCheck, Database, Globe } from 'lucide-react';
 
 export default function PrivacyPage() {
@@ -293,4 +293,3 @@ export default function PrivacyPage() {
     </main>
   );
 }
-

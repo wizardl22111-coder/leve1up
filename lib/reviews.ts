@@ -5,6 +5,13 @@ export interface Review {
   comment: string;
   avatar?: string;
   date?: string;
+  productId?: number;
+  approved?: boolean;
+  customerId?: string;
+  orderId?: string;
+  productName?: string;
+  customerName?: string;
+  customerEmail?: string;
 }
 
 export const getAverageRating = (reviews: Review[]): number => {
@@ -21,3 +28,56 @@ export const getRatingDistribution = (reviews: Review[]) => {
   return distribution;
 };
 
+// Mock data for reviews (in a real app, this would be in a database)
+let mockReviews: Review[] = [];
+
+export const getAllReviews = (): Review[] => {
+  return mockReviews;
+};
+
+export const getApprovedReviews = (): Review[] => {
+  return mockReviews.filter(review => review.approved === true);
+};
+
+export const getProductReviews = (productId: number): Review[] => {
+  return mockReviews.filter(review => review.productId === productId);
+};
+
+export const addReview = (review: Omit<Review, 'id'>): Review => {
+  const newReview: Review = {
+    ...review,
+    id: Date.now(), // Simple ID generation
+    approved: false, // Reviews need approval by default
+  };
+  mockReviews.push(newReview);
+  return newReview;
+};
+
+export const approveReview = (reviewId: number): boolean => {
+  const reviewIndex = mockReviews.findIndex(review => review.id === reviewId);
+  if (reviewIndex !== -1) {
+    mockReviews[reviewIndex].approved = true;
+    return true;
+  }
+  return false;
+};
+
+export const deleteReview = (reviewId: number): boolean => {
+  const reviewIndex = mockReviews.findIndex(review => review.id === reviewId);
+  if (reviewIndex !== -1) {
+    mockReviews.splice(reviewIndex, 1);
+    return true;
+  }
+  return false;
+};
+
+export const hasCustomerPurchasedProduct = (customerId: string, productId: number): boolean => {
+  // Mock implementation - in a real app, this would check purchase history
+  return true; // For demo purposes, assume all customers have purchased
+};
+
+export const hasCustomerReviewedProduct = (customerId: string, productId: number): boolean => {
+  return mockReviews.some(review => 
+    review.customerId === customerId && review.productId === productId
+  );
+};

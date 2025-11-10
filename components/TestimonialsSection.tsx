@@ -5,7 +5,7 @@ import testimonials from '../data/testimonials.json';
 import Image from 'next/image';
 import { useRef } from 'react';
 
-export default function TestimonialsSection() {
+export const TestimonialsSection = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
@@ -94,7 +94,7 @@ export default function TestimonialsSection() {
 
                   {/* Testimonial Text */}
                   <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-5 leading-relaxed flex-grow">
-                    "{testimonial.text}"
+                    "{testimonial.comment}"
                   </p>
 
                   {/* User Info */}
@@ -103,13 +103,8 @@ export default function TestimonialsSection() {
                       <p className="text-sm sm:text-base font-bold text-white truncate">
                         {testimonial.name}
                       </p>
-                      {testimonial.verified && (
-                        <p className="text-xs text-green-400 flex items-center gap-1 mt-0.5">
-                          <ShoppingBag className="w-3 h-3" />
-                          قام بالشراء
-                        </p>
-                      )}
-                      <p className="text-xs text-gray-500 mt-1">{testimonial.timeAgo}</p>
+
+                      <p className="text-xs text-gray-500 mt-1">منذ يوم</p>
                     </div>
                   </div>
                 </div>

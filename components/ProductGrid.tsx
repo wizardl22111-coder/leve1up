@@ -21,7 +21,7 @@ export default function ProductGrid() {
   const getProductImage = (product: any) => product.image ?? product.product_image ?? '/placeholder.jpg';
 
   const handleAddToCart = (product: any) => {
-    const priceCalc = calculatePrice(product, currency);
+    const priceCalc = calculatePrice(product.price || 0);
     const productId = getProductId(product);
     const productName = getProductName(product);
     const productImage = getProductImage(product);
@@ -31,33 +31,33 @@ export default function ProductGrid() {
     addToCart({
       id: productId,
       name: productName,
-      price: priceCalc.discountedPrice, // السعر بـ SAR بعد الخصم
+      price: priceCalc, // السعر بـ SAR بعد الخصم
       image: productImage,
     });
-    showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'cart');
+    showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'success');
   };
 
   const handleWishlist = (productId: number) => {
     if (!wishlist.includes(productId)) {
       addToWishlist(productId);
-      showToast('تمت إضافة المنتج إلى قائمة الأمنيات! ❤️', 'wishlist');
+      showToast('تمت إضافة المنتج إلى قائمة الأمنيات! ❤️', 'info');
     }
   };
 
   const handleDirectPayment = (product: any) => {
     // التوجيه إلى صفحة checkout مع السعر المحسوب حسب العملة المختارة
-    const priceCalc = calculatePrice(product, currency);
+    const priceCalc = calculatePrice(product.price || 0);
     const productId = getProductId(product);
     const productName = getProductName(product);
     
-    const checkoutUrl = `/checkout?product=${productId}&name=${encodeURIComponent(productName)}&price=${priceCalc.finalPrice.toFixed(2)}&currency=${currency}`;
+    const checkoutUrl = `/checkout?product=${productId}&name=${encodeURIComponent(productName)}&price=${priceCalc.toFixed(2)}&currency=${currency}`;
     window.location.href = checkoutUrl;
   };
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
       {products.map((product) => {
-        const priceCalc = calculatePrice(product, currency);
+        const priceCalc = calculatePrice(product.price || 0);
         const productId = getProductId(product);
         const productName = getProductName(product);
         const productImage = getProductImage(product);
@@ -77,12 +77,8 @@ export default function ProductGrid() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                {priceCalc.discountPercentage > 0 && (
-                  <div className="absolute top-3 left-3 bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
-                    خصم {priceCalc.discountPercentage}%
-                  </div>
-                )}
-                {product.isFree && (
+
+                {(product as any).isFree && (
                   <div className="absolute top-3 right-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
                     مجاني 🎁
                   </div>
@@ -96,9 +92,9 @@ export default function ProductGrid() {
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-1">
                   <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  <span className="text-sm text-gray-300">{product.rating || '4.5'}</span>
+                  <span className="text-sm text-gray-300">{(product as any).rating || '4.5'}</span>
                   <span className="text-xs text-gray-500 mr-1">
-                    ({typeof product.buyers === 'string' ? product.buyers : `${product.buyers || 0} مشتري`})
+                    ({typeof (product as any).buyers === 'string' ? (product as any).buyers : `${(product as any).buyers || 0} مشتري`})
                   </span>
                 </div>
                 <button
@@ -122,33 +118,23 @@ export default function ProductGrid() {
 
               {/* Price Section */}
               <div className="mt-auto">
-                {priceCalc.finalPrice === 0 ? (
+                {priceCalc === 0 ? (
                   <div className="mb-4">
                     <p className="text-3xl font-bold text-green-400">مجاني</p>
-                    {priceCalc.originalPrice > 0 && (
-                      <p className="text-sm text-gray-500 line-through">
-                        {formatPrice(priceCalc.originalPrice, currency)}
-                      </p>
-                    )}
                   </div>
                 ) : (
                   <div className="mb-4">
                     <div className="flex items-center gap-2">
                       <p className="text-2xl sm:text-3xl font-bold text-primary-300">
-                        {priceCalc.finalPrice.toFixed(2)} {priceCalc.symbol}
+                        {formatPrice(priceCalc)}
                       </p>
                     </div>
-                    {priceCalc.discountPercentage > 0 && (
-                      <p className="text-sm text-gray-500 line-through">
-                        {formatPrice(priceCalc.originalPrice, currency)}
-                      </p>
-                    )}
                   </div>
                 )}
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-2">
-                  {product.isFree ? (
+                  {(product as any).isFree ? (
                     <Link
                       href={`/products/${productId}`}
                       className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-2.5 rounded-lg font-semibold hover:shadow-lg hover:shadow-green-500/30 transition-all text-center"

@@ -6,7 +6,7 @@ import { useApp } from '@/contexts/AppContext';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function Navbar() {
+export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showCurrencyMenu, setShowCurrencyMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);

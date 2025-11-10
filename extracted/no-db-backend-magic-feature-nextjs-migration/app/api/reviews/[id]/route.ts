@@ -34,7 +34,7 @@ export async function PATCH(
       }, { status: 400 });
     }
 
-    const success = approveReview(id);
+    const success = approveReview(parseInt(id));
 
     if (!success) {
       return NextResponse.json({
@@ -76,7 +76,7 @@ export async function DELETE(
       }, { status: 400 });
     }
 
-    const success = deleteReview(id);
+    const success = deleteReview(parseInt(id));
 
     if (!success) {
       return NextResponse.json({

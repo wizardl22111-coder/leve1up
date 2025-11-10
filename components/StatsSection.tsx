@@ -1,5 +1,5 @@
 import WhyBuySection from './WhyBuySection';
 
-export default function StatsSection() {
+export const StatsSection = () => {
   return <WhyBuySection />;
 }

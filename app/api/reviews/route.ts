@@ -120,6 +120,7 @@ export async function POST(req: NextRequest) {
 
     // 6️⃣ إضافة التقييم
     const newReview = addReview({
+      name: customerName,
       orderId,
       productId,
       productName,
@@ -145,4 +146,3 @@ export async function POST(req: NextRequest) {
     }, { status: 500 });
   }
 }
-

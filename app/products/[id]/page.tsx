@@ -12,12 +12,12 @@ interface Props {
 
 export async function generateStaticParams() {
   return products.map((product) => ({
-    id: product.product_id.toString(),
+    id: product.id.toString(),
   }));
 }
 
 export async function generateMetadata({ params }: Props) {
-  const product = products.find((p) => p.product_id === parseInt(params.id));
+  const product = products.find((p) => p.id === parseInt(params.id));
   
   if (!product) {
     return {
@@ -26,13 +26,13 @@ export async function generateMetadata({ params }: Props) {
   }
 
   return {
-    title: `${product.product_name} | متجر لفل اب`,
+    title: `${product.name} | متجر لفل اب`,
     description: product.description,
   };
 }
 
 export default function ProductPage({ params }: Props) {
-  const product = products.find((p) => p.product_id === parseInt(params.id));
+  const product = products.find((p) => p.id === parseInt(params.id));
 
   if (!product) {
     notFound();
