@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, ShoppingCart, Heart, Globe, Home, Package, Mail, Receipt } from 'lucide-react';
-import { useApp } from '@/contexts/AppContext';
+import { useApp } from '../contexts/AppContext';
 import Link from 'next/link';
 import Image from 'next/image';
 
