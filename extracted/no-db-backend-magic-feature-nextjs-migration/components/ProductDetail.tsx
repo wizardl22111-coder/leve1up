@@ -122,13 +122,13 @@ export default function ProductDetail({ product }: { product?: Product }) {
       price: priceCalc, // السعر المحسوب
       image: productImage,
     });
-    showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'cart');
+    showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'success');
   };
 
   const handleWishlist = () => {
     if (!isInWishlist) {
       addToWishlist(productId);
-      showToast('تمت إضافة المنتج إلى قائمة الأمنيات! ❤️', 'wishlist');
+      showToast('تمت إضافة المنتج إلى قائمة الأمنيات! ❤️', 'info');
     }
   };
 
