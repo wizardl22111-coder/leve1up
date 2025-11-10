@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { ShoppingCart, Heart, Star, Check, Users, Shield, Zap, CheckCircle, ShoppingBag, Download } from 'lucide-react';
-import { useApp } from '../contexts/AppContext';
-import { showToast } from '../components/ToastContainer';
+import { useApp } from '@/contexts/AppContext';
+import { showToast } from '@/components/ToastContainer';
 import { calculatePrice, formatPrice } from '@/lib/currency';
-import testimonials from '../data/testimonials.json';
+import testimonials from '@/data/testimonials.json';
 import Image from 'next/image';
 import WhyBuySection from './WhyBuySection';
 import FreeProductModal from './FreeProductModal';
@@ -67,7 +67,7 @@ interface Product {
   features?: string[];
 }
 
-export const ProductDetail = ({ product }: { product?: Product }) => {
+export default function ProductDetail({ product }: { product?: Product }) {
   const { currency, addToCart, addToWishlist, wishlist } = useApp();
   const [showFreeModal, setShowFreeModal] = useState(false);
 
@@ -94,19 +94,19 @@ export const ProductDetail = ({ product }: { product?: Product }) => {
   const getProductImage = () => product.image ?? product.product_image ?? '/placeholder.jpg';
 
   // حساب السعر باستخدام النظام الموحد
-  const priceCalc = calculatePrice(product.price || 0);
+  const priceCalc = calculatePrice(product, currency);
   const productId = getProductId();
   const productName = getProductName();
   const productImage = getProductImage();
 
-  // Get testimonials for this product (using all testimonials for now)
-  const productTestimonials = testimonials;
+  // Get testimonials for this product
+  const productTestimonials = testimonials.filter(t => t.productId === productId);
 
   const isInWishlist = wishlist.includes(productId);
 
   const handleAddToCart = () => {
     // Check if product is free
-    if (priceCalc === 0 && (product as any).isFree) {
+    if (priceCalc.finalPrice === 0 && (product as any).isFree) {
       setShowFreeModal(true);
       return;
     }
@@ -116,22 +116,22 @@ export const ProductDetail = ({ product }: { product?: Product }) => {
     addToCart({
       id: productId,
       name: productName,
-      price: priceCalc, // السعر بـ SAR بعد الخصم
+      price: priceCalc.discountedPrice, // السعر بـ SAR بعد الخصم
       image: productImage,
     });
-    showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'success');
+    showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'cart');
   };
 
   const handleWishlist = () => {
     if (!isInWishlist) {
       addToWishlist(productId);
-      showToast('تمت إضافة المنتج إلى قائمة الأمنيات! ❤️', 'info');
+      showToast('تمت إضافة المنتج إلى قائمة الأمنيات! ❤️', 'wishlist');
     }
   };
 
   const handlePayment = () => {
     // التوجيه إلى صفحة checkout مع السعر المحسوب حسب العملة المختارة
-    const checkoutUrl = `/checkout?product=${productId}&name=${encodeURIComponent(productName)}&price=${priceCalc.toFixed(2)}&currency=${currency}`;
+    const checkoutUrl = `/checkout?product=${productId}&name=${encodeURIComponent(productName)}&price=${priceCalc.finalPrice.toFixed(2)}&currency=${currency}`;
     window.location.href = checkoutUrl;
   };
 
@@ -204,24 +204,38 @@ export const ProductDetail = ({ product }: { product?: Product }) => {
             <div className="flex items-center gap-4 p-4 sm:p-6 bg-dark-300/50 border border-primary-300/20 rounded-2xl">
               <div className="flex-1">
                 <p className="text-gray-400 text-sm mb-1">السعر</p>
-                {priceCalc === 0 ? (
+                {priceCalc.finalPrice === 0 ? (
                   <div className="flex flex-col gap-1">
-
+                    {priceCalc.originalPrice > 0 && (
+                      <p className="text-lg sm:text-xl text-gray-500 line-through">
+                        {formatPrice(priceCalc.originalPrice, currency)}
+                      </p>
+                    )}
                     <div className="flex items-center gap-2">
                       <p className="text-3xl sm:text-4xl font-extrabold text-green-400">
                         مجاني! 🎉
                       </p>
-
+                      <span className="px-3 py-1 bg-red-500/20 border border-red-500/40 rounded-lg text-red-400 text-sm font-bold">
+                        خصم {priceCalc.discountPercentage}%
+                      </span>
                     </div>
                   </div>
                 ) : (
                   <div className="flex flex-col gap-1">
-
+                    {priceCalc.discountPercentage > 0 && (
+                      <p className="text-lg sm:text-xl text-gray-500 line-through">
+                        {formatPrice(priceCalc.originalPrice, currency)}
+                      </p>
+                    )}
                     <div className="flex items-center gap-2">
                       <p className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent">
-                        {formatPrice(priceCalc)}
+                        {priceCalc.finalPrice.toFixed(2)} {priceCalc.symbol}
                       </p>
-
+                      {priceCalc.discountPercentage > 0 && (
+                        <span className="px-3 py-1 bg-red-500/20 border border-red-500/40 rounded-lg text-red-400 text-sm font-bold">
+                          خصم {priceCalc.discountPercentage}%
+                        </span>
+                      )}
                     </div>
                   </div>
                 )}
@@ -237,7 +251,7 @@ export const ProductDetail = ({ product }: { product?: Product }) => {
               {/* Buy Now / Direct Payment Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 {/* Show appropriate button based on product type */}
-                {priceCalc === 0 && (product as any).isFree ? (
+                {priceCalc.finalPrice === 0 && (product as any).isFree ? (
                   <button
                     onClick={handleAddToCart}
                     className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 sm:px-8 py-4 sm:py-5 rounded-xl font-bold text-base sm:text-lg hover:shadow-2xl hover:shadow-green-500/30 active:scale-95 transition-all duration-300 touch-manipulation"
@@ -445,7 +459,7 @@ export const ProductDetail = ({ product }: { product?: Product }) => {
 
                   {/* Review Text */}
                   <p className="text-sm sm:text-base text-gray-300 mb-4 leading-relaxed flex-grow">
-                    "{testimonial.comment}"
+                    "{testimonial.text}"
                   </p>
                   
                   {/* User Info */}
@@ -456,8 +470,13 @@ export const ProductDetail = ({ product }: { product?: Product }) => {
                       </p>
                     </div>
                     <div className="flex items-center justify-between text-xs">
-
-                      <span className="text-gray-500">منذ يوم</span>
+                      {testimonial.verified && (
+                        <span className="text-green-400 flex items-center gap-1">
+                          <ShoppingBag className="w-3 h-3" />
+                          قام بالشراء
+                        </span>
+                      )}
+                      <span className="text-gray-500">{testimonial.timeAgo}</span>
                     </div>
                   </div>
                 </div>

@@ -36,8 +36,8 @@ export default function ReviewsSection({
         const sortedReviews = data.reviews
           .sort(
             (a: Review, b: Review) =>
-              new Date(b.date || '').getTime() -
-              new Date(a.date || '').getTime()
+              new Date(b.createdAt).getTime() -
+              new Date(a.createdAt).getTime()
           )
           .slice(0, limit);
 
@@ -143,7 +143,7 @@ export default function ReviewsSection({
                       {review.customerName}
                     </h3>
                     <p className="text-xs text-gray-500">
-                      {formatDate(review.date || '')}
+                      {formatDate(review.createdAt)}
                     </p>
                   </div>
                 </div>
@@ -190,3 +190,4 @@ export default function ReviewsSection({
     </section>
   );
 }
+

@@ -11,13 +11,13 @@ function OrderSuccessContent() {
   const [isSendingEmail, setIsSendingEmail] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
 
-  const orderId = searchParams?.get('orderId');
-  const token = searchParams?.get('token');
-  const productId = searchParams?.get('productId');
-  const productName = searchParams?.get('productName') || 'منتجك الرقمي';
-  const productImage = searchParams?.get('productImage') || '/images/default-product.jpg';
-  const price = searchParams?.get('price') || '0';
-  const email = searchParams?.get('email') || '';
+  const orderId = searchParams.get('orderId');
+  const token = searchParams.get('token');
+  const productId = searchParams.get('productId');
+  const productName = searchParams.get('productName') || 'منتجك الرقمي';
+  const productImage = searchParams.get('productImage') || '/images/default-product.jpg';
+  const price = searchParams.get('price') || '0';
+  const email = searchParams.get('email') || '';
 
   // Calculate expiry time (30 minutes from now)
   const [timeLeft, setTimeLeft] = useState(30 * 60); // 30 minutes in seconds

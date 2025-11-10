@@ -34,15 +34,7 @@ export async function PATCH(
       }, { status: 400 });
     }
 
-    const reviewId = parseInt(id, 10);
-    if (isNaN(reviewId)) {
-      return NextResponse.json({
-        success: false,
-        message: "معرّف التقييم غير صحيح",
-      }, { status: 400 });
-    }
-
-    const success = approveReview(reviewId);
+    const success = approveReview(id);
 
     if (!success) {
       return NextResponse.json({
@@ -84,15 +76,7 @@ export async function DELETE(
       }, { status: 400 });
     }
 
-    const reviewId = parseInt(id, 10);
-    if (isNaN(reviewId)) {
-      return NextResponse.json({
-        success: false,
-        message: "معرّف التقييم غير صحيح",
-      }, { status: 400 });
-    }
-
-    const success = deleteReview(reviewId);
+    const success = deleteReview(id);
 
     if (!success) {
       return NextResponse.json({

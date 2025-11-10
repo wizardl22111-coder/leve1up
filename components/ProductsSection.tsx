@@ -1,7 +1,7 @@
 import ProductGrid from './ProductGrid';
 import { Sparkles } from 'lucide-react';
 
-export const ProductsSection = () => {
+export default function ProductsSection() {
   return (
     <section id="products" className="py-12 sm:py-16 md:py-20 bg-dark-400 relative overflow-hidden">
       {/* Background decoration */}

@@ -10,10 +10,10 @@ function CheckoutContent() {
   const [error, setError] = useState<string | null>(null);
 
   // قراءة المنتج من query string
-  const productId = searchParams?.get("product") || "1";
-  const productName = searchParams?.get("name") || "الربح من المنتجات الرقمية";
-  const price = searchParams?.get("price") || "39";
-  const currency = searchParams?.get("currency") || "AED";
+  const productId = searchParams.get("product") || "1";
+  const productName = searchParams.get("name") || "الربح من المنتجات الرقمية";
+  const price = searchParams.get("price") || "39";
+  const currency = searchParams.get("currency") || "AED";
 
   const currencyCodeMap: Record<string, string> = {
     AED: "AED", SAR: "SAR", BHD: "BHD", KWD: "KWD",

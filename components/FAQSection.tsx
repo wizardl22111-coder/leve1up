@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle, MessageCircleQuestion } from 'lucide-react';
-import faq from '../data/faq.json';
+import faq from '@/data/faq.json';
 import Link from 'next/link';
 
-export const FAQSection = () => {
+export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
@@ -88,3 +88,4 @@ export const FAQSection = () => {
     </section>
   );
 }
+

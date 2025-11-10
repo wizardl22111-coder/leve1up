@@ -1,11 +1,11 @@
 'use client';
 
 import { Star, Quote, CheckCircle, ShoppingBag, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
-import testimonials from '../data/testimonials.json';
+import testimonials from '@/data/testimonials.json';
 import Image from 'next/image';
 import { useRef } from 'react';
 
-export const TestimonialsSection = () => {
+export default function TestimonialsSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
@@ -94,7 +94,7 @@ export const TestimonialsSection = () => {
 
                   {/* Testimonial Text */}
                   <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-5 leading-relaxed flex-grow">
-                    "{testimonial.comment}"
+                    "{testimonial.text}"
                   </p>
 
                   {/* User Info */}
@@ -103,8 +103,13 @@ export const TestimonialsSection = () => {
                       <p className="text-sm sm:text-base font-bold text-white truncate">
                         {testimonial.name}
                       </p>
-
-                      <p className="text-xs text-gray-500 mt-1">منذ يوم</p>
+                      {testimonial.verified && (
+                        <p className="text-xs text-green-400 flex items-center gap-1 mt-0.5">
+                          <ShoppingBag className="w-3 h-3" />
+                          قام بالشراء
+                        </p>
+                      )}
+                      <p className="text-xs text-gray-500 mt-1">{testimonial.timeAgo}</p>
                     </div>
                   </div>
                 </div>
