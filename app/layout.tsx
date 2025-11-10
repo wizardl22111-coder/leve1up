@@ -3,7 +3,7 @@ import { IBM_Plex_Sans_Arabic } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/Toaster';
 import { AppProvider } from '@/contexts/AppContext';
-import ToastContainer from '@/components/ToastContainer';
+import { ToastContainer } from '@/components/ToastContainer';
 
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({ 
   weight: ['300', '400', '500', '600', '700'],

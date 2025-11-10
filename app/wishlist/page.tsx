@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
 import { Heart, ShoppingCart, ArrowRight, Trash2 } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { showToast } from '@/components/ToastContainer';

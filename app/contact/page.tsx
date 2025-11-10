@@ -1,5 +1,5 @@
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
 import { Mail, MessageCircle, Instagram } from 'lucide-react';
 import { FaWhatsapp, FaInstagram, FaEnvelope } from 'react-icons/fa';
 

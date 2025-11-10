@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import ProductDetail from '@/components/ProductDetail';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
+import { ProductDetail } from '@/components/ProductDetail';
 import products from '@/data/products.json';
 
 interface Props {
@@ -46,4 +46,3 @@ export default function ProductPage({ params }: Props) {
     </main>
   );
 }
-
