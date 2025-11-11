@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import products from '@/data/products.json';
 
 function CheckoutContent() {
   const searchParams = useSearchParams();
@@ -43,17 +44,20 @@ function CheckoutContent() {
     setError(null);
 
     try {
-      // تحديد رابط المنتج بناءً على معرف المنتج
-      let productFile = "";
-      if (productId === "1" || productName.includes("15 فكرة") || productName.includes("15")) {
-        // المنتج الأول: 15 فكرة مشروع رقمي
-        productFile = "https://cix55jnodh8jj42w.public.blob.vercel-storage.com/15%D9%81%D9%83%D8%B1%D8%A9%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D8%B1%D9%82%D9%85%D9%8A%20%D9%85%D8%B1%D8%A8%D8%AD%20%D9%8A%D9%85%D9%83%D9%86%D9%83%20%D8%A7%D9%84%D8%A8%D8%AF%D8%A1%20%D8%A8%D9%87%D8%A7%20%D9%85%D9%86%20%D8%A7%D9%84%D8%B5%D9%81%D8%B1.pdf";
-      } else if (productId === "2" || productName.includes("كيف تربح") || productName.includes("دليل")) {
-        // المنتج الثاني: كيف تربح المال من المنتجات الرقمية
-        productFile = "https://cix55jnodh8jj42w.public.blob.vercel-storage.com/%D9%83%D9%8A%D9%81%20%D8%AA%D8%B1%D8%A8%D8%AD%20%D8%A7%D9%84%D9%85%D8%A7%D9%84%20%D9%85%D9%86%20%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B1%D9%82%D9%85%D9%8A%D8%A9%20%D8%AF%D9%84%D9%8A%D9%84%D9%83%20%D8%A7%D9%84%D9%83%D8%A7%D9%85%D9%84%20%281%29.pdf";
-      } else {
-        // افتراضي: المنتج الثاني
-        productFile = "https://cix55jnodh8jj42w.public.blob.vercel-storage.com/%D9%83%D9%8A%D9%81%20%D8%AA%D8%B1%D8%A8%D8%AD%20%D8%A7%D9%84%D9%85%D8%A7%D9%84%20%D9%85%D9%86%20%D8%A7%D9%84%D9%85%D9%86%D8%AA%D8%AC%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B1%D9%82%D9%85%D9%8A%D8%A9%20%D8%AF%D9%84%D9%8A%D9%84%D9%83%20%D8%A7%D9%84%D9%83%D8%A7%D9%85%D9%84%20%281%29.pdf";
+      // البحث عن المنتج في قاعدة البيانات
+      const product = products.find(p => p.product_id === parseInt(productId));
+      
+      if (!product) {
+        setError(`المنتج غير موجود (ID: ${productId}). يرجى المحاولة مرة أخرى.`);
+        return;
+      }
+
+      // استخدام رابط التحميل من قاعدة البيانات
+      const productFile = product.download_url;
+      
+      if (!productFile) {
+        setError(`رابط تحميل المنتج غير متوفر. يرجى التواصل مع الدعم الفني.`);
+        return;
       }
       
       // حفظ البيانات في localStorage بنفس صيغة السلة

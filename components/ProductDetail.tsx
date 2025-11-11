@@ -9,6 +9,9 @@ import testimonials from '@/data/testimonials.json';
 import Image from 'next/image';
 import WhyBuySection from './WhyBuySection';
 import FreeProductModal from './FreeProductModal';
+import ReviewForm from './ReviewForm';
+import ReviewsList from './ReviewsList';
+import ReviewSummary from './ReviewSummary';
 
 interface ProductSection {
   title?: string;
@@ -417,73 +420,24 @@ export default function ProductDetail({ product }: { product?: Product }) {
           </div>
         )}
 
-        {/* Product Reviews - Mobile & Desktop Optimized */}
-        {productTestimonials.length > 0 && (
-          <div className="mt-12 sm:mt-16">
-            {/* Header */}
-            <div className="flex items-center justify-between mb-6 sm:mb-8">
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
-                تقييمات المنتج
-              </h2>
-              <div className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-primary-300/10 border border-primary-300/30 rounded-xl">
-                <Star className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-yellow-400" />
-                <span className="text-sm sm:text-base font-bold text-white">
-                  {(productTestimonials.reduce((acc, t) => acc + t.rating, 0) / productTestimonials.length).toFixed(1)}
-                </span>
-                <span className="text-xs sm:text-sm text-gray-400">
-                  ({productTestimonials.length} تقييم)
-                </span>
-              </div>
-            </div>
-
-            {/* Reviews Grid - Responsive */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-              {productTestimonials.map((testimonial) => (
-                <div
-                  key={testimonial.id}
-                  className="bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm p-5 sm:p-6 rounded-2xl border border-primary-300/10 hover:border-primary-300/30 hover:shadow-xl hover:shadow-primary-300/10 transition-all duration-300 flex flex-col h-full"
-                >
-                  {/* Stars */}
-                  <div className="flex items-center gap-1 mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-4 h-4 sm:w-5 sm:h-5 ${
-                          i < testimonial.rating
-                            ? 'text-yellow-400 fill-yellow-400'
-                             : 'text-gray-600'
-                        }`}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Review Text */}
-                  <p className="text-sm sm:text-base text-gray-300 mb-4 leading-relaxed flex-grow">
-                    "{testimonial.text}"
-                  </p>
-                  
-                  {/* User Info */}
-                  <div className="pt-4 border-t border-primary-300/10 mt-auto">
-                    <div className="mb-2">
-                      <p className="text-sm sm:text-base font-bold text-white truncate">
-                        {testimonial.name}
-                      </p>
-                    </div>
-                    <div className="flex items-center justify-between text-xs">
-                      {testimonial.verified && (
-                        <span className="text-green-400 flex items-center gap-1">
-                          <ShoppingBag className="w-3 h-3" />
-                          قام بالشراء
-                        </span>
-                      )}
-                      <span className="text-gray-500">{testimonial.timeAgo}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        {/* Reviews Section - New Integrated System */}
+        <div className="mt-12 sm:mt-16 space-y-8">
+          {/* Review Summary */}
+          <ReviewSummary productId={productId} />
+          
+          {/* Reviews List */}
+          <ReviewsList productId={productId} />
+          
+          {/* Review Form */}
+          <ReviewForm 
+            productId={productId} 
+            productName={productName}
+            onReviewAdded={() => {
+              // يمكن إضافة logic لتحديث القائمة هنا إذا لزم الأمر
+              showToast('تم إضافة تقييمك بنجاح! شكراً لك على مشاركة رأيك.', 'success');
+            }}
+          />
+        </div>
 
         {/* Why Buy Section */}
         <WhyBuySection />

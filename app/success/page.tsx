@@ -3,6 +3,7 @@ import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { FaWhatsapp, FaCheckCircle, FaDownload, FaHome } from "react-icons/fa";
+import ReviewForm from '@/components/ReviewForm';
 
 interface CartItem {
   id: number;
@@ -352,6 +353,33 @@ function SuccessPageContent() {
             </div>
           </div>
         </div>
+
+        {/* ⭐ قسم التقييمات */}
+        {downloadLinks && downloadLinks.length > 0 && (
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-2xl shadow-lg p-6 mb-6">
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-gray-800 mb-2">⭐ شارك تجربتك معنا</h3>
+              <p className="text-gray-600">ساعد الآخرين في اتخاذ قرار الشراء من خلال تقييمك</p>
+            </div>
+            
+            {/* عرض نموذج التقييم لكل منتج تم شراؤه */}
+            <div className="space-y-6">
+              {downloadLinks.map((link, index) => (
+                <div key={index} className="bg-white rounded-xl p-4 shadow-sm">
+                  <ReviewForm
+                    productId={link.productId}
+                    productName={link.productName}
+                    className="border-0 bg-transparent p-0"
+                    onReviewAdded={() => {
+                      // يمكن إضافة logic إضافي هنا
+                      console.log(`تم إضافة تقييم للمنتج: ${link.productName}`);
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* 💬 التواصل عبر الواتساب */}
         <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl shadow-lg p-6 mb-6">
