@@ -29,77 +29,95 @@ async function sendOrderEmail(order: any, amount: number, currency: string): Pro
   try {
     const currencySymbol = getCurrencySymbol(currency as Currency);
     const items = order.items || [];
+    const currentDate = new Date().toLocaleDateString('ar-SA', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
     
     // بناء قائمة المنتجات مع روابط التحميل
     const productsHtml = items.map((item: any) => `
-      <div style="background: #f9f9f9; padding: 15px; margin: 10px 0; border-radius: 8px;">
-        <h3 style="margin: 0 0 10px 0; color: #333;">${item.name}</h3>
-        <p style="margin: 5px 0; color: #666;">السعر: ${item.price} ${currencySymbol}</p>
+      <div style="background: #f8fffe; border: 1px solid #10b981; padding: 20px; margin: 15px 0; border-radius: 12px;">
+        <h3 style="margin: 0 0 10px 0; color: #065f46; font-size: 18px; font-weight: bold;">📦 ${item.name}</h3>
+        <p style="margin: 5px 0; color: #374151; font-size: 16px;">💰 السعر: ${item.price} ${currencySymbol}</p>
+        <p style="margin: 5px 0; color: #6b7280; font-size: 14px;">📅 تاريخ الشراء: ${currentDate}</p>
         ${item.downloadUrl ? `
-          <a href="${item.downloadUrl}" 
-             style="display: inline-block; margin-top: 10px; padding: 10px 20px; background: #10b981; color: white; text-decoration: none; border-radius: 6px;">
-            📥 تحميل المنتج
-          </a>
+          <div style="margin-top: 15px;">
+            <a href="${item.downloadUrl}" 
+               style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);">
+              🚀 تحميل المنتج الآن
+            </a>
+          </div>
         ` : ''}
       </div>
     `).join('');
 
-    const emailHtml = `
+    const htmlEmailTemplate = `
       <!DOCTYPE html>
       <html dir="rtl" lang="ar">
       <head>
         <meta charset="UTF-8">
-        <title>تأكيد الدفع</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>تم الدفع بنجاح - Leve1Up</title>
       </head>
-      <body style="font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f5f5f5; padding: 20px;">
-        <div style="max-width: 600px; margin: 0 auto; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+      <body style="font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: #f3f4f6; margin: 0; padding: 20px; line-height: 1.6;">
+        <div style="max-width: 600px; margin: 0 auto; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
           
-          <!-- Header -->
-          <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 30px; text-align: center;">
-            <h1 style="color: white; margin: 0; font-size: 28px;">✅ تم الدفع بنجاح!</h1>
-            <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">شكراً لثقتك في Leve1Up</p>
+          <!-- Header with Logo -->
+          <div style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 40px 30px; text-align: center; position: relative;">
+            <img src="https://leve1up.store/logo.png" alt="Leve1Up Logo" style="max-width: 120px; height: auto; margin-bottom: 20px; filter: brightness(0) invert(1);">
+            <h1 style="color: white; margin: 0; font-size: 32px; font-weight: bold;">🎉 تم الدفع بنجاح!</h1>
+            <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 18px;">إليك رابط تحميل منتجك</p>
           </div>
 
           <!-- Content -->
-          <div style="padding: 30px;">
-            <p style="font-size: 16px; color: #333; line-height: 1.6;">
-              مرحباً،
-            </p>
-            <p style="font-size: 16px; color: #333; line-height: 1.6;">
-              تم استلام دفعتك بنجاح! يمكنك الآن تحميل منتجاتك من الروابط أدناه:
-            </p>
-
-            <!-- Products -->
-            <div style="margin: 20px 0;">
-              ${productsHtml}
+          <div style="padding: 40px 30px;">
+            <div style="text-align: center; margin-bottom: 30px;">
+              <h2 style="color: #10b981; font-size: 24px; margin: 0 0 10px 0;">شكراً لاختيارك Leve1Up 💚</h2>
+              <p style="font-size: 16px; color: #6b7280; margin: 0;">نحن سعداء بثقتك وندعمك في رحلة نجاحك</p>
             </div>
 
-            <!-- Total -->
-            <div style="background: #f0fdf4; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-size: 18px; color: #333; font-weight: bold;">المجموع الكلي:</span>
-                <span style="font-size: 24px; color: #10b981; font-weight: bold;">${amount} ${currencySymbol}</span>
-              </div>
-            </div>
-
-            <!-- Support Info -->
-            <div style="background: #fef3c7; border-right: 4px solid #f59e0b; padding: 15px; margin: 20px 0; border-radius: 8px;">
-              <p style="margin: 0; color: #92400e; font-weight: bold;">💡 هل تحتاج مساعدة؟</p>
-              <p style="margin: 5px 0 0 0; color: #78350f;">
-                تواصل معنا على: <a href="mailto:support@leve1up.store" style="color: #f59e0b;">support@leve1up.store</a>
+            <div style="background: #f0fdf4; border-right: 4px solid #10b981; padding: 20px; border-radius: 8px; margin: 25px 0;">
+              <p style="font-size: 16px; color: #065f46; margin: 0; font-weight: bold;">
+                ✅ تم استلام دفعتك بنجاح! يمكنك الآن تحميل منتجاتك من الأزرار أدناه:
               </p>
             </div>
 
-            <p style="font-size: 14px; color: #666; line-height: 1.6; margin-top: 30px;">
-              مع أطيب التحيات،<br/>
-              <strong>فريق Leve1Up</strong>
-            </p>
+            <!-- Products Section -->
+            <div style="margin: 30px 0;">
+              <h3 style="color: #374151; font-size: 20px; margin: 0 0 20px 0; border-bottom: 2px solid #10b981; padding-bottom: 10px;">📋 تفاصيل المنتج</h3>
+              ${productsHtml}
+            </div>
+
+            <!-- Total Amount -->
+            <div style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); padding: 25px; border-radius: 12px; margin: 30px 0; text-align: center; border: 2px solid #10b981;">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <span style="font-size: 20px; color: #065f46; font-weight: bold;">💳 المبلغ المدفوع:</span>
+                <span style="font-size: 28px; color: #10b981; font-weight: bold;">${amount} ${currencySymbol}</span>
+              </div>
+              <p style="margin: 10px 0 0 0; color: #059669; font-size: 14px;">تاريخ الدفع: ${currentDate}</p>
+            </div>
+
+            <!-- Support Section -->
+            <div style="background: #fef3c7; border: 1px solid #f59e0b; padding: 20px; margin: 30px 0; border-radius: 12px; text-align: center;">
+              <p style="margin: 0 0 10px 0; color: #92400e; font-weight: bold; font-size: 16px;">💡 هل تحتاج مساعدة؟</p>
+              <p style="margin: 0; color: #78350f; font-size: 14px;">
+                تواصل معنا على: <a href="mailto:support@leve1up.store" style="color: #f59e0b; text-decoration: none; font-weight: bold;">support@leve1up.store</a>
+              </p>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+              <p style="font-size: 16px; color: #6b7280; margin: 0 0 10px 0;">مع أطيب التحيات،</p>
+              <p style="font-size: 18px; color: #10b981; font-weight: bold; margin: 0;">فريق Leve1Up 💚</p>
+            </div>
           </div>
 
           <!-- Footer -->
-          <div style="background: #f9fafb; padding: 20px; text-align: center; border-top: 1px solid #e5e7eb;">
-            <p style="margin: 0; font-size: 12px; color: #9ca3af;">
-              © ${new Date().getFullYear()} Leve1Up. جميع الحقوق محفوظة.
+          <div style="background: #f9fafb; padding: 25px; text-align: center; border-top: 1px solid #e5e7eb;">
+            <p style="margin: 0 0 10px 0; font-size: 16px; color: #10b981; font-weight: bold;">شكراً لاختيارك Leve1Up 💚</p>
+            <a href="https://leve1up.store" style="color: #059669; text-decoration: none; font-weight: bold; font-size: 14px;">🌐 leve1up.store</a>
+            <p style="margin: 15px 0 0 0; font-size: 12px; color: #9ca3af;">
+              © ${new Date().getFullYear()} Leve1Up Store. جميع الحقوق محفوظة.
             </p>
           </div>
         </div>
@@ -107,17 +125,16 @@ async function sendOrderEmail(order: any, amount: number, currency: string): Pro
       </html>
     `;
 
-    const resend = getResend();
-    if (!resend) {
-      console.warn('⚠️ Resend client not available');
-      return false;
-    }
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    
+    // الحصول على اسم أول منتج للعنوان
+    const firstProductName = items.length > 0 ? items[0].name : 'منتجك';
     
     const result = await resend.emails.send({
-      from: 'Leve1Up <onboarding@resend.dev>', // استبدلها بدومينك المُحقق
-      to: [order.customerEmail],
-      subject: `✅ تأكيد الدفع - Leve1Up`,
-      html: emailHtml,
+      from: 'Leve1Up Store <noreply@leve1up.store>',
+      to: order.customerEmail,
+      subject: `تم الدفع بنجاح - ${firstProductName}`,
+      html: htmlEmailTemplate,
     });
 
     console.log('✉️ Email sent successfully:', result);
@@ -138,7 +155,7 @@ export async function POST(req: Request) {
   const data = body?.data;
 
   // فقط نهتم بحدث الدفع الناجح
-  if (event === "payment_intent.status.updated" || data?.status === "completed") {
+  if (event === "payment_intent.status.updated" && data?.status === "completed") {
     const status = data?.status;
     const currencyCode = data?.currency_code || data?.currency || "SAR";
     const amountInSubunit = data?.amount || 0;
@@ -147,6 +164,10 @@ export async function POST(req: Request) {
     const currencySymbol = getCurrencySymbol(currencyCode as Currency);
     const paymentId = data?.id;
     const message = data?.message || "عملية شراء من Leve1Up";
+
+    console.log("🎉 Payment completed successfully!");
+    console.log("💳 Payment ID:", paymentId);
+    console.log("💰 Amount:", amount, currencySymbol);
 
     // 🔍 البحث عن الطلب في orders store باستخدام payment_intent ID
     const order = await findOrderByPaymentId(paymentId);
@@ -178,18 +199,22 @@ export async function POST(req: Request) {
       return NextResponse.json({ received: true, error: "Update failed" }, { status: 200 });
     }
     
-    console.log("🟢 Order updated: paid");
+    console.log("🟢 Order status updated to: paid");
     
-    // ✉️ إرسال إيميل تأكيد
-    const emailSent = await sendOrderEmail(updatedOrder, amount, currencyCode);
-    
-    if (emailSent) {
-      console.log("✉️ Email sent successfully to:", updatedOrder.customerEmail);
-    } else {
-      console.warn("⚠️ Email not sent (customer can still download from success page)");
+    // ✉️ إرسال إيميل تأكيد فقط عند اكتمال الدفع
+    if (status === "completed") {
+      const emailSent = await sendOrderEmail(updatedOrder, amount, currencyCode);
+      
+      if (emailSent) {
+        console.log(`✉️ Email sent successfully to: ${updatedOrder.customerEmail}`);
+      } else {
+        console.warn("⚠️ Email not sent (customer can still download from success page)");
+      }
     }
     
     console.log("✅ Payment processed successfully!");
+  } else {
+    console.log("ℹ️ Webhook received but not a completed payment:", { event, status: data?.status });
   }
 
   return NextResponse.json({ received: true }, { status: 200 });
