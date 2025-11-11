@@ -70,17 +70,21 @@ export const authOptions: NextAuthOptions = {
       }
     }),
 
-    // تسجيل الدخول عبر Google
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-    }),
+    // تسجيل الدخول عبر Google - معطل مؤقتاً حتى يتم إعداد المتغيرات
+    ...(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET ? [
+      GoogleProvider({
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      })
+    ] : []),
 
-    // تسجيل الدخول عبر Apple
-    AppleProvider({
-      clientId: process.env.APPLE_ID!,
-      clientSecret: process.env.APPLE_SECRET!,
-    }),
+    // تسجيل الدخول عبر Apple - معطل مؤقتاً حتى يتم إعداد المتغيرات
+    ...(process.env.APPLE_ID && process.env.APPLE_SECRET ? [
+      AppleProvider({
+        clientId: process.env.APPLE_ID,
+        clientSecret: process.env.APPLE_SECRET,
+      })
+    ] : []),
   ],
 
   // إعدادات الجلسة
