@@ -162,14 +162,14 @@ export default function ProductGrid() {
                         className="flex-1 bg-gradient-to-r from-primary-500 to-accent-500 text-white py-2.5 rounded-lg font-semibold hover:shadow-lg hover:shadow-primary-500/30 transition-all flex items-center justify-center gap-2"
                       >
                         <ShoppingCart className="w-4 h-4" />
-                        <span className="hidden sm:inline">أضف للسلة</span>
+                        <span className="text-sm">أضف للسلة</span>
                       </button>
                       <button
                         onClick={() => handleDirectPayment(product)}
                         className="bg-gradient-to-r from-accent-600 to-primary-600 text-white py-2.5 px-4 rounded-lg font-semibold hover:shadow-lg hover:shadow-accent-600/30 transition-all flex items-center justify-center gap-2"
                       >
                         <Zap className="w-4 h-4" />
-                        <span className="hidden sm:inline">اشترِ الآن</span>
+                        <span className="text-sm">اشترِ الآن</span>
                       </button>
                     </>
                   )}
