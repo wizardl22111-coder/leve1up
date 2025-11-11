@@ -90,6 +90,8 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+    console.log('📝 Received review data:', body);
+    
     const {
       productId,
       authorName,
@@ -97,8 +99,15 @@ export async function POST(req: NextRequest) {
       reviewBody,
     } = body;
 
+    console.log('🔍 Extracted fields:', {
+      productId,
+      authorName: authorName?.trim(),
+      rating,
+      reviewBody: reviewBody?.trim(),
+    });
+
     // 1️⃣ التحقق من البيانات المطلوبة
-    if (!productId || !authorName || !rating || !reviewBody) {
+    if (!productId || !authorName?.trim() || !rating || !reviewBody?.trim()) {
       return NextResponse.json({
         success: false,
         message: "جميع الحقول مطلوبة",

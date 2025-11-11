@@ -242,7 +242,7 @@ export default function ReviewForm({
               onChange={handleInputChange}
               required
               placeholder="اسمك الكريم"
-              className="w-full pr-10 pl-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary-300/70 focus:bg-white/15 transition-all"
+              className="w-full pr-10 pl-4 py-3 bg-gray-800/80 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary-300/70 focus:bg-gray-800/90 transition-all"
             />
           </div>
         </div>
@@ -277,7 +277,7 @@ export default function ReviewForm({
               maxLength={1000}
               rows={4}
               placeholder="شارك تجربتك مع المنتج... ما الذي أعجبك؟ هل حقق توقعاتك؟"
-              className="w-full pr-10 pl-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary-300/70 focus:bg-white/15 transition-all resize-none"
+              className="w-full pr-10 pl-4 py-3 bg-gray-800/80 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary-300/70 focus:bg-gray-800/90 transition-all resize-none"
             />
           </div>
           <div className="text-xs text-gray-400 mt-1 text-left">
