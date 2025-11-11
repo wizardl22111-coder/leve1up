@@ -434,7 +434,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
             productName={productName}
             onReviewAdded={() => {
               // يمكن إضافة logic لتحديث القائمة هنا إذا لزم الأمر
-              showToast('تم إضافة تقييمك بنجاح! شكراً لك على مشاركة رأيك.', 'success');
+              showToast('تم إضافة تقييمك بنجاح! شكراً لك على مشاركة رأيك. ⭐', 'wishlist');
             }}
           />
         </div>
