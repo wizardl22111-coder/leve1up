@@ -9,7 +9,7 @@ import testimonials from '@/data/testimonials.json';
 import Image from 'next/image';
 import WhyBuySection from './WhyBuySection';
 import FreeProductModal from './FreeProductModal';
-import ReviewForm from './ReviewForm';
+
 import ReviewsList from './ReviewsList';
 import ReviewSummary from './ReviewSummary';
 
@@ -420,7 +420,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
           </div>
         )}
 
-        {/* Reviews Section - New Integrated System */}
+        {/* Reviews Section - Display Only */}
         <div className="mt-12 sm:mt-16 space-y-8">
           {/* Review Summary */}
           <ReviewSummary productId={productId} />
@@ -428,15 +428,20 @@ export default function ProductDetail({ product }: { product?: Product }) {
           {/* Reviews List */}
           <ReviewsList productId={productId} />
           
-          {/* Review Form */}
-          <ReviewForm 
-            productId={productId} 
-            productName={productName}
-            onReviewAdded={() => {
-              // يمكن إضافة logic لتحديث القائمة هنا إذا لزم الأمر
-              showToast('تم إضافة تقييمك بنجاح! شكراً لك على مشاركة رأيك. ⭐', 'wishlist');
-            }}
-          />
+          {/* Info Message */}
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-6 text-center">
+            <div className="flex items-center justify-center mb-3">
+              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                <span className="text-white text-xl">⭐</span>
+              </div>
+            </div>
+            <h3 className="text-lg font-bold text-gray-800 mb-2">
+              شارك تقييمك بعد الشراء
+            </h3>
+            <p className="text-gray-600">
+              بعد شراء المنتج، ستتمكن من إضافة تقييمك في صفحة النجاح لمساعدة الآخرين في اتخاذ قرار الشراء
+            </p>
+          </div>
         </div>
 
         {/* Why Buy Section */}
