@@ -12,7 +12,10 @@ import {
   Mail,
   CreditCard,
   Package,
-  ExternalLink
+  ExternalLink,
+  Star,
+  User,
+  Send
 } from "lucide-react";
 
 interface CartItem {
@@ -44,6 +47,16 @@ function SuccessPageContent() {
   const searchParams = useSearchParams();
   const [orderData, setOrderData] = useState<OrderData | null>(null);
   const [loading, setLoading] = useState(true);
+  
+  // حالة نظام التقييم
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [reviewData, setReviewData] = useState({
+    name: '',
+    rating: 5,
+    comment: ''
+  });
+  const [reviewSubmitted, setReviewSubmitted] = useState(false);
+  const [reviewLoading, setReviewLoading] = useState(false);
 
   // رقم الواتساب
   const WHATSAPP_NUMBER = "971503492848";
@@ -171,6 +184,64 @@ function SuccessPageContent() {
 
   const formatPrice = (amount: number, currency: string) => {
     return `${amount.toFixed(2)} ${currency}`;
+  };
+
+  // دالة إرسال التقييم
+  const handleReviewSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!reviewData.name.trim() || !reviewData.comment.trim()) {
+      alert('الرجاء ملء جميع الحقول');
+      return;
+    }
+
+    setReviewLoading(true);
+    
+    try {
+      // محاكاة إرسال التقييم (يمكن ربطه بـ API حقيقي لاحقاً)
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      setReviewSubmitted(true);
+      setShowReviewForm(false);
+      
+      // إعادة تعيين البيانات
+      setReviewData({
+        name: '',
+        rating: 5,
+        comment: ''
+      });
+      
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      alert('حدث خطأ أثناء إرسال التقييم');
+    } finally {
+      setReviewLoading(false);
+    }
+  };
+
+  // مكون النجوم
+  const StarRating = ({ rating, onRatingChange }: { rating: number, onRatingChange?: (rating: number) => void }) => {
+    return (
+      <div className="flex gap-1">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <button
+            key={star}
+            type="button"
+            onClick={() => onRatingChange && onRatingChange(star)}
+            className={`transition-colors ${onRatingChange ? 'cursor-pointer hover:scale-110' : 'cursor-default'}`}
+            disabled={!onRatingChange}
+          >
+            <Star
+              className={`w-6 h-6 ${
+                star <= rating 
+                  ? 'text-yellow-400 fill-yellow-400' 
+                  : 'text-gray-400'
+              }`}
+            />
+          </button>
+        ))}
+      </div>
+    );
   };
 
   if (loading) {
@@ -395,6 +466,131 @@ function SuccessPageContent() {
               <MessageCircle className="w-5 h-5" />
               تواصل عبر الواتساب
             </a>
+          </motion.div>
+
+          {/* Review Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.4, duration: 0.6 }}
+            className="bg-purple-500/20 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-purple-300/30"
+          >
+            {!reviewSubmitted ? (
+              <>
+                <div className="text-center mb-6">
+                  <div className="text-4xl mb-4">⭐</div>
+                  <h2 className="text-xl font-bold text-white mb-2">
+                    شاركنا رأيك في المنتج
+                  </h2>
+                  <p className="text-white/70">
+                    تقييمك يساعدنا في تحسين خدماتنا ويساعد العملاء الآخرين
+                  </p>
+                </div>
+
+                {!showReviewForm ? (
+                  <div className="text-center">
+                    <button
+                      onClick={() => setShowReviewForm(true)}
+                      className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                    >
+                      <Star className="w-5 h-5" />
+                      إضافة تقييم
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleReviewSubmit} className="space-y-6">
+                    {/* اسم المقيم */}
+                    <div>
+                      <label className="block text-white/80 font-medium mb-2 text-right">
+                        <User className="w-4 h-4 inline ml-2" />
+                        الاسم
+                      </label>
+                      <input
+                        type="text"
+                        value={reviewData.name}
+                        onChange={(e) => setReviewData({...reviewData, name: e.target.value})}
+                        placeholder="اكتب اسمك"
+                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 text-right focus:outline-none focus:border-white/50 transition-colors"
+                        dir="rtl"
+                        required
+                      />
+                    </div>
+
+                    {/* التقييم بالنجوم */}
+                    <div>
+                      <label className="block text-white/80 font-medium mb-3 text-right">
+                        التقييم
+                      </label>
+                      <div className="flex justify-center">
+                        <StarRating 
+                          rating={reviewData.rating} 
+                          onRatingChange={(rating) => setReviewData({...reviewData, rating})}
+                        />
+                      </div>
+                    </div>
+
+                    {/* تفاصيل التقييم */}
+                    <div>
+                      <label className="block text-white/80 font-medium mb-2 text-right">
+                        تفاصيل التقييم
+                      </label>
+                      <textarea
+                        value={reviewData.comment}
+                        onChange={(e) => setReviewData({...reviewData, comment: e.target.value})}
+                        placeholder="شاركنا رأيك في المنتج... ما الذي أعجبك؟ كيف ساعدك؟"
+                        rows={4}
+                        className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/30 text-white placeholder-white/50 text-right focus:outline-none focus:border-white/50 transition-colors resize-none"
+                        dir="rtl"
+                        required
+                      />
+                    </div>
+
+                    {/* أزرار الإرسال والإلغاء */}
+                    <div className="flex gap-4 justify-center">
+                      <button
+                        type="submit"
+                        disabled={reviewLoading}
+                        className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                      >
+                        {reviewLoading ? (
+                          <>
+                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                            جاري الإرسال...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-4 h-4" />
+                            إرسال التقييم
+                          </>
+                        )}
+                      </button>
+                      
+                      <button
+                        type="button"
+                        onClick={() => setShowReviewForm(false)}
+                        className="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-xl border border-white/30 transition-all duration-300"
+                      >
+                        إلغاء
+                      </button>
+                    </div>
+                  </form>
+                )}
+              </>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center"
+              >
+                <div className="text-6xl mb-4">🎉</div>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  شكراً لك على التقييم!
+                </h3>
+                <p className="text-white/70">
+                  تم إرسال تقييمك بنجاح. نقدر وقتك وآرائك القيمة.
+                </p>
+              </motion.div>
+            )}
           </motion.div>
 
           {/* Back to Home */}

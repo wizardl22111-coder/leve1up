@@ -4,6 +4,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/Toaster';
 import { AppProvider } from '@/contexts/AppContext';
 import ToastContainer from '@/components/ToastContainer';
+import SessionProvider from '@/components/SessionProvider';
 
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({ 
   weight: ['300', '400', '500', '600', '700'],
@@ -74,11 +75,13 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body className={`${ibmPlexArabic.className} antialiased`}>
-        <AppProvider>
-          {children}
-          <Toaster />
-          <ToastContainer />
-        </AppProvider>
+        <SessionProvider>
+          <AppProvider>
+            {children}
+            <Toaster />
+            <ToastContainer />
+          </AppProvider>
+        </SessionProvider>
       </body>
     </html>
   );
