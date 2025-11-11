@@ -23,6 +23,12 @@ interface CartItem {
   image?: string;
 }
 
+interface DownloadLink {
+  productId: number;
+  productName: string;
+  downloadUrl: string;
+}
+
 interface OrderData {
   email: string;
   items: CartItem[];
@@ -31,7 +37,7 @@ interface OrderData {
   orderId?: string;
   paymentId?: string;
   createdAt?: string;
-  downloadLinks?: { productId: number; productName: string; downloadUrl: string }[];
+  downloadLinks?: DownloadLink[];
 }
 
 function SuccessPageContent() {
@@ -63,7 +69,7 @@ function SuccessPageContent() {
               console.log("✅ Order found from API:", order);
               
               // إنشاء روابط التحميل لكل منتج
-              const downloadLinks = order.items.map((item: CartItem) => ({
+              const downloadLinks: DownloadLink[] = order.items.map((item: CartItem) => ({
                 productId: item.id,
                 productName: item.name,
                 downloadUrl: `/api/download/${order.sessionId}?product=${item.id}`
@@ -106,7 +112,7 @@ function SuccessPageContent() {
             const productsResponse = await fetch('/data/products.json');
             const products = await productsResponse.json();
             
-            const downloadLinks = items.map((item: CartItem) => {
+            const downloadLinks = items.map((item: CartItem): DownloadLink => {
               const product = products.find((p: any) => 
                 p.product_id === item.id || 
                 p.id === item.id ||
@@ -121,7 +127,7 @@ function SuccessPageContent() {
                 productName: item.name,
                 downloadUrl: product?.download_url || ''
               };
-            }).filter(link => link.downloadUrl);
+            }).filter((link: DownloadLink) => link.downloadUrl);
             
             setOrderData({
               email: savedEmail,
@@ -456,4 +462,3 @@ export default function SuccessPage() {
     </Suspense>
   );
 }
-
