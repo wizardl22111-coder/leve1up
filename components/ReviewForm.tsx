@@ -105,16 +105,22 @@ export default function ReviewForm({
     setIsSubmitting(true);
     setMessage(null);
 
+    // إضافة console.log لتتبع البيانات
+    const reviewData = {
+      productId,
+      ...formData,
+    };
+    console.log('🔍 ReviewForm - Sending review data:', reviewData);
+    console.log('🔍 ReviewForm - productId received as prop:', productId);
+    console.log('🔍 ReviewForm - productName received as prop:', productName);
+
     try {
       const response = await fetch('/api/reviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          productId,
-          ...formData,
-        }),
+        body: JSON.stringify(reviewData),
       });
 
       const data = await response.json();

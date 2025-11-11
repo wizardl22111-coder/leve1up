@@ -121,12 +121,18 @@ function SuccessPageContent() {
               );
               
               console.log('🔍 Looking for product ID:', item.id, 'Found:', !!product);
+              console.log('🔍 Item details:', item);
               if (product) {
                 console.log('✅ Product found:', product.product_name, '- URL:', product.download_url);
+                console.log('✅ Product ID from products.json:', product.product_id);
               }
               
+              // التأكد من أن productId صحيح
+              const correctProductId = product?.product_id || item.id;
+              console.log('🎯 Final productId for review form:', correctProductId);
+              
               return {
-                productId: item.id,
+                productId: correctProductId,
                 productName: item.name,
                 downloadUrl: product?.download_url || ''
               };
