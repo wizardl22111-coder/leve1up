@@ -97,7 +97,6 @@ export const authOptions: NextAuthOptions = {
   // الصفحات المخصصة
   pages: {
     signIn: "/login",
-    signUp: "/register",
     error: "/login",
   },
 
@@ -204,4 +203,3 @@ export async function getUserByEmail(email: string): Promise<User | null> {
     return null;
   }
 }
-
