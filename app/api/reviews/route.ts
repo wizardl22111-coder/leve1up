@@ -92,19 +92,17 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const {
       productId,
-      authorEmail,
       authorName,
       rating,
-      title,
       reviewBody,
     } = body;
 
     // 1️⃣ التحقق من البيانات المطلوبة
-    if (!productId || !authorEmail || !rating || !title || !reviewBody) {
+    if (!productId || !authorName || !rating || !reviewBody) {
       return NextResponse.json({
         success: false,
         message: "جميع الحقول مطلوبة",
-        details: "يجب تقديم معرف المنتج والبريد الإلكتروني والتقييم والعنوان والمحتوى"
+        details: "يجب تقديم معرف المنتج والاسم والتقييم والتفاصيل"
       }, { status: 400 });
     }
 
@@ -117,69 +115,30 @@ export async function POST(req: NextRequest) {
     }
 
     // 3️⃣ التحقق من طول النصوص
-    if (title.length > 100) {
-      return NextResponse.json({
-        success: false,
-        message: "عنوان التقييم يجب أن يكون أقل من 100 حرف",
-      }, { status: 400 });
-    }
-
     if (reviewBody.length > 1000) {
       return NextResponse.json({
         success: false,
-        message: "محتوى التقييم يجب أن يكون أقل من 1000 حرف",
+        message: "تفاصيل التقييم يجب أن تكون أقل من 1000 حرف",
       }, { status: 400 });
     }
 
-    // 4️⃣ التحقق من صحة البريد الإلكتروني
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(authorEmail)) {
-      return NextResponse.json({
-        success: false,
-        message: "البريد الإلكتروني غير صحيح",
-      }, { status: 400 });
-    }
+    console.log(`🔍 Creating review for user: ${authorName}, product: ${productId}`);
 
-    console.log(`🔍 Checking purchase for email: ${authorEmail}, product: ${productId}`);
+    // ملاحظة: تم تعطيل التحقق من الشراء مؤقتاً لأننا لا نملك البريد الإلكتروني
+    // يمكن إعادة تفعيله لاحقاً إذا لزم الأمر
 
-    // 5️⃣ التحقق من أن المستخدم اشترى المنتج فعلاً
-    const hasPurchased = await hasCustomerPurchasedProduct(authorEmail, parseInt(productId));
-    
-    if (!hasPurchased) {
-      console.log(`❌ User ${authorEmail} has not purchased product ${productId}`);
-      return NextResponse.json({
-        success: false,
-        message: "لا يمكنك تقييم هذا المنتج",
-        details: "يجب شراء المنتج أولاً قبل إضافة تقييم"
-      }, { status: 403 });
-    }
-
-    console.log(`✅ Purchase verified for ${authorEmail} on product ${productId}`);
-
-    // 6️⃣ التحقق من عدم وجود تقييم سابق من نفس المستخدم
-    const hasReviewed = await hasUserReviewedProduct(authorEmail, parseInt(productId));
-    
-    if (hasReviewed) {
-      console.log(`❌ User ${authorEmail} already reviewed product ${productId}`);
-      return NextResponse.json({
-        success: false,
-        message: "لقد قمت بتقييم هذا المنتج من قبل",
-        details: "يمكن إضافة تقييم واحد فقط لكل منتج"
-      }, { status: 409 });
-    }
-
-    console.log(`✅ No previous review found, proceeding with review creation`);
+    console.log(`✅ Proceeding with review creation`);
 
     // 7️⃣ إضافة التقييم
     const newReview = await addReview({
       productId: parseInt(productId),
-      authorEmail,
+      authorEmail: '', // لا نملك البريد الإلكتروني
       authorName: authorName || 'مستخدم',
       rating: parseInt(rating),
-      title: title.trim(),
+      title: `تقييم من ${authorName}`, // عنوان تلقائي
       body: reviewBody.trim(),
       approved: true, // يمكن تغييرها حسب الحاجة
-      verified: true, // تم التحقق من الشراء
+      verified: false, // لم يتم التحقق من الشراء
     });
 
     console.log(`🌟 Review created successfully: ${newReview.id}`);
