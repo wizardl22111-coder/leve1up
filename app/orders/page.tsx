@@ -1,7 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { Search, Package, Download, CheckCircle, XCircle, Clock, RefreshCw, Mail, CreditCard, Home } from "lucide-react";
+import { motion } from "framer-motion";
+import { 
+  Search, 
+  Package, 
+  Download, 
+  CheckCircle, 
+  XCircle, 
+  Clock, 
+  RefreshCw, 
+  Mail, 
+  CreditCard, 
+  Home,
+  Calendar,
+  User,
+  ExternalLink
+} from "lucide-react";
 import Link from "next/link";
 
 interface OrderItem {
@@ -13,8 +28,9 @@ interface OrderItem {
 
 interface Order {
   id: string;
-  paymentId: string;
-  status: 'pending' | 'paid' | 'failed' | 'refunded';
+  sessionId?: string;
+  paymentId?: string;
+  status: 'pending' | 'paid' | 'failed' | 'refunded' | 'completed';
   amount: number;
   currency: string;
   customerEmail?: string;
@@ -51,8 +67,11 @@ export default function OrdersPage() {
       const params = new URLSearchParams();
       params.set(searchType, searchValue);
 
+      console.log('🔍 Searching with params:', params.toString());
       const response = await fetch(`/api/orders?${params.toString()}`);
       const data = await response.json();
+
+      console.log('📊 API Response:', data);
 
       if (!response.ok) {
         setError(data.message || 'حدث خطأ أثناء البحث');
@@ -78,32 +97,37 @@ export default function OrdersPage() {
   const getStatusInfo = (status: Order['status']) => {
     switch (status) {
       case 'paid':
+      case 'completed':
         return {
           label: 'مدفوع',
           icon: <CheckCircle className="w-5 h-5" />,
-          color: 'text-green-600',
-          bgColor: 'bg-green-100',
+          color: 'text-green-400',
+          bgColor: 'bg-green-500/20',
+          borderColor: 'border-green-300/30',
         };
       case 'pending':
         return {
           label: 'قيد الانتظار',
           icon: <Clock className="w-5 h-5" />,
-          color: 'text-yellow-600',
-          bgColor: 'bg-yellow-100',
+          color: 'text-yellow-400',
+          bgColor: 'bg-yellow-500/20',
+          borderColor: 'border-yellow-300/30',
         };
       case 'failed':
         return {
           label: 'فاشل',
           icon: <XCircle className="w-5 h-5" />,
-          color: 'text-red-600',
-          bgColor: 'bg-red-100',
+          color: 'text-red-400',
+          bgColor: 'bg-red-500/20',
+          borderColor: 'border-red-300/30',
         };
       case 'refunded':
         return {
           label: 'مسترجع',
           icon: <RefreshCw className="w-5 h-5" />,
-          color: 'text-orange-600',
-          bgColor: 'bg-orange-100',
+          color: 'text-orange-400',
+          bgColor: 'bg-orange-500/20',
+          borderColor: 'border-orange-300/30',
         };
     }
   };
@@ -118,78 +142,119 @@ export default function OrdersPage() {
     });
   };
 
+  const formatPrice = (amount: number, currency: string) => {
+    return `${amount.toFixed(2)} ${currency}`;
+  };
+
   const isDownloadExpired = (expiry?: number) => {
     if (!expiry) return false;
     return Date.now() > expiry;
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+      <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-500/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+      <div className="absolute top-0 right-1/4 w-72 h-72 bg-purple-500/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+      <div className="absolute -bottom-8 left-1/3 w-72 h-72 bg-pink-500/30 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+
+      <div className="relative z-10 container mx-auto px-4 py-8">
         {/* Back to Home Button */}
-        <div className="mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6"
+        >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-gray-50 text-gray-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 border border-gray-200"
+            className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3 rounded-xl border border-white/30 transition-all duration-300 transform hover:scale-105"
           >
             <Home className="w-5 h-5" />
-            <span className="font-semibold">العودة للصفحة الرئيسية</span>
+            العودة للصفحة الرئيسية
           </Link>
-        </div>
+        </motion.div>
 
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full mb-4">
-            <Package className="w-8 h-8 text-white" />
-          </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            طلباتي
-          </h1>
-          <p className="text-gray-600">
-            ابحث عن طلباتك وحمّل الإيصالات
-          </p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-12"
+        >
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.5, type: "spring", stiffness: 200 }}
+            className="inline-flex items-center justify-center w-24 h-24 bg-purple-500/20 backdrop-blur-lg rounded-full mb-6"
+          >
+            <Package className="w-12 h-12 text-purple-300" />
+          </motion.div>
+          
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
+          >
+            طلباتي 📦
+          </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            className="text-xl text-white/80 max-w-2xl mx-auto"
+          >
+            ابحث عن طلباتك وحمّل منتجاتك الرقمية
+          </motion.p>
+        </motion.div>
 
         {/* Search Form */}
-        <div className="max-w-2xl mx-auto mb-12">
-          <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
-            <form onSubmit={handleSearch} className="space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.6 }}
+          className="max-w-2xl mx-auto mb-12"
+        >
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-white/20">
+            <form onSubmit={handleSearch} className="space-y-6">
               {/* Search Type Selector */}
-              <div className="flex gap-2 p-1 bg-gray-100 rounded-lg">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2 p-1 bg-white/10 rounded-xl">
                 <button
                   type="button"
                   onClick={() => setSearchType('email')}
-                  className={`flex-1 px-4 py-2 rounded-lg font-medium transition-all ${
+                  className={`flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all ${
                     searchType === 'email'
-                      ? 'bg-white text-purple-600 shadow-md'
-                      : 'text-gray-600 hover:text-gray-900'
+                      ? 'bg-white/20 text-white shadow-lg backdrop-blur-lg'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  <Mail className="w-4 h-4 inline-block mr-2" />
+                  <Mail className="w-4 h-4" />
                   البريد الإلكتروني
                 </button>
                 <button
                   type="button"
                   onClick={() => setSearchType('orderId')}
-                  className={`flex-1 px-4 py-2 rounded-lg font-medium transition-all ${
+                  className={`flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all ${
                     searchType === 'orderId'
-                      ? 'bg-white text-purple-600 shadow-md'
-                      : 'text-gray-600 hover:text-gray-900'
+                      ? 'bg-white/20 text-white shadow-lg backdrop-blur-lg'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  <Package className="w-4 h-4 inline-block mr-2" />
+                  <Package className="w-4 h-4" />
                   رقم الطلب
                 </button>
                 <button
                   type="button"
                   onClick={() => setSearchType('paymentId')}
-                  className={`flex-1 px-4 py-2 rounded-lg font-medium transition-all ${
+                  className={`flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-medium transition-all ${
                     searchType === 'paymentId'
-                      ? 'bg-white text-purple-600 shadow-md'
-                      : 'text-gray-600 hover:text-gray-900'
+                      ? 'bg-white/20 text-white shadow-lg backdrop-blur-lg'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  <CreditCard className="w-4 h-4 inline-block mr-2" />
+                  <CreditCard className="w-4 h-4" />
                   رقم الدفعة
                 </button>
               </div>
@@ -207,17 +272,17 @@ export default function OrdersPage() {
                       ? 'أدخل رقم الطلب'
                       : 'أدخل رقم الدفعة'
                   }
-                  className="w-full px-6 py-4 pr-12 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition-colors text-right text-gray-900 placeholder-gray-500"
+                  className="w-full px-6 py-4 pr-12 rounded-xl bg-white/10 border border-white/30 focus:border-white/50 focus:outline-none transition-colors text-right text-white placeholder-white/50 backdrop-blur-lg"
                   dir="rtl"
                 />
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50" />
               </div>
 
               {/* Search Button */}
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 rounded-xl font-bold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white py-4 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -235,55 +300,71 @@ export default function OrdersPage() {
 
             {/* Error Message */}
             {error && (
-              <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-600 text-right">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-4 p-4 bg-red-500/20 border border-red-300/30 rounded-lg text-red-300 text-right backdrop-blur-lg"
+              >
                 {error}
-              </div>
+              </motion.div>
             )}
           </div>
-        </div>
+        </motion.div>
 
         {/* Results */}
         {searched && !loading && (
-          <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="max-w-4xl mx-auto"
+          >
             {orders.length === 0 && !error ? (
               <div className="text-center py-12">
-                <Package className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <p className="text-gray-600 text-lg">لم يتم العثور على أي طلبات</p>
+                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+                  <Package className="w-16 h-16 text-white/50 mx-auto mb-4" />
+                  <p className="text-white/80 text-lg">لم يتم العثور على أي طلبات</p>
+                  <p className="text-white/60 text-sm mt-2">تأكد من صحة البيانات المدخلة</p>
+                </div>
               </div>
             ) : (
               <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-gray-900 text-right">
+                <h2 className="text-2xl font-bold text-white text-right mb-6">
                   النتائج ({orders.length})
                 </h2>
 
-                {orders.map((order) => {
+                {orders.map((order, index) => {
                   const statusInfo = getStatusInfo(order.status);
                   const downloadExpired = isDownloadExpired(order.downloadExpiry);
 
                   return (
-                    <div
+                    <motion.div
                       key={order.id}
-                      className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 overflow-hidden hover:bg-white/15 transition-all duration-300"
                     >
                       {/* Order Header */}
-                      <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 border-b border-gray-100">
+                      <div className="bg-gradient-to-r from-white/10 to-white/5 p-6 border-b border-white/20">
                         <div className="flex items-center justify-between flex-wrap gap-4">
-                          <div className="flex items-center gap-3">
-                            <div className={`p-2 rounded-lg ${statusInfo.bgColor}`}>
+                          <div className="flex items-center gap-4">
+                            <div className={`p-3 rounded-xl ${statusInfo.bgColor} border ${statusInfo.borderColor}`}>
                               <div className={statusInfo.color}>
                                 {statusInfo.icon}
                               </div>
                             </div>
                             <div className="text-right">
-                              <h3 className="font-bold text-gray-900">
+                              <h3 className="font-bold text-white text-lg">
                                 طلب #{order.id.substring(order.id.length - 8)}
                               </h3>
-                              <p className="text-sm text-gray-600">
+                              <p className="text-white/60 flex items-center gap-2">
+                                <Calendar className="w-4 h-4" />
                                 {formatDate(order.createdAt)}
                               </p>
                             </div>
                           </div>
-                          <div className={`px-4 py-2 rounded-full ${statusInfo.bgColor}`}>
+                          <div className={`px-4 py-2 rounded-full ${statusInfo.bgColor} border ${statusInfo.borderColor}`}>
                             <span className={`font-bold ${statusInfo.color}`}>
                               {statusInfo.label}
                             </span>
@@ -296,54 +377,62 @@ export default function OrdersPage() {
                         <div className="grid md:grid-cols-2 gap-6 mb-6">
                           {/* Customer Info */}
                           <div className="text-right">
-                            <h4 className="text-sm font-semibold text-gray-500 mb-2">
+                            <h4 className="text-sm font-semibold text-white/60 mb-3 flex items-center gap-2">
+                              <User className="w-4 h-4" />
                               معلومات العميل
                             </h4>
-                            <p className="text-gray-900 font-medium">
-                              {order.customerName || 'غير محدد'}
-                            </p>
-                            <p className="text-gray-600 text-sm">
-                              {order.customerEmail || 'غير محدد'}
-                            </p>
+                            <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                              <p className="text-white font-medium mb-1">
+                                {order.customerName || 'غير محدد'}
+                              </p>
+                              <p className="text-white/70 text-sm flex items-center gap-2">
+                                <Mail className="w-4 h-4" />
+                                {order.customerEmail || 'غير محدد'}
+                              </p>
+                            </div>
                           </div>
 
                           {/* Payment Info */}
                           <div className="text-right">
-                            <h4 className="text-sm font-semibold text-gray-500 mb-2">
+                            <h4 className="text-sm font-semibold text-white/60 mb-3 flex items-center gap-2">
+                              <CreditCard className="w-4 h-4" />
                               معلومات الدفع
                             </h4>
-                            <p className="text-2xl font-bold text-purple-600">
-                              {order.amount.toFixed(2)} {order.currency}
-                            </p>
-                            <p className="text-gray-600 text-sm">
-                              {order.paymentId}
-                            </p>
+                            <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                              <p className="text-2xl font-bold text-green-300 mb-1">
+                                {formatPrice(order.amount, order.currency)}
+                              </p>
+                              <p className="text-white/60 text-sm font-mono">
+                                {order.paymentId || order.sessionId || 'غير محدد'}
+                              </p>
+                            </div>
                           </div>
                         </div>
 
                         {/* Items */}
                         {order.items && order.items.length > 0 && (
                           <div className="mb-6">
-                            <h4 className="text-sm font-semibold text-gray-500 mb-3 text-right">
-                              المنتجات
+                            <h4 className="text-sm font-semibold text-white/60 mb-3 text-right flex items-center gap-2">
+                              <Package className="w-4 h-4" />
+                              المنتجات ({order.items.length})
                             </h4>
-                            <div className="space-y-2">
-                              {order.items.map((item, index) => (
+                            <div className="space-y-3">
+                              {order.items.map((item, itemIndex) => (
                                 <div
-                                  key={index}
-                                  className="flex justify-between items-center p-3 bg-gray-50 rounded-lg"
+                                  key={itemIndex}
+                                  className="flex justify-between items-center p-4 bg-white/5 rounded-xl border border-white/10"
                                 >
                                   <div className="text-right flex-1">
-                                    <p className="font-medium text-gray-900">
+                                    <p className="font-medium text-white mb-1">
                                       {item.name}
                                     </p>
-                                    <p className="text-sm text-gray-600">
+                                    <p className="text-sm text-white/60">
                                       الكمية: {item.quantity}
                                     </p>
                                   </div>
                                   <div className="text-left">
-                                    <p className="font-bold text-purple-600">
-                                      {item.price.toFixed(2)} {order.currency}
+                                    <p className="font-bold text-blue-300">
+                                      {formatPrice(item.price, order.currency)}
                                     </p>
                                   </div>
                                 </div>
@@ -353,14 +442,14 @@ export default function OrdersPage() {
                         )}
 
                         {/* Download Button */}
-                        {order.downloadUrl && order.status === 'paid' && (
-                          <div className="pt-4 border-t border-gray-100">
+                        {order.downloadUrl && (order.status === 'paid' || order.status === 'completed') && (
+                          <div className="pt-6 border-t border-white/20">
                             {downloadExpired ? (
-                              <div className="text-center p-4 bg-red-50 rounded-lg">
-                                <p className="text-red-600 font-medium">
+                              <div className="text-center p-4 bg-red-500/20 rounded-xl border border-red-300/30">
+                                <p className="text-red-300 font-medium">
                                   ⚠️ انتهت صلاحية رابط التحميل
                                 </p>
-                                <p className="text-sm text-red-500 mt-1">
+                                <p className="text-sm text-red-300/80 mt-1">
                                   الرجاء التواصل مع الدعم للحصول على رابط جديد
                                 </p>
                               </div>
@@ -369,37 +458,79 @@ export default function OrdersPage() {
                                 href={order.downloadUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-lg font-bold hover:shadow-lg transition-all"
+                                className="flex items-center justify-center gap-3 w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white py-4 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                               >
                                 <Download className="w-5 h-5" />
-                                تحميل الإيصال
+                                تحميل المنتج
+                                <ExternalLink className="w-4 h-4" />
                               </a>
                             )}
                           </div>
                         )}
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>
             )}
-          </div>
+          </motion.div>
         )}
 
         {/* Info Section */}
         {!searched && (
-          <div className="max-w-2xl mx-auto mt-12">
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 text-right">
-              <h3 className="font-bold text-blue-900 mb-2">💡 كيفية البحث</h3>
-              <ul className="space-y-2 text-blue-800">
-                <li>• استخدم بريدك الإلكتروني الذي استخدمته عند الدفع</li>
-                <li>• أو أدخل رقم الطلب الذي حصلت عليه</li>
-                <li>• أو أدخل رقم الدفعة من بوابة الدفع</li>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
+            className="max-w-2xl mx-auto mt-12"
+          >
+            <div className="bg-blue-500/20 border border-blue-300/30 rounded-2xl p-6 text-right backdrop-blur-lg">
+              <h3 className="font-bold text-blue-300 mb-4 text-lg">💡 كيفية البحث</h3>
+              <ul className="space-y-3 text-blue-200">
+                <li className="flex items-start gap-3">
+                  <Mail className="w-5 h-5 text-blue-300 mt-0.5 flex-shrink-0" />
+                  <span>استخدم بريدك الإلكتروني الذي استخدمته عند الدفع</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Package className="w-5 h-5 text-blue-300 mt-0.5 flex-shrink-0" />
+                  <span>أو أدخل رقم الطلب الذي حصلت عليه</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CreditCard className="w-5 h-5 text-blue-300 mt-0.5 flex-shrink-0" />
+                  <span>أو أدخل رقم الدفعة من بوابة الدفع</span>
+                </li>
               </ul>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
+
+      <style jsx>{`
+        @keyframes blob {
+          0% {
+            transform: translate(0px, 0px) scale(1);
+          }
+          33% {
+            transform: translate(30px, -50px) scale(1.1);
+          }
+          66% {
+            transform: translate(-20px, 20px) scale(0.9);
+          }
+          100% {
+            transform: translate(0px, 0px) scale(1);
+          }
+        }
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+      `}</style>
     </div>
   );
 }
+

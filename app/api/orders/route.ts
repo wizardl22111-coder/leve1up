@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { 
-  getOrdersByEmail, 
+  findOrdersByCustomerEmail, 
   findOrderById, 
   findOrderByPaymentId 
-} from "@/lib/database";
+} from "@/lib/orders-store";
 
 /**
  * 🔍 API للبحث عن الطلبات
@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
 
     // البحث بالبريد الإلكتروني
     if (email) {
-      const orders = getOrdersByEmail(email);
+      const orders = await findOrdersByCustomerEmail(email);
       
       if (orders.length === 0) {
         return NextResponse.json({
