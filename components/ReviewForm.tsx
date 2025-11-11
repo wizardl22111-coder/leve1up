@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Star, Send, User, Mail, MessageSquare, AlertCircle, CheckCircle } from 'lucide-react';
+import { Star, Send, User, MessageSquare, AlertCircle, CheckCircle } from 'lucide-react';
 
 interface ReviewFormProps {
   productId: number;
@@ -17,10 +17,8 @@ export default function ReviewForm({
   className = '' 
 }: ReviewFormProps) {
   const [formData, setFormData] = useState({
-    authorEmail: '',
     authorName: '',
     rating: 0,
-    title: '',
     reviewBody: '',
   });
 
@@ -33,20 +31,15 @@ export default function ReviewForm({
 
   const [hoveredRating, setHoveredRating] = useState(0);
 
-  // جلب البريد الإلكتروني من localStorage عند تحميل المكون
+  // جلب الاسم من localStorage عند تحميل المكون
   useEffect(() => {
-    const savedEmail = localStorage.getItem('customerEmail') || 
-                      localStorage.getItem('userEmail') || 
-                      localStorage.getItem('email') || '';
-    
     const savedName = localStorage.getItem('customerName') || 
                      localStorage.getItem('userName') || 
                      localStorage.getItem('name') || '';
 
-    if (savedEmail) {
+    if (savedName) {
       setFormData(prev => ({
         ...prev,
-        authorEmail: savedEmail,
         authorName: savedName,
       }));
     }
@@ -77,15 +70,6 @@ export default function ReviewForm({
   };
 
   const validateForm = (): string | null => {
-    if (!formData.authorEmail.trim()) {
-      return 'البريد الإلكتروني مطلوب';
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.authorEmail)) {
-      return 'البريد الإلكتروني غير صحيح';
-    }
-
     if (!formData.authorName.trim()) {
       return 'الاسم مطلوب';
     }
@@ -94,20 +78,12 @@ export default function ReviewForm({
       return 'يرجى اختيار تقييم من 1 إلى 5 نجوم';
     }
 
-    if (!formData.title.trim()) {
-      return 'عنوان التقييم مطلوب';
-    }
-
-    if (formData.title.length > 100) {
-      return 'عنوان التقييم يجب أن يكون أقل من 100 حرف';
-    }
-
     if (!formData.reviewBody.trim()) {
-      return 'محتوى التقييم مطلوب';
+      return 'تفاصيل التقييم مطلوبة';
     }
 
     if (formData.reviewBody.length > 1000) {
-      return 'محتوى التقييم يجب أن يكون أقل من 1000 حرف';
+      return 'تفاصيل التقييم يجب أن تكون أقل من 1000 حرف';
     }
 
     return null;
@@ -150,14 +126,12 @@ export default function ReviewForm({
         });
 
         // حفظ البيانات في localStorage للمرات القادمة
-        localStorage.setItem('customerEmail', formData.authorEmail);
         localStorage.setItem('customerName', formData.authorName);
 
         // إعادة تعيين النموذج
         setFormData(prev => ({
           ...prev,
           rating: 0,
-          title: '',
           reviewBody: '',
         }));
 
@@ -253,28 +227,10 @@ export default function ReviewForm({
       )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {/* البريد الإلكتروني */}
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            البريد الإلكتروني *
-          </label>
-          <div className="relative">
-            <Mail className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
-              type="email"
-              name="authorEmail"
-              value={formData.authorEmail}
-              onChange={handleInputChange}
-              required
-              placeholder="your@email.com"
-              className="w-full pr-10 pl-4 py-3 bg-dark-300 border border-primary-300/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-primary-300/50 transition-colors"
-            />
-          </div>
-        </div>
 
         {/* الاسم */}
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
+          <label className="block text-sm font-medium text-white mb-2">
             الاسم *
           </label>
           <div className="relative">
@@ -286,7 +242,7 @@ export default function ReviewForm({
               onChange={handleInputChange}
               required
               placeholder="اسمك الكريم"
-              className="w-full pr-10 pl-4 py-3 bg-dark-300 border border-primary-300/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-primary-300/50 transition-colors"
+              className="w-full pr-10 pl-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary-300/70 focus:bg-white/15 transition-all"
             />
           </div>
         </div>
@@ -304,29 +260,11 @@ export default function ReviewForm({
           </div>
         </div>
 
-        {/* عنوان التقييم */}
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            عنوان التقييم *
-          </label>
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleInputChange}
-            required
-            maxLength={100}
-            placeholder="مثال: منتج ممتاز وأنصح به"
-            className="w-full px-4 py-3 bg-dark-300 border border-primary-300/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-primary-300/50 transition-colors"
-          />
-          <div className="text-xs text-gray-500 mt-1 text-left">
-            {formData.title.length}/100
-          </div>
-        </div>
 
-        {/* محتوى التقييم */}
+
+        {/* تفاصيل التقييم */}
         <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
+          <label className="block text-sm font-medium text-white mb-2">
             تفاصيل التقييم *
           </label>
           <div className="relative">
@@ -339,10 +277,10 @@ export default function ReviewForm({
               maxLength={1000}
               rows={4}
               placeholder="شارك تجربتك مع المنتج... ما الذي أعجبك؟ هل حقق توقعاتك؟"
-              className="w-full pr-10 pl-4 py-3 bg-dark-300 border border-primary-300/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-primary-300/50 transition-colors resize-none"
+              className="w-full pr-10 pl-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary-300/70 focus:bg-white/15 transition-all resize-none"
             />
           </div>
-          <div className="text-xs text-gray-500 mt-1 text-left">
+          <div className="text-xs text-gray-400 mt-1 text-left">
             {formData.reviewBody.length}/1000
           </div>
         </div>
