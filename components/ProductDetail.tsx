@@ -10,7 +10,7 @@ import Image from 'next/image';
 import WhyBuySection from './WhyBuySection';
 import FreeProductModal from './FreeProductModal';
 
-import ReviewsList from './ReviewsList';
+
 import ReviewSummary from './ReviewSummary';
 
 interface ProductSection {
@@ -420,13 +420,10 @@ export default function ProductDetail({ product }: { product?: Product }) {
           </div>
         )}
 
-        {/* Reviews Section - Display Only */}
+        {/* Reviews Section - Summary Only */}
         <div className="mt-12 sm:mt-16 space-y-8">
           {/* Review Summary */}
           <ReviewSummary productId={productId} />
-          
-          {/* Reviews List */}
-          <ReviewsList productId={productId} />
           
           {/* Info Message */}
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-6 text-center">

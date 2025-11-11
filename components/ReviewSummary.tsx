@@ -39,14 +39,55 @@ export default function ReviewSummary({
       setLoading(true);
       setError(null);
 
-      const response = await fetch(`/api/reviews?productId=${productId}&includeSummary=true`);
-      const data = await response.json();
-
-      if (data.success && data.summary) {
-        setSummary(data.summary);
-      } else {
-        setError(data.message || 'حدث خطأ أثناء جلب ملخص التقييمات');
+      // جلب التقييمات من الملف المحلي
+      const response = await fetch('/data/reviews.json');
+      const allReviews = await response.json();
+      
+      // جلب بيانات المنتجات لمطابقة الأسماء
+      const productsResponse = await fetch('/data/products.json');
+      const products = await productsResponse.json();
+      
+      // العثور على المنتج الحالي
+      const currentProduct = products.find((p: any) => 
+        p.product_id === productId || p.id === productId
+      );
+      
+      if (!currentProduct) {
+        setError('لم يتم العثور على المنتج');
+        return;
       }
+      
+      // تصفية التقييمات للمنتج الحالي
+      const productReviews = allReviews.filter((review: any) => 
+        review.product === currentProduct.product_name
+      );
+      
+      if (productReviews.length === 0) {
+        setSummary({
+          totalReviews: 0,
+          averageRating: 0,
+          ratingDistribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 }
+        });
+        return;
+      }
+      
+      // حساب الإحصائيات
+      const totalReviews = productReviews.length;
+      const totalRating = productReviews.reduce((sum: number, review: any) => sum + review.rating, 0);
+      const averageRating = totalRating / totalReviews;
+      
+      // حساب توزيع التقييمات
+      const ratingDistribution = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+      productReviews.forEach((review: any) => {
+        ratingDistribution[review.rating as keyof typeof ratingDistribution]++;
+      });
+      
+      setSummary({
+        totalReviews,
+        averageRating,
+        ratingDistribution
+      });
+      
     } catch (error) {
       console.error('Error fetching review summary:', error);
       setError('حدث خطأ في الاتصال');
