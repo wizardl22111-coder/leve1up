@@ -179,7 +179,7 @@ export default function Navbar() {
                     href="/profile"
                     className="flex items-center gap-2 px-3 py-2 bg-primary-300/20 hover:bg-primary-300/30 text-primary-300 rounded-xl transition-all duration-200 font-semibold text-sm border border-primary-300/30"
                   >
-                    {session.user.image ? (
+                    {session.user?.image ? (
                       <img 
                         src={session.user.image} 
                         alt={session.user.name || 'User'} 
@@ -189,7 +189,7 @@ export default function Navbar() {
                       <User className="w-4 h-4" />
                     )}
                     <span className="hidden lg:inline">
-                      {session.user.name?.split(' ')[0] || 'الملف الشخصي'}
+                      {session.user?.name?.split(' ')[0] || 'الملف الشخصي'}
                     </span>
                   </Link>
                   <button
@@ -344,10 +344,10 @@ export default function Navbar() {
                 className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
                 onClick={handleLinkClick}
               >
-                {session.user.image ? (
+                {session.user?.image ? (
                   <img 
                     src={session.user.image} 
-                    alt={session.user.name || 'User'} 
+                    alt={session.user?.name || 'User'} 
                     className="w-6 h-6 rounded-full"
                   />
                 ) : (
