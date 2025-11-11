@@ -65,34 +65,42 @@ function SuccessPageContent() {
             const response = await fetch(`/api/orders/${searchId}`);
             
             if (response.ok) {
-              const order = await response.json();
-              console.log("✅ Order found from API:", order);
+              const result = await response.json();
+              console.log("✅ API Response:", result);
               
-              // إنشاء روابط التحميل لكل منتج
-              const downloadLinks: DownloadLink[] = order.items.map((item: CartItem) => ({
-                productId: item.id,
-                productName: item.name,
-                downloadUrl: `/api/download/${order.sessionId}?product=${item.id}`
-              }));
-              
-              setOrderData({
-                email: order.customerEmail,
-                items: order.items,
-                totalAmount: order.amount,
-                currency: order.currency,
-                orderId: order.id,
-                paymentId: order.paymentId || searchId,
-                createdAt: order.createdAt,
-                downloadLinks
-              });
-              
-              localStorage.removeItem('cart');
-              localStorage.removeItem('customerEmail');
-              localStorage.removeItem('totalAmount');
-              localStorage.removeItem('currency');
-              
-              setLoading(false);
-              return;
+              if (result.success && result.order) {
+                const order = result.order;
+                console.log("✅ Order found from API:", order);
+                
+                // إنشاء روابط التحميل لكل منتج
+                const downloadLinks: DownloadLink[] = order.items.map((item: CartItem) => ({
+                  productId: item.id,
+                  productName: item.name,
+                  downloadUrl: `/api/download/${order.sessionId}?product=${item.id}`
+                }));
+                
+                setOrderData({
+                  email: order.customerEmail,
+                  items: order.items,
+                  totalAmount: order.amount,
+                  currency: order.currency,
+                  orderId: order.id,
+                  paymentId: order.paymentId || searchId,
+                  createdAt: order.createdAt,
+                  downloadLinks
+                });
+                
+                // تنظيف localStorage بعد النجاح
+                localStorage.removeItem('cart');
+                localStorage.removeItem('customerEmail');
+                localStorage.removeItem('totalAmount');
+                localStorage.removeItem('currency');
+                
+                setLoading(false);
+                return;
+              } else {
+                console.log("❌ API returned error:", result);
+              }
             }
           } catch (apiError) {
             console.log("⚠️ API fetch failed, trying localStorage fallback");
