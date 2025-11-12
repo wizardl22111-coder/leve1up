@@ -72,9 +72,9 @@ export default function TestimonialsSection() {
       productId: review.productId,
       avatar: null // لا توجد صور للمراجعين الحقيقيين
     })),
-    ...testimonials.slice(0, Math.max(0, 30 - realReviews.length)).map(testimonial => ({
+    ...testimonials.slice(0, Math.max(0, 50 - realReviews.length)).map(testimonial => ({
       ...testimonial
-    })) // عرض حتى 30 تقييم إجمالي
+    })) // عرض حتى 50 تقييم إجمالي
   ];
 
   return (
