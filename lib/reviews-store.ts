@@ -249,6 +249,59 @@ export async function getReviewSummary(productId: number): Promise<ReviewSummary
 }
 
 /**
+ * 🌟 جلب جميع التقييمات
+ */
+export async function getAllReviews(approvedOnly: boolean = false): Promise<Review[]> {
+  if (isRedisAvailable()) {
+    try {
+      const redis = getRedis();
+      if (!redis) throw new Error('Redis not available');
+
+      // جلب جميع مفاتيح التقييمات
+      const keys = await redis.keys('review:*');
+      
+      if (keys.length === 0) {
+        console.log('🔍 No reviews found in Redis');
+        return [];
+      }
+
+      // جلب جميع التقييمات
+      const reviewsData = await redis.mget(...keys);
+      const reviews: Review[] = [];
+
+      reviewsData.forEach((reviewJson) => {
+        if (reviewJson) {
+          try {
+            const review = typeof reviewJson === 'string' ? JSON.parse(reviewJson) : reviewJson;
+            if (!approvedOnly || review.approved) {
+              reviews.push(review);
+            }
+          } catch (parseError) {
+            console.error('❌ Error parsing review from Redis:', parseError);
+          }
+        }
+      });
+
+      // ترتيب حسب الأحدث
+      reviews.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+      
+      console.log(`✅ Found ${reviews.length} reviews in Redis (approved only: ${approvedOnly})`);
+      return reviews;
+    } catch (error) {
+      console.error('❌ Redis Error during getAllReviews, falling back to file:', error);
+      // Fallback to file
+    }
+  }
+  
+  // Fallback: قراءة من ملف JSON
+  const reviews = readReviewsFromFile();
+  const filteredReviews = approvedOnly ? reviews.filter(review => review.approved) : reviews;
+  
+  // ترتيب حسب الأحدث
+  return filteredReviews.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+}
+
+/**
  * 🔄 تحديث إحصائيات التقييمات للمنتج (للاستخدام الداخلي)
  */
 async function updateProductReviewStats(productId: number): Promise<void> {

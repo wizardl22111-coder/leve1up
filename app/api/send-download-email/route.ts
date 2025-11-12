@@ -1,116 +1,163 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
+import { createSecureDownloadUrl } from '@/lib/download-utils';
 
-// Import SendGrid (install with: npm install @sendgrid/mail)
-// import sgMail from '@sendgrid/mail';
+// إعداد Resend
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(request: NextRequest) {
+// ✅ إجبار dynamic rendering
+export const dynamic = 'force-dynamic';
+
+export async function POST(req: NextRequest) {
   try {
-    const body = await request.json();
-    const { email, token, productName, orderId } = body;
+    const body = await req.json();
+    const { orderId, customerEmail, cartItems, totalAmount, currency, downloadLinks } = body;
 
-    // Validate
-    if (!email || !token || !productName) {
+    console.log('📧 Sending download email for cart order:', {
+      orderId,
+      customerEmail,
+      itemsCount: cartItems?.length
+    });
+
+    // التحقق من البيانات المطلوبة
+    if (!orderId || !customerEmail || !cartItems || !Array.isArray(cartItems)) {
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'بيانات الطلب غير مكتملة' },
         { status: 400 }
       );
     }
 
-    // Generate download link
-    const downloadLink = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://your-site.com'}/api/download/${token}`;
-    const whatsappLink = `https://wa.me/966XXXXXXXXX`; // Replace with your WhatsApp number
+    // إنشاء روابط التحميل الآمنة
+    const secureDownloadLinks = cartItems.map((item: any) => ({
+      productName: item.name,
+      downloadUrl: createSecureDownloadUrl(item.name),
+      quantity: item.quantity,
+      price: item.price
+    }));
 
-    // Email template
-    const emailHtml = `
-      <!DOCTYPE html>
-      <html dir="rtl" lang="ar">
-      <head>
-        <meta charset="UTF-8">
-        <style>
-          body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
-          .container { max-width: 600px; margin: 40px auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-          .header { background: linear-gradient(135deg, #6A0DAD 0%, #FF6B9D 100%); padding: 40px 20px; text-align: center; color: white; }
-          .header h1 { margin: 0; font-size: 28px; }
-          .content { padding: 40px 30px; }
-          .success-icon { width: 80px; height: 80px; margin: 0 auto 20px; background: #10B981; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; }
-          .download-btn { display: inline-block; background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; padding: 16px 40px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0; font-size: 16px; }
-          .info-box { background: #F3F4F6; padding: 20px; border-radius: 8px; margin: 20px 0; }
-          .whatsapp-link { color: #25D366; text-decoration: none; font-weight: bold; }
-          .footer { background: #F9FAFB; padding: 20px; text-align: center; color: #6B7280; font-size: 14px; }
-          .note { background: #FEF3C7; border-right: 4px solid #F59E0B; padding: 15px; margin: 20px 0; }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <div class="header">
-            <h1>🎉 شكراً لك!</h1>
-          </div>
-          
-          <div class="content">
-            <div class="success-icon">✓</div>
+    // تجهيز قائمة المنتجات للإيميل
+    const productsList = cartItems.map((item: any) => 
+      `• ${item.name} (الكمية: ${item.quantity}) - ${item.price * item.quantity} ${currency}`
+    ).join('\n');
+
+    // تجهيز روابط التحميل للإيميل
+    const downloadLinksHtml = secureDownloadLinks.map((link: any) => `
+      <div style="margin: 15px 0; padding: 15px; background-color: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 8px;">
+        <h3 style="margin: 0 0 10px 0; color: #0c4a6e; font-size: 16px;">${link.productName}</h3>
+        <a href="${link.downloadUrl}" 
+           style="display: inline-block; background-color: #0ea5e9; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+          📥 تحميل المنتج
+        </a>
+        <p style="margin: 10px 0 0 0; font-size: 12px; color: #64748b;">
+          الكمية: ${link.quantity} | السعر: ${link.price * link.quantity} ${currency}
+        </p>
+      </div>
+    `).join('');
+
+    // إرسال الإيميل
+    const emailResult = await resend.emails.send({
+      from: 'Leve1Up Store <orders@leve1up.store>',
+      to: [customerEmail],
+      subject: `🎉 تحميل منتجاتك - طلب #${orderId}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb;">
+          <div style="background-color: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             
-            <h2 style="text-align: center; color: #1F2937;">تم إنشاء طلبك بنجاح</h2>
-            
-            <div class="info-box">
-              <p style="margin: 5px 0;"><strong>المنتج:</strong> ${productName}</p>
-              <p style="margin: 5px 0;"><strong>رقم الطلب:</strong> ${orderId}</p>
-              <p style="margin: 5px 0;"><strong>البريد الإلكتروني:</strong> ${email}</p>
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 30px;">
+              <h1 style="color: #059669; font-size: 28px; margin: 0 0 10px 0;">🎉 تم الدفع بنجاح!</h1>
+              <p style="color: #6b7280; font-size: 16px; margin: 0;">شكراً لك على شرائك من Leve1Up Store</p>
             </div>
 
-            <p style="text-align: center; font-size: 16px; color: #4B5563;">
-              يمكنك الآن تحميل منتجك الرقمي مباشرة من خلال الضغط على الزر أدناه:
-            </p>
+            <!-- Order Details -->
+            <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+              <h2 style="color: #1e293b; margin: 0 0 15px 0; font-size: 20px;">📋 تفاصيل الطلب</h2>
+              <div style="display: grid; gap: 8px;">
+                <p style="margin: 0; color: #4b5563;"><strong>رقم الطلب:</strong> #${orderId}</p>
+                <p style="margin: 0; color: #4b5563;"><strong>البريد الإلكتروني:</strong> ${customerEmail}</p>
+                <p style="margin: 0; color: #4b5563;"><strong>تاريخ الطلب:</strong> ${new Date().toLocaleDateString('ar-SA')}</p>
+                <p style="margin: 0; color: #4b5563;"><strong>المبلغ الإجمالي:</strong> ${totalAmount} ${currency}</p>
+                <p style="margin: 0; color: #4b5563;"><strong>عدد المنتجات:</strong> ${cartItems.reduce((total: number, item: any) => total + item.quantity, 0)} منتج</p>
+              </div>
+            </div>
 
-            <div style="text-align: center;">
-              <a href="${downloadLink}" class="download-btn">
-                📥 تحميل المنتج الآن
+            <!-- Products List -->
+            <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+              <h3 style="color: #1e293b; margin: 0 0 15px 0; font-size: 18px;">🛍️ المنتجات المشتراة:</h3>
+              <pre style="font-family: Arial, sans-serif; white-space: pre-wrap; color: #4b5563; margin: 0; line-height: 1.6;">${productsList}</pre>
+            </div>
+
+            <!-- Download Links -->
+            <div style="margin-bottom: 25px;">
+              <h2 style="color: #1e293b; margin: 0 0 20px 0; font-size: 20px;">📥 تحميل منتجاتك</h2>
+              ${downloadLinksHtml}
+            </div>
+
+            <!-- Important Notes -->
+            <div style="background-color: #fef3c7; padding: 20px; border-radius: 8px; border-right: 4px solid #f59e0b; margin-bottom: 25px;">
+              <h3 style="color: #92400e; margin: 0 0 10px 0; font-size: 16px;">⚠️ ملاحظات مهمة:</h3>
+              <ul style="color: #92400e; margin: 0; padding-right: 20px; line-height: 1.6;">
+                <li>روابط التحميل صالحة لمدة محدودة</li>
+                <li>يمكنك تحميل كل منتج عدة مرات</li>
+                <li>احفظ الملفات على جهازك بعد التحميل</li>
+                <li>في حالة وجود أي مشكلة، تواصل معنا فوراً</li>
+              </ul>
+            </div>
+
+            <!-- Support Section -->
+            <div style="background-color: #ecfdf5; padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+              <h3 style="color: #065f46; margin: 0 0 15px 0; font-size: 16px;">💬 هل تحتاج مساعدة؟</h3>
+              <p style="color: #065f46; margin: 0 0 15px 0;">فريق الدعم جاهز لمساعدتك في أي وقت:</p>
+              <div style="text-align: center;">
+                <a href="https://wa.me/971503492848?text=${encodeURIComponent('مرحباً، لدي استفسار بخصوص طلبي #' + orderId)}" 
+                   style="display: inline-block; background-color: #25d366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 5px;">
+                  💬 واتساب
+                </a>
+                <a href="mailto:support@leve1up.store?subject=استفسار عن الطلب ${orderId}" 
+                   style="display: inline-block; background-color: #3b82f6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 5px;">
+                  📧 إيميل
+                </a>
+              </div>
+            </div>
+
+            <!-- Review Request -->
+            <div style="background-color: #fef7cd; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 25px;">
+              <h3 style="color: #92400e; margin: 0 0 10px 0; font-size: 16px;">⭐ قيّم تجربتك معنا</h3>
+              <p style="color: #92400e; margin: 0 0 15px 0;">رأيك يهمنا! شاركنا تجربتك لنتمكن من تحسين خدماتنا</p>
+              <a href="https://leve1up.store/payment-success?order_id=${orderId}&type=cart#review" 
+                 style="display: inline-block; background-color: #f59e0b; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+                ⭐ إضافة تقييم
               </a>
             </div>
 
-            <div class="note">
-              <p style="margin: 0; color: #92400E;">
-                <strong>⏰ ملاحظة هامة:</strong> رابط التحميل صالح لمدة 30 دقيقة فقط للحفاظ على أمان المنتج.
+            <!-- Footer -->
+            <div style="text-align: center; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+              <p style="color: #6b7280; font-size: 14px; margin: 0 0 10px 0;">
+                شكراً لاختيارك Leve1Up Store - متجرك الموثوق للمنتجات الرقمية
+              </p>
+              <p style="color: #6b7280; font-size: 12px; margin: 0;">
+                <a href="https://leve1up.store" style="color: #3b82f6; text-decoration: none;">leve1up.store</a> |
+                <a href="https://wa.me/971503492848" style="color: #3b82f6; text-decoration: none;">الدعم الفني</a>
               </p>
             </div>
 
-            <p style="color: #6B7280; font-size: 14px; text-align: center;">
-              إذا واجهت أي مشكلة في التحميل، يمكنك التواصل معنا مباشرة عبر 
-              <a href="${whatsappLink}" class="whatsapp-link">واتساب</a>
-            </p>
-          </div>
-
-          <div class="footer">
-            <p>© 2025 LEVEL UP. جميع الحقوق محفوظة.</p>
-            <p>هذا البريد الإلكتروني تم إرساله إلى ${email}</p>
           </div>
         </div>
-      </body>
-      </html>
-    `;
+      `
+    });
 
-    // TODO: Configure SendGrid
-    // sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
-    // 
-    // await sgMail.send({
-    //   to: email,
-    //   from: 'noreply@your-site.com', // Your verified sender
-    //   subject: `تحميل منتجك: ${productName}`,
-    //   html: emailHtml,
-    // });
-
-    // For now, just log (remove in production)
-    console.log('Email would be sent to:', email);
-    console.log('Download link:', downloadLink);
+    console.log('✅ Download email sent successfully:', emailResult);
 
     return NextResponse.json({
       success: true,
-      message: 'تم إرسال البريد الإلكتروني بنجاح',
+      message: 'تم إرسال إيميل التحميل بنجاح',
+      emailId: emailResult.data?.id
     });
 
-  } catch (error) {
-    console.error('Error sending email:', error);
+  } catch (error: any) {
+    console.error('❌ Error sending download email:', error);
     return NextResponse.json(
-      { error: 'Failed to send email' },
+      { error: 'فشل في إرسال إيميل التحميل' },
       { status: 500 }
     );
   }
