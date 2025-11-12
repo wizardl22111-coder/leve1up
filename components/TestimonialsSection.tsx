@@ -78,7 +78,10 @@ export default function TestimonialsSection() {
       productName: getProductName(review.productId), // اسم المنتج الحقيقي
       avatar: null // لا توجد صور للمراجعين الحقيقيين
     })),
-    ...testimonials.slice(0, Math.max(0, 10 - realReviews.length)) // ملء الباقي بالتقييمات الثابتة
+    ...testimonials.slice(0, Math.max(0, 10 - realReviews.length)).map(testimonial => ({
+      ...testimonial,
+      productName: getProductName(testimonial.productId) // إضافة اسم المنتج للتقييمات الثابتة
+    })) // ملء الباقي بالتقييمات الثابتة
   ];
 
   return (
