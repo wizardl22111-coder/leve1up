@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { head } from "@vercel/blob";
+import { generateAllowedFilesFromProducts, debugProducts } from "@/lib/products-utils";
 
 /**
  * 📥 API لتوليد روابط تحميل عبر النطاق
@@ -10,13 +11,13 @@ import { head } from "@vercel/blob";
  * يتحقق من صلاحية الطلب ويوجه للرابط
  */
 
-// قاعدة بيانات الملفات المسموحة (يمكن نقلها لـ Redis لاحقاً)
-const ALLOWED_FILES: Record<string, string> = {
-  'الربح-من-المنتجات-الرقمية': 'https://cix55jnodh8jj42w.public.blob.vercel-storage.com/الربح%20من%20المنتجات%20الرقمية-4Ej8vQGxKzBpJ9mN2Lc3RtYwXs.pdf',
-  'دليل-التسويق-الرقمي': 'https://cix55jnodh8jj42w.public.blob.vercel-storage.com/دليل%20التسويق%20الرقمي-8Kj2vQGxKzBpJ9mN2Lc3RtYwXs.pdf',
-  'استراتيجيات-البيع-اونلاين': 'https://cix55jnodh8jj42w.public.blob.vercel-storage.com/استراتيجيات%20البيع%20اونلاين-9Mj3vQGxKzBpJ9mN2Lc3RtYwXs.pdf',
-  // يمكن إضافة المزيد من الملفات هنا
-};
+// إنشاء قاعدة بيانات الملفات المسموحة تلقائياً من ملف المنتجات
+const ALLOWED_FILES = generateAllowedFilesFromProducts();
+
+// طباعة معلومات التشخيص في development
+if (process.env.NODE_ENV === 'development') {
+  debugProducts();
+}
 
 // ✅ إجبار dynamic rendering
 export const dynamic = 'force-dynamic';
