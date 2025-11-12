@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getCurrencySymbol, subunitMap, type Currency } from "@/lib/currency";
 import { findOrderBySessionId, findOrderByPaymentId, updateOrder } from "@/lib/orders-store";
 import { Resend } from "resend";
+import { createSecureDownloadUrl } from "@/lib/download-utils";
 
 // 📧 دالة للحصول على Resend client (lazy initialization)
 const getResend = () => {
@@ -35,22 +36,29 @@ async function sendOrderEmail(order: any, amount: number, currency: string): Pro
       day: 'numeric'
     });
     
-    // بناء قائمة المنتجات مع روابط التحميل
-    const productsHtml = items.map((item: any) => `
-      <div style="background: #f8fffe; border: 1px solid #10b981; padding: 20px; margin: 15px 0; border-radius: 12px;">
-        <h3 style="margin: 0 0 10px 0; color: #065f46; font-size: 18px; font-weight: bold;">📦 ${item.name}</h3>
-        <p style="margin: 5px 0; color: #374151; font-size: 16px;">💰 السعر: ${item.price} ${currencySymbol}</p>
-        <p style="margin: 5px 0; color: #6b7280; font-size: 14px;">📅 تاريخ الشراء: ${currentDate}</p>
-        ${item.downloadUrl ? `
-          <div style="margin-top: 15px;">
-            <a href="${item.downloadUrl}" 
-               style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);">
-              🚀 تحميل المنتج الآن
-            </a>
-          </div>
-        ` : ''}
-      </div>
-    `).join('');
+    // بناء قائمة المنتجات مع روابط التحميل الآمنة
+    const productsHtml = items.map((item: any) => {
+      // إنشاء رابط تحميل آمن عبر النطاق
+      const secureDownloadUrl = item.downloadUrl 
+        ? createSecureDownloadUrl(item.name)
+        : null;
+      
+      return `
+        <div style="background: #f8fffe; border: 1px solid #10b981; padding: 20px; margin: 15px 0; border-radius: 12px;">
+          <h3 style="margin: 0 0 10px 0; color: #065f46; font-size: 18px; font-weight: bold;">📦 ${item.name}</h3>
+          <p style="margin: 5px 0; color: #374151; font-size: 16px;">💰 السعر: ${item.price} ${currencySymbol}</p>
+          <p style="margin: 5px 0; color: #6b7280; font-size: 14px;">📅 تاريخ الشراء: ${currentDate}</p>
+          ${secureDownloadUrl ? `
+            <div style="margin-top: 15px;">
+              <a href="${secureDownloadUrl}" 
+                 style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);">
+                🚀 تحميل المنتج الآن
+              </a>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }).join('');
 
     const htmlEmailTemplate = `
       <!DOCTYPE html>
@@ -131,7 +139,7 @@ async function sendOrderEmail(order: any, amount: number, currency: string): Pro
     const firstProductName = items.length > 0 ? items[0].name : 'منتجك';
     
     const result = await resend.emails.send({
-      from: 'Leve1Up Store <noreply@leve1up.store>',
+      from: 'Leve1Up Team <support@leve1up.store>',
       to: order.customerEmail,
       subject: `تم الدفع بنجاح - ${firstProductName}`,
       html: htmlEmailTemplate,
