@@ -97,12 +97,6 @@ export default function Navbar() {
               >
                 تواصل معنا
               </Link>
-              <Link 
-                href="/orders" 
-                className="text-gray-300 hover:text-primary-300 transition-colors duration-200 font-semibold text-sm lg:text-base"
-              >
-                طلباتي
-              </Link>
 
               {/* Currency Selector Desktop */}
               <div className="relative hidden sm:block">
@@ -319,15 +313,6 @@ export default function Navbar() {
           >
             <Mail className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
             <span>تواصل معنا</span>
-          </Link>
-
-          <Link
-            href="/orders"
-            className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
-            onClick={handleLinkClick}
-          >
-            <Receipt className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
-            <span>طلباتي</span>
           </Link>
 
           <div className="my-4 h-px bg-gradient-to-r from-transparent via-primary-300/20 to-transparent" />
