@@ -278,8 +278,8 @@ export default function ProfilePage() {
               <div className="flex flex-col gap-3">
                 <motion.button
                   onClick={() => setIsEditModalOpen(true)}
-                  className="flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors"
-                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white rounded-xl font-medium shadow-lg hover:shadow-primary-500/25 transition-all duration-300"
+                  whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <Edit3 className="w-4 h-4" />
@@ -288,8 +288,8 @@ export default function ProfilePage() {
                 
                 <motion.button
                   onClick={handleSignOut}
-                  className="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors"
-                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-xl font-medium shadow-lg hover:shadow-red-500/25 transition-all duration-300"
+                  whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <LogOut className="w-4 h-4" />
@@ -416,30 +416,33 @@ export default function ProfilePage() {
             <h3 className="text-xl font-semibold text-white mb-4">إجراءات سريعة</h3>
             <div className="grid md:grid-cols-3 gap-4">
               <motion.button 
-                className="flex items-center gap-3 p-4 bg-slate-800/50 hover:bg-slate-700/50 rounded-xl border border-slate-700/50 transition-colors"
-                whileHover={{ scale: 1.02 }}
+                onClick={() => showToast('قريباً: صفحة الإعدادات المتقدمة', 'success')}
+                className="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-600/20 to-blue-700/20 hover:from-blue-600/30 hover:to-blue-700/30 rounded-xl border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 group"
+                whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Settings className="w-5 h-5 text-primary-300" />
-                <span className="text-white">الإعدادات</span>
+                <Settings className="w-5 h-5 text-blue-400 group-hover:text-blue-300 transition-colors" />
+                <span className="text-white font-medium">الإعدادات</span>
               </motion.button>
               
               <motion.button 
-                className="flex items-center gap-3 p-4 bg-slate-800/50 hover:bg-slate-700/50 rounded-xl border border-slate-700/50 transition-colors"
-                whileHover={{ scale: 1.02 }}
+                onClick={() => showToast('قريباً: إعدادات الأمان والحماية', 'success')}
+                className="flex items-center gap-3 p-4 bg-gradient-to-r from-green-600/20 to-green-700/20 hover:from-green-600/30 hover:to-green-700/30 rounded-xl border border-green-500/30 hover:border-green-400/50 transition-all duration-300 group"
+                whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Shield className="w-5 h-5 text-primary-300" />
-                <span className="text-white">الأمان</span>
+                <Shield className="w-5 h-5 text-green-400 group-hover:text-green-300 transition-colors" />
+                <span className="text-white font-medium">الأمان</span>
               </motion.button>
               
               <motion.button 
-                className="flex items-center gap-3 p-4 bg-slate-800/50 hover:bg-slate-700/50 rounded-xl border border-slate-700/50 transition-colors"
-                whileHover={{ scale: 1.02 }}
+                onClick={() => showToast('قريباً: مركز الرسائل والإشعارات', 'success')}
+                className="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-600/20 to-purple-700/20 hover:from-purple-600/30 hover:to-purple-700/30 rounded-xl border border-purple-500/30 hover:border-purple-400/50 transition-all duration-300 group"
+                whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <MessageCircle className="w-5 h-5 text-primary-300" />
-                <span className="text-white">الرسائل</span>
+                <MessageCircle className="w-5 h-5 text-purple-400 group-hover:text-purple-300 transition-colors" />
+                <span className="text-white font-medium">الرسائل</span>
               </motion.button>
             </div>
           </motion.div>
@@ -453,11 +456,11 @@ export default function ProfilePage() {
           >
             <motion.button
               onClick={goHome}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-slate-700/50 hover:bg-slate-600/50 text-white rounded-lg border border-slate-600/50 transition-colors"
-              whileHover={{ scale: 1.05 }}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-slate-700/80 to-slate-800/80 hover:from-slate-600/80 hover:to-slate-700/80 text-white rounded-xl border border-slate-600/50 hover:border-slate-500/70 font-medium shadow-lg hover:shadow-slate-500/20 transition-all duration-300"
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Home className="w-4 h-4" />
+              <Home className="w-5 h-5" />
               العودة للرئيسية
             </motion.button>
           </motion.div>
@@ -508,8 +511,8 @@ export default function ProfilePage() {
               <div className="flex gap-3 mt-6">
                 <motion.button
                   onClick={saveProfile}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors"
-                  whileHover={{ scale: 1.02 }}
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white rounded-xl font-medium shadow-lg hover:shadow-primary-500/25 transition-all duration-300"
+                  whileHover={{ scale: 1.02, y: -1 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <Save className="w-4 h-4" />
@@ -518,8 +521,8 @@ export default function ProfilePage() {
                 
                 <motion.button
                   onClick={() => setIsEditModalOpen(false)}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-slate-600 hover:bg-slate-700 text-white rounded-lg transition-colors"
-                  whileHover={{ scale: 1.02 }}
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-700 hover:to-slate-800 text-white rounded-xl font-medium shadow-lg hover:shadow-slate-500/25 transition-all duration-300"
+                  whileHover={{ scale: 1.02, y: -1 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <X className="w-4 h-4" />
@@ -556,4 +559,3 @@ export default function ProfilePage() {
     </div>
   );
 }
-
