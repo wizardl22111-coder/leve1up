@@ -161,7 +161,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { 
         message: 'تم إرسال رسالتك بنجاح! سنتواصل معك قريباً',
-        id: data.id 
+        success: true
       },
       { status: 200 }
     );
