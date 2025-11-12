@@ -64,10 +64,10 @@ export default function TestimonialsSection() {
       id: review.id,
       name: review.authorName,
       rating: review.rating,
-      comment: review.reviewBody,
-      date: new Date(review.createdAt).toLocaleDateString('ar-SA'),
+      text: review.reviewBody, // استخدام text بدلاً من comment
+      timeAgo: new Date(review.createdAt).toLocaleDateString('ar-SA'),
       verified: true,
-      product: `منتج #${review.productId}`,
+      productId: review.productId,
       avatar: null // لا توجد صور للمراجعين الحقيقيين
     })),
     ...testimonials.slice(0, Math.max(0, 10 - realReviews.length)) // ملء الباقي بالتقييمات الثابتة
@@ -176,7 +176,7 @@ export default function TestimonialsSection() {
 
                     {/* Testimonial Text */}
                     <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-5 leading-relaxed flex-grow">
-                      "{testimonial.comment || testimonial.text}"
+                      "{testimonial.text}"
                     </p>
 
                     {/* User Info */}
@@ -196,11 +196,11 @@ export default function TestimonialsSection() {
                             عميل حقيقي
                           </p>
                         )}
-                        {testimonial.product && (
-                          <p className="text-xs text-blue-400 mt-0.5">{testimonial.product}</p>
+                        {testimonial.productId && (
+                          <p className="text-xs text-blue-400 mt-0.5">منتج #{testimonial.productId}</p>
                         )}
                         <p className="text-xs text-gray-500 mt-1">
-                          {testimonial.date || testimonial.timeAgo}
+                          {testimonial.timeAgo}
                         </p>
                       </div>
                     </div>
