@@ -70,11 +70,18 @@ export const authOptions: NextAuthOptions = {
       }
     }),
 
-    // تسجيل الدخول عبر Google - معطل مؤقتاً حتى يتم إعداد المتغيرات
+    // تسجيل الدخول عبر Google مع إعدادات محسنة
     ...(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET ? [
       GoogleProvider({
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        authorization: {
+          params: {
+            prompt: "consent",
+            access_type: "offline",
+            response_type: "code"
+          }
+        }
       })
     ] : []),
 
@@ -102,6 +109,71 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/login",
     error: "/login",
+  },
+
+  // إعدادات cookies محسنة لحل مشكلة State cookie
+  cookies: {
+    sessionToken: {
+      name: `next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+        domain: process.env.NODE_ENV === 'production' ? '.leve1up.store' : undefined
+      }
+    },
+    callbackUrl: {
+      name: `next-auth.callback-url`,
+      options: {
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+        domain: process.env.NODE_ENV === 'production' ? '.leve1up.store' : undefined
+      }
+    },
+    csrfToken: {
+      name: `next-auth.csrf-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+        domain: process.env.NODE_ENV === 'production' ? '.leve1up.store' : undefined
+      }
+    },
+    pkceCodeVerifier: {
+      name: `next-auth.pkce.code_verifier`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 900, // 15 minutes
+        domain: process.env.NODE_ENV === 'production' ? '.leve1up.store' : undefined
+      }
+    },
+    state: {
+      name: `next-auth.state`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 900, // 15 minutes
+        domain: process.env.NODE_ENV === 'production' ? '.leve1up.store' : undefined
+      }
+    },
+    nonce: {
+      name: `next-auth.nonce`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+        domain: process.env.NODE_ENV === 'production' ? '.leve1up.store' : undefined
+      }
+    }
   },
 
   // Callbacks
