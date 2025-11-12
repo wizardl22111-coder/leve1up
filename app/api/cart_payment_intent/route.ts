@@ -91,7 +91,7 @@ export async function POST(req: NextRequest) {
               <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
                 <h2 style="color: #1e293b; margin-bottom: 15px;">تفاصيل الطلب #${orderId}</h2>
                 <p><strong>البريد الإلكتروني:</strong> ${customerEmail}</p>
-                <p><strong>تاريخ الطلب:</strong> ${new Date(timestamp).toLocaleDateString('ar-SA')}</p>
+                <p><strong>تاريخ الطلب:</strong> ${new Date(timestamp).toLocaleDateString('en-GB')}</p>
                 <p><strong>المبلغ الإجمالي:</strong> ${totalAmount} ${currency}</p>
               </div>
 

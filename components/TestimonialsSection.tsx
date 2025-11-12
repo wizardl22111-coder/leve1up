@@ -2,6 +2,7 @@
 
 import { Star, Quote, CheckCircle, ShoppingBag, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import testimonials from '@/data/testimonials.json';
+import products from '@/data/products.json';
 import Image from 'next/image';
 import { useRef, useEffect, useState } from 'react';
 
@@ -10,10 +11,16 @@ interface Review {
   productId: number;
   authorName: string;
   rating: number;
-  reviewBody: string;
+  body: string; // تصحيح اسم الحقل
   createdAt: string;
   approved: boolean;
 }
+
+// دالة للحصول على اسم المنتج من معرفه
+const getProductName = (productId: number): string => {
+  const product = products.find(p => p.product_id === productId);
+  return product ? product.product_name : `منتج #${productId}`;
+};
 
 export default function TestimonialsSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -64,10 +71,11 @@ export default function TestimonialsSection() {
       id: review.id,
       name: review.authorName,
       rating: review.rating,
-      text: review.reviewBody, // استخدام text بدلاً من comment
-      timeAgo: new Date(review.createdAt).toLocaleDateString('ar-SA'),
+      text: review.body, // استخدام text بدلاً من comment
+      timeAgo: new Date(review.createdAt).toLocaleDateString('en-GB'), // تاريخ ميلادي
       verified: true,
       productId: review.productId,
+      productName: getProductName(review.productId), // اسم المنتج الحقيقي
       avatar: null // لا توجد صور للمراجعين الحقيقيين
     })),
     ...testimonials.slice(0, Math.max(0, 10 - realReviews.length)) // ملء الباقي بالتقييمات الثابتة
@@ -193,11 +201,13 @@ export default function TestimonialsSection() {
                         {testimonial.verified && (
                           <p className="text-xs text-green-400 flex items-center gap-1 mt-0.5">
                             <ShoppingBag className="w-3 h-3" />
-                            عميل حقيقي
+                            تم الشراء
                           </p>
                         )}
-                        {testimonial.productId && (
-                          <p className="text-xs text-blue-400 mt-0.5">منتج #{testimonial.productId}</p>
+                        {(testimonial.productName || testimonial.productId) && (
+                          <p className="text-xs text-blue-400 mt-0.5">
+                            {testimonial.productName || `منتج #${testimonial.productId}`}
+                          </p>
                         )}
                         <p className="text-xs text-gray-500 mt-1">
                           {testimonial.timeAgo}

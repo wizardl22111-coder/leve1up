@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
               <div style="display: grid; gap: 8px;">
                 <p style="margin: 0; color: #4b5563;"><strong>رقم الطلب:</strong> #${orderId}</p>
                 <p style="margin: 0; color: #4b5563;"><strong>البريد الإلكتروني:</strong> ${customerEmail}</p>
-                <p style="margin: 0; color: #4b5563;"><strong>تاريخ الطلب:</strong> ${new Date().toLocaleDateString('ar-SA')}</p>
+                <p style="margin: 0; color: #4b5563;"><strong>تاريخ الطلب:</strong> ${new Date().toLocaleDateString('en-GB')}</p>
                 <p style="margin: 0; color: #4b5563;"><strong>المبلغ الإجمالي:</strong> ${totalAmount} ${currency}</p>
                 <p style="margin: 0; color: #4b5563;"><strong>عدد المنتجات:</strong> ${cartItems.reduce((total: number, item: any) => total + item.quantity, 0)} منتج</p>
               </div>
@@ -162,4 +162,3 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-

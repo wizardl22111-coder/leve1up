@@ -302,7 +302,7 @@ function PaymentSuccessContent() {
                   <Calendar className="w-4 h-4 text-gray-500" />
                   <span className="text-sm text-gray-500">تاريخ الطلب:</span>
                   <span className="text-sm">
-                    {new Date(orderData.createdAt).toLocaleDateString('ar-SA')}
+                    {new Date(orderData.createdAt).toLocaleDateString('en-GB')}
                   </span>
                 </div>
               </div>
