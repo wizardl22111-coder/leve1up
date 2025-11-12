@@ -3,6 +3,9 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth-options';
 import { getUserProfile, updateUserProfile } from '@/lib/user-settings';
 
+// إجبار Next.js على استخدام dynamic rendering لهذا الـ route
+export const dynamic = 'force-dynamic';
+
 /**
  * 📥 GET - جلب بيانات المستخدم
  */
