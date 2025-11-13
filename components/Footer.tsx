@@ -169,7 +169,7 @@ export default function Footer() {
                   alt="Google Pay"
                   width={60}
                   height={25}
-                  className="h-5 sm:h-6 w-auto"
+                  className="h-6 w-auto"
                 />
               </div>
               <div className="bg-white rounded-lg p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
@@ -178,7 +178,7 @@ export default function Footer() {
                   alt="Apple Pay"
                   width={60}
                   height={25}
-                  className="h-5 sm:h-6 w-auto"
+                  className="h-6 w-auto"
                 />
               </div>
               <div className="bg-white rounded-lg p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
@@ -186,17 +186,17 @@ export default function Footer() {
                   src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
                   alt="Visa"
                   width={60}
-                  height={20}
-                  className="h-4 sm:h-5 w-auto"
+                  height={25}
+                  className="h-6 w-auto"
                 />
               </div>
               <div className="bg-white rounded-lg p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
                   alt="Mastercard"
-                  width={50}
-                  height={30}
-                  className="h-5 sm:h-6 w-auto"
+                  width={60}
+                  height={25}
+                  className="h-6 w-auto"
                 />
               </div>
             </div>
