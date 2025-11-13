@@ -192,11 +192,11 @@ export default function Footer() {
               </div>
               <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
-                  src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                  src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg"
                   alt="Mastercard"
-                  width={45}
-                  height={18}
-                  className="h-4 w-auto"
+                  width={50}
+                  height={20}
+                  className="h-5 w-auto"
                 />
               </div>
             </div>
