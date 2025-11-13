@@ -194,9 +194,9 @@ export default function Footer() {
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg"
                   alt="Mastercard"
-                  width={50}
-                  height={20}
-                  className="h-5 w-auto"
+                  width={45}
+                  height={18}
+                  className="h-4 w-auto"
                 />
               </div>
             </div>
