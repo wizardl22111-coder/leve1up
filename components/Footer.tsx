@@ -162,41 +162,41 @@ export default function Footer() {
         <div className="border-t border-primary-300/10 pt-8 pb-4">
           <div className="text-center">
             <h4 className="text-base sm:text-lg font-bold mb-4 text-primary-300">طرق الدفع المتاحة</h4>
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-              <div className="bg-white rounded-lg p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+              <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
                   alt="Google Pay"
-                  width={60}
-                  height={25}
-                  className="h-6 w-auto"
+                  width={45}
+                  height={18}
+                  className="h-4 w-auto"
                 />
               </div>
-              <div className="bg-white rounded-lg p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg"
                   alt="Apple Pay"
-                  width={60}
-                  height={25}
-                  className="h-6 w-auto"
+                  width={45}
+                  height={18}
+                  className="h-4 w-auto"
                 />
               </div>
-              <div className="bg-white rounded-lg p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
                   alt="Visa"
-                  width={60}
-                  height={25}
-                  className="h-6 w-auto"
+                  width={45}
+                  height={18}
+                  className="h-4 w-auto"
                 />
               </div>
-              <div className="bg-white rounded-lg p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
                   alt="Mastercard"
-                  width={60}
-                  height={25}
-                  className="h-6 w-auto"
+                  width={45}
+                  height={18}
+                  className="h-4 w-auto"
                 />
               </div>
             </div>
@@ -205,16 +205,11 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-primary-300/10 pt-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-right">
+          <div className="text-center">
+            <p className="text-gray-400 text-xs sm:text-sm">
               © {currentYear} جميع الحقوق محفوظة لمتجر{' '}
               <span className="text-primary-300 font-bold">Level Up</span>
             </p>
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-500">
-              <span>صُنع بـ</span>
-              <span className="text-accent-600 text-base">❤️</span>
-              <span>في الإمارات</span>
-            </div>
           </div>
         </div>
       </div>
