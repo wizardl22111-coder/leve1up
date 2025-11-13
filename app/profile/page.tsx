@@ -20,6 +20,7 @@ import {
   Save,
   Calendar
 } from "lucide-react";
+import UserOrders from "@/components/UserOrders";
 
 // واجهات البيانات
 interface UserSettings {
@@ -446,6 +447,9 @@ export default function ProfilePage() {
               </motion.button>
             </div>
           </motion.div>
+
+          {/* User Orders Section */}
+          <UserOrders className="mb-8" />
 
           {/* Back to Home Button */}
           <motion.div 
