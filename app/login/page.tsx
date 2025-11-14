@@ -58,11 +58,11 @@ export default function LoginPage() {
         <div className="mb-6">
           <Link 
             href="/" 
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-primary-300 transition-colors duration-200 group"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-primary-300 transition-colors duration-200 group py-2 px-1 rounded-lg hover:bg-gray-800/30"
           >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
-            <Home className="w-4 h-4" />
-            <span className="text-sm font-medium">العودة للصفحة الرئيسية</span>
+            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-x-1 transition-transform duration-200" />
+            <Home className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-sm sm:text-base font-medium">العودة للصفحة الرئيسية</span>
           </Link>
         </div>
 
