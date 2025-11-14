@@ -16,7 +16,7 @@ const SocialMediaIcons: React.FC<SocialMediaIconsProps> = ({
   whatsappNumber = '+966501234567',
   whatsappMessage = 'مرحباً، أريد الاستفسار عن منتجاتكم',
   facebookUrl = 'https://www.facebook.com/leve1up',
-  instagramUrl = 'https://www.instagram.com/leve1up',
+  instagramUrl = 'https://www.instagram.com/1level1up1',
   tiktokUrl = 'https://www.tiktok.com/@leve1up'
 }) => {
   const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(whatsappMessage)}`;
@@ -226,4 +226,3 @@ const SocialMediaIcons: React.FC<SocialMediaIconsProps> = ({
 };
 
 export default SocialMediaIcons;
-

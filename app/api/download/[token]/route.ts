@@ -9,7 +9,7 @@ export async function GET(
   try {
     const token = params.token;
     const { searchParams } = new URL(request.url);
-    const productId = searchParams.get('product');
+    let productId = searchParams.get('product');
 
     console.log('🔍 Download request - Token:', token, 'Product ID:', productId);
 
@@ -48,6 +48,13 @@ export async function GET(
     // ✨ إذا كان هناك productId محدد، نبحث عن المنتج في items والحصول على الرابط الصحيح من products.json
     let downloadUrl = order.downloadUrl;
     let productName = order.items?.[0]?.name || 'product';
+    
+    // إذا لم يتم تمرير productId ولكن هناك منتج واحد في الطلب، استخدم معرفه
+    if (!productId && order.items && order.items.length === 1) {
+      const singleProduct = order.items[0];
+      productId = singleProduct.id?.toString();
+      console.log('🔄 No productId provided, using single product ID:', productId);
+    }
     
     if (productId && order.items) {
       const orderProduct = order.items.find((item: any) => item.id.toString() === productId);
@@ -104,6 +111,49 @@ export async function GET(
     
     if (!fileResponse.ok) {
       console.error('❌ Failed to fetch file. Status:', fileResponse.status);
+      console.error('❌ File URL:', downloadUrl);
+      
+      // For free products, try fallback file
+      if (order.items?.[0]?.price === 0 || (order.items?.[0] as any)?.isFree) {
+        console.log('🔄 Trying fallback file for free product...');
+        
+        try {
+          // Try to serve a local fallback file
+          const fallbackUrl = `${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/temp-guide.pdf`;
+          const fallbackResponse = await fetch(fallbackUrl);
+          
+          if (fallbackResponse.ok) {
+            console.log('✅ Using fallback file');
+            const fallbackBlob = await fallbackResponse.blob();
+            
+            return new NextResponse(fallbackBlob, {
+              headers: {
+                'Content-Type': 'application/pdf',
+                'Content-Disposition': `attachment; filename="${encodeURIComponent('الدليل التمهيدي - نسخة تجريبية.pdf')}"`,
+                'X-Robots-Tag': 'noindex, nofollow',
+                'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0',
+              },
+            });
+          }
+        } catch (fallbackError) {
+          console.error('❌ Fallback file also failed:', fallbackError);
+        }
+        
+        return new NextResponse(
+          JSON.stringify({ 
+            error: 'عذراً، الملف المجاني غير متوفر حالياً. يرجى التواصل مع الدعم الفني.',
+            contact: 'https://wa.me/971503492848',
+            message: 'هذا منتج مجاني وقد يكون الملف قيد التحديث.'
+          }),
+          { 
+            status: 404,
+            headers: { 'Content-Type': 'application/json; charset=utf-8' }
+          }
+        );
+      }
+      
       throw new Error('Failed to fetch file');
     }
 
@@ -113,7 +163,9 @@ export async function GET(
     console.log('✅ File fetched successfully. Size:', fileBlob.size);
     
     // Create filename from product name (sanitize it)
-    const filename = `${productName.replace(/[^a-zA-Z0-9\u0600-\u06FF\s]/g, '')}.pdf`;
+    // Check if productName already ends with .pdf to avoid duplication
+    const sanitizedName = productName.replace(/[^a-zA-Z0-9\u0600-\u06FF\s]/g, '');
+    const filename = sanitizedName.endsWith('.pdf') ? sanitizedName : `${sanitizedName}.pdf`;
 
     // Return the file with secure headers
     return new NextResponse(fileBlob, {

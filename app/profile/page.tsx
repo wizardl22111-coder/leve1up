@@ -193,7 +193,7 @@ export default function ProfilePage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <LoadingAnimation size="large" />
+          <LoadingAnimation isLoading={true} message="جاري تحميل الملف الشخصي..." />
           <p className="text-slate-300 mt-4">جاري تحميل الملف الشخصي...</p>
         </motion.div>
       </div>
