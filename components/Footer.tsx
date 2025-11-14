@@ -1,9 +1,9 @@
 'use client';
 
 import { Mail, Home, ShoppingBag, HelpCircle } from 'lucide-react';
-import { FaTiktok, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
+import SocialMediaIcons from './SocialMediaIcons';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -37,35 +37,13 @@ export default function Footer() {
             </p>
             
             {/* Social Icons */}
-            <div className="flex gap-3 justify-center sm:justify-start">
-              <a
-                href="https://wa.me/971503492848"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 rounded-xl flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 touch-manipulation shadow-lg shadow-primary-500/30"
-                aria-label="واتساب"
-              >
-                <FaWhatsapp className="w-5 h-5 sm:w-6 sm:h-6" />
-              </a>
-              <a
-                href="https://www.instagram.com/lvlup3211/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 rounded-xl flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 touch-manipulation shadow-lg shadow-accent-500/30"
-                aria-label="إنستغرام"
-              >
-                <FaInstagram className="w-5 h-5 sm:w-6 sm:h-6" />
-              </a>
-              <a
-                href="https://www.tiktok.com/@lvlup321"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-primary-400 to-accent-500 hover:from-primary-500 hover:to-accent-600 border-2 border-primary-300/30 hover:border-primary-300/50 rounded-xl flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 touch-manipulation shadow-lg shadow-primary-400/30"
-                aria-label="تيك توك"
-              >
-                <FaTiktok className="w-5 h-5 sm:w-6 sm:h-6" />
-              </a>
-            </div>
+            <SocialMediaIcons 
+              className="justify-center sm:justify-start"
+              whatsappNumber="+971503492848"
+              whatsappMessage="مرحباً، أريد الاستفسار عن منتجات Level Up"
+              instagramUrl="https://www.instagram.com/lvlup3211/"
+              tiktokUrl="https://www.tiktok.com/@lvlup321"
+            />
           </div>
 
           {/* Column 2: Quick Links */}

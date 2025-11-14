@@ -2,6 +2,7 @@
 
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SocialMediaIcons from '@/components/SocialMediaIcons';
 import { Mail, MessageCircle, Instagram, Home, Send, User, Phone, Check, X } from 'lucide-react';
 import { FaWhatsapp, FaInstagram, FaEnvelope } from 'react-icons/fa';
 import { useState } from 'react';
@@ -169,6 +170,24 @@ export default function ContactPage() {
               </p>
             </motion.div>
           </div>
+
+          {/* Social Media Icons */}
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <h3 className="text-xl font-semibold text-white mb-6">
+              🌟 تابعنا على وسائل التواصل الاجتماعي
+            </h3>
+            <SocialMediaIcons 
+              whatsappNumber="+971503492848"
+              whatsappMessage="مرحباً، أريد الاستفسار عن منتجات Level Up"
+              instagramUrl="https://www.instagram.com/lvlup3211/"
+              tiktokUrl="https://www.tiktok.com/@lvlup321"
+            />
+          </motion.div>
 
           {/* Contact Form */}
           <motion.div 
