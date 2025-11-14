@@ -21,6 +21,9 @@ import {
   Calendar
 } from "lucide-react";
 import UserOrders from "@/components/UserOrders";
+import CustomToggle from "@/components/CustomToggle";
+import LogoutButton from "@/components/LogoutButton";
+import LoadingAnimation from "@/components/LoadingAnimation";
 
 // واجهات البيانات
 interface UserSettings {
@@ -190,8 +193,8 @@ export default function ProfilePage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-300 mx-auto mb-4"></div>
-          <p className="text-slate-300">جاري التحميل...</p>
+          <LoadingAnimation size="large" />
+          <p className="text-slate-300 mt-4">جاري تحميل الملف الشخصي...</p>
         </motion.div>
       </div>
     );
@@ -287,15 +290,7 @@ export default function ProfilePage() {
                   تعديل الملف
                 </motion.button>
                 
-                <motion.button
-                  onClick={handleSignOut}
-                  className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-xl font-medium shadow-lg hover:shadow-red-500/25 transition-all duration-300"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <LogOut className="w-4 h-4" />
-                  تسجيل الخروج
-                </motion.button>
+                <LogoutButton onLogout={handleSignOut} />
               </div>
             </div>
           </motion.div>
@@ -347,19 +342,11 @@ export default function ProfilePage() {
                     <Shield className="w-4 h-4 text-slate-400" />
                     <span className="text-slate-300">التحقق بخطوتين</span>
                   </div>
-                  <motion.button
-                    onClick={() => toggleSetting('twoFactorEnabled', !settings.twoFactorEnabled)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      settings.twoFactorEnabled ? 'bg-primary-600' : 'bg-slate-600'
-                    }`}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <span
-                      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                        settings.twoFactorEnabled ? 'translate-x-6' : 'translate-x-1'
-                      }`}
-                    />
-                  </motion.button>
+                  <CustomToggle
+                    defaultChecked={settings.twoFactorEnabled}
+                    onChange={(checked) => toggleSetting('twoFactorEnabled', checked)}
+                    className="scale-75"
+                  />
                 </div>
 
                 {/* Email Notifications */}
@@ -368,19 +355,11 @@ export default function ProfilePage() {
                     <Bell className="w-4 h-4 text-slate-400" />
                     <span className="text-slate-300">إشعارات البريد</span>
                   </div>
-                  <motion.button
-                    onClick={() => toggleSetting('emailNotifications', !settings.emailNotifications)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      settings.emailNotifications ? 'bg-primary-600' : 'bg-slate-600'
-                    }`}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <span
-                      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                        settings.emailNotifications ? 'translate-x-6' : 'translate-x-1'
-                      }`}
-                    />
-                  </motion.button>
+                  <CustomToggle
+                    defaultChecked={settings.emailNotifications}
+                    onChange={(checked) => toggleSetting('emailNotifications', checked)}
+                    className="scale-75"
+                  />
                 </div>
 
                 {/* Save Password */}
@@ -389,19 +368,11 @@ export default function ProfilePage() {
                     <Key className="w-4 h-4 text-slate-400" />
                     <span className="text-slate-300">حفظ كلمة المرور</span>
                   </div>
-                  <motion.button
-                    onClick={() => toggleSetting('savePassword', !settings.savePassword)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      settings.savePassword ? 'bg-primary-600' : 'bg-slate-600'
-                    }`}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <span
-                      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                        settings.savePassword ? 'translate-x-6' : 'translate-x-1'
-                      }`}
-                    />
-                  </motion.button>
+                  <CustomToggle
+                    defaultChecked={settings.savePassword}
+                    onChange={(checked) => toggleSetting('savePassword', checked)}
+                    className="scale-75"
+                  />
                 </div>
               </div>
             </motion.div>
