@@ -420,6 +420,48 @@ html:not(.dark) .text-contrast-low {
   color: rgba(26, 26, 26, 0.6);
 }
 
+/* Light mode overrides for white text */
+html:not(.dark) .text-white {
+  color: #1a1a1a !important;
+}
+
+html:not(.dark) .text-gray-300 {
+  color: #4a5568 !important;
+}
+
+html:not(.dark) .text-gray-400 {
+  color: #718096 !important;
+}
+
+html:not(.dark) .text-white\/80 {
+  color: rgba(26, 26, 26, 0.8) !important;
+}
+
+html:not(.dark) .text-white\/70 {
+  color: rgba(26, 26, 26, 0.7) !important;
+}
+
+html:not(.dark) .text-white\/60 {
+  color: rgba(26, 26, 26, 0.6) !important;
+}
+
+html:not(.dark) .text-white\/50 {
+  color: rgba(26, 26, 26, 0.5) !important;
+}
+
+/* Light mode placeholder colors */
+html:not(.dark) .placeholder-white\/50::placeholder {
+  color: rgba(26, 26, 26, 0.5) !important;
+}
+
+html:not(.dark) .placeholder-gray-400::placeholder {
+  color: #a0aec0 !important;
+}
+
+html:not(.dark) .placeholder-slate-400::placeholder {
+  color: #94a3b8 !important;
+}
+
 /* Scrollbar styling for dark theme */
 ::-webkit-scrollbar {
   width: 8px;

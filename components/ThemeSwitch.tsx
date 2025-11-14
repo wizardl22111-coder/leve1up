@@ -81,14 +81,14 @@ const ThemeSwitch: React.FC = () => {
 
       <style jsx>{`
         .theme-switch {
-          --toggle-size: 15px;
+          --toggle-size: 18px;
           --container-width: 5.625em;
           --container-height: 2.5em;
           --container-radius: 6.25em;
           --container-light-bg: #3d7eae;
           --container-night-bg: #1d1f2c;
           --circle-container-diameter: 3.375em;
-          --sun-moon-diameter: 2.125em;
+          --sun-moon-diameter: 1.9em;
           --sun-bg: #ecca2f;
           --moon-bg: #c4c9d1;
           --spot-color: #959db1;
