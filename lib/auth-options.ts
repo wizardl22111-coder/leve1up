@@ -1,7 +1,6 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import FacebookProvider from "next-auth/providers/facebook";
 import DiscordProvider from "next-auth/providers/discord";
 import AppleProvider from "next-auth/providers/apple";
 import bcrypt from "bcryptjs";
@@ -87,18 +86,6 @@ export const authOptions: NextAuthOptions = {
       })
     ] : []),
 
-    // تسجيل الدخول عبر Facebook
-    ...(process.env.FACEBOOK_CLIENT_ID && process.env.FACEBOOK_CLIENT_SECRET ? [
-      FacebookProvider({
-        clientId: process.env.FACEBOOK_CLIENT_ID,
-        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-        authorization: {
-          params: {
-            scope: "email"
-          }
-        }
-      })
-    ] : []),
 
     // تسجيل الدخول عبر Discord
     ...(process.env.DISCORD_CLIENT_ID && process.env.DISCORD_CLIENT_SECRET ? [
