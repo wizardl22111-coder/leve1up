@@ -4,6 +4,11 @@ import {
   findOrderById, 
   findOrderByPaymentId 
 } from "@/lib/orders-store";
+import {
+  findDemoOrdersByEmail,
+  findDemoOrderById,
+  findDemoOrderByPaymentId
+} from "@/lib/demo-orders";
 
 /**
  * 🔍 API للبحث عن الطلبات
@@ -29,7 +34,17 @@ export async function GET(req: NextRequest) {
 
     // البحث بالبريد الإلكتروني
     if (email) {
-      const orders = await findOrdersByCustomerEmail(email);
+      let orders = await findOrdersByCustomerEmail(email);
+      
+      // إذا لم نجد طلبات في Redis، نجرب الطلبات التجريبية
+      if (orders.length === 0) {
+        console.log('🎭 No orders found in Redis, trying demo orders...');
+        orders = findDemoOrdersByEmail(email);
+        
+        if (orders.length > 0) {
+          console.log(`🎭 Found ${orders.length} demo orders for ${email}`);
+        }
+      }
       
       if (orders.length === 0) {
         return NextResponse.json({
@@ -48,7 +63,17 @@ export async function GET(req: NextRequest) {
 
     // البحث برقم الطلب
     if (orderId) {
-      const order = await findOrderById(orderId);
+      let order = await findOrderById(orderId);
+      
+      // إذا لم نجد الطلب في Redis، نجرب الطلبات التجريبية
+      if (!order) {
+        console.log('🎭 Order not found in Redis, trying demo orders...');
+        order = findDemoOrderById(orderId);
+        
+        if (order) {
+          console.log(`🎭 Found demo order: ${order.id}`);
+        }
+      }
       
       if (!order) {
         return NextResponse.json({
@@ -66,7 +91,17 @@ export async function GET(req: NextRequest) {
 
     // البحث برقم الدفعة
     if (paymentId) {
-      const order = await findOrderByPaymentId(paymentId);
+      let order = await findOrderByPaymentId(paymentId);
+      
+      // إذا لم نجد الطلب في Redis، نجرب الطلبات التجريبية
+      if (!order) {
+        console.log('🎭 Payment not found in Redis, trying demo orders...');
+        order = findDemoOrderByPaymentId(paymentId);
+        
+        if (order) {
+          console.log(`🎭 Found demo order by payment: ${order.id}`);
+        }
+      }
       
       if (!order) {
         return NextResponse.json({
