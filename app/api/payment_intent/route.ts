@@ -4,6 +4,15 @@ import crypto from "crypto";
 
 export async function POST(req: Request) {
   try {
+    // ✅ التحقق من وجود مفتاح Ziina API
+    if (!process.env.ZIINA_SECRET_KEY && !process.env.ZIINA_API_KEY) {
+      console.error("❌ Ziina API key not found in environment variables");
+      return NextResponse.json(
+        { error: "خدمة الدفع غير متاحة حالياً. يرجى المحاولة لاحقاً أو التواصل مع الدعم." },
+        { status: 503 }
+      );
+    }
+
     const { amount, currency_code, productName, productFile, customerEmail } = await req.json();
 
     const finalCurrency = currency_code || "AED";
@@ -70,10 +79,13 @@ export async function POST(req: Request) {
 
     console.log("📤 Sending payload to Ziina:", JSON.stringify(payload, null, 2));
 
+    // ✅ استخدام المفتاح المتاح (مع الأولوية للـ SECRET_KEY)
+    const apiKey = process.env.ZIINA_SECRET_KEY || process.env.ZIINA_API_KEY;
+
     const res = await fetch("https://api-v2.ziina.com/api/payment_intent", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.ZIINA_SECRET_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(payload),
@@ -82,7 +94,20 @@ export async function POST(req: Request) {
     if (!res.ok) {
       const err = await res.text();
       console.error("❌ Error from Ziina:", err);
-      return NextResponse.json({ error: "Failed to create payment intent" }, { status: 500 });
+      console.error("❌ Response status:", res.status);
+      
+      // ✅ معالجة حالات فشل مختلفة مع رسائل موجهة
+      let errorMessage = "حدث خطأ أثناء إنشاء الدفع";
+      
+      if (res.status === 401) {
+        errorMessage = "خطأ في التحقق من الهوية. يرجى التواصل مع الدعم.";
+      } else if (res.status === 400) {
+        errorMessage = "بيانات الدفع غير صحيحة. يرجى المحاولة مرة أخرى.";
+      } else if (res.status >= 500) {
+        errorMessage = "خدمة الدفع غير متاحة حالياً. يرجى المحاولة لاحقاً.";
+      }
+      
+      return NextResponse.json({ error: errorMessage }, { status: res.status });
     }
 
     const data = await res.json();

@@ -91,16 +91,29 @@ function CheckoutContent() {
         }),
       });
 
-      const data = await res.json();
-
-      if (data.redirect_url) {
-        window.location.href = data.redirect_url;
-      } else {
-        setError(data.error || "حدث خطأ أثناء إنشاء الدفع. يرجى المحاولة مرة أخرى.");
+      // ✅ فحص استجابة HTTP قبل معالجة البيانات
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({ error: 'خطأ في الخادم' }));
+        throw new Error(errorData.error || `HTTP ${res.status}`);
       }
-    } catch (err) {
-      console.error(err);
-      setError("فشل الاتصال بالخادم.");
+
+      const data = await res.json();
+      console.log("📊 Payment response:", data);
+
+      // ✅ دعم متغيرات اسم الرابط المختلفة
+      if (data.redirect_url) {
+        console.log("🔗 Redirecting to:", data.redirect_url);
+        window.location.href = data.redirect_url;
+      } else if (data.url) {
+        console.log("🔗 Redirecting to:", data.url);
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || "لم يتم الحصول على رابط الدفع");
+      }
+    } catch (err: any) {
+      console.error("❌ Payment error:", err);
+      // ✅ رسالة خطأ واضحة وموجهة للمستخدم
+      setError(err.message || "فشل الاتصال بالخادم. يرجى المحاولة مرة أخرى.");
     } finally {
       setLoading(false);
     }
