@@ -9,7 +9,7 @@ export async function GET(
   try {
     const token = params.token;
     const { searchParams } = new URL(request.url);
-    const productId = searchParams.get('product');
+    let productId = searchParams.get('product');
 
     console.log('🔍 Download request - Token:', token, 'Product ID:', productId);
 
@@ -48,6 +48,13 @@ export async function GET(
     // ✨ إذا كان هناك productId محدد، نبحث عن المنتج في items والحصول على الرابط الصحيح من products.json
     let downloadUrl = order.downloadUrl;
     let productName = order.items?.[0]?.name || 'product';
+    
+    // إذا لم يتم تمرير productId ولكن هناك منتج واحد في الطلب، استخدم معرفه
+    if (!productId && order.items && order.items.length === 1) {
+      const singleProduct = order.items[0];
+      productId = singleProduct.id?.toString();
+      console.log('🔄 No productId provided, using single product ID:', productId);
+    }
     
     if (productId && order.items) {
       const orderProduct = order.items.find((item: any) => item.id.toString() === productId);
