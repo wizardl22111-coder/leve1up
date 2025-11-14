@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Shield, Lock, Eye, UserCheck, Database, Globe } from 'lucide-react';
+import { Shield, Lock, Eye, UserCheck, Database, Globe, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 export default function PrivacyPage() {
   return (
@@ -9,6 +10,17 @@ export default function PrivacyPage() {
       
       <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* زر الرجوع */}
+          <div className="mb-8">
+            <Link 
+              href="/"
+              className="inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors duration-200 group"
+            >
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+              <span className="font-medium">الرجوع للقائمة الرئيسية</span>
+            </Link>
+          </div>
+
           <div className="text-center mb-12 animate-fade-in">
             <Shield className="w-16 h-16 text-primary-600 dark:text-primary-400 mx-auto mb-4" />
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -293,4 +305,3 @@ export default function PrivacyPage() {
     </main>
   );
 }
-
