@@ -137,9 +137,6 @@ export default function Navbar() {
                 )}
               </div>
 
-              {/* Theme Switch */}
-              <ThemeSwitch />
-
               {/* Wishlist */}
               <Link
                 href="/wishlist"
@@ -167,6 +164,9 @@ export default function Navbar() {
                   </span>
                 )}
               </Link>
+
+              {/* Theme Switch */}
+              <ThemeSwitch />
 
               {/* Auth Buttons */}
               {status === "loading" ? (
@@ -220,11 +220,6 @@ export default function Navbar() {
 
             {/* Mobile Actions */}
             <div className="flex md:hidden items-center gap-2 sm:gap-3">
-              {/* Theme Switch Mobile */}
-              <div className="scale-75">
-                <ThemeSwitch />
-              </div>
-
               {/* Wishlist Mobile */}
               <Link
                 href="/wishlist"
@@ -254,6 +249,11 @@ export default function Navbar() {
                   </span>
                 )}
               </Link>
+
+              {/* Theme Switch Mobile */}
+              <div className="scale-50">
+                <ThemeSwitch />
+              </div>
 
               {/* Mobile Menu Button */}
               <button
@@ -439,7 +439,9 @@ export default function Navbar() {
               🌙 الوضع المظلم / الفاتح
             </label>
             <div className="flex justify-center">
-              <ThemeSwitch />
+              <div className="scale-75">
+                <ThemeSwitch />
+              </div>
             </div>
           </div>
         </div>
