@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { 
   Search, 
@@ -15,7 +15,9 @@ import {
   Home,
   Calendar,
   User,
-  ExternalLink
+  ExternalLink,
+  AlertCircle,
+  Loader2
 } from "lucide-react";
 import Link from "next/link";
 
@@ -49,6 +51,11 @@ export default function OrdersPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [searched, setSearched] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,30 +72,44 @@ export default function OrdersPage() {
 
     try {
       const params = new URLSearchParams();
-      params.set(searchType, searchValue);
+      params.set(searchType, searchValue.trim());
 
       console.log('🔍 Searching with params:', params.toString());
-      const response = await fetch(`/api/orders?${params.toString()}`);
-      const data = await response.json();
-
-      console.log('📊 API Response:', data);
+      
+      const response = await fetch(`/api/orders?${params.toString()}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        cache: 'no-store'
+      });
 
       if (!response.ok) {
-        setError(data.message || 'حدث خطأ أثناء البحث');
-        setOrders([]);
-        return;
+        const errorData = await response.json().catch(() => ({ message: 'خطأ في الخادم' }));
+        throw new Error(errorData.message || `HTTP ${response.status}`);
       }
 
-      // إذا كان البحث برقم الطلب أو الدفعة، نحصل على طلب واحد
-      if (data.order) {
-        setOrders([data.order]);
-      } else if (data.orders) {
-        setOrders(data.orders);
+      const data = await response.json();
+      console.log('📊 API Response:', data);
+
+      // معالجة النتائج
+      if (data.success) {
+        if (data.order) {
+          setOrders([data.order]);
+        } else if (data.orders && Array.isArray(data.orders)) {
+          setOrders(data.orders);
+        } else {
+          setOrders([]);
+        }
+      } else {
+        setError(data.message || 'لم يتم العثور على طلبات');
+        setOrders([]);
       }
 
     } catch (err: any) {
-      setError('فشل الاتصال بالخادم');
       console.error('Search error:', err);
+      setError(err.message || 'فشل الاتصال بالخادم');
+      setOrders([]);
     } finally {
       setLoading(false);
     }
@@ -133,13 +154,17 @@ export default function OrdersPage() {
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('ar-SA', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    });
+    try {
+      return new Date(dateString).toLocaleDateString('ar-SA', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+    } catch {
+      return dateString;
+    }
   };
 
   const formatPrice = (amount: number, currency: string) => {
@@ -150,6 +175,21 @@ export default function OrdersPage() {
     if (!expiry) return false;
     return Date.now() > expiry;
   };
+
+  const resetSearch = () => {
+    setError('');
+    setSearched(false);
+    setSearchValue('');
+    setOrders([]);
+  };
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-white animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 relative overflow-hidden">
@@ -266,72 +306,105 @@ export default function OrdersPage() {
                   value={searchValue}
                   onChange={(e) => setSearchValue(e.target.value)}
                   placeholder={
-                    searchType === 'email'
-                      ? 'أدخل بريدك الإلكتروني'
+                    searchType === 'email' 
+                      ? 'أدخل بريدك الإلكتروني...'
                       : searchType === 'orderId'
-                      ? 'أدخل رقم الطلب'
-                      : 'أدخل رقم الدفعة'
+                      ? 'أدخل رقم الطلب...'
+                      : 'أدخل رقم الدفعة...'
                   }
-                  className="w-full px-6 py-4 pr-12 rounded-xl bg-white/10 border border-white/30 focus:border-white/50 focus:outline-none transition-colors text-right text-white placeholder-white/50 backdrop-blur-lg"
-                  dir="rtl"
+                  className="w-full px-6 py-4 bg-white/10 border border-white/30 rounded-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent backdrop-blur-lg text-lg"
+                  disabled={loading}
                 />
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50" />
+                <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+                  <Search className="w-5 h-5 text-white/50" />
+                </div>
               </div>
 
               {/* Search Button */}
               <button
                 type="submit"
-                disabled={loading}
-                className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white py-4 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                disabled={loading || !searchValue.trim()}
+                className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 disabled:from-gray-500 disabled:to-gray-600 text-white py-4 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
               >
                 {loading ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                    </svg>
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
                     جاري البحث...
-                  </span>
+                  </>
                 ) : (
-                  'بحث عن الطلبات'
+                  <>
+                    <Search className="w-5 h-5" />
+                    البحث عن الطلبات
+                  </>
                 )}
               </button>
             </form>
-
-            {/* Error Message */}
-            {error && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mt-4 p-4 bg-red-500/20 border border-red-300/30 rounded-lg text-red-300 text-right backdrop-blur-lg"
-              >
-                {error}
-              </motion.div>
-            )}
           </div>
         </motion.div>
 
         {/* Results */}
-        {searched && !loading && (
+        {searched && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto"
           >
-            {orders.length === 0 && !error ? (
+            {/* Loading State */}
+            {loading && (
               <div className="text-center py-12">
-                <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-                  <Package className="w-16 h-16 text-white/50 mx-auto mb-4" />
-                  <p className="text-white/80 text-lg">لم يتم العثور على أي طلبات</p>
-                  <p className="text-white/60 text-sm mt-2">تأكد من صحة البيانات المدخلة</p>
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-purple-500/20 to-blue-500/20 backdrop-blur-lg rounded-full mb-6 animate-pulse">
+                  <Loader2 className="w-10 h-10 text-purple-300 animate-spin" />
+                </div>
+                <p className="text-white/90 text-xl font-medium mb-2">جاري البحث...</p>
+                <p className="text-white/60">يرجى الانتظار قليلاً</p>
+              </div>
+            )}
+
+            {/* Error State */}
+            {error && !loading && (
+              <div className="text-center py-12">
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-red-500/20 backdrop-blur-lg rounded-full mb-6 border border-red-300/30">
+                  <AlertCircle className="w-10 h-10 text-red-300" />
+                </div>
+                <p className="text-red-300 text-xl font-bold mb-3">⚠️ خطأ في البحث</p>
+                <p className="text-red-300/80 text-lg mb-4">{error}</p>
+                <button
+                  onClick={resetSearch}
+                  className="px-6 py-3 bg-red-500/20 hover:bg-red-500/30 text-red-300 rounded-xl border border-red-300/30 transition-all duration-300"
+                >
+                  إعادة المحاولة
+                </button>
+              </div>
+            )}
+
+            {/* No Results */}
+            {!loading && !error && orders.length === 0 && searched && (
+              <div className="text-center py-12">
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-yellow-500/20 backdrop-blur-lg rounded-full mb-6 border border-yellow-300/30">
+                  <Package className="w-10 h-10 text-yellow-300" />
+                </div>
+                <p className="text-yellow-300 text-xl font-bold mb-3">📭 لا توجد طلبات</p>
+                <p className="text-yellow-300/80 text-lg mb-4">لم يتم العثور على طلبات بالمعلومات المدخلة</p>
+                <div className="bg-yellow-500/10 border border-yellow-300/20 rounded-xl p-4 max-w-md mx-auto">
+                  <p className="text-yellow-200 text-sm">
+                    💡 تأكد من صحة المعلومات المدخلة أو جرب نوع بحث آخر
+                  </p>
                 </div>
               </div>
-            ) : (
+            )}
+
+            {/* Orders List */}
+            {!loading && !error && orders.length > 0 && (
               <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-white text-right mb-6">
-                  النتائج ({orders.length})
-                </h2>
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center gap-3 bg-green-500/20 backdrop-blur-lg rounded-full px-6 py-3 border border-green-300/30">
+                    <CheckCircle className="w-6 h-6 text-green-300" />
+                    <p className="text-green-300 text-lg font-medium">
+                      تم العثور على <span className="font-bold">{orders.length}</span> طلب
+                    </p>
+                  </div>
+                </div>
 
                 {orders.map((order, index) => {
                   const statusInfo = getStatusInfo(order.status);
@@ -342,8 +415,8 @@ export default function OrdersPage() {
                       key={order.id}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 overflow-hidden hover:bg-white/15 transition-all duration-300"
+                      transition={{ delay: index * 0.1, duration: 0.5 }}
+                      className="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300"
                     >
                       {/* Order Header */}
                       <div className="bg-gradient-to-r from-white/10 to-white/5 p-6 border-b border-white/20">
@@ -356,7 +429,7 @@ export default function OrdersPage() {
                             </div>
                             <div className="text-right">
                               <h3 className="font-bold text-white text-lg">
-                                طلب #{order.id.substring(order.id.length - 8)}
+                                طلب #{order.id.substring(Math.max(0, order.id.length - 8))}
                               </h3>
                               <p className="text-white/60 flex items-center gap-2">
                                 <Calendar className="w-4 h-4" />
