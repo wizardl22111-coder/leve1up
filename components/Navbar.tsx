@@ -6,6 +6,7 @@ import { useApp } from '@/contexts/AppContext';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import Image from 'next/image';
+import ThemeSwitch from './ThemeSwitch';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -136,6 +137,9 @@ export default function Navbar() {
                 )}
               </div>
 
+              {/* Theme Switch */}
+              <ThemeSwitch />
+
               {/* Wishlist */}
               <Link
                 href="/wishlist"
@@ -216,6 +220,11 @@ export default function Navbar() {
 
             {/* Mobile Actions */}
             <div className="flex md:hidden items-center gap-2 sm:gap-3">
+              {/* Theme Switch Mobile */}
+              <div className="scale-75">
+                <ThemeSwitch />
+              </div>
+
               {/* Wishlist Mobile */}
               <Link
                 href="/wishlist"
@@ -422,6 +431,16 @@ export default function Navbar() {
                 </option>
               ))}
             </select>
+          </div>
+
+          {/* Theme Switch Mobile */}
+          <div className="px-2 py-3">
+            <label className="block text-sm font-bold text-primary-300 mb-3 px-3">
+              🌙 الوضع المظلم / الفاتح
+            </label>
+            <div className="flex justify-center">
+              <ThemeSwitch />
+            </div>
           </div>
         </div>
       </div>
