@@ -81,7 +81,7 @@ const ThemeSwitch: React.FC = () => {
 
       <style jsx>{`
         .theme-switch {
-          --toggle-size: 20px;
+          --toggle-size: 15px;
           --container-width: 5.625em;
           --container-height: 2.5em;
           --container-radius: 6.25em;

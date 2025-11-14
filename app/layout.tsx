@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/Toaster';
 import { AppProvider } from '@/contexts/AppContext';
 import ToastContainer from '@/components/ToastContainer';
 import SessionProvider from '@/components/SessionProvider';
+import FloatingThemeSwitch from '@/components/FloatingThemeSwitch';
 
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({ 
   weight: ['300', '400', '500', '600', '700'],
@@ -78,6 +79,7 @@ export default function RootLayout({
         <SessionProvider>
           <AppProvider>
             {children}
+            <FloatingThemeSwitch />
             <Toaster />
             <ToastContainer />
           </AppProvider>

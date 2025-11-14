@@ -352,6 +352,20 @@ html:not(.dark) body {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
+/* Light mode card styles */
+html:not(.dark) .card-dark {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(90, 200, 250, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+html:not(.dark) .card-dark:hover {
+  border-color: rgba(90, 200, 250, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
 @media (max-width: 768px) {
   .card-dark {
     border-radius: 0.75rem;
@@ -392,6 +406,20 @@ img {
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* Light mode text contrast */
+html:not(.dark) .text-contrast-high {
+  color: rgba(26, 26, 26, 0.95);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+html:not(.dark) .text-contrast-medium {
+  color: rgba(26, 26, 26, 0.8);
+}
+
+html:not(.dark) .text-contrast-low {
+  color: rgba(26, 26, 26, 0.6);
+}
+
 /* Scrollbar styling for dark theme */
 ::-webkit-scrollbar {
   width: 8px;
@@ -408,6 +436,20 @@ img {
 }
 
 ::-webkit-scrollbar-thumb:hover {
+  background: #33b8f5;
+}
+
+/* Light mode scrollbar */
+html:not(.dark) ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #5AC8FA;
+  border-radius: 4px;
+}
+
+html:not(.dark) ::-webkit-scrollbar-thumb:hover {
   background: #33b8f5;
 }
 
