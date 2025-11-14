@@ -3,13 +3,22 @@ import { Resend } from 'resend';
 import { createSecureDownloadUrl } from '@/lib/download-utils';
 
 // إعداد Resend
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 // ✅ إجبار dynamic rendering
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   try {
+    // التحقق من وجود مفتاح Resend API
+    if (!resend) {
+      console.error('❌ Resend API key not configured');
+      return NextResponse.json(
+        { error: 'خدمة البريد الإلكتروني غير متاحة حالياً' },
+        { status: 503 }
+      );
+    }
+
     const body = await req.json();
     const { orderId, customerEmail, cartItems, totalAmount, currency, downloadLinks } = body;
 

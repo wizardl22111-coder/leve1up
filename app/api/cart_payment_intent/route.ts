@@ -11,7 +11,7 @@ const redis = new Redis({
 });
 
 // إعداد Resend
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 // ✅ إجبار dynamic rendering
 export const dynamic = 'force-dynamic';
@@ -75,11 +75,12 @@ export async function POST(req: NextRequest) {
 
     // إرسال إيميل تأكيد الطلب (اختياري)
     try {
-      const productsList = cartItems.map((item: any) => 
-        `• ${item.name} (الكمية: ${item.quantity}) - ${item.price} ${currency}`
-      ).join('\n');
+      if (resend) {
+        const productsList = cartItems.map((item: any) => 
+          `• ${item.name} (الكمية: ${item.quantity}) - ${item.price} ${currency}`
+        ).join('\n');
 
-      await resend.emails.send({
+        await resend.emails.send({
         from: 'Leve1Up Store <orders@leve1up.store>',
         to: [customerEmail],
         subject: `تأكيد طلبك #${orderId} - Leve1Up`,
@@ -122,9 +123,10 @@ export async function POST(req: NextRequest) {
             </div>
           </div>
         `
-      });
+        });
 
-      console.log('✅ Order confirmation email sent to:', customerEmail);
+        console.log('✅ Order confirmation email sent to:', customerEmail);
+      }
     } catch (emailError) {
       console.error('❌ Failed to send order confirmation email:', emailError);
       // لا نوقف العملية إذا فشل الإيميل
