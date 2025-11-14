@@ -106,13 +106,7 @@ async function sendOrderEmail(order: any, amount: number, currency: string): Pro
               <p style="margin: 10px 0 0 0; color: #059669; font-size: 14px;">تاريخ الدفع: ${currentDate}</p>
             </div>
 
-            <!-- Support Section -->
-            <div style="background: #fef3c7; border: 1px solid #f59e0b; padding: 20px; margin: 30px 0; border-radius: 12px; text-align: center;">
-              <p style="margin: 0 0 10px 0; color: #92400e; font-weight: bold; font-size: 16px;">💡 هل تحتاج مساعدة؟</p>
-              <p style="margin: 0; color: #78350f; font-size: 14px;">
-                تواصل معنا على: <a href="mailto:support@leve1up.store" style="color: #f59e0b; text-decoration: none; font-weight: bold;">support@leve1up.store</a>
-              </p>
-            </div>
+
 
             <div style="text-align: center; margin-top: 40px;">
               <p style="font-size: 16px; color: #6b7280; margin: 0 0 10px 0;">مع أطيب التحيات،</p>

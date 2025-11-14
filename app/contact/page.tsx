@@ -271,45 +271,7 @@ export default function ContactPage() {
             </form>
           </motion.div>
 
-          {/* معلومات المتجر */}
-          <motion.div 
-            className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl border border-primary-300/20 p-8 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            <h3 className="text-xl font-bold text-white mb-6 text-center">
-              📞 معلومات المتجر
-            </h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center mb-3 mx-auto">
-                  <Mail className="w-6 h-6 text-white" />
-                </div>
-                <h4 className="text-white font-medium mb-2">البريد الإلكتروني</h4>
-                <a 
-                  href="mailto:support@leve1up.store"
-                  className="text-primary-400 hover:text-primary-300 transition-colors"
-                >
-                  support@leve1up.store
-                </a>
-              </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mb-3 mx-auto">
-                  <Home className="w-6 h-6 text-white" />
-                </div>
-                <h4 className="text-white font-medium mb-2">الموقع الإلكتروني</h4>
-                <a 
-                  href="https://leve1up.store"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary-400 hover:text-primary-300 transition-colors"
-                >
-                  https://leve1up.store
-                </a>
-              </div>
-            </div>
-          </motion.div>
+
 
           {/* زر العودة للرئيسية */}
           <motion.div 
@@ -358,4 +320,3 @@ export default function ContactPage() {
     </main>
   );
 }
-

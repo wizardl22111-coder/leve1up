@@ -42,7 +42,7 @@ export default function Footer() {
                 href="https://wa.me/971503492848"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 sm:w-14 sm:h-14 bg-[#25D366]/90 hover:bg-[#25D366] rounded-xl flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 touch-manipulation shadow-lg shadow-green-500/20"
+                className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 rounded-xl flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 touch-manipulation shadow-lg shadow-primary-500/30"
                 aria-label="واتساب"
               >
                 <FaWhatsapp className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -51,7 +51,7 @@ export default function Footer() {
                 href="https://www.instagram.com/lvlup3211/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-[#833AB4] via-[#E1306C] to-[#F56040] hover:from-[#9B5DE5] hover:via-[#F15A8A] hover:to-[#FF7858] rounded-xl flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 touch-manipulation shadow-lg shadow-pink-500/20"
+                className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 rounded-xl flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 touch-manipulation shadow-lg shadow-accent-500/30"
                 aria-label="إنستغرام"
               >
                 <FaInstagram className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -60,7 +60,7 @@ export default function Footer() {
                 href="https://www.tiktok.com/@lvlup321"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 sm:w-14 sm:h-14 bg-black hover:bg-gray-900 border-2 border-[#25F4EE] rounded-xl flex items-center justify-center text-[#25F4EE] hover:text-white hover:bg-[#25F4EE] hover:scale-110 active:scale-95 transition-all duration-300 touch-manipulation shadow-lg shadow-cyan-400/20"
+                className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-primary-400 to-accent-500 hover:from-primary-500 hover:to-accent-600 border-2 border-primary-300/30 hover:border-primary-300/50 rounded-xl flex items-center justify-center text-white hover:scale-110 active:scale-95 transition-all duration-300 touch-manipulation shadow-lg shadow-primary-400/30"
                 aria-label="تيك توك"
               >
                 <FaTiktok className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -162,41 +162,41 @@ export default function Footer() {
         <div className="border-t border-primary-300/10 pt-8 pb-4">
           <div className="text-center">
             <h4 className="text-base sm:text-lg font-bold mb-4 text-primary-300">طرق الدفع المتاحة</h4>
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-              <div className="bg-white rounded-lg p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+              <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
                   alt="Google Pay"
-                  width={60}
-                  height={25}
-                  className="h-5 sm:h-6 w-auto"
+                  width={45}
+                  height={18}
+                  className="h-4 w-auto"
                 />
               </div>
-              <div className="bg-white rounded-lg p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg"
                   alt="Apple Pay"
-                  width={60}
-                  height={25}
-                  className="h-5 sm:h-6 w-auto"
+                  width={45}
+                  height={18}
+                  className="h-4 w-auto"
                 />
               </div>
-              <div className="bg-white rounded-lg p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
                   alt="Visa"
-                  width={60}
-                  height={20}
-                  className="h-4 sm:h-5 w-auto"
+                  width={45}
+                  height={18}
+                  className="h-4 w-auto"
                 />
               </div>
-              <div className="bg-white rounded-lg p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
-                  src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                  src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg"
                   alt="Mastercard"
-                  width={50}
-                  height={30}
-                  className="h-5 sm:h-6 w-auto"
+                  width={45}
+                  height={18}
+                  className="h-4 w-auto"
                 />
               </div>
             </div>
@@ -205,16 +205,11 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-primary-300/10 pt-6">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-right">
+          <div className="text-center">
+            <p className="text-gray-400 text-xs sm:text-sm">
               © {currentYear} جميع الحقوق محفوظة لمتجر{' '}
               <span className="text-primary-300 font-bold">Level Up</span>
             </p>
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-500">
-              <span>صُنع بـ</span>
-              <span className="text-accent-600 text-base">❤️</span>
-              <span>في الإمارات</span>
-            </div>
           </div>
         </div>
       </div>
