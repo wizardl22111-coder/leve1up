@@ -120,7 +120,9 @@ export async function GET(
     console.log('✅ File fetched successfully. Size:', fileBlob.size);
     
     // Create filename from product name (sanitize it)
-    const filename = `${productName.replace(/[^a-zA-Z0-9\u0600-\u06FF\s]/g, '')}.pdf`;
+    // Check if productName already ends with .pdf to avoid duplication
+    const sanitizedName = productName.replace(/[^a-zA-Z0-9\u0600-\u06FF\s]/g, '');
+    const filename = sanitizedName.endsWith('.pdf') ? sanitizedName : `${sanitizedName}.pdf`;
 
     // Return the file with secure headers
     return new NextResponse(fileBlob, {
