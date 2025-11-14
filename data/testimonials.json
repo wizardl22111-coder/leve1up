@@ -60,18 +60,6 @@
     "verified": true
   },
   {
-    "id": 6,
-    "name": "مشاعل المطيري",
-    "nameEn": "Mashael Al-Mutairi",
-    "gender": "female",
-    "rating": 5,
-    "text": "أكثر شي أعجبني إن كل فكرة قابلة للتطبيق، مو بس كلام تحفيزي فاضي، فعلاً تقدر تبدأ.",
-    "purchaseDate": "2024-11-03",
-    "timeAgo": "منذ 9 أيام",
-    "productId": 1,
-    "verified": true
-  },
-  {
     "id": 7,
     "name": "راكان العنزي",
     "nameEn": "Rakan Al-Anazi",
