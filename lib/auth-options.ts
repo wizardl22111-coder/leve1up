@@ -1,6 +1,8 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
+import FacebookProvider from "next-auth/providers/facebook";
+import DiscordProvider from "next-auth/providers/discord";
 import AppleProvider from "next-auth/providers/apple";
 import bcrypt from "bcryptjs";
 import { Redis } from '@upstash/redis';
@@ -80,6 +82,32 @@ export const authOptions: NextAuthOptions = {
             prompt: "consent",
             access_type: "offline",
             response_type: "code"
+          }
+        }
+      })
+    ] : []),
+
+    // تسجيل الدخول عبر Facebook
+    ...(process.env.FACEBOOK_CLIENT_ID && process.env.FACEBOOK_CLIENT_SECRET ? [
+      FacebookProvider({
+        clientId: process.env.FACEBOOK_CLIENT_ID,
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+        authorization: {
+          params: {
+            scope: "email"
+          }
+        }
+      })
+    ] : []),
+
+    // تسجيل الدخول عبر Discord
+    ...(process.env.DISCORD_CLIENT_ID && process.env.DISCORD_CLIENT_SECRET ? [
+      DiscordProvider({
+        clientId: process.env.DISCORD_CLIENT_ID,
+        clientSecret: process.env.DISCORD_CLIENT_SECRET,
+        authorization: {
+          params: {
+            scope: "identify email"
           }
         }
       })
@@ -190,10 +218,10 @@ export const authOptions: NextAuthOptions = {
           if (account?.provider !== "credentials") {
             const newUser: User = {
               id: user.id || `user_${Date.now()}`,
-              name: user.name || profile?.name || "مستخدم جديد",
+              name: user.name || profile?.name || (profile as any)?.username || "مستخدم جديد",
               email: user.email,
               provider: account?.provider,
-              image: user.image || profile?.image,
+              image: user.image || profile?.image || (profile as any)?.avatar_url,
               createdAt: new Date().toISOString(),
             };
 
