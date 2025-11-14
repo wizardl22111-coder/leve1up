@@ -104,21 +104,7 @@ export async function POST(req: NextRequest) {
               </ul>
             </div>
 
-            <!-- Support Section -->
-            <div style="background-color: #ecfdf5; padding: 20px; border-radius: 8px; margin-bottom: 25px;">
-              <h3 style="color: #065f46; margin: 0 0 15px 0; font-size: 16px;">💬 هل تحتاج مساعدة؟</h3>
-              <p style="color: #065f46; margin: 0 0 15px 0;">فريق الدعم جاهز لمساعدتك في أي وقت:</p>
-              <div style="text-align: center;">
-                <a href="https://wa.me/971503492848?text=${encodeURIComponent('مرحباً، لدي استفسار بخصوص طلبي #' + orderId)}" 
-                   style="display: inline-block; background-color: #25d366; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 5px;">
-                  💬 واتساب
-                </a>
-                <a href="mailto:support@leve1up.store?subject=استفسار عن الطلب ${orderId}" 
-                   style="display: inline-block; background-color: #3b82f6; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 5px;">
-                  📧 إيميل
-                </a>
-              </div>
-            </div>
+
 
             <!-- Review Request -->
             <div style="background-color: #fef7cd; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 25px;">

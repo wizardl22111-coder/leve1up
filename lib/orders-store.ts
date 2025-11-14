@@ -326,17 +326,57 @@ export function getOrdersByEmail(email: string): Order[] {
 export async function findOrdersByCustomerEmail(email: string): Promise<Order[]> {
   if (isRedisAvailable()) {
     try {
-      // في Redis، نحتاج للبحث في جميع الطلبات (هذا ليس مثالياً، لكنه يعمل)
-      // في التطبيق الحقيقي، يمكن إنشاء index للعملاء
+      const redis = getRedis();
+      if (!redis) {
+        console.log('❌ Redis not available, falling back to memory');
+        return getOrdersByEmail(email);
+      }
+
+      // البحث في Redis باستخدام pattern matching
+      // نبحث عن جميع المفاتيح التي تبدأ بـ order:
+      const keys = await redis.keys('order:*');
+      console.log(`🔍 Found ${keys.length} order keys in Redis`);
       
-      // للآن، سنستخدم الـ fallback للبحث
-      return getOrdersByEmail(email);
+      if (keys.length === 0) {
+        console.log('📭 No orders found in Redis');
+        return [];
+      }
+
+      // جلب جميع الطلبات
+      const orders: Order[] = [];
+      
+      for (const key of keys) {
+        try {
+          const orderJson = await redis.get<string>(key);
+          if (orderJson) {
+            const order = typeof orderJson === 'string' ? JSON.parse(orderJson) : orderJson;
+            
+            // فلترة الطلبات حسب البريد الإلكتروني
+            if (order.customerEmail?.toLowerCase() === email.toLowerCase()) {
+              orders.push(order);
+              console.log(`✅ Found order for ${email}: ${order.id}`);
+            }
+          }
+        } catch (parseError) {
+          console.error(`❌ Error parsing order from key ${key}:`, parseError);
+        }
+      }
+
+      // ترتيب الطلبات حسب التاريخ (الأحدث أولاً)
+      const sortedOrders = orders.sort((a, b) => 
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+
+      console.log(`📦 Found ${sortedOrders.length} orders for customer: ${email}`);
+      return sortedOrders;
+      
     } catch (error) {
       console.error('❌ Redis Error during findOrdersByCustomerEmail, falling back to memory:', error);
     }
   }
   
   // Fallback: استخدام الدالة الموجودة
+  console.log('🔄 Using memory fallback for orders');
   return getOrdersByEmail(email);
 }
 
