@@ -42,7 +42,10 @@ function OrderSuccessContent() {
     setIsDownloading(true);
     try {
       // Download the file
-      window.location.href = `/api/download/${token}`;
+      const downloadUrl = productId 
+        ? `/api/download/${token}?product=${productId}`
+        : `/api/download/${token}`;
+      window.location.href = downloadUrl;
     } catch (error) {
       console.error('Download error:', error);
       alert('حدث خطأ أثناء التحميل. يرجى المحاولة مرة أخرى.');
