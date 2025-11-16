@@ -265,170 +265,180 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Sidebar Overlay */}
-      {isMobileMenuOpen && (
-        <div 
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300"
-          onClick={() => setIsMobileMenuOpen(false)}
-          style={{ top: '64px' }}
-        />
-      )}
-
-      {/* Mobile Sidebar Menu */}
+      {/* Mobile Full-Page Overlay Sidebar */}
       <div 
-        className={`fixed top-16 left-0 h-[calc(100vh-4rem)] w-full max-w-sm bg-dark-400/98 backdrop-blur-lg border-l border-primary-300/10 shadow-2xl z-50 md:hidden transform transition-transform duration-300 ease-in-out overflow-y-auto ${
-          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed inset-0 bg-black/80 backdrop-blur-lg z-50 md:hidden transition-all duration-500 ease-in-out ${
+          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
+        onClick={() => setIsMobileMenuOpen(false)}
       >
-        <div className="p-6 space-y-1">
-          {/* Menu Title */}
-          <div className="mb-6">
-            <h3 className="text-xl font-bold bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent">
-              القائمة الرئيسية
-            </h3>
-            <div className="h-1 w-16 bg-gradient-to-r from-primary-300 to-accent-600 rounded-full mt-2" />
-          </div>
-
-          {/* Navigation Links */}
-          <Link
-            href="/"
-            className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
-            onClick={handleLinkClick}
-          >
-            <Home className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
-            <span>الرئيسية</span>
-          </Link>
-
-          <Link
-            href="/#products"
-            className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
-            onClick={handleLinkClick}
-          >
-            <Package className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
-            <span>المنتجات</span>
-          </Link>
-
-
-
-          <Link
-            href="/contact"
-            className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
-            onClick={handleLinkClick}
-          >
-            <Mail className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
-            <span>تواصل معنا</span>
-          </Link>
-
-          <div className="my-4 h-px bg-gradient-to-r from-transparent via-primary-300/20 to-transparent" />
-
-          {/* Auth Section Mobile */}
-          {status === "loading" ? (
-            <div className="flex items-center justify-center py-4">
-              <div className="w-8 h-8 border-2 border-primary-300 border-t-transparent rounded-full animate-spin"></div>
-            </div>
-          ) : session ? (
-            <>
-              <Link
-                href="/profile"
-                className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
-                onClick={handleLinkClick}
-              >
-                {session.user?.image ? (
-                  <img 
-                    src={session.user.image} 
-                    alt={session.user?.name || 'User'} 
-                    className="w-6 h-6 rounded-full"
-                  />
-                ) : (
-                  <User className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
-                )}
-                <span>الملف الشخصي</span>
-              </Link>
+        <div 
+          className={`w-full h-full flex items-center justify-center p-6 transform transition-all duration-500 ease-out ${
+            isMobileMenuOpen ? 'scale-100 translate-y-0' : 'scale-95 translate-y-8'
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="bg-dark-400/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-primary-300/20 w-full max-w-md max-h-[85vh] overflow-hidden">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-primary-300/20 to-accent-600/20 p-6 text-center border-b border-primary-300/10">
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent">
+                Level Up
+              </h3>
+              <p className="text-gray-400 text-sm mt-1">القائمة الرئيسية</p>
               <button
-                onClick={() => {
-                  signOut({ callbackUrl: '/' });
-                  setIsMobileMenuOpen(false);
-                }}
-                className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-red-400 hover:text-red-300 hover:bg-red-500/10 active:bg-red-500/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors"
               >
-                <LogOut className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                <span>تسجيل الخروج</span>
+                <X className="w-6 h-6 text-gray-300" />
               </button>
-            </>
-          ) : (
-            <>
-              <Link
-                href="/login"
-                className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-blue-300 hover:text-blue-200 hover:bg-blue-500/10 active:bg-blue-500/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
-                onClick={handleLinkClick}
-              >
-                <LogIn className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                <span>تسجيل الدخول</span>
-              </Link>
-              <Link
-                href="/register"
-                className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-purple-300 hover:text-purple-200 hover:bg-purple-500/10 active:bg-purple-500/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
-                onClick={handleLinkClick}
-              >
-                <User className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                <span>إنشاء حساب</span>
-              </Link>
-            </>
-          )}
+            </div>
 
-          <div className="my-4 h-px bg-gradient-to-r from-transparent via-primary-300/20 to-transparent" />
+            {/* Content */}
+            <div className="p-6 overflow-y-auto max-h-[calc(85vh-120px)] text-center">
+              {/* Navigation Links */}
+              <div className="space-y-3 mb-6">
+                <Link
+                  href="/"
+                  className="flex items-center justify-center gap-4 w-full px-6 py-4 text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-2xl transition-all duration-300 font-bold touch-manipulation group"
+                  onClick={handleLinkClick}
+                >
+                  <Home className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
+                  <span>الرئيسية</span>
+                </Link>
 
-          {/* Policy Links */}
-          <Link
-            href="/privacy"
-            className="flex items-center gap-4 w-full px-5 py-4 text-base text-gray-400 hover:text-white hover:bg-accent-600/10 active:bg-accent-600/20 rounded-xl transition-all duration-200 font-medium touch-manipulation"
-            onClick={handleLinkClick}
-          >
-            <span>سياسة الخصوصية</span>
-          </Link>
+                <Link
+                  href="/#products"
+                  className="flex items-center justify-center gap-4 w-full px-6 py-4 text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-2xl transition-all duration-300 font-bold touch-manipulation group"
+                  onClick={handleLinkClick}
+                >
+                  <Package className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
+                  <span>المنتجات</span>
+                </Link>
 
-          <Link
-            href="/terms"
-            className="flex items-center gap-4 w-full px-5 py-4 text-base text-gray-400 hover:text-white hover:bg-accent-600/10 active:bg-accent-600/20 rounded-xl transition-all duration-200 font-medium touch-manipulation"
-            onClick={handleLinkClick}
-          >
-            <span>شروط الاستخدام</span>
-          </Link>
+                <Link
+                  href="/contact"
+                  className="flex items-center justify-center gap-4 w-full px-6 py-4 text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-2xl transition-all duration-300 font-bold touch-manipulation group"
+                  onClick={handleLinkClick}
+                >
+                  <Mail className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
+                  <span>تواصل معنا</span>
+                </Link>
+              </div>
 
-          <Link
-            href="/refund"
-            className="flex items-center gap-4 w-full px-5 py-4 text-base text-gray-400 hover:text-white hover:bg-accent-600/10 active:bg-accent-600/20 rounded-xl transition-all duration-200 font-medium touch-manipulation"
-            onClick={handleLinkClick}
-          >
-            <span>سياسة الاستبدال</span>
-          </Link>
+              <div className="my-6 h-px bg-gradient-to-r from-transparent via-primary-300/30 to-transparent" />
 
-          <div className="my-4 h-px bg-gradient-to-r from-transparent via-primary-300/20 to-transparent" />
+              {/* Auth Section Mobile */}
+              <div className="space-y-3 mb-6">
+                {status === "loading" ? (
+                  <div className="flex items-center justify-center py-4">
+                    <div className="w-8 h-8 border-2 border-primary-300 border-t-transparent rounded-full animate-spin"></div>
+                  </div>
+                ) : session ? (
+                  <>
+                    <Link
+                      href="/profile"
+                      className="flex items-center justify-center gap-4 w-full px-6 py-4 text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-2xl transition-all duration-300 font-bold touch-manipulation group"
+                      onClick={handleLinkClick}
+                    >
+                      {session.user?.image ? (
+                        <img 
+                          src={session.user.image} 
+                          alt={session.user?.name || 'User'} 
+                          className="w-6 h-6 rounded-full"
+                        />
+                      ) : (
+                        <User className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
+                      )}
+                      <span>الملف الشخصي</span>
+                    </Link>
+                    <button
+                      onClick={() => {
+                        signOut({ callbackUrl: '/' });
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="flex items-center justify-center gap-4 w-full px-6 py-4 text-lg text-red-400 hover:text-red-300 hover:bg-red-500/10 active:bg-red-500/20 rounded-2xl transition-all duration-300 font-bold touch-manipulation group"
+                    >
+                      <LogOut className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                      <span>تسجيل الخروج</span>
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/login"
+                      className="flex items-center justify-center gap-4 w-full px-6 py-4 text-lg text-blue-300 hover:text-blue-200 hover:bg-blue-500/10 active:bg-blue-500/20 rounded-2xl transition-all duration-300 font-bold touch-manipulation group"
+                      onClick={handleLinkClick}
+                    >
+                      <LogIn className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                      <span>تسجيل الدخول</span>
+                    </Link>
+                    <Link
+                      href="/register"
+                      className="flex items-center justify-center gap-4 w-full px-6 py-4 text-lg text-purple-300 hover:text-purple-200 hover:bg-purple-500/10 active:bg-purple-500/20 rounded-2xl transition-all duration-300 font-bold touch-manipulation group"
+                      onClick={handleLinkClick}
+                    >
+                      <User className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                      <span>إنشاء حساب</span>
+                    </Link>
+                  </>
+                )}
+              </div>
 
-          {/* Currency Selector Mobile */}
-          <div className="px-2 py-3">
-            <label className="block text-sm font-bold text-primary-300 mb-3 px-3">
-              <Globe className="w-4 h-4 inline-block ml-2" />
-              اختر العملة
-            </label>
-            <select
-              value={currency}
-              onChange={(e) => {
-                setCurrency(e.target.value as any);
-                setIsMobileMenuOpen(false);
-              }}
-              className="w-full bg-dark-300 text-white text-base px-5 py-4 rounded-xl border-2 border-primary-300/40 focus:border-primary-300 focus:outline-none font-semibold touch-manipulation transition-all duration-200 hover:border-primary-300/60 shadow-lg"
-              style={{ fontSize: '16px' }} // Prevent zoom on iOS
-            >
-              {currencies.map((curr) => (
-                <option key={curr.code} value={curr.code} className="bg-dark-300 text-white py-2">
-                  {curr.name} ({curr.symbol})
-                </option>
-              ))}
-            </select>
+              <div className="my-6 h-px bg-gradient-to-r from-transparent via-primary-300/30 to-transparent" />
+
+              {/* Policy Links */}
+              <div className="space-y-2 mb-6">
+                <Link
+                  href="/privacy"
+                  className="block w-full px-6 py-3 text-center text-gray-400 hover:text-white hover:bg-accent-600/10 active:bg-accent-600/20 rounded-xl transition-all duration-300 font-medium touch-manipulation"
+                  onClick={handleLinkClick}
+                >
+                  سياسة الخصوصية
+                </Link>
+
+                <Link
+                  href="/terms"
+                  className="block w-full px-6 py-3 text-center text-gray-400 hover:text-white hover:bg-accent-600/10 active:bg-accent-600/20 rounded-xl transition-all duration-300 font-medium touch-manipulation"
+                  onClick={handleLinkClick}
+                >
+                  شروط الاستخدام
+                </Link>
+
+                <Link
+                  href="/refund"
+                  className="block w-full px-6 py-3 text-center text-gray-400 hover:text-white hover:bg-accent-600/10 active:bg-accent-600/20 rounded-xl transition-all duration-300 font-medium touch-manipulation"
+                  onClick={handleLinkClick}
+                >
+                  سياسة الاستبدال
+                </Link>
+              </div>
+
+              <div className="my-6 h-px bg-gradient-to-r from-transparent via-primary-300/30 to-transparent" />
+
+              {/* Currency Selector Mobile */}
+              <div className="text-center">
+                <label className="block text-sm font-bold text-primary-300 mb-4">
+                  <Globe className="w-4 h-4 inline-block ml-2" />
+                  اختر العملة
+                </label>
+                <select
+                  value={currency}
+                  onChange={(e) => {
+                    setCurrency(e.target.value as any);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full bg-dark-300 text-white text-base px-6 py-4 rounded-2xl border-2 border-primary-300/40 focus:border-primary-300 focus:outline-none font-bold touch-manipulation transition-all duration-300 hover:border-primary-300/60 shadow-lg text-center"
+                  style={{ fontSize: '16px' }} // Prevent zoom on iOS
+                >
+                  {currencies.map((curr) => (
+                    <option key={curr.code} value={curr.code} className="bg-dark-300 text-white py-2">
+                      {curr.name} ({curr.symbol})
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
           </div>
-
-
         </div>
       </div>
     </>
