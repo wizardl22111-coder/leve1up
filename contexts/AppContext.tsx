@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { convertPrice, type Currency as CurrencyType } from '@/lib/currency';
+import { getDefaultCountry, calculateTax, type Country, type TaxCalculation } from '@/lib/tax';
 
 // إعادة تصدير Currency من lib/currency للتوافق
 type Currency = CurrencyType;
@@ -30,6 +31,10 @@ interface AppContextType {
   removeFromWishlist: (id: number) => void;
   cartTotal: number; // الآن يُحسب بالعملة الحالية
   cartCount: number;
+  // إضافات جديدة للضرائب والدولة
+  selectedCountry: Country;
+  setSelectedCountry: (country: Country) => void;
+  taxCalculation: TaxCalculation | null;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -39,6 +44,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [currency, setCurrency] = useState<Currency>('SAR');
   const [cart, setCart] = useState<CartItem[]>([]);
   const [wishlist, setWishlist] = useState<number[]>([]);
+  const [selectedCountry, setSelectedCountry] = useState<Country>(getDefaultCountry());
+  const [taxCalculation, setTaxCalculation] = useState<TaxCalculation | null>(null);
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -46,6 +53,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const savedCurrency = localStorage.getItem('currency') as Currency | null;
     const savedCart = localStorage.getItem('cart');
     const savedWishlist = localStorage.getItem('wishlist');
+    const savedCountry = localStorage.getItem('selectedCountry');
 
     if (savedTheme) {
       setTheme(savedTheme);
@@ -60,6 +68,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
     if (savedCurrency) setCurrency(savedCurrency);
     if (savedCart) setCart(JSON.parse(savedCart));
     if (savedWishlist) setWishlist(JSON.parse(savedWishlist));
+    if (savedCountry) {
+      try {
+        const country = JSON.parse(savedCountry);
+        setSelectedCountry(country);
+      } catch (e) {
+        // في حالة خطأ في parsing، استخدم الدولة الافتراضية
+        setSelectedCountry(getDefaultCountry());
+      }
+    }
   }, []);
 
   // Save to localStorage
@@ -79,6 +96,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     localStorage.setItem('wishlist', JSON.stringify(wishlist));
   }, [wishlist]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedCountry', JSON.stringify(selectedCountry));
+  }, [selectedCountry]);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
@@ -131,6 +152,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
   
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
+  // حساب الضرائب عند تغيير السلة أو الدولة
+  useEffect(() => {
+    if (cartTotal > 0) {
+      const calculation = calculateTax(cartTotal, selectedCountry.code, currency);
+      setTaxCalculation(calculation);
+    } else {
+      setTaxCalculation(null);
+    }
+  }, [cartTotal, selectedCountry, currency]);
+
   return (
     <AppContext.Provider
       value={{
@@ -148,6 +179,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
         removeFromWishlist,
         cartTotal,
         cartCount,
+        selectedCountry,
+        setSelectedCountry,
+        taxCalculation,
       }}
     >
       {children}

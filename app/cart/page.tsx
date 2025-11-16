@@ -3,32 +3,30 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, CreditCard } from 'lucide-react';
+import CountrySelector from '@/components/CountrySelector';
+import TrustBadges from '@/components/TrustBadges';
+import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, CreditCard, Info } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
+import { getCurrencySymbol } from '@/lib/currency';
+import { formatTaxDisplay, getTaxExplanation } from '@/lib/tax';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function CartPage() {
-  const { cart, removeFromCart, updateCartQuantity, cartTotal, currency, clearCart } = useApp();
+  const { 
+    cart, 
+    removeFromCart, 
+    updateCartQuantity, 
+    cartTotal, 
+    currency, 
+    clearCart,
+    selectedCountry,
+    setSelectedCountry,
+    taxCalculation
+  } = useApp();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [error, setError] = useState('');
   const [customerEmail, setCustomerEmail] = useState('');
-
-  const getCurrencySymbol = () => {
-    switch (currency) {
-      case 'AED': return 'د.إ';
-      case 'SAR': return 'ر.س';
-      case 'BHD': return 'د.ب';
-      case 'KWD': return 'د.ك';
-      case 'OMR': return 'ر.ع';
-      case 'QAR': return 'ر.ق';
-      case 'USD': return '$';
-      case 'EUR': return '€';
-      case 'GBP': return '£';
-      case 'INR': return '₹';
-      default: return 'ر.س';
-    }
-  };
 
   const handleCheckout = async () => {
     setIsCheckingOut(true);
@@ -52,6 +50,8 @@ export default function CartPage() {
       }
 
       // 📤 إرسال الطلب إلى API
+      const finalAmount = taxCalculation ? taxCalculation.total : cartTotal;
+      
       const response = await fetch('/api/cart_payment_intent', {
         method: 'POST',
         headers: {
@@ -59,7 +59,11 @@ export default function CartPage() {
         },
         body: JSON.stringify({
           cartItems: cartItems,
-          totalAmount: cartTotal,
+          totalAmount: finalAmount,
+          subtotal: cartTotal,
+          taxAmount: taxCalculation?.vatAmount || 0,
+          taxRate: taxCalculation?.vatRate || 0,
+          country: selectedCountry,
           currency: currency,
           customerEmail: customerEmail
         }),
@@ -77,7 +81,12 @@ export default function CartPage() {
         
         // 💾 حفظ بيانات السلة في localStorage لعرضها في صفحة النجاح
         localStorage.setItem('leve1up_email', customerEmail);
-        localStorage.setItem('leve1up_total_amount', cartTotal.toString());
+        localStorage.setItem('leve1up_total_amount', finalAmount.toString());
+        localStorage.setItem('leve1up_subtotal', cartTotal.toString());
+        if (taxCalculation) {
+          localStorage.setItem('leve1up_tax_amount', taxCalculation.vatAmount.toString());
+          localStorage.setItem('leve1up_tax_rate', taxCalculation.vatRate.toString());
+        }
         // السلة محفوظة بالفعل في AppContext
         
         // 🔄 التوجيه إلى صفحة الدفع
@@ -168,7 +177,7 @@ export default function CartPage() {
                       {item.name}
                     </h3>
                     <p className="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">
-                      {item.price.toFixed(2)} {getCurrencySymbol()}
+                      {item.price.toFixed(2)} {getCurrencySymbol(currency)}
                     </p>
 
                     {/* Quantity Controls */}
@@ -204,7 +213,7 @@ export default function CartPage() {
                   <div className="text-left md:text-right">
                     <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">المجموع</p>
                     <p className="text-xl font-bold text-gray-900 dark:text-white">
-                      {(item.price * item.quantity).toFixed(2)} {getCurrencySymbol()}
+                      {(item.price * item.quantity).toFixed(2)} {getCurrencySymbol(currency)}
                     </p>
                   </div>
                 </div>
@@ -226,21 +235,53 @@ export default function CartPage() {
                   ملخص الطلب
                 </h2>
 
+                {/* Country Selector */}
+                <div className="mb-6">
+                  <CountrySelector
+                    selectedCountry={selectedCountry}
+                    onCountryChange={setSelectedCountry}
+                  />
+                </div>
+
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between text-gray-600 dark:text-gray-300">
                     <span>المجموع الفرعي</span>
-                    <span className="font-semibold">{cartTotal.toFixed(2)} {getCurrencySymbol()}</span>
+                    <span className="font-semibold">{cartTotal.toFixed(2)} {getCurrencySymbol(currency)}</span>
                   </div>
+                  
+                  {/* Tax Display */}
+                  {taxCalculation && taxCalculation.vatRate > 0 && (
+                    <div className="flex justify-between text-gray-600 dark:text-gray-300">
+                      <span className="flex items-center gap-1">
+                        ضريبة القيمة المضافة ({taxCalculation.vatRate}%)
+                        <Info className="w-4 h-4" />
+                      </span>
+                      <span className="font-semibold">{taxCalculation.vatAmount.toFixed(2)} {getCurrencySymbol(currency)}</span>
+                    </div>
+                  )}
+                  
                   <div className="flex justify-between text-gray-600 dark:text-gray-300">
                     <span>التوصيل</span>
                     <span className="font-semibold text-green-600">مجاني</span>
                   </div>
+                  
                   <div className="border-t border-gray-300 dark:border-gray-600 pt-4">
                     <div className="flex justify-between text-lg font-bold text-gray-900 dark:text-white">
                       <span>الإجمالي</span>
-                      <span>{cartTotal.toFixed(2)} {getCurrencySymbol()}</span>
+                      <span>
+                        {taxCalculation ? taxCalculation.total.toFixed(2) : cartTotal.toFixed(2)} {getCurrencySymbol(currency)}
+                      </span>
                     </div>
                   </div>
+
+                  {/* Tax Explanation */}
+                  {taxCalculation && (
+                    <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-200 dark:border-blue-800">
+                      <p className="text-xs text-blue-800 dark:text-blue-200">
+                        {getTaxExplanation(selectedCountry.code)}
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 {/* Email Input */}
@@ -295,14 +336,9 @@ export default function CartPage() {
                   </div>
                 </div>
 
-                {/* Security Badge */}
-                <div className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-                  <div className="flex items-center gap-2 text-green-800 dark:text-green-200">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-sm font-semibold">دفع آمن ومشفر</span>
-                  </div>
+                {/* Trust Badges */}
+                <div className="mt-6">
+                  <TrustBadges variant="compact" />
                 </div>
               </div>
             </div>
