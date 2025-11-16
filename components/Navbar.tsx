@@ -417,25 +417,140 @@ export default function Navbar() {
 
               {/* Currency Selector Mobile */}
               <div className="text-center">
-                <label className="block text-sm font-bold text-primary-300 mb-4">
-                  <Globe className="w-4 h-4 inline-block ml-2" />
+                <label className="block text-lg font-bold text-primary-300 mb-4">
+                  <Globe className="w-5 h-5 inline-block ml-2" />
                   اختر العملة
                 </label>
-                <select
-                  value={currency}
-                  onChange={(e) => {
-                    setCurrency(e.target.value as any);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="w-full bg-dark-300 text-white text-base px-6 py-4 rounded-2xl border-2 border-primary-300/40 focus:border-primary-300 focus:outline-none font-bold touch-manipulation transition-all duration-300 hover:border-primary-300/60 shadow-lg text-center"
-                  style={{ fontSize: '16px' }} // Prevent zoom on iOS
-                >
-                  {currencies.map((curr) => (
-                    <option key={curr.code} value={curr.code} className="bg-dark-300 text-white py-2">
-                      {curr.name} ({curr.symbol})
-                    </option>
-                  ))}
-                </select>
+                
+                {/* Custom Currency Dropdown */}
+                <div className="relative">
+                  <button
+                    onClick={() => setShowCurrencyMenu(!showCurrencyMenu)}
+                    className="w-full bg-gradient-to-r from-dark-300 to-dark-400 text-white text-lg px-6 py-4 rounded-2xl border-2 border-primary-300/40 focus:border-primary-300 focus:outline-none font-bold touch-manipulation transition-all duration-300 hover:border-primary-300/60 hover:from-dark-200 hover:to-dark-300 shadow-lg text-center flex items-center justify-center gap-3"
+                  >
+                    <Globe className="w-5 h-5 text-primary-300" />
+                    <span className="flex-1">
+                      {currencies.find(c => c.code === currency)?.name} ({currencies.find(c => c.code === currency)?.symbol})
+                    </span>
+                    <svg 
+                      className={`w-5 h-5 text-primary-300 transition-transform duration-300 ${showCurrencyMenu ? 'rotate-180' : ''}`}
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                  {/* Currency Dropdown Menu */}
+                  {showCurrencyMenu && (
+                    <>
+                      <div 
+                        className="fixed inset-0 z-40" 
+                        onClick={() => setShowCurrencyMenu(false)}
+                      />
+                      <div className="absolute top-full left-0 right-0 mt-2 bg-dark-400/98 backdrop-blur-xl rounded-2xl shadow-2xl border border-primary-300/30 py-3 z-50 max-h-80 overflow-y-auto">
+                        {/* Dropdown Header */}
+                        <div className="px-6 py-2 border-b border-primary-300/20 mb-2">
+                          <div className="text-center text-primary-300 font-bold text-sm">
+                            اختر العملة المفضلة
+                          </div>
+                        </div>
+                        
+                        {currencies.map((curr, index) => (
+                          <button
+                            key={curr.code}
+                            onClick={() => {
+                              setCurrency(curr.code as any);
+                              setShowCurrencyMenu(false);
+                              setIsMobileMenuOpen(false);
+                            }}
+                            className={`w-full text-center px-6 py-4 transition-all duration-300 text-lg font-bold flex items-center gap-4 relative overflow-hidden ${
+                              currency === curr.code
+                                ? 'bg-gradient-to-r from-primary-300/20 to-accent-600/20 text-primary-300 border-l-4 border-primary-300 shadow-lg'
+                                : 'text-gray-300 hover:bg-gradient-to-r hover:from-primary-300/10 hover:to-accent-600/10 hover:text-primary-300 hover:shadow-md'
+                            }`}
+                            style={{
+                              animationDelay: `${index * 50}ms`
+                            }}
+                          >
+                            {/* Currency Symbol with Background */}
+                            <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold ${
+                              currency === curr.code 
+                                ? 'bg-primary-300/30 text-primary-300' 
+                                : 'bg-gray-600/30 text-gray-400 group-hover:bg-primary-300/20 group-hover:text-primary-300'
+                            } transition-all duration-300`}>
+                              {curr.symbol}
+                            </div>
+                            
+                            {/* Currency Info */}
+                            <div className="flex-1 text-right">
+                              <div className="font-bold text-lg">{curr.name}</div>
+                              <div className="text-sm opacity-70">{curr.code}</div>
+                            </div>
+                            
+                            {/* Selected Indicator */}
+                            {currency === curr.code && (
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 bg-primary-300 rounded-full animate-pulse"></div>
+                                <svg className="w-6 h-6 text-primary-300" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                </svg>
+                              </div>
+                            )}
+                            
+                            {/* Hover Effect Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary-300/5 to-accent-600/5 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                          </button>
+                        ))}
+                        
+                        {/* Dropdown Footer */}
+                        <div className="px-6 py-3 border-t border-primary-300/20 mt-2">
+                          <div className="text-center text-gray-400 text-xs">
+                            العملات المدعومة من Ziina
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                {/* Current Currency Display */}
+                <div className="mt-4 p-5 bg-gradient-to-r from-primary-300/15 to-accent-600/15 rounded-2xl border border-primary-300/30 shadow-lg">
+                  <div className="flex items-center justify-center gap-4">
+                    {/* Currency Symbol with Glow Effect */}
+                    <div className="relative">
+                      <div className="w-16 h-16 bg-gradient-to-r from-primary-300 to-accent-600 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                        {currencies.find(c => c.code === currency)?.symbol}
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary-300 to-accent-600 rounded-full blur-lg opacity-30 animate-pulse"></div>
+                    </div>
+                    
+                    {/* Currency Info */}
+                    <div className="text-center flex-1">
+                      <div className="text-sm text-gray-400 mb-1">العملة المختارة حالياً</div>
+                      <div className="text-xl font-bold text-primary-300 mb-1">
+                        {currencies.find(c => c.code === currency)?.name}
+                      </div>
+                      <div className="text-sm text-gray-500 bg-dark-300/50 px-3 py-1 rounded-full inline-block">
+                        {currencies.find(c => c.code === currency)?.code}
+                      </div>
+                    </div>
+                    
+                    {/* Status Indicator */}
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg"></div>
+                      <div className="text-xs text-green-400 font-bold">نشط</div>
+                    </div>
+                  </div>
+                  
+                  {/* Additional Info */}
+                  <div className="mt-4 pt-4 border-t border-primary-300/20">
+                    <div className="text-center text-xs text-gray-400">
+                      جميع الأسعار ستظهر بهذه العملة
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
