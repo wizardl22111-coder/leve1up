@@ -12,7 +12,7 @@ export default function ProductGrid() {
   const { currency, addToCart, addToWishlist, wishlist } = useApp();
 
   // Helper function to get unified product ID
-  const getProductId = (product: any) => product.product_id ?? product.id ?? 1;
+  const getProductId = (product: any) => product.id ?? product.product_id ?? 0;
 
   // Helper function to get unified product name
   const getProductName = (product: any) => product.name ?? product.product_name ?? 'منتج';
@@ -56,7 +56,7 @@ export default function ProductGrid() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-      {products.slice(0, 3).map((product) => {
+      {products.map((product) => {
         const priceCalc = calculatePrice(product, currency);
         const productId = getProductId(product);
         const productName = getProductName(product);
@@ -162,14 +162,14 @@ export default function ProductGrid() {
                         className="flex-1 bg-gradient-to-r from-primary-500 to-accent-500 text-white py-2.5 rounded-lg font-semibold hover:shadow-lg hover:shadow-primary-500/30 transition-all flex items-center justify-center gap-2"
                       >
                         <ShoppingCart className="w-4 h-4" />
-                        <span className="text-sm">أضف للسلة</span>
+                        <span className="hidden sm:inline">أضف للسلة</span>
                       </button>
                       <button
                         onClick={() => handleDirectPayment(product)}
                         className="bg-gradient-to-r from-accent-600 to-primary-600 text-white py-2.5 px-4 rounded-lg font-semibold hover:shadow-lg hover:shadow-accent-600/30 transition-all flex items-center justify-center gap-2"
                       >
                         <Zap className="w-4 h-4" />
-                        <span className="text-sm">اشترِ الآن</span>
+                        <span className="hidden sm:inline">اشترِ الآن</span>
                       </button>
                     </>
                   )}

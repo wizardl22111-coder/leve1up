@@ -1,19 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, ShoppingCart, Heart, Globe, Home, Package, Mail, Receipt, User, LogIn, LogOut } from 'lucide-react';
+import { Menu, X, ShoppingCart, Heart, Globe, Home, Package, Mail, Receipt } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
-import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import Image from 'next/image';
-
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showCurrencyMenu, setShowCurrencyMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { currency, setCurrency, cartCount, wishlist } = useApp();
-  const { data: session, status } = useSession();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,12 +89,17 @@ export default function Navbar() {
               >
                 المنتجات
               </Link>
-
               <Link 
                 href="/contact" 
                 className="text-gray-300 hover:text-primary-300 transition-colors duration-200 font-semibold text-sm lg:text-base"
               >
                 تواصل معنا
+              </Link>
+              <Link 
+                href="/orders" 
+                className="text-gray-300 hover:text-primary-300 transition-colors duration-200 font-semibold text-sm lg:text-base"
+              >
+                طلباتي
               </Link>
 
               {/* Currency Selector Desktop */}
@@ -165,55 +167,6 @@ export default function Navbar() {
                   </span>
                 )}
               </Link>
-
-              {/* Auth Buttons */}
-              {status === "loading" ? (
-                <div className="w-8 h-8 border-2 border-primary-300 border-t-transparent rounded-full animate-spin"></div>
-              ) : session ? (
-                <div className="flex items-center gap-2">
-                  <Link
-                    href="/profile"
-                    className="flex items-center gap-2 px-3 py-2 bg-primary-300/20 hover:bg-primary-300/30 text-primary-300 rounded-xl transition-all duration-200 font-semibold text-sm border border-primary-300/30"
-                  >
-                    {session.user?.image ? (
-                      <img 
-                        src={session.user.image} 
-                        alt={session.user.name || 'User'} 
-                        className="w-5 h-5 rounded-full"
-                      />
-                    ) : (
-                      <User className="w-4 h-4" />
-                    )}
-                    <span className="hidden lg:inline">
-                      {session.user?.name?.split(' ')[0] || 'الملف الشخصي'}
-                    </span>
-                  </Link>
-                  <button
-                    onClick={() => signOut({ callbackUrl: '/' })}
-                    className="p-2 hover:bg-red-500/10 text-red-400 rounded-xl transition-colors"
-                    aria-label="تسجيل الخروج"
-                  >
-                    <LogOut className="w-4 h-4" />
-                  </button>
-                </div>
-              ) : (
-                <div className="flex items-center gap-2">
-                  <Link
-                    href="/login"
-                    className="flex items-center gap-2 px-3 py-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 rounded-xl transition-all duration-200 font-semibold text-sm border border-blue-300/30"
-                  >
-                    <LogIn className="w-4 h-4" />
-                    <span className="hidden lg:inline">دخول</span>
-                  </Link>
-                  <Link
-                    href="/register"
-                    className="flex items-center gap-2 px-3 py-2 bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 rounded-xl transition-all duration-200 font-semibold text-sm border border-purple-300/30"
-                  >
-                    <User className="w-4 h-4" />
-                    <span className="hidden lg:inline">تسجيل</span>
-                  </Link>
-                </div>
-              )}
             </div>
 
             {/* Mobile Actions */}
@@ -308,8 +261,6 @@ export default function Navbar() {
             <span>المنتجات</span>
           </Link>
 
-
-
           <Link
             href="/contact"
             className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
@@ -319,62 +270,14 @@ export default function Navbar() {
             <span>تواصل معنا</span>
           </Link>
 
-          <div className="my-4 h-px bg-gradient-to-r from-transparent via-primary-300/20 to-transparent" />
-
-          {/* Auth Section Mobile */}
-          {status === "loading" ? (
-            <div className="flex items-center justify-center py-4">
-              <div className="w-8 h-8 border-2 border-primary-300 border-t-transparent rounded-full animate-spin"></div>
-            </div>
-          ) : session ? (
-            <>
-              <Link
-                href="/profile"
-                className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
-                onClick={handleLinkClick}
-              >
-                {session.user?.image ? (
-                  <img 
-                    src={session.user.image} 
-                    alt={session.user?.name || 'User'} 
-                    className="w-6 h-6 rounded-full"
-                  />
-                ) : (
-                  <User className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
-                )}
-                <span>الملف الشخصي</span>
-              </Link>
-              <button
-                onClick={() => {
-                  signOut({ callbackUrl: '/' });
-                  setIsMobileMenuOpen(false);
-                }}
-                className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-red-400 hover:text-red-300 hover:bg-red-500/10 active:bg-red-500/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
-              >
-                <LogOut className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                <span>تسجيل الخروج</span>
-              </button>
-            </>
-          ) : (
-            <>
-              <Link
-                href="/login"
-                className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-blue-300 hover:text-blue-200 hover:bg-blue-500/10 active:bg-blue-500/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
-                onClick={handleLinkClick}
-              >
-                <LogIn className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                <span>تسجيل الدخول</span>
-              </Link>
-              <Link
-                href="/register"
-                className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-purple-300 hover:text-purple-200 hover:bg-purple-500/10 active:bg-purple-500/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
-                onClick={handleLinkClick}
-              >
-                <User className="w-6 h-6 group-hover:scale-110 transition-transform" />
-                <span>إنشاء حساب</span>
-              </Link>
-            </>
-          )}
+          <Link
+            href="/orders"
+            className="flex items-center gap-4 w-full px-5 py-4 text-base sm:text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 font-semibold touch-manipulation group"
+            onClick={handleLinkClick}
+          >
+            <Receipt className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
+            <span>طلباتي</span>
+          </Link>
 
           <div className="my-4 h-px bg-gradient-to-r from-transparent via-primary-300/20 to-transparent" />
 
@@ -427,8 +330,6 @@ export default function Navbar() {
               ))}
             </select>
           </div>
-
-
         </div>
       </div>
     </>
