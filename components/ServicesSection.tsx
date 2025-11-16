@@ -63,7 +63,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 md:gap-8">
           {services.map((service) => {
             const IconComponent = service.icon;
             
@@ -73,9 +73,9 @@ export default function ServicesSection() {
                 href={service.href}
                 className="group block"
               >
-                <div className={`bg-gradient-to-br ${service.gradient} backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border ${service.borderColor} hover:border-opacity-50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl`}>
+                <div className={`bg-gradient-to-br ${service.gradient} backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg overflow-hidden border ${service.borderColor} hover:border-opacity-50 transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2 hover:shadow-2xl`}>
                   {/* Service Image */}
-                  <div className="relative h-48 sm:h-56 overflow-hidden">
+                  <div className="relative h-32 sm:h-48 md:h-56 overflow-hidden">
                     <Image
                       src={service.image}
                       alt={service.title}
@@ -85,28 +85,28 @@ export default function ServicesSection() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     
                     {/* Icon Overlay */}
-                    <div className="absolute top-4 right-4">
-                      <div className={`p-3 bg-dark-400/80 backdrop-blur-sm rounded-xl border border-white/10`}>
-                        <IconComponent className={`w-6 h-6 ${service.iconColor}`} />
+                    <div className="absolute top-2 right-2 sm:top-4 sm:right-4">
+                      <div className={`p-2 sm:p-3 bg-dark-400/80 backdrop-blur-sm rounded-lg sm:rounded-xl border border-white/10`}>
+                        <IconComponent className={`w-4 h-4 sm:w-6 sm:h-6 ${service.iconColor}`} />
                       </div>
                     </div>
                   </div>
 
                   {/* Service Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary-300 transition-colors">
+                  <div className="p-3 sm:p-4 md:p-6">
+                    <h3 className="text-sm sm:text-lg md:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-primary-300 transition-colors leading-tight">
                       {service.title}
                     </h3>
-                    <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
                       {service.description}
                     </p>
                     
                     {/* Action Button */}
                     <div className="flex items-center justify-between">
-                      <span className="text-primary-300 font-semibold text-sm group-hover:text-white transition-colors">
+                      <span className="text-primary-300 font-semibold text-xs sm:text-sm group-hover:text-white transition-colors">
                         اكتشف المزيد
                       </span>
-                      <ArrowLeft className="w-4 h-4 text-primary-300 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                      <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4 text-primary-300 group-hover:text-white group-hover:translate-x-1 transition-all" />
                     </div>
                   </div>
                 </div>
