@@ -1,11 +1,13 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import PageLoader from '@/components/PageLoader';
 import { Shield, Lock, Eye, UserCheck, Database, Globe } from 'lucide-react';
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen">
-      <Navbar />
+    <PageLoader loadingText="جاري تحميل سياسة الخصوصية..." delay={2000}>
+      <main className="min-h-screen">
+        <Navbar />
       
       <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -290,7 +292,7 @@ export default function PrivacyPage() {
       </section>
 
       <Footer />
-    </main>
+      </main>
+    </PageLoader>
   );
 }
-

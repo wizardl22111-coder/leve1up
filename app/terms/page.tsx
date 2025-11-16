@@ -1,9 +1,11 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import PageLoader from '@/components/PageLoader';
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen">
+    <PageLoader loadingText="جاري تحميل شروط الاستخدام..." delay={2000}>
+          <main className="min-h-screen">
       <Navbar />
       
       <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -231,7 +233,8 @@ export default function TermsPage() {
       </section>
 
       <Footer />
-    </main>
+          </main>
+    </PageLoader>
   );
 }
 
