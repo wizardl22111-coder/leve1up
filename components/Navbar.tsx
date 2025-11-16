@@ -449,7 +449,7 @@ export default function Navbar() {
                         className="fixed inset-0 z-40" 
                         onClick={() => setShowCurrencyMenu(false)}
                       />
-                      <div className="absolute top-full left-0 right-0 mt-2 bg-dark-400 backdrop-blur-xl rounded-2xl shadow-2xl border border-primary-300/30 py-3 z-50 max-h-80 overflow-y-auto">
+                      <div className="absolute top-full left-0 right-0 mt-2 bg-gray-900 backdrop-blur-xl rounded-2xl shadow-2xl border border-primary-300/30 py-3 z-50 max-h-80 overflow-y-auto">
                         {/* Dropdown Header */}
                         <div className="px-6 py-2 border-b border-primary-300/20 mb-2">
                           <div className="text-center text-primary-300 font-bold text-sm">
@@ -467,8 +467,8 @@ export default function Navbar() {
                             }}
                             className={`w-full text-center px-6 py-4 transition-all duration-300 text-lg font-bold flex items-center gap-4 relative overflow-hidden ${
                               currency === curr.code
-                                ? 'bg-gradient-to-r from-primary-300/30 to-accent-600/30 text-primary-300 border-l-4 border-primary-300 shadow-lg'
-                                : 'text-gray-300 hover:bg-gradient-to-r hover:from-primary-300/20 hover:to-accent-600/20 hover:text-primary-300 hover:shadow-md'
+                                ? 'bg-gradient-to-r from-primary-300/40 to-accent-600/40 text-primary-300 border-l-4 border-primary-300 shadow-lg'
+                                : 'text-gray-200 hover:bg-gradient-to-r hover:from-primary-300/25 hover:to-accent-600/25 hover:text-primary-300 hover:shadow-md'
                             }`}
                             style={{
                               animationDelay: `${index * 50}ms`
@@ -477,8 +477,8 @@ export default function Navbar() {
                             {/* Currency Symbol with Background */}
                             <div className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold ${
                               currency === curr.code 
-                                ? 'bg-primary-300/30 text-primary-300' 
-                                : 'bg-gray-600/30 text-gray-400 group-hover:bg-primary-300/20 group-hover:text-primary-300'
+                                ? 'bg-primary-300/40 text-primary-300' 
+                                : 'bg-gray-700/60 text-gray-300 group-hover:bg-primary-300/30 group-hover:text-primary-300'
                             } transition-all duration-300`}>
                               {curr.symbol}
                             </div>
