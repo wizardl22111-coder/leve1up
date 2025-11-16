@@ -10,7 +10,7 @@ import {
   User,
   Loader2
 } from "lucide-react";
-import PageLoader from '@/components/PageLoader';
+
 
 interface UserSession {
   email: string;
@@ -75,8 +75,7 @@ export default function AccountPage() {
   }
 
   return (
-    <PageLoader loadingText="جاري تحميل معلومات الحساب..." delay={2000}>
-      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black py-8">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black py-8">
         <div className="max-w-4xl mx-auto px-4">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
@@ -129,7 +128,6 @@ export default function AccountPage() {
             </Link>
           </div>
         </div>
-      </div>
-    </PageLoader>
+    </div>
   );
 }

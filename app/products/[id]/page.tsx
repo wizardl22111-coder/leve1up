@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProductDetail from '@/components/ProductDetail';
-import PageLoader from '@/components/PageLoader';
 import products from '@/data/products.json';
 
 interface Props {
@@ -40,12 +39,10 @@ export default function ProductPage({ params }: Props) {
   }
 
   return (
-    <PageLoader loadingText="جاري تحميل المنتج..." delay={2000}>
-      <main className="min-h-screen">
-        <Navbar />
-        <ProductDetail product={product} />
-        <Footer />
-      </main>
-    </PageLoader>
+    <main className="min-h-screen">
+      <Navbar />
+      <ProductDetail product={product} />
+      <Footer />
+    </main>
   );
 }
