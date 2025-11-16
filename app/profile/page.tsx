@@ -23,7 +23,7 @@ import {
 import UserOrders from "@/components/UserOrders";
 import CustomToggle from "@/components/CustomToggle";
 import LogoutButton from "@/components/LogoutButton";
-import LoadingAnimation from "@/components/LoadingAnimation";
+
 
 // واجهات البيانات
 interface UserSettings {
@@ -193,7 +193,7 @@ export default function ProfilePage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <LoadingAnimation size="large" />
+          <div className="w-16 h-16 border-4 border-primary-300 border-t-transparent rounded-full animate-spin mx-auto"></div>
           <p className="text-slate-300 mt-4">جاري تحميل الملف الشخصي...</p>
         </motion.div>
       </div>
