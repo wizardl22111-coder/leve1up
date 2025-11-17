@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import CountrySelector from '@/components/CountrySelector';
 import TrustBadges from '@/components/TrustBadges';
 import DiscountCode from '@/components/DiscountCode';
-import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, CreditCard, Info } from 'lucide-react';
+import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, CreditCard, Info, Tag } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { getCurrencySymbol } from '@/lib/currency';
 import { formatTaxDisplay, getTaxExplanation } from '@/lib/tax';
