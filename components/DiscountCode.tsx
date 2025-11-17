@@ -10,7 +10,7 @@ interface DiscountCodeProps {
   appliedDiscount?: {
     code: string;
     percent: number;
-  };
+  } | null;
   className?: string;
 }
 
