@@ -76,95 +76,152 @@ export default function EditToolsPage() {
             </p>
           </div>
 
-          {/* Product Card */}
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-dark-300 to-dark-500 rounded-2xl overflow-hidden border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 group">
-              <div className="grid md:grid-cols-2 gap-0">
-                {/* Product Image */}
-                <div className="relative h-64 md:h-full bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center">
-                  <div className="text-center">
-                    <Video className="w-16 h-16 text-blue-400 mx-auto mb-4" />
-                    <div className="text-6xl font-bold text-white/10">🎬</div>
+          {/* Products Grid */}
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-8">
+              
+              {/* Product 1: باقة المونتاج الاحترافية */}
+              <div className="bg-gradient-to-br from-dark-300 to-dark-500 rounded-2xl overflow-hidden border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 group">
+                <div className="flex flex-col">
+                  {/* Product Image */}
+                  <div className="relative h-48 bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center">
+                    <div className="text-center">
+                      <Video className="w-12 h-12 text-blue-400 mx-auto mb-2" />
+                      <div className="text-4xl font-bold text-white/10">🎬</div>
+                    </div>
+                    {/* Discount Badge */}
+                    <div className="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-pink-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                      خصم 60%
+                    </div>
                   </div>
-                  {/* Discount Badge */}
-                  <div className="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-pink-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                    خصم 79%
-                  </div>
-                </div>
 
-                {/* Product Info */}
-                <div className="p-8">
-                  <div className="mb-4">
-                    <h3 className="text-2xl font-bold text-white mb-2">
-                      باقة المونتاج الاحترافية
-                    </h3>
+                  {/* Product Info */}
+                  <div className="p-6">
+                    <div className="mb-4">
+                      <h3 className="text-xl font-bold text-white mb-2">
+                        باقة المونتاج الاحترافية 🎬
+                      </h3>
 
-                    
-                    {/* Rating */}
-                    <div className="flex items-center gap-2 mb-4">
-                      <div className="flex items-center">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        ))}
+                      {/* Rating */}
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="flex items-center">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          ))}
+                        </div>
+                        <span className="text-gray-400 text-sm">(4.9) • 500+ مشتري</span>
                       </div>
-                      <span className="text-gray-400 text-sm">(4.9) • 500+ مشتري</span>
-                    </div>
 
-                    {/* Description */}
-                    <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-                      باقة شاملة تحتوي على 2000+ مؤثر صوتي، 150+ انتقال، 250+ خلفية متحركة، 
-                      200+ مقطع B-Roll، 200+ LUTs لتصحيح الألوان، و450+ اوفرلاي ظلال.
-                    </p>
+                      {/* Description */}
+                      <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                        باقة شاملة تحتوي على 2000+ مؤثر صوتي، 150+ انتقال، 250+ خلفية متحركة، 
+                        200+ مقطع B-Roll، 200+ LUTs لتصحيح الألوان.
+                      </p>
 
-                    {/* Features */}
-                    <div className="grid grid-cols-2 gap-3 mb-6">
-                      <div className="flex items-center gap-2 text-sm text-gray-300">
-                        <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                        2000+ مؤثر صوتي
+                      {/* Features */}
+                      <div className="grid grid-cols-1 gap-2 mb-4">
+                        <div className="flex items-center gap-2 text-sm text-gray-300">
+                          <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                          2000+ مؤثر صوتي
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-gray-300">
+                          <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                          150+ انتقال سلس
+                        </div>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-300">
-                        <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                        150+ انتقال سلس
+
+                      {/* Price */}
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="text-2xl font-bold text-white">24.99 ر.س</span>
+                        <span className="text-lg text-gray-500 line-through">62.48 ر.س</span>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-300">
-                        <div className="w-2 h-2 bg-pink-400 rounded-full"></div>
-                        250+ خلفية متحركة
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-gray-300">
-                        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                        200+ LUTs احترافية
-                      </div>
-                    </div>
 
-                    {/* Price */}
-                    <div className="flex items-center gap-3 mb-6">
-                      <span className="text-3xl font-bold text-white">24.99 ر.س</span>
-                      <span className="text-lg text-gray-500 line-through">119.99 ر.س</span>
-                      <span className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-2 py-1 rounded text-sm font-bold">
-                        وفر 95 ر.س
-                      </span>
-                    </div>
-
-
-
-                    {/* Action Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <Link 
-                        href="/products/4"
-                        className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 group"
-                      >
-                        <ShoppingCart className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                        عرض التفاصيل والشراء
-                      </Link>
-                      
-                      <div className="flex items-center gap-2 text-gray-400 text-sm">
-                        <Download className="w-4 h-4" />
-                        <span>تحميل فوري • 5 جيجابايت</span>
+                      {/* Action Buttons */}
+                      <div className="flex flex-col gap-3">
+                        <Link 
+                          href="/products/4"
+                          className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 group"
+                        >
+                          <ShoppingCart className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                          عرض التفاصيل والشراء
+                        </Link>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+              {/* Product 2: حزمة أيقونات متحركة */}
+              <div className="bg-gradient-to-br from-dark-300 to-dark-500 rounded-2xl overflow-hidden border border-gray-700/50 hover:border-orange-500/50 transition-all duration-300 group">
+                <div className="flex flex-col">
+                  {/* Product Image */}
+                  <div className="relative h-48 bg-gradient-to-br from-orange-500/20 to-red-600/20 flex items-center justify-center">
+                    <div className="text-center">
+                      <Palette className="w-12 h-12 text-orange-400 mx-auto mb-2" />
+                      <div className="text-4xl font-bold text-white/10">🎨</div>
+                    </div>
+                    {/* Discount Badge */}
+                    <div className="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-pink-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                      خصم 60%
+                    </div>
+                  </div>
+
+                  {/* Product Info */}
+                  <div className="p-6">
+                    <div className="mb-4">
+                      <h3 className="text-xl font-bold text-white mb-2">
+                        حزمة أيقونات متحركة
+                      </h3>
+
+                      {/* Rating */}
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="flex items-center">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          ))}
+                        </div>
+                        <span className="text-gray-400 text-sm">(4.8) • 300+ مشتري</span>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                        مجموعة أيقونات موشن جرافيك جاهزة للاستخدام في الفيديوهات 
+                        (اشتراك – لايك – جرس – تفاعل).
+                      </p>
+
+                      {/* Features */}
+                      <div className="grid grid-cols-1 gap-2 mb-4">
+                        <div className="flex items-center gap-2 text-sm text-gray-300">
+                          <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
+                          60+ أيقونة متحركة
+                        </div>
+                        <div className="flex items-center gap-2 text-sm text-gray-300">
+                          <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                          دقة 4K عالية الجودة
+                        </div>
+                      </div>
+
+                      {/* Price */}
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="text-2xl font-bold text-white">24.99 ر.س</span>
+                        <span className="text-lg text-gray-500 line-through">62.48 ر.س</span>
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex flex-col gap-3">
+                        <Link 
+                          href="/products/5"
+                          className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white px-6 py-3 rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 group"
+                        >
+                          <ShoppingCart className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                          عرض التفاصيل والشراء
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
