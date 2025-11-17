@@ -48,50 +48,8 @@ export interface DiscountValidationResponse {
   code?: string;
 }
 
-// قاعدة بيانات أكواد الخصم (مثال)
-export const discountCodes: DiscountCode[] = [
-  {
-    id: '1',
-    code: 'WELCOME10',
-    discountPercent: 10,
-    isActive: true,
-    usageLimit: 100,
-    usedCount: 25,
-    description: 'خصم ترحيبي للعملاء الجدد',
-    createdAt: '2024-01-01'
-  },
-  {
-    id: '2',
-    code: 'SAVE15',
-    discountPercent: 15,
-    isActive: true,
-    usageLimit: 50,
-    usedCount: 12,
-    description: 'خصم خاص لفترة محدودة',
-    createdAt: '2024-01-15'
-  },
-  {
-    id: '3',
-    code: 'PREMIUM20',
-    discountPercent: 20,
-    isActive: true,
-    usageLimit: 25,
-    usedCount: 8,
-    description: 'خصم حصري للعملاء المميزين',
-    createdAt: '2024-02-01'
-  },
-  {
-    id: '4',
-    code: 'EXPIRED50',
-    discountPercent: 50,
-    isActive: false,
-    expiryDate: '2024-01-31',
-    usageLimit: 10,
-    usedCount: 10,
-    description: 'كود منتهي الصلاحية',
-    createdAt: '2024-01-01'
-  }
-];
+// قاعدة بيانات أكواد الخصم (فارغة - تم حذف الأكواد التجريبية)
+export const discountCodes: DiscountCode[] = [];
 
 // الفئات الخاضعة للضريبة (5%)
 export const taxableCategories: ProductCategory[] = ['subscriptions', 'games'];

@@ -3,13 +3,11 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import CountrySelector from '@/components/CountrySelector';
 import TrustBadges from '@/components/TrustBadges';
 import DiscountCode from '@/components/DiscountCode';
-import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, CreditCard, Info, Tag } from 'lucide-react';
+import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, CreditCard, Tag } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { getCurrencySymbol } from '@/lib/currency';
-import { formatTaxDisplay, getTaxExplanation } from '@/lib/tax';
 import { calculateAdvancedPricing, type ProductWithCategory } from '@/lib/discount';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -304,13 +302,7 @@ export default function CartPage() {
                   ملخص الطلب
                 </h2>
 
-                {/* Country Selector */}
-                <div className="mb-6">
-                  <CountrySelector
-                    selectedCountry={selectedCountry}
-                    onCountryChange={setSelectedCountry}
-                  />
-                </div>
+
 
                 {/* Discount Code */}
                 <div className="mb-6">
@@ -338,16 +330,7 @@ export default function CartPage() {
                     </div>
                   )}
                   
-                  {/* Tax Display */}
-                  {advancedCalculation.taxAmount > 0 && (
-                    <div className="flex justify-between text-gray-600 dark:text-gray-300">
-                      <span className="flex items-center gap-1">
-                        ضريبة انتقائية (5%)
-                        <Info className="w-4 h-4" />
-                      </span>
-                      <span className="font-semibold">{advancedCalculation.taxAmount.toFixed(2)} {getCurrencySymbol(currency)}</span>
-                    </div>
-                  )}
+
                   
 
                   
@@ -358,23 +341,7 @@ export default function CartPage() {
                     </div>
                   </div>
 
-                  {/* Tax Explanation */}
-                  {advancedCalculation.taxAmount > 0 && (
-                    <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-200 dark:border-blue-800">
-                      <p className="text-xs text-blue-800 dark:text-blue-200">
-                        💡 <strong>ضريبة تلقائية 5%</strong> مطبقة على الاشتراكات الرقمية والألعاب فقط. أدوات المونتاج والمنتجات الأخرى معفاة من الضرائب.
-                      </p>
-                    </div>
-                  )}
 
-                  {/* No Tax Explanation when no tax applied */}
-                  {advancedCalculation.taxAmount === 0 && cart.length > 0 && (
-                    <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-800">
-                      <p className="text-xs text-green-800 dark:text-green-200">
-                        ✅ <strong>معفى من الضرائب!</strong> المنتجات في سلتك لا تخضع للضريبة (أدوات المونتاج والمنتجات المميزة معفاة).
-                      </p>
-                    </div>
-                  )}
 
                   {/* Discount Savings Display */}
                   {advancedCalculation.discountAmount > 0 && (
