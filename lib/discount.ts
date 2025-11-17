@@ -121,22 +121,12 @@ export function calculateAdvancedPricing(
   // المجموع بعد تطبيق الخصم
   const discountAppliedTotal = subtotal - discountAmount;
 
-  // حساب المبلغ الخاضع للضريبة (فقط المنتجات من الفئات الخاضعة للضريبة)
-  const taxableAmount = products.reduce((sum, product) => {
-    if (isProductTaxable(product.category)) {
-      const productTotal = product.price * product.quantity;
-      // تطبيق الخصم على المنتج الخاضع للضريبة
-      const productAfterDiscount = productTotal * (1 - discountPercent / 100);
-      return sum + productAfterDiscount;
-    }
-    return sum;
-  }, 0);
+  // لا توجد ضرائب - تم إلغاء نظام الضريبة بالكامل
+  const taxableAmount = 0;
+  const taxAmount = 0;
 
-  // حساب مبلغ الضريبة (5% على المنتجات الخاضعة للضريبة فقط)
-  const taxAmount = taxableAmount * TAX_RATE;
-
-  // المجموع النهائي
-  const finalTotal = discountAppliedTotal + taxAmount;
+  // المجموع النهائي (بدون ضرائب)
+  const finalTotal = discountAppliedTotal;
 
   return {
     subtotal,

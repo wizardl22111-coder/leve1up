@@ -145,12 +145,7 @@ export default function EditToolsPage() {
                       </span>
                     </div>
 
-                    {/* Tax Info */}
-                    <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-3 mb-6">
-                      <p className="text-green-400 text-sm font-medium">
-                        ✅ معفى من الضرائب - السعر النهائي 24.99 ر.س فقط
-                      </p>
-                    </div>
+
 
                     {/* Action Buttons */}
                     <div className="flex flex-col sm:flex-row gap-3">

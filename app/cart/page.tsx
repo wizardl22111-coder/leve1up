@@ -126,8 +126,7 @@ export default function CartPage() {
           discountAmount: advancedCalculation.discountAmount,
           discountPercent: advancedCalculation.discountPercent,
           discountCode: appliedDiscount?.code,
-          taxAmount: advancedCalculation.taxAmount,
-          taxableAmount: advancedCalculation.taxableAmount,
+
           country: selectedCountry,
           currency: currency,
           customerEmail: customerEmail
@@ -149,7 +148,7 @@ export default function CartPage() {
         localStorage.setItem('leve1up_total_amount', advancedCalculation.finalTotal.toString());
         localStorage.setItem('leve1up_subtotal', advancedCalculation.subtotal.toString());
         localStorage.setItem('leve1up_discount_amount', advancedCalculation.discountAmount.toString());
-        localStorage.setItem('leve1up_tax_amount', advancedCalculation.taxAmount.toString());
+
         if (appliedDiscount) {
           localStorage.setItem('leve1up_discount_code', appliedDiscount.code);
           localStorage.setItem('leve1up_discount_percent', appliedDiscount.percent.toString());
