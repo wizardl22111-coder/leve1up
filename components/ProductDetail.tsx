@@ -430,7 +430,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
           <ReviewSummary productId={productId} />
           
           {/* Customer Reviews */}
-          <ProductReviews productId={productId} maxReviews={6} />
+          <ProductReviews productId={productId} reviews={[]} />
           
           {/* Info Message */}
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-6 text-center">

@@ -16,14 +16,40 @@ interface Review {
 
 interface ProductReviewsProps {
   productId: number;
-  reviews: Review[];
+  reviews?: Review[];
 }
 
-export default function ProductReviews({ productId, reviews }: ProductReviewsProps) {
-  const [filteredReviews, setFilteredReviews] = useState<Review[]>(reviews);
+export default function ProductReviews({ productId, reviews: initialReviews = [] }: ProductReviewsProps) {
+  const [reviews, setReviews] = useState<Review[]>(initialReviews);
+  const [filteredReviews, setFilteredReviews] = useState<Review[]>([]);
   const [selectedRating, setSelectedRating] = useState<number | null>(null);
   const [sortBy, setSortBy] = useState<'newest' | 'oldest' | 'highest' | 'lowest'>('newest');
   const [showAll, setShowAll] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  // Fetch reviews if not provided
+  useEffect(() => {
+    if (initialReviews.length === 0) {
+      fetchReviews();
+    } else {
+      setReviews(initialReviews);
+    }
+  }, [productId, initialReviews]);
+
+  const fetchReviews = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(`/api/reviews/${productId}`);
+      if (response.ok) {
+        const data = await response.json();
+        setReviews(data);
+      }
+    } catch (error) {
+      console.error('Error fetching reviews:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     let filtered = [...reviews];
@@ -98,6 +124,39 @@ export default function ProductReviews({ productId, reviews }: ProductReviewsPro
   const distribution = getRatingDistribution();
   const averageRating = getAverageRating();
   const displayedReviews = showAll ? filteredReviews : filteredReviews.slice(0, 8);
+
+  if (loading) {
+    return (
+      <div className="bg-dark-400 rounded-2xl p-6 lg:p-8">
+        <div className="animate-pulse">
+          <div className="h-8 bg-dark-300 rounded w-1/3 mb-8"></div>
+          <div className="space-y-4">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="bg-dark-300 rounded-xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-dark-200 rounded-full"></div>
+                  <div className="space-y-2">
+                    <div className="h-4 bg-dark-200 rounded w-24"></div>
+                    <div className="h-3 bg-dark-200 rounded w-16"></div>
+                  </div>
+                </div>
+                <div className="h-16 bg-dark-200 rounded"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (reviews.length === 0) {
+    return (
+      <div className="bg-dark-400 rounded-2xl p-6 lg:p-8 text-center">
+        <h2 className="text-2xl font-bold text-white mb-4">التقييمات والمراجعات</h2>
+        <p className="text-gray-400">لا توجد تقييمات لهذا المنتج بعد.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-dark-400 rounded-2xl p-6 lg:p-8">
@@ -269,4 +328,3 @@ export default function ProductReviews({ productId, reviews }: ProductReviewsPro
     </div>
   );
 }
-
