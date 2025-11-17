@@ -191,21 +191,29 @@ function generateSampleReviews({ locale, count, includeStarsOnly = false }) {
 }
 
 /**
- * Update product buyers count to sample text
+ * Update product buyers count to original values
  * @param {Array} products - Array of product objects
- * @returns {Array} Updated products array
+ * @returns {Array} Updated products array with original buyer counts
  */
-function updateProductBuyersToSample(products) {
-  return products.map(product => ({
+function updateProductBuyersToOriginal(products) {
+  const originalBuyers = [
+    'تم الشراء أكثر من 300 مرة',  // المنتج 1
+    '129 مشتري',                    // المنتج 2
+    'تم الشراء أكثر من 200 مرة',    // المنتج 3
+    '25',                           // المنتج 4
+    'تم الشراء أكثر من 300 مرة'     // المنتج 5
+  ];
+
+  return products.map((product, index) => ({
     ...product,
-    buyers: "تم شراءه 300 مرة" // Removed "مثال" as requested
+    buyers: originalBuyers[index] || product.buyers
   }));
 }
 
 // Export functions
 module.exports = {
   generateSampleReviews,
-  updateProductBuyersToSample
+  updateProductBuyersToOriginal
 };
 
 /* 
@@ -311,4 +319,3 @@ const updatedProducts = updateProductBuyersToSample(products);
 // Result: all products will have buyers: "تم شراءه 300 مرة"
 
 */
-

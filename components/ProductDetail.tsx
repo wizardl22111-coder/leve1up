@@ -12,6 +12,7 @@ import FreeProductModal from './FreeProductModal';
 
 
 import ReviewSummary from './ReviewSummary';
+import ProductReviews from './ProductReviews';
 
 interface ProductSection {
   title?: string;
@@ -423,10 +424,13 @@ export default function ProductDetail({ product }: { product?: Product }) {
           </div>
         )}
 
-        {/* Reviews Section - Summary Only */}
+        {/* Reviews Section - Complete */}
         <div className="mt-12 sm:mt-16 space-y-8">
           {/* Review Summary */}
           <ReviewSummary productId={productId} />
+          
+          {/* Customer Reviews */}
+          <ProductReviews productId={productId} maxReviews={6} />
           
           {/* Info Message */}
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-6 text-center">
