@@ -1,2 +1,111 @@
-[]
+[
+  {
+    "review_id": 1,
+    "product_id": 4,
+    "user_name": "أحمد محمد",
+    "rating": 5,
+    "comment": "باقة رائعة جداً! كل ما أحتاجه للمونتاج في مكان واحد. المؤثرات الصوتية عالية الجودة والانتقالات سلسة جداً.",
+    "date": "2024-11-10",
+    "verified_purchase": true
+  },
+  {
+    "review_id": 2,
+    "product_id": 4,
+    "user_name": "سارة أحمد",
+    "rating": 5,
+    "comment": "أفضل استثمار قمت به لقناتي على يوتيوب! الخلفيات المتحركة والـ LUTs غيرت شكل فيديوهاتي تماماً.",
+    "date": "2024-11-08",
+    "verified_purchase": true
+  },
+  {
+    "review_id": 3,
+    "product_id": 4,
+    "user_name": "محمد العلي",
+    "rating": 4,
+    "comment": "باقة ممتازة وشاملة. الملفات منظمة بشكل جيد والجودة عالية. أنصح بها بشدة لكل محرر فيديو.",
+    "date": "2024-11-05",
+    "verified_purchase": true
+  },
+  {
+    "review_id": 4,
+    "product_id": 4,
+    "user_name": "فاطمة خالد",
+    "rating": 5,
+    "comment": "مذهلة! 2000+ مؤثر صوتي و450+ أوفرلاي ظلال. وفرت علي ساعات من البحث. التحديثات المجانية ميزة رائعة.",
+    "date": "2024-11-03",
+    "verified_purchase": true
+  },
+  {
+    "review_id": 5,
+    "product_id": 4,
+    "user_name": "عبدالله سالم",
+    "rating": 5,
+    "comment": "جودة احترافية بسعر ممتاز! الـ B-Roll clips والانتقالات ساعدتني أطور محتوى تيك توك بشكل كبير.",
+    "date": "2024-10-30",
+    "verified_purchase": true
+  },
+  {
+    "review_id": 6,
+    "product_id": 4,
+    "user_name": "نورا حسن",
+    "rating": 4,
+    "comment": "باقة شاملة ومفيدة جداً. الملفات سهلة الاستخدام والتنظيم ممتاز. أنصح بها للمبتدئين والمحترفين.",
+    "date": "2024-10-28",
+    "verified_purchase": true
+  },
+  {
+    "review_id": 7,
+    "product_id": 4,
+    "user_name": "يوسف أحمد",
+    "rating": 5,
+    "comment": "تستحق كل ريال! المؤثرات الضوئية والـ Overlays أضافت لمسة احترافية لفيديوهاتي. شكراً لكم!",
+    "date": "2024-10-25",
+    "verified_purchase": true
+  },
+  {
+    "review_id": 8,
+    "product_id": 4,
+    "user_name": "ريم محمود",
+    "rating": 5,
+    "comment": "باقة متكاملة وعملية. الخلفيات المتحركة والانتقالات جعلت فيديوهاتي تبدو كأنها من استوديو احترافي.",
+    "date": "2024-10-22",
+    "verified_purchase": true
+  },
+  {
+    "review_id": 9,
+    "product_id": 4,
+    "user_name": "خالد عبدالرحمن",
+    "rating": 4,
+    "comment": "ممتازة للمونتاج! التنوع في المحتوى رائع والجودة عالية. التحديثات المستمرة تضيف قيمة كبيرة.",
+    "date": "2024-10-20",
+    "verified_purchase": true
+  },
+  {
+    "review_id": 10,
+    "product_id": 4,
+    "user_name": "مريم الزهراني",
+    "rating": 5,
+    "comment": "أفضل باقة مونتاج اشتريتها! كل شيء منظم وجاهز للاستخدام. وفرت علي وقت ومجهود كبير.",
+    "date": "2024-10-18",
+    "verified_purchase": true
+  },
+  {
+    "review_id": 11,
+    "product_id": 4,
+    "user_name": "عمر الشهري",
+    "rating": 5,
+    "comment": "استثمار ممتاز! الـ LUTs والمؤثرات الصوتية غيرت مستوى إنتاجي تماماً. أنصح بها بقوة.",
+    "date": "2024-10-15",
+    "verified_purchase": true
+  },
+  {
+    "review_id": 12,
+    "product_id": 4,
+    "user_name": "هند العتيبي",
+    "rating": 4,
+    "comment": "باقة رائعة وشاملة. المحتوى متنوع والجودة ممتازة. سهلت علي عملية المونتاج بشكل كبير.",
+    "date": "2024-10-12",
+    "verified_purchase": true
+  }
+]
 
