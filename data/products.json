@@ -20,7 +20,7 @@
     ],
     "active": true,
     "rating": 4.8,
-    "buyers": "تم الشراء أكثر من 300 مرة",
+    "buyers": "مثال تم شراءه 300 مرة",
     "featured": true,
     "isFree": true
   },
@@ -44,7 +44,7 @@
     ],
     "active": true,
     "rating": 4.9,
-    "buyers": "129 مشتري",
+    "buyers": "مثال تم شراءه 300 مرة",
     "featured": true,
     "originalPrice": 97.5
   },
@@ -69,7 +69,7 @@
     ],
     "active": true,
     "rating": 4.7,
-    "buyers": "تم الشراء أكثر من 200 مرة",
+    "buyers": "مثال تم شراءه 300 مرة",
     "featured": true,
     "originalPrice": 142.5
   },
@@ -97,7 +97,7 @@
     ],
     "active": true,
     "rating": 4.9,
-    "buyers": "25",
+    "buyers": "مثال تم شراءه 300 مرة",
     "featured": true,
     "isFree": false
   },
@@ -123,7 +123,7 @@
     ],
     "active": true,
     "rating": 4.8,
-    "buyers": "تم الشراء أكثر من 300 مرة",
+    "buyers": "مثال تم شراءه 300 مرة",
     "featured": true,
     "isFree": false
   }
