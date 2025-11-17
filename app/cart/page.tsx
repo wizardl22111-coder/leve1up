@@ -5,10 +5,12 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CountrySelector from '@/components/CountrySelector';
 import TrustBadges from '@/components/TrustBadges';
+import DiscountCode from '@/components/DiscountCode';
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, CreditCard, Info } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { getCurrencySymbol } from '@/lib/currency';
 import { formatTaxDisplay, getTaxExplanation } from '@/lib/tax';
+import { calculateAdvancedPricing, type ProductWithCategory } from '@/lib/discount';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -22,11 +24,39 @@ export default function CartPage() {
     clearCart,
     selectedCountry,
     setSelectedCountry,
-    taxCalculation
+    taxCalculation,
+    appliedDiscount,
+    setAppliedDiscount
   } = useApp();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [error, setError] = useState('');
   const [customerEmail, setCustomerEmail] = useState('');
+
+  // تحويل عناصر السلة إلى منتجات مع فئات (مؤقتاً نفترض أن كل المنتجات من فئة الاشتراكات)
+  const cartWithCategories: ProductWithCategory[] = cart.map(item => ({
+    id: item.id,
+    name: item.name,
+    price: item.price,
+    quantity: item.quantity,
+    category: item.id <= 2 ? 'subscriptions' : item.id <= 4 ? 'games' : 'editing_tools', // تصنيف مؤقت
+    image: item.image
+  }));
+
+  // حساب الأسعار المتقدمة مع الخصومات والضرائب
+  const advancedCalculation = calculateAdvancedPricing(
+    cartWithCategories,
+    currency,
+    appliedDiscount?.percent || 0,
+    appliedDiscount?.code
+  );
+
+  const handleDiscountApplied = (discountPercent: number, code: string) => {
+    setAppliedDiscount({ code, percent: discountPercent });
+  };
+
+  const handleDiscountRemoved = () => {
+    setAppliedDiscount(null);
+  };
 
   const handleCheckout = async () => {
     setIsCheckingOut(true);
@@ -50,8 +80,6 @@ export default function CartPage() {
       }
 
       // 📤 إرسال الطلب إلى API
-      const finalAmount = taxCalculation ? taxCalculation.total : cartTotal;
-      
       const response = await fetch('/api/cart_payment_intent', {
         method: 'POST',
         headers: {
@@ -59,10 +87,13 @@ export default function CartPage() {
         },
         body: JSON.stringify({
           cartItems: cartItems,
-          totalAmount: finalAmount,
-          subtotal: cartTotal,
-          taxAmount: taxCalculation?.vatAmount || 0,
-          taxRate: taxCalculation?.vatRate || 0,
+          totalAmount: advancedCalculation.finalTotal,
+          subtotal: advancedCalculation.subtotal,
+          discountAmount: advancedCalculation.discountAmount,
+          discountPercent: advancedCalculation.discountPercent,
+          discountCode: appliedDiscount?.code,
+          taxAmount: advancedCalculation.taxAmount,
+          taxableAmount: advancedCalculation.taxableAmount,
           country: selectedCountry,
           currency: currency,
           customerEmail: customerEmail
@@ -81,11 +112,13 @@ export default function CartPage() {
         
         // 💾 حفظ بيانات السلة في localStorage لعرضها في صفحة النجاح
         localStorage.setItem('leve1up_email', customerEmail);
-        localStorage.setItem('leve1up_total_amount', finalAmount.toString());
-        localStorage.setItem('leve1up_subtotal', cartTotal.toString());
-        if (taxCalculation) {
-          localStorage.setItem('leve1up_tax_amount', taxCalculation.vatAmount.toString());
-          localStorage.setItem('leve1up_tax_rate', taxCalculation.vatRate.toString());
+        localStorage.setItem('leve1up_total_amount', advancedCalculation.finalTotal.toString());
+        localStorage.setItem('leve1up_subtotal', advancedCalculation.subtotal.toString());
+        localStorage.setItem('leve1up_discount_amount', advancedCalculation.discountAmount.toString());
+        localStorage.setItem('leve1up_tax_amount', advancedCalculation.taxAmount.toString());
+        if (appliedDiscount) {
+          localStorage.setItem('leve1up_discount_code', appliedDiscount.code);
+          localStorage.setItem('leve1up_discount_percent', appliedDiscount.percent.toString());
         }
         // السلة محفوظة بالفعل في AppContext
         
@@ -243,20 +276,40 @@ export default function CartPage() {
                   />
                 </div>
 
+                {/* Discount Code */}
+                <div className="mb-6">
+                  <DiscountCode
+                    onDiscountApplied={handleDiscountApplied}
+                    onDiscountRemoved={handleDiscountRemoved}
+                    appliedDiscount={appliedDiscount}
+                  />
+                </div>
+
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between text-gray-600 dark:text-gray-300">
                     <span>المجموع الفرعي</span>
-                    <span className="font-semibold">{cartTotal.toFixed(2)} {getCurrencySymbol(currency)}</span>
+                    <span className="font-semibold">{advancedCalculation.subtotal.toFixed(2)} {getCurrencySymbol(currency)}</span>
                   </div>
                   
+                  {/* Discount Display */}
+                  {advancedCalculation.discountAmount > 0 && (
+                    <div className="flex justify-between text-green-600 dark:text-green-400">
+                      <span className="flex items-center gap-1">
+                        خصم ({advancedCalculation.discountPercent}%)
+                        <Tag className="w-4 h-4" />
+                      </span>
+                      <span className="font-semibold">-{advancedCalculation.discountAmount.toFixed(2)} {getCurrencySymbol(currency)}</span>
+                    </div>
+                  )}
+                  
                   {/* Tax Display */}
-                  {taxCalculation && taxCalculation.vatRate > 0 && (
+                  {advancedCalculation.taxAmount > 0 && (
                     <div className="flex justify-between text-gray-600 dark:text-gray-300">
                       <span className="flex items-center gap-1">
-                        ضريبة القيمة المضافة ({taxCalculation.vatRate}%)
+                        ضريبة انتقائية (5%)
                         <Info className="w-4 h-4" />
                       </span>
-                      <span className="font-semibold">{taxCalculation.vatAmount.toFixed(2)} {getCurrencySymbol(currency)}</span>
+                      <span className="font-semibold">{advancedCalculation.taxAmount.toFixed(2)} {getCurrencySymbol(currency)}</span>
                     </div>
                   )}
                   
@@ -268,17 +321,24 @@ export default function CartPage() {
                   <div className="border-t border-gray-300 dark:border-gray-600 pt-4">
                     <div className="flex justify-between text-lg font-bold text-gray-900 dark:text-white">
                       <span>الإجمالي</span>
-                      <span>
-                        {taxCalculation ? taxCalculation.total.toFixed(2) : cartTotal.toFixed(2)} {getCurrencySymbol(currency)}
-                      </span>
+                      <span>{advancedCalculation.finalTotal.toFixed(2)} {getCurrencySymbol(currency)}</span>
                     </div>
                   </div>
 
                   {/* Tax Explanation */}
-                  {taxCalculation && (
+                  {advancedCalculation.taxAmount > 0 && (
                     <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-200 dark:border-blue-800">
                       <p className="text-xs text-blue-800 dark:text-blue-200">
-                        {getTaxExplanation(selectedCountry.code)}
+                        💡 ضريبة 5% مطبقة فقط على الاشتراكات والألعاب. المنتجات الأخرى معفاة من الضرائب.
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Discount Savings Display */}
+                  {advancedCalculation.discountAmount > 0 && (
+                    <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-800">
+                      <p className="text-xs text-green-800 dark:text-green-200">
+                        🎉 <strong>تهانينا!</strong> وفرت {advancedCalculation.discountAmount.toFixed(2)} {getCurrencySymbol(currency)} بفضل كود الخصم!
                       </p>
                     </div>
                   )}

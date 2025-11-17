@@ -35,6 +35,9 @@ interface AppContextType {
   selectedCountry: Country;
   setSelectedCountry: (country: Country) => void;
   taxCalculation: TaxCalculation | null;
+  // إضافات جديدة لأكواد الخصم
+  appliedDiscount: { code: string; percent: number } | null;
+  setAppliedDiscount: (discount: { code: string; percent: number } | null) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -46,6 +49,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [wishlist, setWishlist] = useState<number[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<Country>(getDefaultCountry());
   const [taxCalculation, setTaxCalculation] = useState<TaxCalculation | null>(null);
+  const [appliedDiscount, setAppliedDiscount] = useState<{ code: string; percent: number } | null>(null);
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -54,6 +58,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const savedCart = localStorage.getItem('cart');
     const savedWishlist = localStorage.getItem('wishlist');
     const savedCountry = localStorage.getItem('selectedCountry');
+    const savedDiscount = localStorage.getItem('appliedDiscount');
 
     if (savedTheme) {
       setTheme(savedTheme);
@@ -75,6 +80,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
       } catch (e) {
         // في حالة خطأ في parsing، استخدم الدولة الافتراضية
         setSelectedCountry(getDefaultCountry());
+      }
+    }
+    if (savedDiscount) {
+      try {
+        const discount = JSON.parse(savedDiscount);
+        setAppliedDiscount(discount);
+      } catch (e) {
+        // في حالة خطأ في parsing، لا تطبق أي خصم
+        setAppliedDiscount(null);
       }
     }
   }, []);
@@ -100,6 +114,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     localStorage.setItem('selectedCountry', JSON.stringify(selectedCountry));
   }, [selectedCountry]);
+
+  useEffect(() => {
+    if (appliedDiscount) {
+      localStorage.setItem('appliedDiscount', JSON.stringify(appliedDiscount));
+    } else {
+      localStorage.removeItem('appliedDiscount');
+    }
+  }, [appliedDiscount]);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
@@ -182,6 +204,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
         selectedCountry,
         setSelectedCountry,
         taxCalculation,
+        appliedDiscount,
+        setAppliedDiscount,
       }}
     >
       {children}
