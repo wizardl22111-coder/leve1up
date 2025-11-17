@@ -85,10 +85,15 @@ export function calculatePrice(
   // السعر الأصلي (قبل الخصم)
   const originalPriceInSAR = product.originalPrice || product.price || 0;
   
-  // السعر بعد الخصم 60% (أي 40% من السعر الأصلي)
+  // السعر بعد الخصم (من قاعدة البيانات)
   const discountedPriceInSAR = applyDiscount 
-    ? originalPriceInSAR * 0.4 
+    ? (product.price || originalPriceInSAR)
     : originalPriceInSAR;
+  
+  // حساب نسبة الخصم ديناميكياً
+  const discountPercentage = applyDiscount && originalPriceInSAR > 0
+    ? Math.round(((originalPriceInSAR - discountedPriceInSAR) / originalPriceInSAR) * 100)
+    : 0;
   
   // تحويل إلى العملة المطلوبة
   const finalPrice = convertPrice(discountedPriceInSAR, currency);
@@ -98,7 +103,7 @@ export function calculatePrice(
     originalPrice: originalPriceConverted,
     discountedPrice: discountedPriceInSAR,
     finalPrice: finalPrice,
-    discountPercentage: applyDiscount ? 60 : 0,
+    discountPercentage: discountPercentage,
     currency,
     symbol: getCurrencySymbol(currency),
   };
@@ -109,4 +114,3 @@ export function formatPrice(price: number, currency: Currency): string {
   const symbol = getCurrencySymbol(currency);
   return `${price.toFixed(2)} ${symbol}`;
 }
-

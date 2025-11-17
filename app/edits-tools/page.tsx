@@ -89,10 +89,6 @@ export default function EditToolsPage() {
                       <Video className="w-12 h-12 text-blue-400 mx-auto mb-2" />
                       <div className="text-4xl font-bold text-white/10">🎬</div>
                     </div>
-                    {/* Discount Badge */}
-                    <div className="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-pink-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                      خصم 60%
-                    </div>
                   </div>
 
                   {/* Product Info */}
@@ -133,7 +129,6 @@ export default function EditToolsPage() {
                       {/* Price */}
                       <div className="flex items-center gap-3 mb-4">
                         <span className="text-2xl font-bold text-white">24.99 ر.س</span>
-                        <span className="text-lg text-gray-500 line-through">62.48 ر.س</span>
                       </div>
 
                       {/* Action Buttons */}
@@ -162,7 +157,7 @@ export default function EditToolsPage() {
                     </div>
                     {/* Discount Badge */}
                     <div className="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-pink-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                      خصم 60%
+                      خصم 77%
                     </div>
                   </div>
 
@@ -203,8 +198,8 @@ export default function EditToolsPage() {
 
                       {/* Price */}
                       <div className="flex items-center gap-3 mb-4">
-                        <span className="text-2xl font-bold text-white">24.99 ر.س</span>
-                        <span className="text-lg text-gray-500 line-through">62.48 ر.س</span>
+                        <span className="text-2xl font-bold text-white">7.99 ر.س</span>
+                        <span className="text-lg text-gray-500 line-through">35 ر.س</span>
                       </div>
 
                       {/* Action Buttons */}
