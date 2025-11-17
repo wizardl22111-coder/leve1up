@@ -21,12 +21,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { cartItems, totalAmount, currency, customerEmail } = body;
 
-    console.log('🛒 Cart Payment Intent Request:', {
-      cartItems: cartItems?.length,
-      totalAmount,
-      currency,
-      customerEmail
-    });
+
 
     // التحقق من البيانات المطلوبة
     if (!cartItems || !Array.isArray(cartItems) || cartItems.length === 0) {
@@ -68,7 +63,6 @@ export async function POST(req: NextRequest) {
 
     // حفظ بيانات الطلب في Redis
     await redis.set(`order:${orderId}`, JSON.stringify(orderData), { ex: 3600 }); // ينتهي خلال ساعة
-    console.log(`✅ Order saved to Redis: order:${orderId}`);
 
     // إنشاء رابط الدفع (محاكاة - يمكن استبداله بـ Stripe أو PayPal)
     const paymentUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'https://leve1up.store'}/payment-success?order_id=${orderId}&type=cart`;
@@ -125,10 +119,9 @@ export async function POST(req: NextRequest) {
         `
         });
 
-        console.log('✅ Order confirmation email sent to:', customerEmail);
+
       }
     } catch (emailError) {
-      console.error('❌ Failed to send order confirmation email:', emailError);
       // لا نوقف العملية إذا فشل الإيميل
     }
 
@@ -140,7 +133,6 @@ export async function POST(req: NextRequest) {
     });
 
   } catch (error: any) {
-    console.error('❌ Cart Payment Intent Error:', error);
     return NextResponse.json(
       { error: 'حدث خطأ في معالجة الطلب' },
       { status: 500 }

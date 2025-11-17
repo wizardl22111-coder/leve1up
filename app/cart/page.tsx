@@ -106,7 +106,7 @@ export default function CartPage() {
         image: item.image
       }));
 
-      console.log('🛒 Sending cart data:', { cartItems, totalAmount: cartTotal });
+
 
       // التحقق من البريد الإلكتروني
       if (!customerEmail || !customerEmail.includes('@')) {
@@ -134,14 +134,12 @@ export default function CartPage() {
       });
 
       const data = await response.json();
-      console.log('📥 API Response:', data);
 
       if (!response.ok) {
         throw new Error(data.error || 'فشل في إنشاء عملية الدفع');
       }
 
       if (data.success && data.redirect_url) {
-        console.log('✅ Redirecting to:', data.redirect_url);
         
         // 💾 حفظ بيانات السلة في localStorage لعرضها في صفحة النجاح
         localStorage.setItem('leve1up_email', customerEmail);
@@ -161,7 +159,6 @@ export default function CartPage() {
         throw new Error('لم يتم استلام رابط الدفع');
       }
     } catch (err: any) {
-      console.error('❌ Checkout Error:', err);
       setError(err.message || 'حدث خطأ أثناء معالجة الطلب');
       setIsCheckingOut(false);
     }
@@ -225,62 +222,64 @@ export default function CartPage() {
               {cart.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 md:p-6 flex flex-col md:flex-row gap-4 animate-scale-in hover:shadow-lg transition-all duration-300"
+                  className="bg-gray-50 dark:bg-gray-800 rounded-xl p-3 sm:p-4 md:p-6 animate-scale-in hover:shadow-lg transition-all duration-300"
                 >
-                  {/* Product Image */}
-                  <div className="relative w-full md:w-32 h-32 rounded-lg overflow-hidden flex-shrink-0">
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                    {/* Product Image */}
+                    <div className="relative w-full sm:w-24 md:w-32 h-24 sm:h-24 md:h-32 rounded-lg overflow-hidden flex-shrink-0 mx-auto sm:mx-0">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
 
-                  {/* Product Info */}
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                      {item.name}
-                    </h3>
-                    <p className="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">
-                      {item.price.toFixed(2)} {getCurrencySymbol(currency)}
-                    </p>
+                    {/* Product Info */}
+                    <div className="flex-1 text-center sm:text-right">
+                      <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">
+                        {item.name}
+                      </h3>
+                      <p className="text-lg sm:text-xl md:text-2xl font-bold text-primary-600 dark:text-primary-400 mb-3 sm:mb-4">
+                        {item.price.toFixed(2)} {getCurrencySymbol(currency)}
+                      </p>
 
-                    {/* Quantity Controls */}
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-2 bg-white dark:bg-gray-700 rounded-lg p-1">
+                      {/* Quantity Controls & Remove Button */}
+                      <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-3 sm:gap-4">
+                        <div className="flex items-center gap-1 sm:gap-2 bg-white dark:bg-gray-700 rounded-lg p-1">
+                          <button
+                            onClick={() => updateCartQuantity(item.id, item.quantity - 1)}
+                            className="p-1.5 sm:p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition"
+                          >
+                            <Minus className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700 dark:text-gray-200" />
+                          </button>
+                          <span className="w-8 sm:w-12 text-center font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                            {item.quantity}
+                          </span>
+                          <button
+                            onClick={() => updateCartQuantity(item.id, item.quantity + 1)}
+                            className="p-1.5 sm:p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition"
+                          >
+                            <Plus className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700 dark:text-gray-200" />
+                          </button>
+                        </div>
+
                         <button
-                          onClick={() => updateCartQuantity(item.id, item.quantity - 1)}
-                          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition"
+                          onClick={() => removeFromCart(item.id)}
+                          className="p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition"
                         >
-                          <Minus className="w-4 h-4 text-gray-700 dark:text-gray-200" />
-                        </button>
-                        <span className="w-12 text-center font-semibold text-gray-900 dark:text-white">
-                          {item.quantity}
-                        </span>
-                        <button
-                          onClick={() => updateCartQuantity(item.id, item.quantity + 1)}
-                          className="p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition"
-                        >
-                          <Plus className="w-4 h-4 text-gray-700 dark:text-gray-200" />
+                          <Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
                         </button>
                       </div>
-
-                      <button
-                        onClick={() => removeFromCart(item.id)}
-                        className="p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition"
-                      >
-                        <Trash2 className="w-5 h-5" />
-                      </button>
                     </div>
-                  </div>
 
-                  {/* Item Total */}
-                  <div className="text-left md:text-right">
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">المجموع</p>
-                    <p className="text-xl font-bold text-gray-900 dark:text-white">
-                      {(item.price * item.quantity).toFixed(2)} {getCurrencySymbol(currency)}
-                    </p>
+                    {/* Item Total */}
+                    <div className="text-center sm:text-right mt-2 sm:mt-0">
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-1">المجموع</p>
+                      <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
+                        {(item.price * item.quantity).toFixed(2)} {getCurrencySymbol(currency)}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -296,7 +295,7 @@ export default function CartPage() {
 
             {/* Order Summary */}
             <div className="lg:col-span-1">
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 sticky top-24 animate-slide-up">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 sm:p-6 sticky top-24 animate-slide-up">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                   ملخص الطلب
                 </h2>
