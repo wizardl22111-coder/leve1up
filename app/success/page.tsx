@@ -75,31 +75,42 @@ function SuccessPageContent() {
           console.log("🔍 Fetching order by ID:", searchId);
           
           try {
-            const response = await fetch(`/api/orders/${searchId}`);
-            
-            if (response.ok) {
-              const result = await response.json();
-              console.log("✅ API Response:", result);
+            // محاولة البحث في قاعدة البيانات المحلية أولاً
+            const ordersResponse = await fetch('/data/orders.json');
+            if (ordersResponse.ok) {
+              const orders = await ordersResponse.json();
+              const foundOrder = orders.find((order: any) => 
+                order.payment_id === searchId || 
+                order.order_id === searchId ||
+                order.order_id.includes(searchId)
+              );
               
-              if (result.success && result.order) {
-                const order = result.order;
-                console.log("✅ Order found from API:", order);
+              if (foundOrder) {
+                console.log("✅ Order found from JSON:", foundOrder);
                 
                 // إنشاء روابط التحميل لكل منتج
-                const downloadLinks: DownloadLink[] = order.items.map((item: CartItem) => ({
-                  productId: item.id,
-                  productName: item.name,
-                  downloadUrl: `/api/download/${order.sessionId}?product=${item.id}`
+                const downloadLinks: DownloadLink[] = foundOrder.products.map((product: any) => ({
+                  productId: product.product_id,
+                  productName: product.product_name,
+                  downloadUrl: product.download_url
+                }));
+                
+                // تحويل المنتجات إلى تنسيق CartItem
+                const items: CartItem[] = foundOrder.products.map((product: any) => ({
+                  id: product.product_id,
+                  name: product.product_name,
+                  price: product.price,
+                  quantity: 1
                 }));
                 
                 setOrderData({
-                  email: order.customerEmail,
-                  items: order.items,
-                  totalAmount: order.amount,
-                  currency: order.currency,
-                  orderId: order.id,
-                  paymentId: order.paymentId || searchId,
-                  createdAt: order.createdAt,
+                  email: foundOrder.user_email,
+                  items: items,
+                  totalAmount: foundOrder.total_amount,
+                  currency: foundOrder.currency,
+                  orderId: foundOrder.order_id,
+                  paymentId: foundOrder.payment_id || searchId,
+                  createdAt: foundOrder.created_at,
                   downloadLinks
                 });
                 
@@ -111,12 +122,10 @@ function SuccessPageContent() {
                 
                 setLoading(false);
                 return;
-              } else {
-                console.log("❌ API returned error:", result);
               }
             }
           } catch (apiError) {
-            console.log("⚠️ API fetch failed, trying localStorage fallback");
+            console.log("⚠️ JSON fetch failed, trying localStorage fallback");
           }
         }
         
