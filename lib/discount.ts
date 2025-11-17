@@ -139,7 +139,8 @@ export function validateDiscountCode(code: string): DiscountValidationResponse {
   };
 }
 
-// التحقق من كون المنتج خاضع للضريبة
+// التحقق من كون المنتج خاضع للضريبة (تلقائياً)
+// الضريبة 5% تطبق تلقائياً على الاشتراكات الرقمية والألعاب فقط
 export function isProductTaxable(category: ProductCategory): boolean {
   return taxableCategories.includes(category);
 }

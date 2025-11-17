@@ -32,15 +32,51 @@ export default function CartPage() {
   const [error, setError] = useState('');
   const [customerEmail, setCustomerEmail] = useState('');
 
-  // تحويل عناصر السلة إلى منتجات مع فئات (مؤقتاً نفترض أن كل المنتجات من فئة الاشتراكات)
-  const cartWithCategories: ProductWithCategory[] = cart.map(item => ({
-    id: item.id,
-    name: item.name,
-    price: item.price,
-    quantity: item.quantity,
-    category: item.id <= 2 ? 'subscriptions' : item.id <= 4 ? 'games' : 'editing_tools', // تصنيف مؤقت
-    image: item.image
-  }));
+  // تحويل عناصر السلة إلى منتجات مع فئات تلقائية حسب نوع المنتج
+  const cartWithCategories: ProductWithCategory[] = cart.map(item => {
+    // تحديد الفئة بناءً على اسم المنتج أو معرفه
+    let category: ProductWithCategory['category'] = 'editing_tools'; // افتراضي
+    
+    const productName = item.name.toLowerCase();
+    
+    // فئة الاشتراكات الرقمية (خاضعة للضريبة 5%)
+    if (productName.includes('اشتراك') || 
+        productName.includes('subscription') ||
+        productName.includes('الدليل التمهيدي') ||
+        productName.includes('الربح من المنتجات') ||
+        item.id === 1 || item.id === 2) {
+      category = 'subscriptions';
+    }
+    // فئة الألعاب (خاضعة للضريبة 5%)
+    else if (productName.includes('لعبة') || 
+             productName.includes('game') ||
+             productName.includes('ألعاب') ||
+             item.id === 3 || item.id === 4) {
+      category = 'games';
+    }
+    // فئة أدوات المونتاج (معفاة من الضريبة)
+    else if (productName.includes('مونتاج') || 
+             productName.includes('editing') ||
+             productName.includes('باقة') ||
+             productName.includes('أيقونات')) {
+      category = 'editing_tools';
+    }
+    // المنتجات المميزة (معفاة من الضريبة)
+    else if (productName.includes('مميز') || 
+             productName.includes('premium') ||
+             productName.includes('حزمة')) {
+      category = 'premium_products';
+    }
+    
+    return {
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+      category: category,
+      image: item.image
+    };
+  });
 
   // حساب الأسعار المتقدمة مع الخصومات والضرائب
   const advancedCalculation = calculateAdvancedPricing(
@@ -313,10 +349,7 @@ export default function CartPage() {
                     </div>
                   )}
                   
-                  <div className="flex justify-between text-gray-600 dark:text-gray-300">
-                    <span>التوصيل</span>
-                    <span className="font-semibold text-green-600">مجاني</span>
-                  </div>
+
                   
                   <div className="border-t border-gray-300 dark:border-gray-600 pt-4">
                     <div className="flex justify-between text-lg font-bold text-gray-900 dark:text-white">
@@ -329,7 +362,16 @@ export default function CartPage() {
                   {advancedCalculation.taxAmount > 0 && (
                     <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border border-blue-200 dark:border-blue-800">
                       <p className="text-xs text-blue-800 dark:text-blue-200">
-                        💡 ضريبة 5% مطبقة فقط على الاشتراكات والألعاب. المنتجات الأخرى معفاة من الضرائب.
+                        💡 <strong>ضريبة تلقائية 5%</strong> مطبقة على الاشتراكات الرقمية والألعاب فقط. أدوات المونتاج والمنتجات الأخرى معفاة من الضرائب.
+                      </p>
+                    </div>
+                  )}
+
+                  {/* No Tax Explanation when no tax applied */}
+                  {advancedCalculation.taxAmount === 0 && cart.length > 0 && (
+                    <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-800">
+                      <p className="text-xs text-green-800 dark:text-green-200">
+                        ✅ <strong>معفى من الضرائب!</strong> المنتجات في سلتك لا تخضع للضريبة (أدوات المونتاج والمنتجات المميزة معفاة).
                       </p>
                     </div>
                   )}
