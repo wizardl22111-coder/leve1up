@@ -160,7 +160,10 @@ export default function ProductDetail({ product }: { product?: Product }) {
             {/* Category Badge */}
             <div>
               <span className="inline-block px-4 py-2 bg-primary-300/20 border border-primary-300/40 text-primary-300 rounded-xl text-sm font-bold">
-                {product.category === 'ebooks' ? 'كتاب رقمي' : product.category ?? 'منتج رقمي'}
+                {product.category === 'ebooks' ? 'كتاب رقمي' : 
+                 product.category === 'editing-tools' ? 'أدوات المونتاج' :
+                 product.category === 'youtube-tools' ? 'أدوات المونتاج' :
+                 product.category ?? 'منتج رقمي'}
               </span>
             </div>
 

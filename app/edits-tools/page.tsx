@@ -98,7 +98,7 @@ export default function EditToolsPage() {
                     <h3 className="text-2xl font-bold text-white mb-2">
                       باقة المونتاج الاحترافية
                     </h3>
-                    <p className="text-blue-400 text-sm font-medium mb-3">Ultimate Video Editing Pack 🎬</p>
+
                     
                     {/* Rating */}
                     <div className="flex items-center gap-2 mb-4">
