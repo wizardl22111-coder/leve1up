@@ -4,11 +4,9 @@ import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import TrustBadges from '@/components/TrustBadges';
-import DiscountCode from '@/components/DiscountCode';
-import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, CreditCard, Tag } from 'lucide-react';
+import { Trash2, Plus, Minus, ShoppingBag, CreditCard } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { getCurrencySymbol } from '@/lib/currency';
-import { calculateAdvancedPricing, type ProductWithCategory } from '@/lib/discount';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -19,78 +17,15 @@ export default function CartPage() {
     updateCartQuantity, 
     cartTotal, 
     currency, 
-    clearCart,
-    selectedCountry,
-    setSelectedCountry,
-    taxCalculation,
-    appliedDiscount,
-    setAppliedDiscount
+    clearCart
   } = useApp();
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [error, setError] = useState('');
   const [customerEmail, setCustomerEmail] = useState('');
 
-  // تحويل عناصر السلة إلى منتجات مع فئات تلقائية حسب نوع المنتج
-  const cartWithCategories: ProductWithCategory[] = cart.map(item => {
-    // تحديد الفئة بناءً على اسم المنتج أو معرفه
-    let category: ProductWithCategory['category'] = 'editing_tools'; // افتراضي
-    
-    const productName = item.name.toLowerCase();
-    
-    // فئة الاشتراكات الرقمية (خاضعة للضريبة 5%)
-    if (productName.includes('اشتراك') || 
-        productName.includes('subscription') ||
-        productName.includes('الدليل التمهيدي') ||
-        productName.includes('الربح من المنتجات') ||
-        item.id === 1 || item.id === 2) {
-      category = 'subscriptions';
-    }
-    // فئة الألعاب (خاضعة للضريبة 5%)
-    else if (productName.includes('لعبة') || 
-             productName.includes('game') ||
-             productName.includes('ألعاب') ||
-             item.id === 3 || item.id === 4) {
-      category = 'games';
-    }
-    // فئة أدوات المونتاج (معفاة من الضريبة)
-    else if (productName.includes('مونتاج') || 
-             productName.includes('editing') ||
-             productName.includes('باقة') ||
-             productName.includes('أيقونات')) {
-      category = 'editing_tools';
-    }
-    // المنتجات المميزة (معفاة من الضريبة)
-    else if (productName.includes('مميز') || 
-             productName.includes('premium') ||
-             productName.includes('حزمة')) {
-      category = 'premium_products';
-    }
-    
-    return {
-      id: item.id,
-      name: item.name,
-      price: item.price,
-      quantity: item.quantity,
-      category: category,
-      image: item.image
-    };
-  });
-
-  // حساب الأسعار المتقدمة مع الخصومات والضرائب
-  const advancedCalculation = calculateAdvancedPricing(
-    cartWithCategories,
-    currency,
-    appliedDiscount?.percent || 0,
-    appliedDiscount?.code
-  );
-
-  const handleDiscountApplied = (discountPercent: number, code: string) => {
-    setAppliedDiscount({ code, percent: discountPercent });
-  };
-
-  const handleDiscountRemoved = () => {
-    setAppliedDiscount(null);
-  };
+  // حساب المجموع بدون ضرائب أو خصومات معقدة
+  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const finalTotal = subtotal;
 
   const handleCheckout = async () => {
     setIsCheckingOut(true);
@@ -106,83 +41,61 @@ export default function CartPage() {
         image: item.image
       }));
 
-
-
-      // التحقق من البريد الإلكتروني
-      if (!customerEmail || !customerEmail.includes('@')) {
-        throw new Error('يرجى إدخال بريد إلكتروني صحيح');
-      }
-
-      // 📤 إرسال الطلب إلى API
-      const response = await fetch('/api/cart_payment_intent', {
+      // 💳 إنشاء طلب الدفع
+      const response = await fetch('/api/payment_intent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          cartItems: cartItems,
-          totalAmount: advancedCalculation.finalTotal,
-          subtotal: advancedCalculation.subtotal,
-          discountAmount: advancedCalculation.discountAmount,
-          discountPercent: advancedCalculation.discountPercent,
-          discountCode: appliedDiscount?.code,
-
-          country: selectedCountry,
-          currency: currency,
-          customerEmail: customerEmail
+          items: cartItems,
+          customerEmail: customerEmail,
+          totalAmount: finalTotal,
+          currency: currency
         }),
       });
 
       const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.error || 'فشل في إنشاء عملية الدفع');
-      }
+      if (data.success && data.paymentUrl) {
+        // 💾 حفظ بيانات السلة في localStorage للاسترجاع في صفحة النجاح
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        localStorage.setItem('customerEmail', customerEmail);
+        localStorage.setItem('totalAmount', finalTotal.toString());
+        localStorage.setItem('currency', currency);
 
-      if (data.success && data.redirect_url) {
-        
-        // 💾 حفظ بيانات السلة في localStorage لعرضها في صفحة النجاح
-        localStorage.setItem('leve1up_email', customerEmail);
-        localStorage.setItem('leve1up_total_amount', advancedCalculation.finalTotal.toString());
-        localStorage.setItem('leve1up_subtotal', advancedCalculation.subtotal.toString());
-        localStorage.setItem('leve1up_discount_amount', advancedCalculation.discountAmount.toString());
-
-        if (appliedDiscount) {
-          localStorage.setItem('leve1up_discount_code', appliedDiscount.code);
-          localStorage.setItem('leve1up_discount_percent', appliedDiscount.percent.toString());
-        }
-        // السلة محفوظة بالفعل في AppContext
-        
-        // 🔄 التوجيه إلى صفحة الدفع
-        window.location.href = data.redirect_url;
+        // 🔄 إعادة توجيه إلى صفحة الدفع
+        window.location.href = data.paymentUrl;
       } else {
-        throw new Error('لم يتم استلام رابط الدفع');
+        throw new Error(data.error || 'فشل في إنشاء رابط الدفع');
       }
-    } catch (err: any) {
-      setError(err.message || 'حدث خطأ أثناء معالجة الطلب');
+    } catch (error) {
+      console.error('Checkout error:', error);
+      setError(error instanceof Error ? error.message : 'حدث خطأ أثناء معالجة الطلب');
+    } finally {
       setIsCheckingOut(false);
     }
   };
 
   if (cart.length === 0) {
     return (
-      <main className="min-h-screen">
+      <main className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
         <Navbar />
-        <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center animate-fade-in">
-              <ShoppingBag className="w-24 h-24 mx-auto text-gray-300 dark:text-gray-600 mb-6" />
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <section className="pt-24 pb-12">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="animate-fade-in">
+              <ShoppingBag className="w-24 h-24 text-gray-400 mx-auto mb-6" />
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                 سلة التسوق فارغة
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+              <p className="text-gray-600 dark:text-gray-300 mb-8">
                 لم تقم بإضافة أي منتجات إلى سلة التسوق بعد
               </p>
               <Link
                 href="/#products"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-600 to-accent-600 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-600 to-accent-600 text-white px-8 py-4 rounded-lg font-bold hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
               >
-                <ArrowRight className="w-5 h-5" />
+                <ShoppingBag className="w-5 h-5" />
                 تصفح المنتجات
               </Link>
             </div>
@@ -194,9 +107,8 @@ export default function CartPage() {
   }
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <Navbar />
-      {/* padding-top للتأكد من عدم تداخل الهيدر */}
       <section className="pt-24 pb-12 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8 animate-fade-in">
@@ -222,11 +134,11 @@ export default function CartPage() {
               {cart.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-gray-50 dark:bg-gray-800 rounded-xl p-3 sm:p-4 md:p-6 animate-scale-in hover:shadow-lg transition-all duration-300"
+                  className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 md:p-6 animate-scale-in hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                  <div className="flex flex-col md:flex-row gap-4">
                     {/* Product Image */}
-                    <div className="relative w-full sm:w-24 md:w-32 h-24 sm:h-24 md:h-32 rounded-lg overflow-hidden flex-shrink-0 mx-auto sm:mx-0">
+                    <div className="relative w-full md:w-32 h-32 rounded-lg overflow-hidden flex-shrink-0 mx-auto md:mx-0">
                       <Image
                         src={item.image}
                         alt={item.name}
@@ -236,31 +148,31 @@ export default function CartPage() {
                     </div>
 
                     {/* Product Info */}
-                    <div className="flex-1 text-center sm:text-right">
-                      <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2">
+                    <div className="flex-1 text-center md:text-right">
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
                         {item.name}
                       </h3>
-                      <p className="text-lg sm:text-xl md:text-2xl font-bold text-primary-600 dark:text-primary-400 mb-3 sm:mb-4">
+                      <p className="text-xl md:text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">
                         {item.price.toFixed(2)} {getCurrencySymbol(currency)}
                       </p>
 
                       {/* Quantity Controls & Remove Button */}
-                      <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-3 sm:gap-4">
-                        <div className="flex items-center gap-1 sm:gap-2 bg-white dark:bg-gray-700 rounded-lg p-1">
+                      <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                        <div className="flex items-center gap-2 bg-white dark:bg-gray-700 rounded-lg p-1">
                           <button
                             onClick={() => updateCartQuantity(item.id, item.quantity - 1)}
-                            className="p-1.5 sm:p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition"
+                            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition"
                           >
-                            <Minus className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700 dark:text-gray-200" />
+                            <Minus className="w-4 h-4 text-gray-700 dark:text-gray-200" />
                           </button>
-                          <span className="w-8 sm:w-12 text-center font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                          <span className="w-12 text-center font-semibold text-gray-900 dark:text-white">
                             {item.quantity}
                           </span>
                           <button
                             onClick={() => updateCartQuantity(item.id, item.quantity + 1)}
-                            className="p-1.5 sm:p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition"
+                            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition"
                           >
-                            <Plus className="w-3 h-3 sm:w-4 sm:h-4 text-gray-700 dark:text-gray-200" />
+                            <Plus className="w-4 h-4 text-gray-700 dark:text-gray-200" />
                           </button>
                         </div>
 
@@ -268,15 +180,15 @@ export default function CartPage() {
                           onClick={() => removeFromCart(item.id)}
                           className="p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition"
                         >
-                          <Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <Trash2 className="w-5 h-5" />
                         </button>
                       </div>
                     </div>
 
                     {/* Item Total */}
-                    <div className="text-center sm:text-right mt-2 sm:mt-0">
-                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-1">المجموع</p>
-                      <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
+                    <div className="text-center md:text-right mt-2 md:mt-0">
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">المجموع</p>
+                      <p className="text-xl font-bold text-gray-900 dark:text-white">
                         {(item.price * item.quantity).toFixed(2)} {getCurrencySymbol(currency)}
                       </p>
                     </div>
@@ -295,60 +207,23 @@ export default function CartPage() {
 
             {/* Order Summary */}
             <div className="lg:col-span-1">
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 sm:p-6 sticky top-24 animate-slide-up">
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 sticky top-24 animate-slide-up">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                   ملخص الطلب
                 </h2>
 
-
-
-                {/* Discount Code */}
-                <div className="mb-6">
-                  <DiscountCode
-                    onDiscountApplied={handleDiscountApplied}
-                    onDiscountRemoved={handleDiscountRemoved}
-                    appliedDiscount={appliedDiscount}
-                  />
-                </div>
-
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between text-gray-600 dark:text-gray-300">
                     <span>المجموع الفرعي</span>
-                    <span className="font-semibold">{advancedCalculation.subtotal.toFixed(2)} {getCurrencySymbol(currency)}</span>
+                    <span className="font-semibold">{subtotal.toFixed(2)} {getCurrencySymbol(currency)}</span>
                   </div>
-                  
-                  {/* Discount Display */}
-                  {advancedCalculation.discountAmount > 0 && (
-                    <div className="flex justify-between text-green-600 dark:text-green-400">
-                      <span className="flex items-center gap-1">
-                        خصم ({advancedCalculation.discountPercent}%)
-                        <Tag className="w-4 h-4" />
-                      </span>
-                      <span className="font-semibold">-{advancedCalculation.discountAmount.toFixed(2)} {getCurrencySymbol(currency)}</span>
-                    </div>
-                  )}
-                  
-
-                  
-
                   
                   <div className="border-t border-gray-300 dark:border-gray-600 pt-4">
                     <div className="flex justify-between text-lg font-bold text-gray-900 dark:text-white">
                       <span>الإجمالي</span>
-                      <span>{advancedCalculation.finalTotal.toFixed(2)} {getCurrencySymbol(currency)}</span>
+                      <span>{finalTotal.toFixed(2)} {getCurrencySymbol(currency)}</span>
                     </div>
                   </div>
-
-
-
-                  {/* Discount Savings Display */}
-                  {advancedCalculation.discountAmount > 0 && (
-                    <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-800">
-                      <p className="text-xs text-green-800 dark:text-green-200">
-                        🎉 <strong>تهانينا!</strong> وفرت {advancedCalculation.discountAmount.toFixed(2)} {getCurrencySymbol(currency)} بفضل كود الخصم!
-                      </p>
-                    </div>
-                  )}
                 </div>
 
                 {/* Email Input */}
@@ -416,3 +291,4 @@ export default function CartPage() {
     </main>
   );
 }
+
