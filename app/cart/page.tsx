@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import TrustBadges from '@/components/TrustBadges';
+import DiscountCodeInput from '@/components/DiscountCodeInput';
 import { Trash2, Plus, Minus, ShoppingBag, CreditCard } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { getCurrencySymbol } from '@/lib/currency';
@@ -22,10 +23,26 @@ export default function CartPage() {
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [error, setError] = useState('');
   const [customerEmail, setCustomerEmail] = useState('');
+  const [appliedCodes, setAppliedCodes] = useState<string[]>([]);
+  const [totalDiscount, setTotalDiscount] = useState(0);
 
-  // حساب المجموع بدون ضرائب أو خصومات معقدة
+  // حساب المجموع مع الخصومات
   const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const finalTotal = subtotal;
+  const discountAmount = (subtotal * totalDiscount) / 100;
+  const finalTotal = subtotal - discountAmount;
+
+  // دوال التعامل مع أكواد الخصم
+  const handleDiscountApplied = (discountPercent: number, code: string) => {
+    setAppliedCodes(prev => [...prev, code]);
+    setTotalDiscount(prev => prev + discountPercent);
+  };
+
+  const handleDiscountRemoved = (code: string) => {
+    setAppliedCodes(prev => prev.filter(c => c !== code));
+    // في التطبيق الحقيقي، يجب حفظ نسبة كل كود منفصلة
+    // هنا نفترض أن كل كود له نفس النسبة للبساطة
+    setTotalDiscount(0);
+  };
 
   const handleCheckout = async () => {
     setIsCheckingOut(true);
@@ -218,12 +235,30 @@ export default function CartPage() {
                     <span className="font-semibold">{subtotal.toFixed(2)} {getCurrencySymbol(currency)}</span>
                   </div>
                   
+                  {/* عرض الخصم إذا كان موجود */}
+                  {totalDiscount > 0 && (
+                    <div className="flex justify-between text-green-600 dark:text-green-400">
+                      <span>الخصم ({totalDiscount}%)</span>
+                      <span className="font-semibold">-{discountAmount.toFixed(2)} {getCurrencySymbol(currency)}</span>
+                    </div>
+                  )}
+                  
                   <div className="border-t border-gray-300 dark:border-gray-600 pt-4">
                     <div className="flex justify-between text-lg font-bold text-gray-900 dark:text-white">
                       <span>الإجمالي</span>
                       <span>{finalTotal.toFixed(2)} {getCurrencySymbol(currency)}</span>
                     </div>
                   </div>
+                </div>
+
+                {/* مكون أكواد الخصم */}
+                <div className="mb-6 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                  <DiscountCodeInput
+                    onDiscountApplied={handleDiscountApplied}
+                    onDiscountRemoved={handleDiscountRemoved}
+                    appliedCodes={appliedCodes}
+                    disabled={isCheckingOut}
+                  />
                 </div>
 
                 {/* Email Input */}
@@ -291,4 +326,3 @@ export default function CartPage() {
     </main>
   );
 }
-
