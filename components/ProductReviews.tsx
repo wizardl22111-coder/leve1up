@@ -114,7 +114,7 @@ export default function ProductReviews({ productId, reviews: initialReviews = []
       
       <div className="container mx-auto relative z-10">
         <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent">
-          تقييمات العملاء ({reviews.length})
+          تقييمات العملاء
         </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-h-96 overflow-y-auto">
@@ -130,11 +130,11 @@ export default function ProductReviews({ productId, reviews: initialReviews = []
                     <img
                       src={review.avatar}
                       alt={review.customerName}
-                      className="w-16 h-16 rounded-full object-cover border-2 border-primary-300/20"
+                      className="w-[70px] h-[70px] rounded-full object-cover border-2 border-primary-300/20"
                     />
                   ) : (
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary-300 to-accent-600 flex items-center justify-center text-white">
-                      <User size={24} />
+                    <div className="w-[70px] h-[70px] rounded-full bg-gradient-to-br from-primary-300 to-accent-600 flex items-center justify-center text-white">
+                      <User size={28} />
                     </div>
                   )}
                   <div>
@@ -169,14 +169,7 @@ export default function ProductReviews({ productId, reviews: initialReviews = []
           ))}
         </div>
 
-        {/* رسالة إذا كان هناك المزيد */}
-        {reviews.length > 0 && (
-          <div className="text-center mt-12">
-            <p className="text-gray-300">
-              وغيرهم الكثير من العملاء السعداء! 🎉
-            </p>
-          </div>
-        )}
+
       </div>
     </section>
   );

@@ -12,9 +12,9 @@
       "id": 2,
       "customerName": "سامر الشامي",
       "rating": 5,
-      "comment": "حبيته",
+      "comment": "الحزمة فعلاً ساعدتني أرتّب شغلي في التصميم وأوفر وقت كتير.",
       "avatar": "/images/avatars/avatar-11.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 3,
@@ -28,9 +28,9 @@
       "id": 4,
       "customerName": "محمود الطراونة",
       "rating": 4,
-      "comment": "عسل",
+      "comment": "الباقة تستحق السعر وأكثر، جودة ممتازة.",
       "avatar": "/images/avatars/avatar-24.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 5,
@@ -100,9 +100,9 @@
       "id": 13,
       "customerName": "فاطمة الزهراء",
       "rating": 1,
-      "comment": "عجبني",
+      "comment": "",
       "avatar": "/images/avatars/avatar-14.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 14,
@@ -116,17 +116,17 @@
       "id": 15,
       "customerName": "طارق محمود",
       "rating": 4,
-      "comment": "تحفة",
+      "comment": "ممتاز جدًا",
       "avatar": "/images/avatars/avatar-65.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 16,
       "customerName": "أمير صلاح",
       "rating": 3,
-      "comment": "كويس جداً",
+      "comment": "خدمة رهيبة",
       "avatar": "/images/avatars/avatar-92.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 17,
@@ -140,17 +140,17 @@
       "id": 18,
       "customerName": "حيدر العراقي",
       "rating": 5,
-      "comment": "عجبني",
+      "comment": "",
       "avatar": "/images/avatars/avatar-7.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 19,
       "customerName": "يوسف القاسم",
       "rating": 3,
-      "comment": "رهيب",
+      "comment": "شغل نظيف",
       "avatar": "/images/avatars/avatar-100.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 20,
@@ -164,17 +164,17 @@
       "id": 21,
       "customerName": "زينب الحسيني",
       "rating": 4,
-      "comment": "كويس جداً",
+      "comment": "روعة بجد",
       "avatar": "/images/avatars/avatar-30.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 22,
       "customerName": "خديجة الحسني",
       "rating": 5,
-      "comment": "عجبني",
+      "comment": "ممتاز جدًا",
       "avatar": "/images/avatars/avatar-35.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 23,
@@ -188,9 +188,9 @@
       "id": 24,
       "customerName": "لطيفة السديري",
       "rating": 4,
-      "comment": "عجبني",
+      "comment": "",
       "avatar": "/images/avatars/avatar-48.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 25,
@@ -212,9 +212,9 @@
       "id": 27,
       "customerName": "محمود الطراونة",
       "rating": 5,
-      "comment": "ممتاز",
+      "comment": "",
       "avatar": "/images/avatars/avatar-98.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 28,
@@ -228,17 +228,17 @@
       "id": 29,
       "customerName": "سمر عبدالرحمن",
       "rating": 2,
-      "comment": "حلو كتير",
+      "comment": "",
       "avatar": "/images/avatars/avatar-32.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 30,
       "customerName": "عبدالله الشمري",
       "rating": 3,
-      "comment": "ممتاز",
+      "comment": "",
       "avatar": "/images/avatars/avatar-81.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 31,
@@ -260,17 +260,17 @@
       "id": 33,
       "customerName": "نادر الحموي",
       "rating": 5,
-      "comment": "بجنن",
+      "comment": "",
       "avatar": "/images/avatars/avatar-60.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 34,
       "customerName": "سمر عبدالرحمن",
       "rating": 5,
-      "comment": "والله زين",
+      "comment": "بجد رائع",
       "avatar": "/images/avatars/avatar-65.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 35,
@@ -284,9 +284,9 @@
       "id": 36,
       "customerName": "عبدالله الشمري",
       "rating": 5,
-      "comment": "تحفة",
+      "comment": "خدمة ممتازة",
       "avatar": "/images/avatars/avatar-95.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 37,
@@ -324,25 +324,25 @@
       "id": 41,
       "customerName": "هبة عثمان",
       "rating": 5,
-      "comment": "مفيد جداً",
+      "comment": "الحزمة فعلاً ساعدتني أرتّب شغلي في التصميم وأوفر وقت كتير.",
       "avatar": "/images/avatars/avatar-11.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 42,
       "customerName": "ياسمين أحمد",
       "rating": 4,
-      "comment": "جميل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-53.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 43,
       "customerName": "ياسمين أحمد",
       "rating": 3,
-      "comment": "تحفة",
+      "comment": "شغل نظيف",
       "avatar": "/images/avatars/avatar-87.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 44,
@@ -356,25 +356,25 @@
       "id": 45,
       "customerName": "أمير صلاح",
       "rating": 5,
-      "comment": "تحفة",
+      "comment": "تسلم إيدك",
       "avatar": "/images/avatars/avatar-31.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 46,
       "customerName": "ياسمين أحمد",
       "rating": 5,
-      "comment": "جميل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-47.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 47,
       "customerName": "حسام علي",
       "rating": 5,
-      "comment": "تحفة",
+      "comment": "بجد رائع",
       "avatar": "/images/avatars/avatar-63.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 48,
@@ -388,17 +388,17 @@
       "id": 49,
       "customerName": "عمر الزعبي",
       "rating": 5,
-      "comment": "ممتاز",
+      "comment": "التنوع في الأيقونات يغطي كل المجالات.",
       "avatar": "/images/avatars/avatar-93.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 50,
       "customerName": "حيدر العراقي",
       "rating": 4,
-      "comment": "يستاهل",
+      "comment": "استخدمتها في عدة مشاريع والنتيجة كانت احترافية جداً.",
       "avatar": "/images/avatars/avatar-5.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 51,
@@ -420,9 +420,9 @@
       "id": 53,
       "customerName": "نور الهدى",
       "rating": 5,
-      "comment": "كتير حلو",
+      "comment": "بجد رائع",
       "avatar": "/images/avatars/avatar-49.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 54,
@@ -460,9 +460,9 @@
       "id": 58,
       "customerName": "خديجة الحسني",
       "rating": 4,
-      "comment": "ممتاز",
+      "comment": "الملفات منظمة تماماً وسهل أستخدمها في مشاريعي.",
       "avatar": "/images/avatars/avatar-96.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 59,
@@ -476,9 +476,9 @@
       "id": 60,
       "customerName": "رشا محمود",
       "rating": 4,
-      "comment": "حلو أوي",
+      "comment": "جودة عالية",
       "avatar": "/images/avatars/avatar-78.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 61,
@@ -492,25 +492,25 @@
       "id": 62,
       "customerName": "سارة الدوسري",
       "rating": 4,
-      "comment": "حبيته",
+      "comment": "",
       "avatar": "/images/avatars/avatar-72.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 63,
       "customerName": "فاطمة الزهراء",
       "rating": 5,
-      "comment": "حلو كتير",
+      "comment": "مرتب ومفيد",
       "avatar": "/images/avatars/avatar-79.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 64,
       "customerName": "أمير صلاح",
       "rating": 5,
-      "comment": "عسل",
+      "comment": "تحفة",
       "avatar": "/images/avatars/avatar-21.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 65,
@@ -526,33 +526,33 @@
       "id": 1,
       "customerName": "رشا محمود",
       "rating": 4,
-      "comment": "ممتاز",
+      "comment": "",
       "avatar": "/images/avatars/avatar-84.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 2,
       "customerName": "علي الأردني",
       "rating": 4,
-      "comment": "عسل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-36.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 3,
       "customerName": "عمر الزعبي",
       "rating": 5,
-      "comment": "بجنن",
+      "comment": "",
       "avatar": "/images/avatars/avatar-78.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 4,
       "customerName": "كريم عبدالله",
       "rating": 4,
-      "comment": "روعة",
+      "comment": "",
       "avatar": "/images/avatars/avatar-76.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 5,
@@ -590,9 +590,9 @@
       "id": 9,
       "customerName": "باسل الدمشقي",
       "rating": 5,
-      "comment": "روعة",
+      "comment": "",
       "avatar": "/images/avatars/avatar-19.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 10,
@@ -614,17 +614,17 @@
       "id": 12,
       "customerName": "خالد المطيري",
       "rating": 5,
-      "comment": "كويس جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-52.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 13,
       "customerName": "زينب الحسيني",
       "rating": 5,
-      "comment": "حلو كتير",
+      "comment": "خدمة رهيبة",
       "avatar": "/images/avatars/avatar-77.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 14,
@@ -646,9 +646,9 @@
       "id": 16,
       "customerName": "نور الهدى",
       "rating": 5,
-      "comment": "عجبني",
+      "comment": "",
       "avatar": "/images/avatars/avatar-100.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 17,
@@ -662,25 +662,25 @@
       "id": 18,
       "customerName": "سامر الشامي",
       "rating": 5,
-      "comment": "عجبني",
+      "comment": "حلو أوي",
       "avatar": "/images/avatars/avatar-87.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 19,
       "customerName": "بندر الخالد",
       "rating": 5,
-      "comment": "روعة",
+      "comment": "مرتب ومفيد",
       "avatar": "/images/avatars/avatar-73.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 20,
       "customerName": "علي الكربلائي",
       "rating": 5,
-      "comment": "مرة حلو",
+      "comment": "استخدمتها في عدة مشاريع والنتيجة كانت احترافية جداً.",
       "avatar": "/images/avatars/avatar-40.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 21,
@@ -710,9 +710,9 @@
       "id": 24,
       "customerName": "محمد العتيبي",
       "rating": 5,
-      "comment": "زي العسل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-62.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 25,
@@ -742,9 +742,9 @@
       "id": 28,
       "customerName": "سامر الشامي",
       "rating": 2,
-      "comment": "كتير حلو",
+      "comment": "استفدت منها في تطوير قناتي على اليوتيوب.",
       "avatar": "/images/avatars/avatar-70.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 29,
@@ -758,17 +758,17 @@
       "id": 30,
       "customerName": "هند الراشد",
       "rating": 4,
-      "comment": "عجبني",
+      "comment": "",
       "avatar": "/images/avatars/avatar-36.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 31,
       "customerName": "لارا الحلبي",
       "rating": 2,
-      "comment": "عجبني",
+      "comment": "فوق التوقعات",
       "avatar": "/images/avatars/avatar-23.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 32,
@@ -782,25 +782,25 @@
       "id": 33,
       "customerName": "سمر عبدالرحمن",
       "rating": 4,
-      "comment": "يستاهل",
+      "comment": "الملفات تعمل على جميع برامج التصميم بدون مشاكل.",
       "avatar": "/images/avatars/avatar-22.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 34,
       "customerName": "نورا القحطاني",
       "rating": 4,
-      "comment": "حلو أوي",
+      "comment": "فوق الممتاز",
       "avatar": "/images/avatars/avatar-93.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 35,
       "customerName": "هند الراشد",
       "rating": 5,
-      "comment": "كتير مفيد",
+      "comment": "شغل احترافي",
       "avatar": "/images/avatars/avatar-64.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 36,
@@ -838,9 +838,9 @@
       "id": 40,
       "customerName": "رشا محمود",
       "rating": 5,
-      "comment": "يجنن",
+      "comment": "",
       "avatar": "/images/avatars/avatar-83.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 41,
@@ -862,9 +862,9 @@
       "id": 43,
       "customerName": "باسل الدمشقي",
       "rating": 4,
-      "comment": "رهيب",
+      "comment": "خدمة رهيبة",
       "avatar": "/images/avatars/avatar-73.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 44,
@@ -910,9 +910,9 @@
       "id": 49,
       "customerName": "رنا العبدالله",
       "rating": 4,
-      "comment": "زي العسل",
+      "comment": "الحزمة فعلاً ساعدتني أرتّب شغلي في التصميم وأوفر وقت كتير.",
       "avatar": "/images/avatars/avatar-73.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 50,
@@ -926,25 +926,25 @@
       "id": 51,
       "customerName": "علي الأردني",
       "rating": 4,
-      "comment": "تحفة",
+      "comment": "حلو جداً",
       "avatar": "/images/avatars/avatar-81.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 52,
       "customerName": "طارق محمود",
       "rating": 5,
-      "comment": "كتير حلو",
+      "comment": "",
       "avatar": "/images/avatars/avatar-64.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 53,
       "customerName": "عبدالرحيم المغربي",
       "rating": 5,
-      "comment": "والله زين",
+      "comment": "بجد رائع",
       "avatar": "/images/avatars/avatar-98.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 54,
@@ -982,25 +982,25 @@
       "id": 58,
       "customerName": "زينب الحسيني",
       "rating": 5,
-      "comment": "مفيد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-79.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 59,
       "customerName": "مريم الحربي",
       "rating": 3,
-      "comment": "كتير حلو",
+      "comment": "يستاهل فعلاً",
       "avatar": "/images/avatars/avatar-13.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 60,
       "customerName": "ريم الغامدي",
       "rating": 4,
-      "comment": "والله زين",
+      "comment": "جودة الملفات عالية والتنظيم ممتاز، بنصح فيها بقوة.",
       "avatar": "/images/avatars/avatar-48.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 61,
@@ -1014,25 +1014,25 @@
       "id": 62,
       "customerName": "أحمد الشريف",
       "rating": 5,
-      "comment": "بستاهل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-28.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 63,
       "customerName": "علي الكربلائي",
       "rating": 5,
-      "comment": "والله زين",
+      "comment": "خدمة العملاء ممتازة والرد سريع على الاستفسارات.",
       "avatar": "/images/avatars/avatar-32.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 64,
       "customerName": "حيدر العراقي",
       "rating": 4,
-      "comment": "يستاهل",
+      "comment": "الانتقالات سلسة وتعطي لمسة احترافية للفيديو.",
       "avatar": "/images/avatars/avatar-98.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 65,
@@ -1046,9 +1046,9 @@
       "id": 66,
       "customerName": "علي الكربلائي",
       "rating": 5,
-      "comment": "حلو كتير",
+      "comment": "الباقة شاملة وفيها كل اللي محتاجه للتصميم.",
       "avatar": "/images/avatars/avatar-81.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 67,
@@ -1094,9 +1094,9 @@
       "id": 72,
       "customerName": "ياسمين أحمد",
       "rating": 4,
-      "comment": "ممتاز",
+      "comment": "",
       "avatar": "/images/avatars/avatar-87.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 73,
@@ -1110,17 +1110,17 @@
       "id": 74,
       "customerName": "نادر الحموي",
       "rating": 3,
-      "comment": "مرة حلو",
+      "comment": "",
       "avatar": "/images/avatars/avatar-68.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 75,
       "customerName": "رشا محمود",
       "rating": 3,
-      "comment": "مفيد جداً",
+      "comment": "حلو جداً",
       "avatar": "/images/avatars/avatar-50.jpg",
-      "type": "simple_text"
+      "type": "short"
     }
   ],
   "3": [
@@ -1128,17 +1128,17 @@
       "id": 1,
       "customerName": "علي الكربلائي",
       "rating": 3,
-      "comment": "روعة",
+      "comment": "شغل نظيف",
       "avatar": "/images/avatars/avatar-57.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 2,
       "customerName": "أمير صلاح",
       "rating": 4,
-      "comment": "عجبني",
+      "comment": "جودة الملفات عالية والتنظيم ممتاز، بنصح فيها بقوة.",
       "avatar": "/images/avatars/avatar-80.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 3,
@@ -1168,9 +1168,9 @@
       "id": 6,
       "customerName": "عمر الإدريسي",
       "rating": 4,
-      "comment": "كتير مفيد",
+      "comment": "",
       "avatar": "/images/avatars/avatar-34.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 7,
@@ -1200,17 +1200,17 @@
       "id": 10,
       "customerName": "سلطان المالكي",
       "rating": 4,
-      "comment": "مرة حلو",
+      "comment": "استفدت منها في تطوير قناتي على اليوتيوب.",
       "avatar": "/images/avatars/avatar-26.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 11,
       "customerName": "ريما اللبنانية",
       "rating": 4,
-      "comment": "يستاهل",
+      "comment": "شغل محترم",
       "avatar": "/images/avatars/avatar-57.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 12,
@@ -1224,9 +1224,9 @@
       "id": 13,
       "customerName": "خديجة الحسني",
       "rating": 3,
-      "comment": "كتير حلو",
+      "comment": "استفدت منها في تطوير قناتي على اليوتيوب.",
       "avatar": "/images/avatars/avatar-87.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 14,
@@ -1256,9 +1256,9 @@
       "id": 17,
       "customerName": "رشا محمود",
       "rating": 5,
-      "comment": "جامد جداً",
+      "comment": "المؤثرات الصوتية واضحة وجودتها عالية جداً.",
       "avatar": "/images/avatars/avatar-95.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 18,
@@ -1304,9 +1304,9 @@
       "id": 23,
       "customerName": "عبدالرحمن الفيصل",
       "rating": 5,
-      "comment": "روعة",
+      "comment": "حلو جداً",
       "avatar": "/images/avatars/avatar-30.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 24,
@@ -1336,9 +1336,9 @@
       "id": 27,
       "customerName": "نور الهدى",
       "rating": 3,
-      "comment": "ممتاز",
+      "comment": "الأيقونات والخطوط متنوعة جدًا واشتغلت معي بدون مشاكل.",
       "avatar": "/images/avatars/avatar-100.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 28,
@@ -1352,33 +1352,33 @@
       "id": 29,
       "customerName": "عبدالله الشمري",
       "rating": 5,
-      "comment": "حبيته",
+      "comment": "شغل احترافي",
       "avatar": "/images/avatars/avatar-77.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 30,
       "customerName": "نور الهدى",
       "rating": 4,
-      "comment": "كتير حلو",
+      "comment": "شغل نظيف",
       "avatar": "/images/avatars/avatar-23.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 31,
       "customerName": "حيدر العراقي",
       "rating": 3,
-      "comment": "عسل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-43.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 32,
       "customerName": "طارق محمود",
       "rating": 4,
-      "comment": "جامد جداً",
+      "comment": "شغل نظيف",
       "avatar": "/images/avatars/avatar-65.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 33,
@@ -1392,33 +1392,33 @@
       "id": 34,
       "customerName": "باسل الدمشقي",
       "rating": 5,
-      "comment": "بجنن",
+      "comment": "جامد جدًا",
       "avatar": "/images/avatars/avatar-24.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 35,
       "customerName": "عمر الزعبي",
       "rating": 5,
-      "comment": "جميل",
+      "comment": "التنوع في الأيقونات يغطي كل المجالات.",
       "avatar": "/images/avatars/avatar-20.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 36,
       "customerName": "عبدالرحمن الفيصل",
       "rating": 5,
-      "comment": "يستاهل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-53.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 37,
       "customerName": "خديجة الحسني",
       "rating": 4,
-      "comment": "ممتاز",
+      "comment": "الأيقونات المتحركة تضيف حيوية للتصميم.",
       "avatar": "/images/avatars/avatar-53.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 38,
@@ -1432,17 +1432,17 @@
       "id": 39,
       "customerName": "سمر عبدالرحمن",
       "rating": 5,
-      "comment": "مرة حلو",
+      "comment": "شغل احترافي",
       "avatar": "/images/avatars/avatar-30.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 40,
       "customerName": "سامر الشامي",
       "rating": 5,
-      "comment": "بستاهل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-92.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 41,
@@ -1472,17 +1472,17 @@
       "id": 44,
       "customerName": "باسل الدمشقي",
       "rating": 4,
-      "comment": "جامد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-100.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 45,
       "customerName": "مريم الحربي",
       "rating": 5,
-      "comment": "حلو أوي",
+      "comment": "فوق التوقعات",
       "avatar": "/images/avatars/avatar-99.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 46,
@@ -1544,9 +1544,9 @@
       "id": 53,
       "customerName": "نادر الحموي",
       "rating": 4,
-      "comment": "عجبني",
+      "comment": "التنوع في الأيقونات يغطي كل المجالات.",
       "avatar": "/images/avatars/avatar-17.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 54,
@@ -1560,25 +1560,25 @@
       "id": 55,
       "customerName": "حيدر العراقي",
       "rating": 5,
-      "comment": "حلو أوي",
+      "comment": "تحفة",
       "avatar": "/images/avatars/avatar-95.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 56,
       "customerName": "باسل الدمشقي",
       "rating": 4,
-      "comment": "جميل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-39.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 57,
       "customerName": "أحمد السالم",
       "rating": 5,
-      "comment": "مرة حلو",
+      "comment": "وفّرت الوقت كتير بدل ما أبحث عن أيقونات وخطوط منفصلة.",
       "avatar": "/images/avatars/avatar-99.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 58,
@@ -1608,9 +1608,9 @@
       "id": 61,
       "customerName": "علي الكربلائي",
       "rating": 4,
-      "comment": "يجنن",
+      "comment": "يستاهل فعلاً",
       "avatar": "/images/avatars/avatar-6.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 62,
@@ -1624,9 +1624,9 @@
       "id": 63,
       "customerName": "أمير صلاح",
       "rating": 4,
-      "comment": "مفيد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-16.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 64,
@@ -1640,9 +1640,9 @@
       "id": 65,
       "customerName": "أحمد الشريف",
       "rating": 5,
-      "comment": "مرة حلو",
+      "comment": "شغل محترم",
       "avatar": "/images/avatars/avatar-19.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 66,
@@ -1696,9 +1696,9 @@
       "id": 72,
       "customerName": "علي الكربلائي",
       "rating": 4,
-      "comment": "كتير مفيد",
+      "comment": "بجد رائع",
       "avatar": "/images/avatars/avatar-13.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 73,
@@ -1720,9 +1720,9 @@
       "id": 75,
       "customerName": "أحمد السالم",
       "rating": 3,
-      "comment": "بستاهل",
+      "comment": "التحميل سريع والملفات مرتبة في مجلدات واضحة.",
       "avatar": "/images/avatars/avatar-10.jpg",
-      "type": "simple_text"
+      "type": "medium"
     }
   ],
   "4": [
@@ -1730,9 +1730,9 @@
       "id": 1,
       "customerName": "سلمى الخوري",
       "rating": 4,
-      "comment": "روعة",
+      "comment": "يستحق الثمن",
       "avatar": "/images/avatars/avatar-99.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 2,
@@ -1754,17 +1754,17 @@
       "id": 4,
       "customerName": "عمر الإدريسي",
       "rating": 4,
-      "comment": "مرة حلو",
+      "comment": "بستاهل الفلوس",
       "avatar": "/images/avatars/avatar-46.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 5,
       "customerName": "نورا القحطاني",
       "rating": 4,
-      "comment": "روعة",
+      "comment": "التنوع في الأيقونات يغطي كل المجالات.",
       "avatar": "/images/avatars/avatar-84.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 6,
@@ -1812,9 +1812,9 @@
       "id": 1,
       "customerName": "لينا الحداد",
       "rating": 5,
-      "comment": "روعة",
+      "comment": "بجنن جداً",
       "avatar": "/images/avatars/avatar-78.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 2,
@@ -1852,9 +1852,9 @@
       "id": 6,
       "customerName": "محمد العتيبي",
       "rating": 5,
-      "comment": "والله زين",
+      "comment": "خدمة رهيبة",
       "avatar": "/images/avatars/avatar-23.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 7,
@@ -1868,9 +1868,9 @@
       "id": 8,
       "customerName": "لطيفة السديري",
       "rating": 5,
-      "comment": "يستاهل",
+      "comment": "المؤثرات البصرية تعطي طابع احترافي للمونتاج.",
       "avatar": "/images/avatars/avatar-42.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 9,
@@ -1884,9 +1884,9 @@
       "id": 10,
       "customerName": "حيدر العراقي",
       "rating": 3,
-      "comment": "بستاهل",
+      "comment": "الأيقونات والخطوط متنوعة جدًا واشتغلت معي بدون مشاكل.",
       "avatar": "/images/avatars/avatar-75.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 11,
@@ -1924,25 +1924,25 @@
       "id": 15,
       "customerName": "دينا حسن",
       "rating": 3,
-      "comment": "كتير مفيد",
+      "comment": "الأيقونات والخطوط متنوعة جدًا واشتغلت معي بدون مشاكل.",
       "avatar": "/images/avatars/avatar-10.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 16,
       "customerName": "نادر الحموي",
       "rating": 5,
-      "comment": "والله زين",
+      "comment": "",
       "avatar": "/images/avatars/avatar-7.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 17,
       "customerName": "رنا العبدالله",
       "rating": 2,
-      "comment": "عسل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-67.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 18,
@@ -1956,9 +1956,9 @@
       "id": 19,
       "customerName": "سارة الدوسري",
       "rating": 4,
-      "comment": "عجبني",
+      "comment": "جودة عالية",
       "avatar": "/images/avatars/avatar-82.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 20,
@@ -1972,9 +1972,9 @@
       "id": 21,
       "customerName": "حيدر العراقي",
       "rating": 3,
-      "comment": "تحفة",
+      "comment": "",
       "avatar": "/images/avatars/avatar-30.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 22,
@@ -2004,9 +2004,9 @@
       "id": 25,
       "customerName": "أحمد الشريف",
       "rating": 5,
-      "comment": "حلو كتير",
+      "comment": "",
       "avatar": "/images/avatars/avatar-90.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 26,
@@ -2020,9 +2020,9 @@
       "id": 27,
       "customerName": "علي الأردني",
       "rating": 5,
-      "comment": "والله زين",
+      "comment": "سهّلت عليّ كتير في إنجاز المشاريع بوقت أقل.",
       "avatar": "/images/avatars/avatar-14.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 28,
@@ -2044,9 +2044,9 @@
       "id": 30,
       "customerName": "محمد العتيبي",
       "rating": 5,
-      "comment": "مفيد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-63.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 31,
@@ -2076,17 +2076,17 @@
       "id": 34,
       "customerName": "مريم الحربي",
       "rating": 5,
-      "comment": "حلو أوي",
+      "comment": "خدمة رهيبة",
       "avatar": "/images/avatars/avatar-37.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 35,
       "customerName": "علي الأردني",
       "rating": 5,
-      "comment": "رهيب",
+      "comment": "كتير حلو",
       "avatar": "/images/avatars/avatar-48.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 36,
@@ -2100,9 +2100,9 @@
       "id": 37,
       "customerName": "أمير صلاح",
       "rating": 3,
-      "comment": "عجبني",
+      "comment": "استخدمتها في عدة مشاريع والنتيجة كانت احترافية جداً.",
       "avatar": "/images/avatars/avatar-67.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 38,
@@ -2116,9 +2116,9 @@
       "id": 39,
       "customerName": "فاطمة الزهراني",
       "rating": 4,
-      "comment": "زي العسل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-32.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 40,
@@ -2196,17 +2196,17 @@
       "id": 49,
       "customerName": "باسل الدمشقي",
       "rating": 5,
-      "comment": "كتير حلو",
+      "comment": "الملفات تعمل على جميع برامج التصميم بدون مشاكل.",
       "avatar": "/images/avatars/avatar-67.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 50,
       "customerName": "ديانا العمري",
       "rating": 4,
-      "comment": "جميل",
+      "comment": "جودة الملفات عالية والتنظيم ممتاز، بنصح فيها بقوة.",
       "avatar": "/images/avatars/avatar-73.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 51,
@@ -2220,9 +2220,9 @@
       "id": 52,
       "customerName": "عبدالرحيم المغربي",
       "rating": 3,
-      "comment": "عجبني",
+      "comment": "سهولة الاستخدام والتنوع في الأيقونات شيء رائع.",
       "avatar": "/images/avatars/avatar-88.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 53,
@@ -2236,9 +2236,9 @@
       "id": 54,
       "customerName": "محمود الطراونة",
       "rating": 3,
-      "comment": "كتير مفيد",
+      "comment": "",
       "avatar": "/images/avatars/avatar-10.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 55,
@@ -2252,9 +2252,9 @@
       "id": 56,
       "customerName": "سمر عبدالرحمن",
       "rating": 5,
-      "comment": "جامد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-96.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 57,
@@ -2292,9 +2292,9 @@
       "id": 61,
       "customerName": "ريما اللبنانية",
       "rating": 3,
-      "comment": "مفيد جداً",
+      "comment": "الانتقالات سلسة وتعطي لمسة احترافية للفيديو.",
       "avatar": "/images/avatars/avatar-97.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 62,
@@ -2308,17 +2308,17 @@
       "id": 63,
       "customerName": "عمر الزعبي",
       "rating": 5,
-      "comment": "كتير مفيد",
+      "comment": "",
       "avatar": "/images/avatars/avatar-60.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 64,
       "customerName": "سلطان المالكي",
       "rating": 5,
-      "comment": "كويس جداً",
+      "comment": "مظبوط أوي",
       "avatar": "/images/avatars/avatar-47.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 65,
@@ -2348,9 +2348,9 @@
       "id": 68,
       "customerName": "نور الهدى",
       "rating": 5,
-      "comment": "بجنن",
+      "comment": "شغل احترافي",
       "avatar": "/images/avatars/avatar-48.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 69,
@@ -2364,9 +2364,9 @@
       "id": 70,
       "customerName": "سارة الدوسري",
       "rating": 4,
-      "comment": "بجنن",
+      "comment": "جودة الملفات عالية والتنظيم ممتاز، بنصح فيها بقوة.",
       "avatar": "/images/avatars/avatar-81.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 71,
@@ -2380,9 +2380,9 @@
       "id": 72,
       "customerName": "ياسمين أحمد",
       "rating": 4,
-      "comment": "تحفة",
+      "comment": "بجد رائع",
       "avatar": "/images/avatars/avatar-55.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 73,
@@ -2412,33 +2412,33 @@
       "id": 76,
       "customerName": "رشا محمود",
       "rating": 5,
-      "comment": "بستاهل",
+      "comment": "شغل نظيف",
       "avatar": "/images/avatars/avatar-51.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 77,
       "customerName": "فهد العنزي",
       "rating": 5,
-      "comment": "روعة",
+      "comment": "ما شاء الله",
       "avatar": "/images/avatars/avatar-35.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 78,
       "customerName": "علي الكربلائي",
       "rating": 5,
-      "comment": "كويس جداً",
+      "comment": "يستاهل فعلاً",
       "avatar": "/images/avatars/avatar-69.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 79,
       "customerName": "طارق محمود",
       "rating": 5,
-      "comment": "بستاهل",
+      "comment": "الأيقونات المتحركة تضيف حيوية للتصميم.",
       "avatar": "/images/avatars/avatar-22.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 80,
@@ -2476,17 +2476,17 @@
       "id": 84,
       "customerName": "حسام علي",
       "rating": 3,
-      "comment": "والله زين",
+      "comment": "",
       "avatar": "/images/avatars/avatar-84.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 85,
       "customerName": "فهد العنزي",
       "rating": 5,
-      "comment": "يستاهل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-50.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 86,
@@ -2500,9 +2500,9 @@
       "id": 87,
       "customerName": "عمر الزعبي",
       "rating": 5,
-      "comment": "ممتاز",
+      "comment": "الخطوط العربية جميلة وتناسب المحتوى العربي.",
       "avatar": "/images/avatars/avatar-62.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 88,
@@ -2516,17 +2516,17 @@
       "id": 89,
       "customerName": "عبدالله الشمري",
       "rating": 4,
-      "comment": "كتير مفيد",
+      "comment": "فوق الممتاز",
       "avatar": "/images/avatars/avatar-22.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 90,
       "customerName": "سلمى الخوري",
       "rating": 4,
-      "comment": "يستاهل",
+      "comment": "التحميل سريع والملفات مرتبة في مجلدات واضحة.",
       "avatar": "/images/avatars/avatar-82.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 91,
@@ -2540,25 +2540,25 @@
       "id": 92,
       "customerName": "طارق محمود",
       "rating": 4,
-      "comment": "مفيد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-16.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 93,
       "customerName": "خديجة الحسني",
       "rating": 3,
-      "comment": "يستاهل",
+      "comment": "مظبوط أوي",
       "avatar": "/images/avatars/avatar-56.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 94,
       "customerName": "ياسمين أحمد",
       "rating": 5,
-      "comment": "تحفة",
+      "comment": "خدمة رهيبة",
       "avatar": "/images/avatars/avatar-9.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 95,
@@ -2598,7 +2598,7 @@
       "rating": 5,
       "comment": "حلو أوي",
       "avatar": "/images/avatars/avatar-18.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 100,
@@ -2652,33 +2652,33 @@
       "id": 106,
       "customerName": "دينا حسن",
       "rating": 4,
-      "comment": "روعة",
+      "comment": "المؤثرات الصوتية واضحة وجودتها عالية جداً.",
       "avatar": "/images/avatars/avatar-23.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 107,
       "customerName": "هند الراشد",
       "rating": 4,
-      "comment": "حلو أوي",
+      "comment": "",
       "avatar": "/images/avatars/avatar-64.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 108,
       "customerName": "أحمد السالم",
       "rating": 4,
-      "comment": "بجنن",
+      "comment": "كتير حلو",
       "avatar": "/images/avatars/avatar-51.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 109,
       "customerName": "عبدالله الشمري",
       "rating": 5,
-      "comment": "يجنن",
+      "comment": "",
       "avatar": "/images/avatars/avatar-31.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 110,
@@ -2732,9 +2732,9 @@
       "id": 116,
       "customerName": "لارا الحلبي",
       "rating": 3,
-      "comment": "مفيد جداً",
+      "comment": "جودة الملفات عالية والتنظيم ممتاز، بنصح فيها بقوة.",
       "avatar": "/images/avatars/avatar-91.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 117,
@@ -2748,9 +2748,9 @@
       "id": 118,
       "customerName": "حسام علي",
       "rating": 5,
-      "comment": "ممتاز",
+      "comment": "بجد رائع",
       "avatar": "/images/avatars/avatar-46.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 119,
@@ -2764,17 +2764,17 @@
       "id": 120,
       "customerName": "عبدالله الشمري",
       "rating": 4,
-      "comment": "بستاهل",
+      "comment": "الملفات تعمل على جميع برامج التصميم بدون مشاكل.",
       "avatar": "/images/avatars/avatar-60.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 121,
       "customerName": "نور الهدى",
       "rating": 5,
-      "comment": "عجبني",
+      "comment": "كتير حلو",
       "avatar": "/images/avatars/avatar-8.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 122,
@@ -2812,17 +2812,17 @@
       "id": 126,
       "customerName": "سامر الشامي",
       "rating": 5,
-      "comment": "والله زين",
+      "comment": "يستحق الثمن",
       "avatar": "/images/avatars/avatar-49.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 127,
       "customerName": "أحمد الشريف",
       "rating": 4,
-      "comment": "كتير حلو",
+      "comment": "إشي رائع",
       "avatar": "/images/avatars/avatar-86.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 128,
@@ -2836,9 +2836,9 @@
       "id": 129,
       "customerName": "عمر الإدريسي",
       "rating": 5,
-      "comment": "كويس جداً",
+      "comment": "مرتب ومفيد",
       "avatar": "/images/avatars/avatar-31.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 130,
@@ -2852,9 +2852,9 @@
       "id": 131,
       "customerName": "أحمد الشريف",
       "rating": 5,
-      "comment": "زي العسل",
+      "comment": "يستاهل فعلاً",
       "avatar": "/images/avatars/avatar-71.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 132,
@@ -2908,9 +2908,9 @@
       "id": 138,
       "customerName": "مريم محمد",
       "rating": 4,
-      "comment": "روعة",
+      "comment": "الأيقونات والخطوط متنوعة جدًا واشتغلت معي بدون مشاكل.",
       "avatar": "/images/avatars/avatar-30.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 139,
@@ -2940,9 +2940,9 @@
       "id": 142,
       "customerName": "عبدالرحمن الفيصل",
       "rating": 4,
-      "comment": "يستاهل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-82.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 143,
@@ -2956,17 +2956,17 @@
       "id": 144,
       "customerName": "لطيفة السديري",
       "rating": 4,
-      "comment": "يستاهل",
+      "comment": "ممتاز جدًا",
       "avatar": "/images/avatars/avatar-35.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 145,
       "customerName": "لارا الحلبي",
       "rating": 5,
-      "comment": "جامد جداً",
+      "comment": "شغل نظيف",
       "avatar": "/images/avatars/avatar-27.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 146,
@@ -2980,17 +2980,17 @@
       "id": 147,
       "customerName": "مصطفى البغدادي",
       "rating": 4,
-      "comment": "ممتاز",
+      "comment": "روعة بجد",
       "avatar": "/images/avatars/avatar-7.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 148,
       "customerName": "نادية إبراهيم",
       "rating": 5,
-      "comment": "مفيد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-56.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 149,
@@ -3012,9 +3012,9 @@
       "id": 151,
       "customerName": "زينب الحسيني",
       "rating": 5,
-      "comment": "ممتاز",
+      "comment": "مظبوط أوي",
       "avatar": "/images/avatars/avatar-17.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 152,
@@ -3036,17 +3036,17 @@
       "id": 154,
       "customerName": "فاطمة الزهراء",
       "rating": 5,
-      "comment": "جميل",
+      "comment": "الانتقالات سلسة وتعطي لمسة احترافية للفيديو.",
       "avatar": "/images/avatars/avatar-4.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 155,
       "customerName": "محمد العتيبي",
       "rating": 5,
-      "comment": "عجبني",
+      "comment": "الحزمة فعلاً ساعدتني أرتّب شغلي في التصميم وأوفر وقت كتير.",
       "avatar": "/images/avatars/avatar-55.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 156,
@@ -3068,17 +3068,17 @@
       "id": 158,
       "customerName": "عبدالله الشمري",
       "rating": 5,
-      "comment": "روعة",
+      "comment": "",
       "avatar": "/images/avatars/avatar-75.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 159,
       "customerName": "سامر الشامي",
       "rating": 5,
-      "comment": "كويس جداً",
+      "comment": "المؤثرات الصوتية واضحة وجودتها عالية جداً.",
       "avatar": "/images/avatars/avatar-36.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 160,
@@ -3092,25 +3092,25 @@
       "id": 161,
       "customerName": "زينب الحسيني",
       "rating": 5,
-      "comment": "يستاهل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-14.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 162,
       "customerName": "زينب الحسيني",
       "rating": 5,
-      "comment": "حلو أوي",
+      "comment": "استفدت كثير",
       "avatar": "/images/avatars/avatar-96.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 163,
       "customerName": "نادية إبراهيم",
       "rating": 4,
-      "comment": "مفيد جداً",
+      "comment": "سهّلت عليّ كتير في إنجاز المشاريع بوقت أقل.",
       "avatar": "/images/avatars/avatar-99.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 164,
@@ -3148,9 +3148,9 @@
       "id": 168,
       "customerName": "فاطمة الزهراني",
       "rating": 5,
-      "comment": "كتير مفيد",
+      "comment": "فوق الممتاز",
       "avatar": "/images/avatars/avatar-65.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 169,
@@ -3172,9 +3172,9 @@
       "id": 171,
       "customerName": "ياسمين أحمد",
       "rating": 4,
-      "comment": "جميل",
+      "comment": "عسل جداً",
       "avatar": "/images/avatars/avatar-68.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 172,
@@ -3204,9 +3204,9 @@
       "id": 175,
       "customerName": "عمر الزعبي",
       "rating": 4,
-      "comment": "يستاهل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-57.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 176,
@@ -3220,17 +3220,17 @@
       "id": 177,
       "customerName": "عمر الإدريسي",
       "rating": 5,
-      "comment": "جميل",
+      "comment": "الملفات تعمل على جميع برامج التصميم بدون مشاكل.",
       "avatar": "/images/avatars/avatar-87.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 178,
       "customerName": "سلطان المالكي",
       "rating": 5,
-      "comment": "يجنن",
+      "comment": "التحميل سريع والملفات مرتبة في مجلدات واضحة.",
       "avatar": "/images/avatars/avatar-61.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 179,
@@ -3244,25 +3244,25 @@
       "id": 180,
       "customerName": "لطيفة السديري",
       "rating": 4,
-      "comment": "زي العسل",
+      "comment": "خدمة رهيبة",
       "avatar": "/images/avatars/avatar-54.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 181,
       "customerName": "حسام علي",
       "rating": 5,
-      "comment": "عجبني",
+      "comment": "",
       "avatar": "/images/avatars/avatar-35.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 182,
       "customerName": "عبدالرحيم المغربي",
       "rating": 5,
-      "comment": "يستاهل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-100.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 183,
@@ -3292,17 +3292,17 @@
       "id": 186,
       "customerName": "نادر الحموي",
       "rating": 5,
-      "comment": "يجنن",
+      "comment": "",
       "avatar": "/images/avatars/avatar-58.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 187,
       "customerName": "سلطان المالكي",
       "rating": 4,
-      "comment": "مرة حلو",
+      "comment": "خدمة العملاء ممتازة والرد سريع على الاستفسارات.",
       "avatar": "/images/avatars/avatar-21.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 188,
@@ -3324,9 +3324,9 @@
       "id": 190,
       "customerName": "يوسف القاسم",
       "rating": 4,
-      "comment": "كويس جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-59.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 191,
@@ -3356,9 +3356,9 @@
       "id": 194,
       "customerName": "فاطمة الزهراني",
       "rating": 4,
-      "comment": "ممتاز",
+      "comment": "",
       "avatar": "/images/avatars/avatar-14.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 195,
@@ -3388,9 +3388,9 @@
       "id": 198,
       "customerName": "رشا محمود",
       "rating": 5,
-      "comment": "بجنن",
+      "comment": "",
       "avatar": "/images/avatars/avatar-17.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     }
   ],
   "6": [
@@ -3414,17 +3414,17 @@
       "id": 3,
       "customerName": "فهد العنزي",
       "rating": 4,
-      "comment": "تحفة",
+      "comment": "شغل نظيف",
       "avatar": "/images/avatars/avatar-32.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 4,
       "customerName": "زينب الحسيني",
       "rating": 1,
-      "comment": "حلو أوي",
+      "comment": "",
       "avatar": "/images/avatars/avatar-16.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 5,
@@ -3446,17 +3446,17 @@
       "id": 7,
       "customerName": "هبة عثمان",
       "rating": 5,
-      "comment": "حبيته",
+      "comment": "كتير مفيد",
       "avatar": "/images/avatars/avatar-29.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 8,
       "customerName": "نورا القحطاني",
       "rating": 4,
-      "comment": "حلو أوي",
+      "comment": "",
       "avatar": "/images/avatars/avatar-99.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 9,
@@ -3486,9 +3486,9 @@
       "id": 12,
       "customerName": "لطيفة السديري",
       "rating": 4,
-      "comment": "حلو كتير",
+      "comment": "مظبوط أوي",
       "avatar": "/images/avatars/avatar-72.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 13,
@@ -3502,25 +3502,25 @@
       "id": 14,
       "customerName": "مصطفى البغدادي",
       "rating": 5,
-      "comment": "كتير حلو",
+      "comment": "خدمة العملاء ممتازة والرد سريع على الاستفسارات.",
       "avatar": "/images/avatars/avatar-8.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 15,
       "customerName": "ديانا العمري",
       "rating": 5,
-      "comment": "ممتاز",
+      "comment": "",
       "avatar": "/images/avatars/avatar-83.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 16,
       "customerName": "زينب الحسيني",
       "rating": 5,
-      "comment": "عجبني",
+      "comment": "",
       "avatar": "/images/avatars/avatar-7.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 17,
@@ -3534,17 +3534,17 @@
       "id": 18,
       "customerName": "مريم محمد",
       "rating": 4,
-      "comment": "كتير مفيد",
+      "comment": "تسلم إيدك",
       "avatar": "/images/avatars/avatar-21.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 19,
       "customerName": "علي الأردني",
       "rating": 3,
-      "comment": "جامد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-30.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 20,
@@ -3558,25 +3558,25 @@
       "id": 21,
       "customerName": "فاطمة الزهراني",
       "rating": 4,
-      "comment": "عجبني",
+      "comment": "",
       "avatar": "/images/avatars/avatar-21.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 22,
       "customerName": "سارة الدوسري",
       "rating": 4,
-      "comment": "والله زين",
+      "comment": "الباقة شاملة وفيها كل اللي محتاجه للتصميم.",
       "avatar": "/images/avatars/avatar-22.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 23,
       "customerName": "سلطان المالكي",
       "rating": 3,
-      "comment": "كتير مفيد",
+      "comment": "فوق التوقعات",
       "avatar": "/images/avatars/avatar-51.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 24,
@@ -3590,9 +3590,9 @@
       "id": 25,
       "customerName": "عبدالرحمن الفيصل",
       "rating": 5,
-      "comment": "كويس جداً",
+      "comment": "الانتقالات سلسة وتعطي لمسة احترافية للفيديو.",
       "avatar": "/images/avatars/avatar-50.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 26,
@@ -3606,9 +3606,9 @@
       "id": 27,
       "customerName": "لينا الحداد",
       "rating": 5,
-      "comment": "مرة حلو",
+      "comment": "شغل نظيف",
       "avatar": "/images/avatars/avatar-89.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 28,
@@ -3630,9 +3630,9 @@
       "id": 30,
       "customerName": "رشا محمود",
       "rating": 5,
-      "comment": "مفيد جداً",
+      "comment": "حلو جداً",
       "avatar": "/images/avatars/avatar-15.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 31,
@@ -3646,9 +3646,9 @@
       "id": 32,
       "customerName": "لارا الحلبي",
       "rating": 4,
-      "comment": "روعة",
+      "comment": "",
       "avatar": "/images/avatars/avatar-82.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 33,
@@ -3662,17 +3662,17 @@
       "id": 34,
       "customerName": "أحمد الشريف",
       "rating": 5,
-      "comment": "زي العسل",
+      "comment": "الملفات منظمة تماماً وسهل أستخدمها في مشاريعي.",
       "avatar": "/images/avatars/avatar-50.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 35,
       "customerName": "ريما اللبنانية",
       "rating": 5,
-      "comment": "حلو كتير",
+      "comment": "تسلم إيدك",
       "avatar": "/images/avatars/avatar-50.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 36,
@@ -3686,17 +3686,17 @@
       "id": 37,
       "customerName": "محمود الطراونة",
       "rating": 5,
-      "comment": "بستاهل",
+      "comment": "الحزمة فعلاً ساعدتني أرتّب شغلي في التصميم وأوفر وقت كتير.",
       "avatar": "/images/avatars/avatar-36.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 38,
       "customerName": "سامر الشامي",
       "rating": 4,
-      "comment": "مرة حلو",
+      "comment": "الحزمة فعلاً ساعدتني أرتّب شغلي في التصميم وأوفر وقت كتير.",
       "avatar": "/images/avatars/avatar-13.jpg",
-      "type": "simple_text"
+      "type": "medium"
     },
     {
       "id": 39,
@@ -3710,9 +3710,9 @@
       "id": 40,
       "customerName": "سمر عبدالرحمن",
       "rating": 3,
-      "comment": "كويس جداً",
+      "comment": "ما شاء الله",
       "avatar": "/images/avatars/avatar-43.jpg",
-      "type": "simple_text"
+      "type": "short"
     },
     {
       "id": 41,
@@ -3726,9 +3726,9 @@
       "id": 42,
       "customerName": "ريم الغامدي",
       "rating": 4,
-      "comment": "جميل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-32.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 43,
@@ -3742,9 +3742,9 @@
       "id": 44,
       "customerName": "عمر الإدريسي",
       "rating": 3,
-      "comment": "حلو أوي",
+      "comment": "",
       "avatar": "/images/avatars/avatar-38.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 45,

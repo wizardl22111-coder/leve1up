@@ -116,7 +116,7 @@ export default function GamesPage() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
               <div className="bg-gradient-to-br from-dark-300/50 to-dark-400/50 backdrop-blur-sm rounded-xl p-6 border border-primary-300/10">
                 <h3 className="text-xl font-bold text-white mb-4">🎮 مكتبة ألعاب ضخمة</h3>
                 <ul className="space-y-2 text-gray-400">

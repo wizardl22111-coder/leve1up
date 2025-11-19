@@ -144,40 +144,49 @@ export default function Footer() {
           <div className="text-center">
             <h4 className="text-base sm:text-lg font-bold mb-4 text-primary-300">طرق الدفع المتاحة</h4>
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-              <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
                   alt="Google Pay"
-                  width={45}
-                  height={18}
-                  className="h-4 w-auto"
+                  width={50}
+                  height={20}
+                  className="h-5 w-auto object-contain"
                 />
               </div>
-              <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg"
                   alt="Apple Pay"
-                  width={45}
-                  height={18}
-                  className="h-4 w-auto"
+                  width={50}
+                  height={20}
+                  className="h-5 w-auto object-contain"
                 />
               </div>
-              <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
                   alt="Visa"
-                  width={45}
-                  height={18}
-                  className="h-4 w-auto"
+                  width={50}
+                  height={20}
+                  className="h-5 w-auto object-contain"
                 />
               </div>
-              <div className="bg-white rounded-lg p-1.5 sm:p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg"
                   alt="Mastercard"
-                  width={45}
-                  height={18}
-                  className="h-4 w-auto"
+                  width={50}
+                  height={20}
+                  className="h-5 w-auto object-contain"
+                />
+              </div>
+              <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+                <Image
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/512px-American_Express_logo_%282018%29.svg.png"
+                  alt="American Express"
+                  width={50}
+                  height={20}
+                  className="h-5 w-auto object-contain"
                 />
               </div>
             </div>
