@@ -180,15 +180,7 @@ export default function Footer() {
                   className="h-5 w-auto object-contain"
                 />
               </div>
-              <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <Image
-                  src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg"
-                  alt="American Express"
-                  width={50}
-                  height={20}
-                  className="h-5 w-auto object-contain"
-                />
-              </div>
+
             </div>
           </div>
         </div>

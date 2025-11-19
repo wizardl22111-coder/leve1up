@@ -117,11 +117,14 @@ export default function ContactPage() {
 
           <div className="grid md:grid-cols-2 gap-6 mb-12 max-w-2xl mx-auto">
             {/* Email */}
-            <motion.div 
-              className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm p-8 rounded-xl hover:shadow-xl transition-all duration-300 border border-primary-300/20 hover:border-primary-300/40"
+            <motion.a
+              href="mailto:leve1up999q@gmail.com"
+              className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm p-8 rounded-xl hover:shadow-xl transition-all duration-300 border border-primary-300/20 hover:border-primary-300/40 cursor-pointer block"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
             >
               <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center mb-4 mx-auto shadow-lg">
                 <FaEnvelope className="w-8 h-8 text-white" />
@@ -132,14 +135,19 @@ export default function ContactPage() {
               <p className="text-slate-300 mb-4 text-center">
                 راسلنا عبر البريد
               </p>
-            </motion.div>
+            </motion.a>
 
             {/* Instagram */}
-            <motion.div 
-              className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm p-8 rounded-xl hover:shadow-xl transition-all duration-300 border border-primary-300/20 hover:border-primary-300/40"
+            <motion.a
+              href="https://www.instagram.com/1level1up1/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm p-8 rounded-xl hover:shadow-xl transition-all duration-300 border border-primary-300/20 hover:border-primary-300/40 cursor-pointer block"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
             >
               <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center mb-4 mx-auto shadow-lg">
                 <FaInstagram className="w-8 h-8 text-white" />
@@ -150,43 +158,10 @@ export default function ContactPage() {
               <p className="text-slate-300 mb-4 text-center">
                 تابعنا على إنستغرام
               </p>
-            </motion.div>
+            </motion.a>
           </div>
 
-          {/* Contact Info */}
-          <motion.div 
-            className="text-center mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <h3 className="text-xl font-semibold text-white mb-6">
-              📧 معلومات التواصل
-            </h3>
-            <div className="flex justify-center items-center gap-8 flex-wrap">
-              {/* البريد الإلكتروني */}
-              <div className="flex items-center gap-3 bg-slate-800/30 backdrop-blur-sm rounded-xl px-6 py-4 border border-slate-600/30">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
-                  <FaEnvelope className="w-5 h-5 text-white" />
-                </div>
-                <div className="text-right">
-                  <p className="text-slate-300 text-sm">البريد الإلكتروني</p>
-                  <p className="text-white font-medium">leve1up999q@gmail.com</p>
-                </div>
-              </div>
-              
-              {/* الإنستغرام */}
-              <div className="flex items-center gap-3 bg-slate-800/30 backdrop-blur-sm rounded-xl px-6 py-4 border border-slate-600/30">
-                <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
-                  <FaInstagram className="w-5 h-5 text-white" />
-                </div>
-                <div className="text-right">
-                  <p className="text-slate-300 text-sm">إنستغرام</p>
-                  <p className="text-white font-medium">@1level1up1</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+
 
           {/* Social Media Icons */}
           <motion.div 

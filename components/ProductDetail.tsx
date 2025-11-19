@@ -11,6 +11,7 @@ import WhyBuySection from './WhyBuySection';
 import FreeProductModal from './FreeProductModal';
 import ProductDescriptionBoxes from './ProductDescriptionBoxes';
 import PriceDisplay from './PriceDisplay';
+import ReviewSummary from './ReviewSummary';
 
 
 
@@ -466,6 +467,31 @@ export default function ProductDetail({ product }: { product?: Product }) {
         )}
 
 
+
+        {/* Review Summary */}
+        <div className="mt-12 sm:mt-16">
+          <ReviewSummary 
+            productId={product.product_id || product.id || 0}
+            showTitle={true}
+          />
+        </div>
+
+        {/* Share Your Review Box */}
+        <div className="mt-8 sm:mt-12">
+          <div className="bg-gradient-to-br from-dark-300/90 to-dark-400/90 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-primary-300/20 hover:border-primary-300/40 transition-all duration-300">
+            <div className="text-center">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                شارك رأيك بعد الدفع
+              </h3>
+              <p className="text-gray-300 text-base sm:text-lg mb-6 leading-relaxed">
+                نحن نقدر رأيك! بعد شراء المنتج، شاركنا تجربتك لمساعدة العملاء الآخرين
+              </p>
+              <button className="bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-700 hover:to-accent-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+                تقييم بعد الشراء
+              </button>
+            </div>
+          </div>
+        </div>
 
         {/* Why Buy Section */}
         <WhyBuySection />
