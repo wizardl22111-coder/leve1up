@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Edit3 } from 'lucide-react';
 import ProductGrid from '@/components/ProductGrid';
+import ScrollReveal from '@/components/ScrollReveal';
 import { getActiveProducts } from '@/lib/products-utils';
 
 export default function EditToolsPage() {
@@ -26,22 +27,28 @@ export default function EditToolsPage() {
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-sm text-blue-300 px-4 py-2 rounded-full border border-blue-500/30 mb-6">
-              <Edit3 className="w-5 h-5" />
-              <span className="text-sm font-bold">أدوات المونتاج الاحترافية</span>
-            </div>
+            <ScrollReveal delay={0} duration={800} distance={60}>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-sm text-blue-300 px-4 py-2 rounded-full border border-blue-500/30 mb-6">
+                <Edit3 className="w-5 h-5" />
+                <span className="text-sm font-bold">أدوات المونتاج الاحترافية</span>
+              </div>
+            </ScrollReveal>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                أدوات المونتاج
-              </span>
-              <br />
-              الاحترافية
-            </h1>
+            <ScrollReveal delay={200} duration={800} distance={60}>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                  أدوات المونتاج
+                </span>
+                <br />
+                الاحترافية
+              </h1>
+            </ScrollReveal>
             
-            <p className="text-gray-400 text-lg">
-              حزم احترافية جاهزة لتطوير مهاراتك في المونتاج
-            </p>
+            <ScrollReveal delay={400} duration={800} distance={60}>
+              <p className="text-gray-400 text-lg">
+                حزم احترافية جاهزة لتطوير مهاراتك في المونتاج
+              </p>
+            </ScrollReveal>
           </div>
 
           {/* Products Grid */}
@@ -68,4 +75,3 @@ export default function EditToolsPage() {
     </div>
   );
 }
-

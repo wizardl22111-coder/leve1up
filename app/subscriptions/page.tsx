@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProductGrid from '@/components/ProductGrid';
+import ScrollReveal from '@/components/ScrollReveal';
 import { Zap, Play, Music, Gamepad2, Tv, Smartphone } from 'lucide-react';
 import { getActiveProducts } from '@/lib/products-utils';
 
@@ -56,33 +57,44 @@ export default function SubscriptionsPage() {
         
         <div className="container-mobile relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-600/20 backdrop-blur-sm text-green-300 px-4 py-2 rounded-full mb-6 border border-green-500/30">
-              <Zap className="w-4 h-4" />
-              <span className="text-sm font-bold">الاشتراكات الرقمية</span>
-            </div>
+            <ScrollReveal delay={0} duration={800} distance={60}>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-600/20 backdrop-blur-sm text-green-300 px-4 py-2 rounded-full mb-6 border border-green-500/30">
+                <Zap className="w-4 h-4" />
+                <span className="text-sm font-bold">الاشتراكات الرقمية</span>
+              </div>
+            </ScrollReveal>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6">
-              الاشتراكات{' '}
-              <span className="bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
-                الرقمية
-              </span>
-            </h1>
+            <ScrollReveal delay={200} duration={800} distance={60}>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6">
+                الاشتراكات{' '}
+                <span className="bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
+                  الرقمية
+                </span>
+              </h1>
+            </ScrollReveal>
             
-            <p className="text-xl text-gray-400 mb-8 leading-relaxed">
-              Netflix، ChatGPT، Google Gemini، Canva Pro… والمزيد
-            </p>
+            <ScrollReveal delay={400} duration={800} distance={60}>
+              <p className="text-xl text-gray-400 mb-8 leading-relaxed">
+                Netflix، ChatGPT، Google Gemini، Canva Pro… والمزيد
+              </p>
+            </ScrollReveal>
             
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12">
               {subscriptions.map((subscription, index) => {
                 const IconComponent = subscription.icon;
                 return (
-                  <div 
+                  <ScrollReveal 
                     key={index}
-                    className={`bg-gradient-to-br ${subscription.bgColor} backdrop-blur-sm rounded-xl p-4 border ${subscription.borderColor} hover:scale-105 transition-transform duration-300`}
+                    delay={600 + (index * 100)}
+                    duration={800}
+                    distance={60}
                   >
-                    <IconComponent className={`w-8 h-8 ${subscription.color} mb-2 mx-auto`} />
-                    <h3 className="text-sm font-bold text-white text-center">{subscription.name}</h3>
-                  </div>
+                    <div className={`bg-gradient-to-br ${subscription.bgColor} backdrop-blur-sm rounded-xl p-4 border ${subscription.borderColor} hover:scale-105 transition-transform duration-300`}
+                    >
+                      <IconComponent className={`w-8 h-8 ${subscription.color} mb-2 mx-auto`} />
+                      <h3 className="text-sm font-bold text-white text-center">{subscription.name}</h3>
+                    </div>
+                  </ScrollReveal>
                 );
               })}
             </div>

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Edit3, Gamepad2, Zap } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 export default function ServicesSection() {
   const services = [
@@ -53,15 +54,21 @@ export default function ServicesSection() {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {services.map((service) => {
+          {services.map((service, index) => {
             const IconComponent = service.icon;
             
             return (
-              <Link
+              <ScrollReveal
                 key={service.id}
-                href={service.href}
-                className="group block"
+                delay={index * 200}
+                duration={800}
+                distance={80}
+                direction="up"
               >
+                <Link
+                  href={service.href}
+                  className="group block"
+                >
                 <div className="bg-gradient-to-br from-dark-300 to-dark-500 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-700/50 hover:border-primary-300/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl h-full">
                   {/* Service Image */}
                   <div className="relative h-32 sm:h-48 md:h-56 overflow-hidden">
@@ -99,7 +106,8 @@ export default function ServicesSection() {
                     </div>
                   </div>
                 </div>
-              </Link>
+                </Link>
+              </ScrollReveal>
             );
           })}
         </div>
