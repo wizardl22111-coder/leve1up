@@ -9,7 +9,7 @@ import testimonials from '@/data/testimonials.json';
 import Image from 'next/image';
 import WhyBuySection from './WhyBuySection';
 import FreeProductModal from './FreeProductModal';
-
+import ProductDescriptionBoxes from './ProductDescriptionBoxes';
 
 import ReviewSummary from './ReviewSummary';
 import ProductReviews from './ProductReviews';
@@ -340,6 +340,14 @@ export default function ProductDetail({ product }: { product?: Product }) {
             </div>
           </div>
         )}
+
+        {/* Product Description Boxes */}
+        <div className="mt-12 sm:mt-16">
+          <ProductDescriptionBoxes 
+            productId={product.product_id || product.id || 0} 
+            productName={product.product_name || product.name || ''} 
+          />
+        </div>
 
         {/* Sectioned Details - Mobile First */}
         {product.sections && (
