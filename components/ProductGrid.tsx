@@ -7,6 +7,7 @@ import { calculatePrice, formatPrice } from '@/lib/currency';
 import products from '@/data/products.json';
 import Link from 'next/link';
 import Image from 'next/image';
+import PriceDisplay from './PriceDisplay';
 
 export default function ProductGrid() {
   const { currency, addToCart, addToWishlist, wishlist } = useApp();
@@ -127,7 +128,7 @@ export default function ProductGrid() {
                     <p className="text-3xl font-bold text-green-400">مجاني</p>
                     {priceCalc.originalPrice > 0 && (
                       <p className="text-sm text-gray-500 line-through">
-                        {formatPrice(priceCalc.originalPrice, currency)}
+                        <PriceDisplay price={priceCalc.originalPrice} currency={currency} />
                       </p>
                     )}
                   </div>
@@ -135,12 +136,12 @@ export default function ProductGrid() {
                   <div className="mb-4">
                     <div className="flex items-center gap-2">
                       <p className="text-2xl sm:text-3xl font-bold text-primary-300">
-                        {priceCalc.finalPrice.toFixed(2)} {priceCalc.symbol}
+                        <PriceDisplay price={priceCalc.finalPrice} currency={currency} />
                       </p>
                     </div>
                     {priceCalc.discountPercentage > 0 && (
                       <p className="text-sm text-gray-500 line-through">
-                        {formatPrice(priceCalc.originalPrice, currency)}
+                        <PriceDisplay price={priceCalc.originalPrice} currency={currency} />
                       </p>
                     )}
                   </div>

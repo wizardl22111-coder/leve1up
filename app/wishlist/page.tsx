@@ -9,6 +9,7 @@ import { showToast } from '@/components/ToastContainer';
 import Link from 'next/link';
 import Image from 'next/image';
 import products from '@/data/products.json';
+import PriceDisplay from '@/components/PriceDisplay';
 
 export default function WishlistPage() {
   const { wishlist, removeFromWishlist, addToCart, currency } = useApp();
@@ -165,7 +166,7 @@ export default function WishlistPage() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-2xl font-bold text-primary-600 dark:text-primary-400">
-                        {getPrice(product).toFixed(2)} {getCurrencySymbol()}
+                        <PriceDisplay price={getPrice(product)} currency={currency} />
                       </p>
                     </div>
                     <button

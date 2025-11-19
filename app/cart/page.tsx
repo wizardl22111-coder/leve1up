@@ -10,6 +10,7 @@ import { useApp } from '@/contexts/AppContext';
 import { getCurrencySymbol } from '@/lib/currency';
 import Link from 'next/link';
 import Image from 'next/image';
+import PriceDisplay from '@/components/PriceDisplay';
 
 export default function CartPage() {
   const { 
@@ -170,7 +171,7 @@ export default function CartPage() {
                         {item.name}
                       </h3>
                       <p className="text-xl md:text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">
-                        {item.price.toFixed(2)} {getCurrencySymbol(currency)}
+                        <PriceDisplay price={item.price} currency={currency} />
                       </p>
 
                       {/* Quantity Controls & Remove Button */}
@@ -206,7 +207,7 @@ export default function CartPage() {
                     <div className="text-center md:text-right mt-2 md:mt-0">
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">المجموع</p>
                       <p className="text-xl font-bold text-gray-900 dark:text-white">
-                        {(item.price * item.quantity).toFixed(2)} {getCurrencySymbol(currency)}
+                        <PriceDisplay price={item.price * item.quantity} currency={currency} />
                       </p>
                     </div>
                   </div>

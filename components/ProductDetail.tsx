@@ -10,9 +10,9 @@ import Image from 'next/image';
 import WhyBuySection from './WhyBuySection';
 import FreeProductModal from './FreeProductModal';
 import ProductDescriptionBoxes from './ProductDescriptionBoxes';
+import PriceDisplay from './PriceDisplay';
 
-import ReviewSummary from './ReviewSummary';
-import ProductReviews from './ProductReviews';
+
 
 interface ProductSection {
   title?: string;
@@ -216,7 +216,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
                   <div className="flex flex-col gap-1">
                     {priceCalc.originalPrice > 0 && (
                       <p className="text-lg sm:text-xl text-gray-500 line-through">
-                        {formatPrice(priceCalc.originalPrice, currency)}
+                        <PriceDisplay price={priceCalc.originalPrice} currency={currency} />
                       </p>
                     )}
                     <div className="flex items-center gap-2">
@@ -232,12 +232,12 @@ export default function ProductDetail({ product }: { product?: Product }) {
                   <div className="flex flex-col gap-1">
                     {priceCalc.discountPercentage > 0 && (
                       <p className="text-lg sm:text-xl text-gray-500 line-through">
-                        {formatPrice(priceCalc.originalPrice, currency)}
+                        <PriceDisplay price={priceCalc.originalPrice} currency={currency} />
                       </p>
                     )}
                     <div className="flex items-center gap-2">
                       <p className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent">
-                        {priceCalc.finalPrice.toFixed(2)} {priceCalc.symbol}
+                        <PriceDisplay price={priceCalc.finalPrice} currency={currency} />
                       </p>
                       {priceCalc.discountPercentage > 0 && (
                         <span className="px-3 py-1 bg-red-500/20 border border-red-500/40 rounded-lg text-red-400 text-sm font-bold">
@@ -465,29 +465,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
           </div>
         )}
 
-        {/* Reviews Section - Complete */}
-        <div className="mt-12 sm:mt-16 space-y-8">
-          {/* Review Summary */}
-          <ReviewSummary productId={productId} />
-          
-          {/* Customer Reviews */}
-          <ProductReviews productId={productId} reviews={[]} />
-          
-          {/* Info Message */}
-          <div className="bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm border border-primary-300/20 rounded-xl p-6 text-center">
-            <div className="flex items-center justify-center mb-3">
-              <div className="w-12 h-12 bg-gradient-to-r from-primary-300 to-accent-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-xl">⭐</span>
-              </div>
-            </div>
-            <h3 className="text-lg font-bold text-white mb-2">
-              شارك تقييمك بعد الشراء
-            </h3>
-            <p className="text-gray-300">
-              بعد شراء المنتج، ستتمكن من إضافة تقييمك في صفحة النجاح لمساعدة الآخرين في اتخاذ قرار الشراء
-            </p>
-          </div>
-        </div>
+
 
         {/* Why Buy Section */}
         <WhyBuySection />

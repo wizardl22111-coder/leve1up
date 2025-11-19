@@ -182,7 +182,7 @@ export default function Footer() {
               </div>
               <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/512px-American_Express_logo_%282018%29.svg.png"
+                  src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg"
                   alt="American Express"
                   width={50}
                   height={20}

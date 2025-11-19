@@ -19,7 +19,7 @@ export const exchangeRates: Record<Currency, number> = {
 // رموز العملات
 export const currencySymbols: Record<Currency, string> = {
   AED: 'د.إ',
-  SAR: 'ر.س',
+  SAR: '﷼',
   BHD: 'د.ب',
   KWD: 'د.ك',
   OMR: 'ر.ع',
@@ -109,8 +109,13 @@ export function calculatePrice(
   };
 }
 
-// تنسيق السعر للعرض
+// تنسيق السعر للعرض (نسخة نصية بسيطة)
 export function formatPrice(price: number, currency: Currency): string {
   const symbol = getCurrencySymbol(currency);
   return `${price.toFixed(2)} ${symbol}`;
+}
+
+// تنسيق السعر للعرض مع دعم الصور (للاستخدام مع React)
+export function formatPriceValue(price: number): string {
+  return price.toFixed(2);
 }

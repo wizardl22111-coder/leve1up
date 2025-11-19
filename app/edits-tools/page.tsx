@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useApp } from '@/contexts/AppContext';
 import { getCurrencySymbol, convertPrice } from '@/lib/currency';
+import PriceDisplay from '@/components/PriceDisplay';
 
 interface Product {
   product_id: number;
@@ -240,11 +241,11 @@ export default function EditToolsPage() {
                             {/* Price */}
                             <div className="flex items-center gap-3 mb-4">
                               <span className="text-2xl font-bold text-white">
-                                {convertedPrice.toFixed(2)} {getCurrencySymbol(currency)}
+                                <PriceDisplay price={convertedPrice} currency={currency} />
                               </span>
                               {convertedOriginalPrice && convertedOriginalPrice > convertedPrice && (
                                 <span className="text-lg text-gray-500 line-through">
-                                  {convertedOriginalPrice.toFixed(2)} {getCurrencySymbol(currency)}
+                                  <PriceDisplay price={convertedOriginalPrice} currency={currency} />
                                 </span>
                               )}
                             </div>
