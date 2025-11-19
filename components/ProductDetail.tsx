@@ -367,9 +367,9 @@ export default function ProductDetail({ product }: { product?: Product }) {
                 </div>
               )}
 
-              {/* الوصف المبسط (البوكسات) */}
+              {/* الوصف المبسط (البوكسات) مع انيميشن */}
               {showSimplifiedDescription && (
-                <div className="mt-4">
+                <div className="mt-4 animate-fade-in-up">
                   <ProductDescriptionBoxes 
                     productId={product.product_id || product.id || 0} 
                     productName={product.product_name || product.name || ''} 
