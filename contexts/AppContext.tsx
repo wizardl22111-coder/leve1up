@@ -53,22 +53,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   // Load from localStorage on mount
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as Theme | null;
+    // فرض الوضع الداكن دائماً - إزالة أي إعدادات محفوظة
+    setTheme('dark');
+    document.documentElement.classList.add('dark');
+    document.documentElement.classList.remove('light');
+    
     const savedCurrency = localStorage.getItem('currency') as Currency | null;
     const savedCart = localStorage.getItem('cart');
     const savedWishlist = localStorage.getItem('wishlist');
     const savedCountry = localStorage.getItem('selectedCountry');
     const savedDiscount = localStorage.getItem('appliedDiscount');
-
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      // إذا لم يكن هناك theme محفوظ، استخدم الوضع الداكن افتراضياً
-      setTheme('dark');
-    }
-    
-    // تطبيق الوضع على document
-    document.documentElement.classList.toggle('dark', savedTheme === 'dark' || !savedTheme);
     
     if (savedCurrency) setCurrency(savedCurrency);
     if (savedCart) setCart(JSON.parse(savedCart));
@@ -93,10 +87,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // Save to localStorage
+  // فرض الوضع الداكن دائماً - تعطيل حفظ الثيم
   useEffect(() => {
-    localStorage.setItem('theme', theme);
-    document.documentElement.classList.toggle('dark', theme === 'dark');
+    // لا نحفظ الثيم في localStorage
+    // localStorage.setItem('theme', theme);
+    document.documentElement.classList.add('dark');
+    document.documentElement.classList.remove('light');
   }, [theme]);
 
   useEffect(() => {

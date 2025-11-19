@@ -115,7 +115,7 @@ export default function ContactPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid md:grid-cols-2 gap-6 mb-12 max-w-2xl mx-auto">
             {/* Email */}
             <motion.div 
               className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm p-8 rounded-xl hover:shadow-xl transition-all duration-300 border border-primary-300/20 hover:border-primary-300/40"
@@ -134,30 +134,12 @@ export default function ContactPage() {
               </p>
             </motion.div>
 
-            {/* WhatsApp */}
-            <motion.div 
-              className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm p-8 rounded-xl hover:shadow-xl transition-all duration-300 border border-primary-300/20 hover:border-primary-300/40"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mb-4 mx-auto shadow-lg">
-                <FaWhatsapp className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-white mb-2 text-center">
-                واتساب
-              </h3>
-              <p className="text-slate-300 mb-4 text-center">
-                تواصل معنا مباشرة
-              </p>
-            </motion.div>
-
             {/* Instagram */}
             <motion.div 
               className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm p-8 rounded-xl hover:shadow-xl transition-all duration-300 border border-primary-300/20 hover:border-primary-300/40"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.2 }}
             >
               <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center mb-4 mx-auto shadow-lg">
                 <FaInstagram className="w-8 h-8 text-white" />

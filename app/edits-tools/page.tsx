@@ -137,45 +137,49 @@ export default function EditToolsPage() {
                   return (
                     <div key={product.product_id} className="bg-gradient-to-br from-dark-300 to-dark-500 rounded-2xl overflow-hidden border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 group">
                       <div className="flex flex-col">
-                        {/* Product Image */}
-                        <div className="relative h-48 bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center">
-                          {product.product_image ? (
-                            <Image
-                              src={product.product_image}
-                              alt={product.product_name}
-                              fill
-                              className="object-cover"
-                            />
-                          ) : (
-                            <div className="text-center">
-                              {product.product_id === 4 ? (
-                                <>
-                                  <Video className="w-12 h-12 text-blue-400 mx-auto mb-2" />
-                                  <div className="text-4xl font-bold text-white/10">🎬</div>
-                                </>
-                              ) : (
-                                <>
-                                  <Palette className="w-12 h-12 text-orange-400 mx-auto mb-2" />
-                                  <div className="text-4xl font-bold text-white/10">🎨</div>
-                                </>
-                              )}
-                            </div>
-                          )}
-                          
-                          {/* Discount Badge */}
-                          {discount > 0 && (
-                            <div className="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-pink-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                              خصم {discount}%
-                            </div>
-                          )}
-                        </div>
+                        {/* Product Image - Clickable */}
+                        <Link href={`/products/${product.product_id}`} className="block">
+                          <div className="relative h-48 bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center cursor-pointer hover:scale-105 transition-transform duration-300">
+                            {product.product_image ? (
+                              <Image
+                                src={product.product_image}
+                                alt={product.product_name}
+                                fill
+                                className="object-cover"
+                              />
+                            ) : (
+                              <div className="text-center">
+                                {product.product_id === 4 ? (
+                                  <>
+                                    <Video className="w-12 h-12 text-blue-400 mx-auto mb-2" />
+                                    <div className="text-4xl font-bold text-white/10">🎬</div>
+                                  </>
+                                ) : (
+                                  <>
+                                    <Palette className="w-12 h-12 text-orange-400 mx-auto mb-2" />
+                                    <div className="text-4xl font-bold text-white/10">🎨</div>
+                                  </>
+                                )}
+                              </div>
+                            )}
+                            
+                            {/* Discount Badge */}
+                            {discount > 0 && (
+                              <div className="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-pink-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                                خصم {discount}%
+                              </div>
+                            )}
+                          </div>
+                        </Link>
 
                         {/* Product Info */}
                         <div className="p-6">
                           <div className="mb-4">
-                            <h3 className="text-xl font-bold text-white mb-2">
-                              {product.product_name}
-                            </h3>
+                            <Link href={`/products/${product.product_id}`}>
+                              <h3 className="text-xl font-bold text-white mb-2 hover:text-primary-300 transition-colors cursor-pointer">
+                                {product.product_name}
+                              </h3>
+                            </Link>
 
                             {/* Rating */}
                             <div className="flex items-center gap-2 mb-4">

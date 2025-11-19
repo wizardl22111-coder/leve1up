@@ -63,7 +63,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service) => {
             const IconComponent = service.icon;
             
@@ -73,7 +73,7 @@ export default function ServicesSection() {
                 href={service.href}
                 className="group block"
               >
-                <div className={`bg-gradient-to-br ${service.gradient} backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg overflow-hidden border ${service.borderColor} hover:border-opacity-50 transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2 hover:shadow-2xl`}>
+                <div className="bg-gradient-to-br from-dark-300 to-dark-500 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-700/50 hover:border-primary-300/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl h-full">
                   {/* Service Image */}
                   <div className="relative h-32 sm:h-48 md:h-56 overflow-hidden">
                     <Image

@@ -5,10 +5,9 @@ import Link from 'next/link';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative bg-dark-400 py-12 sm:py-16 md:py-24 lg:py-32 overflow-hidden">
-      {/* Animated Grid Background */}
+    <section id="home" className="relative bg-gradient-to-br from-dark-500 via-dark-400 to-dark-300 py-12 sm:py-16 md:py-24 lg:py-32 overflow-hidden">
+      {/* Animated Background - بدون grid pattern */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
         <div className="absolute inset-0 bg-gradient-to-br from-primary-300/10 via-transparent to-accent-600/10 animate-gradient-slow"></div>
       </div>
       
