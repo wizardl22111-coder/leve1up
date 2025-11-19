@@ -9,11 +9,22 @@ interface Product {
   product_id: number;
   product_name: string;
   product_name_en: string;
-  download_url: string;
-  filename: string;
+  download_url?: string; // اختياري للاشتراكات
+  filename?: string; // اختياري للاشتراكات
   price: number;
   currency: string;
   active: boolean;
+  category: string;
+  tags: string[];
+  rating: number;
+  buyers: string;
+  featured: boolean;
+  isFree?: boolean;
+  originalPrice?: number;
+  description: string;
+  product_image?: string;
+  file_size_mb?: number;
+  sections?: any;
 }
 
 /**
@@ -45,6 +56,10 @@ export function getProductByName(productName: string): Product | null {
  */
 export function getProductDownloadUrl(productName: string): string | null {
   const product = getProductByName(productName);
+  // للاشتراكات، لا يوجد رابط تحميل
+  if (product?.category === 'subscriptions') {
+    return null;
+  }
   return product?.download_url || null;
 }
 
@@ -58,6 +73,11 @@ export function generateAllowedFilesFromProducts(): Record<string, string> {
   const activeProducts = getActiveProducts();
   
   activeProducts.forEach(product => {
+    // تجاهل الاشتراكات لأنها لا تحتوي على ملفات للتحميل
+    if (product.category === 'subscriptions' || !product.download_url) {
+      return;
+    }
+    
     // تحويل اسم المنتج إلى key آمن
     const safeKey = product.product_name
       .replace(/\s+/g, '-')
@@ -125,7 +145,7 @@ export function validateProduct(productName: string): {
   return {
     exists: true,
     product,
-    downloadUrl: product.download_url,
+    downloadUrl: product.download_url || undefined,
     safeKey
   };
 }
@@ -145,8 +165,9 @@ export function debugProducts(): void {
     
     console.log(`${index + 1}. المنتج: "${product.product_name}"`);
     console.log(`   المفتاح الآمن: "${safeKey}"`);
-    console.log(`   رابط التحميل: "${product.download_url}"`);
+    console.log(`   رابط التحميل: "${product.download_url || 'لا يوجد (اشتراك)'}"`);
     console.log(`   السعر: ${product.price} ${product.currency}`);
+    console.log(`   الفئة: ${product.category}`);
     console.log('---');
   });
   
