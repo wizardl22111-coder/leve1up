@@ -16,6 +16,15 @@ export default function PriceDisplay({
   className = '', 
   showCurrencyFirst = false 
 }: PriceDisplayProps) {
+  // إذا كان السعر 0، عرض "مجاني"
+  if (price === 0) {
+    return (
+      <span className={`${className} text-green-400 font-bold`}>
+        مجاني
+      </span>
+    );
+  }
+
   const formattedPrice = formatPriceValue(price);
 
   if (showCurrencyFirst) {

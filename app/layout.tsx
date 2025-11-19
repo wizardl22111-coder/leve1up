@@ -27,8 +27,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: 'LevelUp Digital Store | متجر لفل اب الرقمي',
-  description: 'متجرك الموثوق للمنتجات الرقمية والاشتراكات المميزة بأفضل الأسعار. اشتراكات نتفليكس، سبوتيفاي، بطاقات iTunes والمزيد',
-  keywords: ['متجر رقمي', 'منتجات رقمية', 'لفل اب', 'Level Up', 'خدمات إلكترونية', 'اشتراكات', 'بطاقات هدايا', 'نتفليكس', 'سبوتيفاي'],
+  description: 'متجرك الموثوق للمنتجات الرقمية والباقات المميزة بأسعار تنافسية. باقات نتفليكس، سبوتيفاي، بطاقات iTunes والمزيد',
+  keywords: ['متجر رقمي', 'منتجات رقمية', 'لفل اب', 'Level Up', 'خدمات إلكترونية', 'باقات', 'بطاقات هدايا', 'نتفليكس', 'سبوتيفاي'],
   authors: [{ name: 'Level Up Team' }],
   icons: {
     icon: [
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'LevelUp Digital Store | متجر لفل اب الرقمي',
-    description: 'متجرك الموثوق للمنتجات الرقمية والاشتراكات المميزة',
+    description: 'متجرك الموثوق للمنتجات الرقمية والباقات المميزة',
     type: 'website',
     locale: 'ar_SA',
     siteName: 'LevelUp Digital Store',

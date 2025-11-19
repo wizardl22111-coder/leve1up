@@ -6,8 +6,8 @@ import { Zap, Play, Music, Gamepad2, Tv, Smartphone } from 'lucide-react';
 import { getActiveProducts } from '@/lib/products-utils';
 
 export const metadata = {
-  title: 'الاشتراكات الرقمية | متجر لفل اب',
-  description: 'نتفليكس، بلايستيشن بلس، سبوتيفاي والمزيد من الاشتراكات الرقمية بأفضل الأسعار',
+  title: 'الباقات الرقمية | متجر لفل اب',
+  description: 'نتفليكس، بلايستيشن بلس، سبوتيفاي والمزيد من الباقات الرقمية بأسعار تنافسية',
 };
 
 export default function SubscriptionsPage() {
@@ -60,13 +60,13 @@ export default function SubscriptionsPage() {
             <ScrollReveal delay={0} duration={800} distance={60}>
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-600/20 backdrop-blur-sm text-green-300 px-4 py-2 rounded-full mb-6 border border-green-500/30">
                 <Zap className="w-4 h-4" />
-                <span className="text-sm font-bold">الاشتراكات الرقمية</span>
+                <span className="text-sm font-bold">الباقات الرقمية</span>
               </div>
             </ScrollReveal>
             
             <ScrollReveal delay={200} duration={800} distance={60}>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6">
-                الاشتراكات{' '}
+                الباقات{' '}
                 <span className="bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
                   الرقمية
                 </span>
@@ -118,7 +118,7 @@ export default function SubscriptionsPage() {
               <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Tv className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">أفضل الأسعار</h3>
+              <h3 className="text-xl font-bold text-white mb-2">أسعار تنافسية</h3>
               <p className="text-gray-400">أسعار تنافسية وعروض حصرية</p>
             </div>
           </div>
@@ -129,9 +129,9 @@ export default function SubscriptionsPage() {
       <section className="py-16 bg-dark-500">
         <div className="container-mobile">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">الاشتراكات المتاحة</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">الباقات المتاحة</h2>
             <p className="text-gray-400 text-lg">
-              اختر من مجموعة متنوعة من الاشتراكات الرقمية بأفضل الأسعار
+              اختر من مجموعة متنوعة من الباقات الرقمية بأسعار تنافسية
             </p>
           </div>
           
@@ -144,7 +144,7 @@ export default function SubscriptionsPage() {
           ) : (
             <div className="text-center py-12">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300/20 to-accent-600/20 backdrop-blur-sm text-primary-300 px-6 py-3 rounded-full border border-primary-300/30">
-                <span className="text-sm font-bold">قريباً - المزيد من الاشتراكات</span>
+                <span className="text-sm font-bold">قريباً - المزيد من الباقات</span>
               </div>
             </div>
           )}

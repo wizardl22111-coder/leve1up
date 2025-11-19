@@ -73,7 +73,7 @@ export function generateAllowedFilesFromProducts(): Record<string, string> {
   const activeProducts = getActiveProducts();
   
   activeProducts.forEach(product => {
-    // تجاهل الاشتراكات لأنها لا تحتوي على ملفات للتحميل
+    // تجاهل الباقات لأنها لا تحتوي على ملفات للتحميل
     if (product.category === 'subscriptions' || !product.download_url) {
       return;
     }

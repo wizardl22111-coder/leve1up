@@ -162,19 +162,9 @@ export default function ReviewSummary({
     );
   }
 
-  if (!summary || summary.totalReviews === 0) {
-    return (
-      <div className={`bg-dark-400 rounded-2xl border border-primary-300/20 p-6 ${className}`}>
-        {showTitle && (
-          <h3 className="text-xl font-bold text-white mb-6">ملخص التقييمات</h3>
-        )}
-        <div className="text-center py-8">
-          <BarChart3 className="w-12 h-12 text-gray-500 mx-auto mb-4" />
-          <p className="text-gray-400 mb-2">لا توجد تقييمات بعد</p>
-          <p className="text-gray-500 text-sm">كن أول من يقيم هذا المنتج!</p>
-        </div>
-      </div>
-    );
+  if (!summary || summary.totalReviews === 0 || summary.averageRating === 0) {
+    // إخفاء التقييمات الفارغة أو الصفرية
+    return null;
   }
 
   return (
