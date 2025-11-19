@@ -2,23 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import { Star, User, Quote } from 'lucide-react';
-
-interface Review {
-  id: number;
-  customerName: string;
-  rating: number;
-  comment: string;
-  avatar: string;
-  type: 'full' | 'simple_text' | 'stars_only';
-}
+import { getProductReviews, getStoredReviews, type RealisticReview } from '@/lib/realistic-reviews';
 
 interface ProductReviewsProps {
   productId: number;
-  reviews?: Review[];
+  reviews?: RealisticReview[];
 }
 
 export default function ProductReviews({ productId, reviews: initialReviews = [] }: ProductReviewsProps) {
-  const [reviews, setReviews] = useState<Review[]>(initialReviews);
+  const [reviews, setReviews] = useState<RealisticReview[]>(initialReviews);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -29,17 +21,10 @@ export default function ProductReviews({ productId, reviews: initialReviews = []
     try {
       setLoading(true);
       
-      // تحميل التقييمات من الملف المحلي
-      const response = await fetch('/data/product-reviews.json');
-      const allReviews = await response.json();
+      // استخدام النظام الجديد لجلب التقييمات مع دمج التقييمات المحفوظة محلياً
+      const productReviews = await getProductReviews(productId);
       
-      // الحصول على تقييمات المنتج المحدد
-      const productReviews = allReviews[productId.toString()] || [];
-      
-      // خلط التقييمات عشوائياً
-      const shuffledReviews = [...productReviews].sort(() => Math.random() - 0.5);
-      
-      setReviews(shuffledReviews);
+      setReviews(productReviews);
     } catch (error) {
       console.error('Error fetching reviews:', error);
       setReviews([]);

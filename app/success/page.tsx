@@ -17,6 +17,7 @@ import {
   User,
   Send
 } from "lucide-react";
+import { saveNewReview } from '@/lib/realistic-reviews';
 
 interface CartItem {
   id: number;
@@ -205,8 +206,25 @@ function SuccessPageContent() {
     setReviewLoading(true);
     
     try {
-      // محاكاة إرسال التقييم (يمكن ربطه بـ API حقيقي لاحقاً)
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // حفظ التقييم باستخدام النظام الجديد
+      if (orderData && orderData.items && orderData.items.length > 0) {
+        // ربط التقييم بأول منتج في الطلب (يمكن تحسينه لاحقاً للسماح بتقييم منتجات متعددة)
+        const firstProduct = orderData.items[0];
+        
+        const newReview = saveNewReview({
+          customerName: reviewData.name,
+          rating: reviewData.rating,
+          comment: reviewData.comment,
+          avatar: `/images/avatars/avatar-${Math.floor(Math.random() * 100) + 1}.jpg`,
+          type: reviewData.comment.trim() ? 'full' : 'stars_only',
+          productId: firstProduct.id
+        });
+        
+        console.log('تم حفظ التقييم:', newReview);
+      }
+      
+      // محاكاة تأخير للتأثير البصري
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
       setReviewSubmitted(true);
       setShowReviewForm(false);

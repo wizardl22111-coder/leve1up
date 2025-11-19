@@ -39,45 +39,19 @@ export default function ReviewSummary({
       setLoading(true);
       setError(null);
 
-      // تقييمات ثابتة مبدئية لكل منتج
-      const staticReviews = {
-        1: { // الدليل التمهيدي للربح من المنتجات الرقمية
-          totalReviews: 127,
-          averageRating: 4.8,
-          ratingDistribution: { 1: 2, 2: 3, 3: 8, 4: 32, 5: 82 }
-        },
-        2: { // الربح من المنتجات الرقمية
-          totalReviews: 89,
-          averageRating: 4.6,
-          ratingDistribution: { 1: 1, 2: 4, 3: 12, 4: 28, 5: 44 }
-        },
-        3: { // 15 فكرة مشروع رقمي مربح
-          totalReviews: 156,
-          averageRating: 4.7,
-          ratingDistribution: { 1: 3, 2: 5, 3: 15, 4: 41, 5: 92 }
-        },
-        4: { // باقة المونتاج الاحترافية
-          totalReviews: 73,
-          averageRating: 4.9,
-          ratingDistribution: { 1: 1, 2: 1, 3: 4, 4: 15, 5: 52 }
-        },
-        5: { // حزمة أيقونات متحركة
-          totalReviews: 198,
-          averageRating: 4.8,
-          ratingDistribution: { 1: 2, 2: 4, 3: 12, 4: 38, 5: 142 }
-        },
-        6: { // باقة التصميم وصناعة المحتوى
-          totalReviews: 45,
-          averageRating: 4.9,
-          ratingDistribution: { 1: 0, 2: 1, 3: 2, 4: 8, 5: 34 }
-        }
-      };
-
-      // استخدام التقييمات الثابتة حسب productId
-      const productSummary = staticReviews[productId as keyof typeof staticReviews];
+      // استخدام النظام الجديد لحساب الإحصائيات
+      const { getProductReviews, calculateReviewStats } = await import('@/lib/realistic-reviews');
+      const reviews = await getProductReviews(productId);
+      const stats = calculateReviewStats(reviews);
       
-      if (productSummary) {
-        setSummary(productSummary);
+      setSummary({
+        totalReviews: stats.totalReviews,
+        averageRating: stats.averageRating,
+        ratingDistribution: stats.ratingDistribution
+      });
+
+      if (stats.totalReviews > 0) {
+        // التقييمات متوفرة
       } else {
         // تقييمات افتراضية للمنتجات الأخرى
         setSummary({
