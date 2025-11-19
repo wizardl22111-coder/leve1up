@@ -12,6 +12,7 @@ import FreeProductModal from './FreeProductModal';
 import ProductDescriptionBoxes from './ProductDescriptionBoxes';
 import PriceDisplay from './PriceDisplay';
 import ReviewSummary from './ReviewSummary';
+import SubscriptionDurationSelector from './SubscriptionDurationSelector';
 
 
 
@@ -76,6 +77,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
   const { currency, addToCart, addToWishlist, wishlist } = useApp();
   const [showFreeModal, setShowFreeModal] = useState(false);
   const [showSimplifiedDescription, setShowSimplifiedDescription] = useState(false);
+  const [selectedDuration, setSelectedDuration] = useState<any>(null);
 
   // Early return if no product
   if (!product) {
@@ -208,6 +210,15 @@ export default function ProductDetail({ product }: { product?: Product }) {
                 </span>
               </div>
             </div>
+
+            {/* Subscription Duration Selector for Netflix */}
+            {product.category === 'subscriptions' && productId === 10 && (
+              <SubscriptionDurationSelector
+                productId={productId}
+                onDurationChange={(option) => setSelectedDuration(option)}
+                className="mb-6"
+              />
+            )}
 
             {/* Price - Prominent */}
             <div className="flex items-center gap-4 p-4 sm:p-6 bg-dark-300/50 border border-primary-300/20 rounded-2xl">
