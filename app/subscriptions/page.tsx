@@ -1,6 +1,8 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ProductGrid from '@/components/ProductGrid';
 import { Zap, Play, Music, Gamepad2, Tv, Smartphone } from 'lucide-react';
+import { getActiveProducts } from '@/lib/products-utils';
 
 export const metadata = {
   title: 'الاشتراكات الرقمية | متجر لفل اب',
@@ -8,6 +10,10 @@ export const metadata = {
 };
 
 export default function SubscriptionsPage() {
+  // Get subscription products from database
+  const allProducts = getActiveProducts();
+  const subscriptionProducts = allProducts.filter(product => product.category === 'subscriptions');
+  
   const subscriptions = [
     {
       name: 'Netflix',
@@ -17,39 +23,25 @@ export default function SubscriptionsPage() {
       borderColor: 'border-red-500/20'
     },
     {
-      name: 'PlayStation Plus',
-      icon: Gamepad2,
-      color: 'text-blue-400',
-      bgColor: 'from-blue-500/10 to-blue-600/10',
-      borderColor: 'border-blue-500/20'
-    },
-    {
-      name: 'Spotify',
-      icon: Music,
+      name: 'ChatGPT',
+      icon: Zap,
       color: 'text-green-400',
       bgColor: 'from-green-500/10 to-green-600/10',
       borderColor: 'border-green-500/20'
     },
     {
-      name: 'Disney+',
+      name: 'Google Gemini',
+      icon: Zap,
+      color: 'text-blue-400',
+      bgColor: 'from-blue-500/10 to-blue-600/10',
+      borderColor: 'border-blue-500/20'
+    },
+    {
+      name: 'Canva Pro',
       icon: Tv,
       color: 'text-purple-400',
       bgColor: 'from-purple-500/10 to-purple-600/10',
       borderColor: 'border-purple-500/20'
-    },
-    {
-      name: 'YouTube Premium',
-      icon: Play,
-      color: 'text-red-400',
-      bgColor: 'from-red-500/10 to-red-600/10',
-      borderColor: 'border-red-500/20'
-    },
-    {
-      name: 'Apple Music',
-      icon: Music,
-      color: 'text-gray-400',
-      bgColor: 'from-gray-500/10 to-gray-600/10',
-      borderColor: 'border-gray-500/20'
     }
   ];
 
@@ -77,10 +69,10 @@ export default function SubscriptionsPage() {
             </h1>
             
             <p className="text-xl text-gray-400 mb-8 leading-relaxed">
-              نتفليكس، بلايستيشن بلس، سبوتيفاي… والمزيد
+              Netflix، ChatGPT، Google Gemini، Canva Pro… والمزيد
             </p>
             
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mt-12">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12">
               {subscriptions.map((subscription, index) => {
                 const IconComponent = subscription.icon;
                 return (
@@ -121,18 +113,25 @@ export default function SubscriptionsPage() {
         </div>
       </section>
 
-      {/* Coming Soon Section */}
-      <section className="py-16 bg-gradient-to-br from-dark-500 to-dark-400">
+      {/* Subscription Products Section */}
+      <section className="py-16 bg-dark-500">
         <div className="container-mobile">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-white mb-4">قريباً جداً</h2>
-            <p className="text-gray-400 text-lg mb-8">
-              نعمل على إضافة المزيد من الاشتراكات الرقمية المميزة
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">الاشتراكات المتاحة</h2>
+            <p className="text-gray-400 text-lg">
+              اختر من مجموعة متنوعة من الاشتراكات الرقمية بأفضل الأسعار
             </p>
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300/20 to-accent-600/20 backdrop-blur-sm text-primary-300 px-6 py-3 rounded-full border border-primary-300/30">
-              <span className="text-sm font-bold">ترقبوا الإطلاق قريباً</span>
-            </div>
           </div>
+          
+          {subscriptionProducts.length > 0 ? (
+            <ProductGrid products={subscriptionProducts} />
+          ) : (
+            <div className="text-center py-12">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300/20 to-accent-600/20 backdrop-blur-sm text-primary-300 px-6 py-3 rounded-full border border-primary-300/30">
+                <span className="text-sm font-bold">قريباً - المزيد من الاشتراكات</span>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

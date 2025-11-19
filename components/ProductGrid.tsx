@@ -9,8 +9,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import PriceDisplay from './PriceDisplay';
 
-export default function ProductGrid() {
+interface ProductGridProps {
+  products?: any[];
+}
+
+export default function ProductGrid({ products: propProducts }: ProductGridProps = {}) {
   const { currency, addToCart, addToWishlist, wishlist } = useApp();
+  
+  // Use provided products or default to all products
+  const displayProducts = propProducts || products;
 
   // Helper function to get unified product ID
   const getProductId = (product: any) => product.product_id ?? product.id ?? 1;
@@ -57,7 +64,7 @@ export default function ProductGrid() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-      {products.slice(0, 3).map((product) => {
+      {displayProducts.slice(0, 3).map((product) => {
         const priceCalc = calculatePrice(product, currency);
         const productId = getProductId(product);
         const productName = getProductName(product);
