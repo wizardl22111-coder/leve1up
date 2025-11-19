@@ -11,9 +11,15 @@ import PriceDisplay from './PriceDisplay';
 
 interface ProductGridProps {
   products?: any[];
+  maxProducts?: number;
+  gridCols?: string;
 }
 
-export default function ProductGrid({ products: propProducts }: ProductGridProps = {}) {
+export default function ProductGrid({ 
+  products: propProducts, 
+  maxProducts = 3, 
+  gridCols = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" 
+}: ProductGridProps = {}) {
   const { currency, addToCart, addToWishlist, wishlist } = useApp();
   
   // Use provided products or default to all products
@@ -63,8 +69,8 @@ export default function ProductGrid({ products: propProducts }: ProductGridProps
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-      {displayProducts.slice(0, 3).map((product) => {
+    <div className={`grid ${gridCols} gap-4 sm:gap-6 md:gap-8`}>
+      {displayProducts.slice(0, maxProducts).map((product) => {
         const priceCalc = calculatePrice(product, currency);
         const productId = getProductId(product);
         const productName = getProductName(product);

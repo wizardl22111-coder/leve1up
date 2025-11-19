@@ -124,7 +124,11 @@ export default function SubscriptionsPage() {
           </div>
           
           {subscriptionProducts.length > 0 ? (
-            <ProductGrid products={subscriptionProducts} />
+            <ProductGrid 
+              products={subscriptionProducts} 
+              maxProducts={4}
+              gridCols="grid-cols-1 sm:grid-cols-2"
+            />
           ) : (
             <div className="text-center py-12">
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300/20 to-accent-600/20 backdrop-blur-sm text-primary-300 px-6 py-3 rounded-full border border-primary-300/30">

@@ -25,17 +25,6 @@ export default function ServicesSection() {
       gradient: "from-green-500/10 to-emerald-600/10",
       borderColor: "border-green-500/20",
       iconColor: "text-green-400"
-    },
-    {
-      id: 3,
-      title: "قسم الألعاب (قريبًا)",
-      description: "قسم مخصص لعروض وحزم الألعاب — قريبًا.",
-      image: "/images/services/games-soon.jpg",
-      href: "/games",
-      icon: Gamepad2,
-      gradient: "from-orange-500/10 to-red-600/10",
-      borderColor: "border-orange-500/20",
-      iconColor: "text-orange-400"
     }
   ];
 
