@@ -12,9 +12,9 @@
       "id": 2,
       "customerName": "سامر الشامي",
       "rating": 5,
-      "comment": "معلومات قيمة ومفيدة للغاية",
+      "comment": "حبيته",
       "avatar": "/images/avatars/avatar-11.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "id": 4,
       "customerName": "محمود الطراونة",
       "rating": 4,
-      "comment": "قيم",
+      "comment": "عسل",
       "avatar": "/images/avatars/avatar-24.jpg",
       "type": "simple_text"
     },
@@ -36,25 +36,25 @@
       "id": 5,
       "customerName": "رشا محمود",
       "rating": 4,
-      "comment": "أسلوب شرح بسيط ومفهوم",
+      "comment": "",
       "avatar": "/images/avatars/avatar-31.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 6,
       "customerName": "دينا حسن",
       "rating": 3,
-      "comment": "كتاب جيد بشكل عام",
+      "comment": "ما شاء الله",
       "avatar": "/images/avatars/avatar-85.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 7,
       "customerName": "هبة عثمان",
       "rating": 5,
-      "comment": "كتاب رائع يستحق القراءة",
+      "comment": "",
       "avatar": "/images/avatars/avatar-28.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 8,
@@ -76,9 +76,9 @@
       "id": 10,
       "customerName": "نور الهدى",
       "rating": 4,
-      "comment": "جميل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-10.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 11,
@@ -92,17 +92,17 @@
       "id": 12,
       "customerName": "أحمد السالم",
       "rating": 5,
-      "comment": "ممتاز",
+      "comment": "",
       "avatar": "/images/avatars/avatar-25.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 13,
       "customerName": "فاطمة الزهراء",
       "rating": 1,
-      "comment": "توقعت معلومات أكثر تفصيلاً",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-14.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 14,
@@ -116,17 +116,17 @@
       "id": 15,
       "customerName": "طارق محمود",
       "rating": 4,
-      "comment": "استطعت تطبيق ما تعلمته من الكتاب بسهولة",
+      "comment": "تحفة",
       "avatar": "/images/avatars/avatar-65.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 16,
       "customerName": "أمير صلاح",
       "rating": 3,
-      "comment": "كتاب جيد بشكل عام",
+      "comment": "كويس جداً",
       "avatar": "/images/avatars/avatar-92.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 17,
@@ -140,7 +140,7 @@
       "id": 18,
       "customerName": "حيدر العراقي",
       "rating": 5,
-      "comment": "ممتاز جداً",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-7.jpg",
       "type": "simple_text"
     },
@@ -148,33 +148,33 @@
       "id": 19,
       "customerName": "يوسف القاسم",
       "rating": 3,
-      "comment": "محتوى مفيد لكن يحتاج المزيد من التفاصيل",
+      "comment": "رهيب",
       "avatar": "/images/avatars/avatar-100.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 20,
       "customerName": "بندر الخالد",
       "rating": 4,
-      "comment": "محتوى عملي ومفيد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-37.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 21,
       "customerName": "زينب الحسيني",
       "rating": 4,
-      "comment": "كتاب يوفر الكثير من الوقت والجهد",
+      "comment": "كويس جداً",
       "avatar": "/images/avatars/avatar-30.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 22,
       "customerName": "خديجة الحسني",
       "rating": 5,
-      "comment": "كتاب رائع يستحق القراءة",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-35.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 23,
@@ -188,9 +188,9 @@
       "id": 24,
       "customerName": "لطيفة السديري",
       "rating": 4,
-      "comment": "كتاب مفيد جداً ومليء بالمعلومات القيمة",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-48.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 25,
@@ -212,33 +212,33 @@
       "id": 27,
       "customerName": "محمود الطراونة",
       "rating": 5,
-      "comment": "كتاب يغطي الموضوع بشكل شامل",
+      "comment": "ممتاز",
       "avatar": "/images/avatars/avatar-98.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 28,
       "customerName": "عبدالله الشمري",
       "rating": 3,
-      "comment": "مفيد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-48.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 29,
       "customerName": "سمر عبدالرحمن",
       "rating": 2,
-      "comment": "كان يمكن أن يكون أفضل",
+      "comment": "حلو كتير",
       "avatar": "/images/avatars/avatar-32.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 30,
       "customerName": "عبدالله الشمري",
       "rating": 3,
-      "comment": "محتوى مناسب للمستوى المتوسط",
+      "comment": "ممتاز",
       "avatar": "/images/avatars/avatar-81.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 31,
@@ -260,7 +260,7 @@
       "id": 33,
       "customerName": "نادر الحموي",
       "rating": 5,
-      "comment": "مفيد جداً",
+      "comment": "بجنن",
       "avatar": "/images/avatars/avatar-60.jpg",
       "type": "simple_text"
     },
@@ -268,7 +268,7 @@
       "id": 34,
       "customerName": "سمر عبدالرحمن",
       "rating": 5,
-      "comment": "ممتاز",
+      "comment": "والله زين",
       "avatar": "/images/avatars/avatar-65.jpg",
       "type": "simple_text"
     },
@@ -284,7 +284,7 @@
       "id": 36,
       "customerName": "عبدالله الشمري",
       "rating": 5,
-      "comment": "عادي",
+      "comment": "تحفة",
       "avatar": "/images/avatars/avatar-95.jpg",
       "type": "simple_text"
     },
@@ -292,25 +292,25 @@
       "id": 37,
       "customerName": "علي الأردني",
       "rating": 5,
-      "comment": "جميل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-57.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 38,
       "customerName": "نادر الحموي",
       "rating": 3,
-      "comment": "محتوى مفيد لكن يحتاج المزيد من التفاصيل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-41.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 39,
       "customerName": "فاطمة الزهراني",
       "rating": 5,
-      "comment": "جيد",
+      "comment": "",
       "avatar": "/images/avatars/avatar-35.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 40,
@@ -324,7 +324,7 @@
       "id": 41,
       "customerName": "هبة عثمان",
       "rating": 5,
-      "comment": "احترافي",
+      "comment": "مفيد جداً",
       "avatar": "/images/avatars/avatar-11.jpg",
       "type": "simple_text"
     },
@@ -332,7 +332,7 @@
       "id": 42,
       "customerName": "ياسمين أحمد",
       "rating": 4,
-      "comment": "عادي",
+      "comment": "جميل",
       "avatar": "/images/avatars/avatar-53.jpg",
       "type": "simple_text"
     },
@@ -340,23 +340,23 @@
       "id": 43,
       "customerName": "ياسمين أحمد",
       "rating": 3,
-      "comment": "جيد للمبتدئين",
+      "comment": "تحفة",
       "avatar": "/images/avatars/avatar-87.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 44,
       "customerName": "عبدالرحمن الفيصل",
       "rating": 3,
-      "comment": "كتاب أساسي في الموضوع",
+      "comment": "",
       "avatar": "/images/avatars/avatar-49.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 45,
       "customerName": "أمير صلاح",
       "rating": 5,
-      "comment": "لا بأس به",
+      "comment": "تحفة",
       "avatar": "/images/avatars/avatar-31.jpg",
       "type": "simple_text"
     },
@@ -364,49 +364,49 @@
       "id": 46,
       "customerName": "ياسمين أحمد",
       "rating": 5,
-      "comment": "محتوى ممتاز وأسلوب سهل في الشرح",
+      "comment": "جميل",
       "avatar": "/images/avatars/avatar-47.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 47,
       "customerName": "حسام علي",
       "rating": 5,
-      "comment": "كتاب يوفر الكثير من الوقت والجهد",
+      "comment": "تحفة",
       "avatar": "/images/avatars/avatar-63.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 48,
       "customerName": "ديانا العمري",
       "rating": 5,
-      "comment": "مذهل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-55.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 49,
       "customerName": "عمر الزعبي",
       "rating": 5,
-      "comment": "كتاب عملي يمكن تطبيقه فوراً",
+      "comment": "ممتاز",
       "avatar": "/images/avatars/avatar-93.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 50,
       "customerName": "حيدر العراقي",
       "rating": 4,
-      "comment": "استطعت تطبيق ما تعلمته من الكتاب بسهولة",
+      "comment": "يستاهل",
       "avatar": "/images/avatars/avatar-5.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 51,
       "customerName": "باسل الدمشقي",
       "rating": 5,
-      "comment": "محتوى عملي ومفيد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-75.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 52,
@@ -420,7 +420,7 @@
       "id": 53,
       "customerName": "نور الهدى",
       "rating": 5,
-      "comment": "احترافي",
+      "comment": "كتير حلو",
       "avatar": "/images/avatars/avatar-49.jpg",
       "type": "simple_text"
     },
@@ -444,7 +444,7 @@
       "id": 56,
       "customerName": "زينب الحسيني",
       "rating": 5,
-      "comment": "مقبول",
+      "comment": "ما شاء الله",
       "avatar": "/images/avatars/avatar-81.jpg",
       "type": "simple_text"
     },
@@ -460,25 +460,25 @@
       "id": 58,
       "customerName": "خديجة الحسني",
       "rating": 4,
-      "comment": "معلومات قيمة ومفيدة للغاية",
+      "comment": "ممتاز",
       "avatar": "/images/avatars/avatar-96.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 59,
       "customerName": "أحمد السالم",
       "rating": 5,
-      "comment": "استفدت كثيراً من هذا الكتاب، ينصح به بشدة",
+      "comment": "",
       "avatar": "/images/avatars/avatar-90.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 60,
       "customerName": "رشا محمود",
       "rating": 4,
-      "comment": "كتاب يوفر الكثير من الوقت والجهد",
+      "comment": "حلو أوي",
       "avatar": "/images/avatars/avatar-78.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 61,
@@ -492,7 +492,7 @@
       "id": 62,
       "customerName": "سارة الدوسري",
       "rating": 4,
-      "comment": "مفيد جداً",
+      "comment": "حبيته",
       "avatar": "/images/avatars/avatar-72.jpg",
       "type": "simple_text"
     },
@@ -500,7 +500,7 @@
       "id": 63,
       "customerName": "فاطمة الزهراء",
       "rating": 5,
-      "comment": "قيم",
+      "comment": "حلو كتير",
       "avatar": "/images/avatars/avatar-79.jpg",
       "type": "simple_text"
     },
@@ -508,7 +508,7 @@
       "id": 64,
       "customerName": "أمير صلاح",
       "rating": 5,
-      "comment": "جميل",
+      "comment": "عسل",
       "avatar": "/images/avatars/avatar-21.jpg",
       "type": "simple_text"
     },
@@ -526,7 +526,7 @@
       "id": 1,
       "customerName": "رشا محمود",
       "rating": 4,
-      "comment": "مفيد جداً",
+      "comment": "ممتاز",
       "avatar": "/images/avatars/avatar-84.jpg",
       "type": "simple_text"
     },
@@ -534,33 +534,33 @@
       "id": 2,
       "customerName": "علي الأردني",
       "rating": 4,
-      "comment": "دليل شامل ومفيد للمبتدئين",
+      "comment": "عسل",
       "avatar": "/images/avatars/avatar-36.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 3,
       "customerName": "عمر الزعبي",
       "rating": 5,
-      "comment": "دليل شامل ومفيد للمبتدئين",
+      "comment": "بجنن",
       "avatar": "/images/avatars/avatar-78.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 4,
       "customerName": "كريم عبدالله",
       "rating": 4,
-      "comment": "كتاب يوفر الكثير من الوقت والجهد",
+      "comment": "روعة",
       "avatar": "/images/avatars/avatar-76.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 5,
       "customerName": "نورا القحطاني",
       "rating": 4,
-      "comment": "شرح واضح ومفصل، أنصح بقراءته",
+      "comment": "",
       "avatar": "/images/avatars/avatar-64.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 6,
@@ -574,25 +574,25 @@
       "id": 7,
       "customerName": "سلمى الخوري",
       "rating": 5,
-      "comment": "كتاب يغطي الموضوع بشكل شامل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-28.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 8,
       "customerName": "هند الراشد",
       "rating": 5,
-      "comment": "معلومات حديثة ومواكبة للعصر",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-31.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 9,
       "customerName": "باسل الدمشقي",
       "rating": 5,
-      "comment": "معلومات قيمة ومفيدة للغاية",
+      "comment": "روعة",
       "avatar": "/images/avatars/avatar-19.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 10,
@@ -614,15 +614,15 @@
       "id": 12,
       "customerName": "خالد المطيري",
       "rating": 5,
-      "comment": "محتوى عملي ومفيد جداً",
+      "comment": "كويس جداً",
       "avatar": "/images/avatars/avatar-52.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 13,
       "customerName": "زينب الحسيني",
       "rating": 5,
-      "comment": "جميل",
+      "comment": "حلو كتير",
       "avatar": "/images/avatars/avatar-77.jpg",
       "type": "simple_text"
     },
@@ -630,25 +630,25 @@
       "id": 14,
       "customerName": "عمر الزعبي",
       "rating": 4,
-      "comment": "ممتاز جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-94.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 15,
       "customerName": "مصطفى البغدادي",
       "rating": 5,
-      "comment": "شرح واضح ومفصل، أنصح بقراءته",
+      "comment": "",
       "avatar": "/images/avatars/avatar-48.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 16,
       "customerName": "نور الهدى",
       "rating": 5,
-      "comment": "معلومات حديثة ومواكبة للعصر",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-100.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 17,
@@ -662,7 +662,7 @@
       "id": 18,
       "customerName": "سامر الشامي",
       "rating": 5,
-      "comment": "لا بأس به",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-87.jpg",
       "type": "simple_text"
     },
@@ -670,7 +670,7 @@
       "id": 19,
       "customerName": "بندر الخالد",
       "rating": 5,
-      "comment": "مقبول",
+      "comment": "روعة",
       "avatar": "/images/avatars/avatar-73.jpg",
       "type": "simple_text"
     },
@@ -678,7 +678,7 @@
       "id": 20,
       "customerName": "علي الكربلائي",
       "rating": 5,
-      "comment": "احترافي",
+      "comment": "مرة حلو",
       "avatar": "/images/avatars/avatar-40.jpg",
       "type": "simple_text"
     },
@@ -686,9 +686,9 @@
       "id": 21,
       "customerName": "يوسف البركاني",
       "rating": 5,
-      "comment": "احترافي",
+      "comment": "",
       "avatar": "/images/avatars/avatar-19.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 22,
@@ -702,17 +702,17 @@
       "id": 23,
       "customerName": "يوسف القاسم",
       "rating": 4,
-      "comment": "محتوى ممتاز وأسلوب سهل في الشرح",
+      "comment": "",
       "avatar": "/images/avatars/avatar-31.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 24,
       "customerName": "محمد العتيبي",
       "rating": 5,
-      "comment": "كتاب يوفر الكثير من الوقت والجهد",
+      "comment": "زي العسل",
       "avatar": "/images/avatars/avatar-62.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 25,
@@ -734,71 +734,71 @@
       "id": 27,
       "customerName": "هبة عثمان",
       "rating": 3,
-      "comment": "كتاب جيد بشكل عام",
+      "comment": "",
       "avatar": "/images/avatars/avatar-10.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 28,
       "customerName": "سامر الشامي",
       "rating": 2,
-      "comment": "يحتاج المزيد من الأمثلة العملية",
+      "comment": "كتير حلو",
       "avatar": "/images/avatars/avatar-70.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 29,
       "customerName": "دينا حسن",
       "rating": 4,
-      "comment": "ممتاز جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-36.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 30,
       "customerName": "هند الراشد",
       "rating": 4,
-      "comment": "معلومات حديثة ومواكبة للعصر",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-36.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 31,
       "customerName": "لارا الحلبي",
       "rating": 2,
-      "comment": "يحتاج المزيد من الأمثلة العملية",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-23.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 32,
       "customerName": "عبدالرحيم المغربي",
       "rating": 2,
-      "comment": "توقعت معلومات أكثر تفصيلاً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-46.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 33,
       "customerName": "سمر عبدالرحمن",
       "rating": 4,
-      "comment": "محتوى عملي ومفيد جداً",
+      "comment": "يستاهل",
       "avatar": "/images/avatars/avatar-22.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 34,
       "customerName": "نورا القحطاني",
       "rating": 4,
-      "comment": "كتاب يستحق أكثر من 5 نجوم",
+      "comment": "حلو أوي",
       "avatar": "/images/avatars/avatar-93.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 35,
       "customerName": "هند الراشد",
       "rating": 5,
-      "comment": "ممتاز",
+      "comment": "كتير مفيد",
       "avatar": "/images/avatars/avatar-64.jpg",
       "type": "simple_text"
     },
@@ -806,17 +806,17 @@
       "id": 36,
       "customerName": "أمير صلاح",
       "rating": 5,
-      "comment": "دليل شامل ومفيد للمبتدئين",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-98.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 37,
       "customerName": "عبدالرحيم المغربي",
       "rating": 5,
-      "comment": "مقبول",
+      "comment": "",
       "avatar": "/images/avatars/avatar-29.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 38,
@@ -838,7 +838,7 @@
       "id": 40,
       "customerName": "رشا محمود",
       "rating": 5,
-      "comment": "رائع جداً",
+      "comment": "يجنن",
       "avatar": "/images/avatars/avatar-83.jpg",
       "type": "simple_text"
     },
@@ -846,7 +846,7 @@
       "id": 41,
       "customerName": "سارة الدوسري",
       "rating": 5,
-      "comment": "قيم",
+      "comment": "ما شاء الله",
       "avatar": "/images/avatars/avatar-31.jpg",
       "type": "simple_text"
     },
@@ -862,7 +862,7 @@
       "id": 43,
       "customerName": "باسل الدمشقي",
       "rating": 4,
-      "comment": "احترافي",
+      "comment": "رهيب",
       "avatar": "/images/avatars/avatar-73.jpg",
       "type": "simple_text"
     },
@@ -878,9 +878,9 @@
       "id": 45,
       "customerName": "سلمى الخوري",
       "rating": 4,
-      "comment": "كتاب رائع يستحق القراءة",
+      "comment": "",
       "avatar": "/images/avatars/avatar-40.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 46,
@@ -910,7 +910,7 @@
       "id": 49,
       "customerName": "رنا العبدالله",
       "rating": 4,
-      "comment": "مذهل",
+      "comment": "زي العسل",
       "avatar": "/images/avatars/avatar-73.jpg",
       "type": "simple_text"
     },
@@ -918,31 +918,31 @@
       "id": 50,
       "customerName": "زينب الحسيني",
       "rating": 5,
-      "comment": "مقبول",
+      "comment": "",
       "avatar": "/images/avatars/avatar-1.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 51,
       "customerName": "علي الأردني",
       "rating": 4,
-      "comment": "استفدت كثيراً من هذا الكتاب، ينصح به بشدة",
+      "comment": "تحفة",
       "avatar": "/images/avatars/avatar-81.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 52,
       "customerName": "طارق محمود",
       "rating": 5,
-      "comment": "كتاب يستحق أكثر من 5 نجوم",
+      "comment": "كتير حلو",
       "avatar": "/images/avatars/avatar-64.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 53,
       "customerName": "عبدالرحيم المغربي",
       "rating": 5,
-      "comment": "رائع",
+      "comment": "والله زين",
       "avatar": "/images/avatars/avatar-98.jpg",
       "type": "simple_text"
     },
@@ -950,17 +950,17 @@
       "id": 54,
       "customerName": "عمر الإدريسي",
       "rating": 5,
-      "comment": "جيد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-3.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 55,
       "customerName": "كريم عبدالله",
       "rating": 5,
-      "comment": "مفيد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-7.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 56,
@@ -982,23 +982,23 @@
       "id": 58,
       "customerName": "زينب الحسيني",
       "rating": 5,
-      "comment": "أسلوب شرح بسيط ومفهوم",
+      "comment": "مفيد جداً",
       "avatar": "/images/avatars/avatar-79.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 59,
       "customerName": "مريم الحربي",
       "rating": 3,
-      "comment": "جيد للمبتدئين",
+      "comment": "كتير حلو",
       "avatar": "/images/avatars/avatar-13.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 60,
       "customerName": "ريم الغامدي",
       "rating": 4,
-      "comment": "لا بأس به",
+      "comment": "والله زين",
       "avatar": "/images/avatars/avatar-48.jpg",
       "type": "simple_text"
     },
@@ -1006,23 +1006,23 @@
       "id": 61,
       "customerName": "مريم محمد",
       "rating": 5,
-      "comment": "احترافي",
+      "comment": "",
       "avatar": "/images/avatars/avatar-85.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 62,
       "customerName": "أحمد الشريف",
       "rating": 5,
-      "comment": "دليل شامل ومفيد للمبتدئين",
+      "comment": "بستاهل",
       "avatar": "/images/avatars/avatar-28.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 63,
       "customerName": "علي الكربلائي",
       "rating": 5,
-      "comment": "مقبول",
+      "comment": "والله زين",
       "avatar": "/images/avatars/avatar-32.jpg",
       "type": "simple_text"
     },
@@ -1030,23 +1030,23 @@
       "id": 64,
       "customerName": "حيدر العراقي",
       "rating": 4,
-      "comment": "كتاب رائع يستحق القراءة",
+      "comment": "يستاهل",
       "avatar": "/images/avatars/avatar-98.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 65,
       "customerName": "سامر الشامي",
       "rating": 5,
-      "comment": "ممتاز",
+      "comment": "",
       "avatar": "/images/avatars/avatar-4.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 66,
       "customerName": "علي الكربلائي",
       "rating": 5,
-      "comment": "متميز",
+      "comment": "حلو كتير",
       "avatar": "/images/avatars/avatar-81.jpg",
       "type": "simple_text"
     },
@@ -1094,23 +1094,23 @@
       "id": 72,
       "customerName": "ياسمين أحمد",
       "rating": 4,
-      "comment": "كتاب عملي يمكن تطبيقه فوراً",
+      "comment": "ممتاز",
       "avatar": "/images/avatars/avatar-87.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 73,
       "customerName": "لينا الحداد",
       "rating": 5,
-      "comment": "رائع جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-24.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 74,
       "customerName": "نادر الحموي",
       "rating": 3,
-      "comment": "رائع جداً",
+      "comment": "مرة حلو",
       "avatar": "/images/avatars/avatar-68.jpg",
       "type": "simple_text"
     },
@@ -1118,7 +1118,7 @@
       "id": 75,
       "customerName": "رشا محمود",
       "rating": 3,
-      "comment": "جيد",
+      "comment": "مفيد جداً",
       "avatar": "/images/avatars/avatar-50.jpg",
       "type": "simple_text"
     }
@@ -1128,23 +1128,23 @@
       "id": 1,
       "customerName": "علي الكربلائي",
       "rating": 3,
-      "comment": "جيد للمبتدئين",
+      "comment": "روعة",
       "avatar": "/images/avatars/avatar-57.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 2,
       "customerName": "أمير صلاح",
       "rating": 4,
-      "comment": "محتوى ممتاز وأسلوب سهل في الشرح",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-80.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 3,
       "customerName": "محمود الطراونة",
       "rating": 5,
-      "comment": "مفيد جداً",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-17.jpg",
       "type": "simple_text"
     },
@@ -1168,7 +1168,7 @@
       "id": 6,
       "customerName": "عمر الإدريسي",
       "rating": 4,
-      "comment": "احترافي",
+      "comment": "كتير مفيد",
       "avatar": "/images/avatars/avatar-34.jpg",
       "type": "simple_text"
     },
@@ -1176,15 +1176,15 @@
       "id": 7,
       "customerName": "خديجة الحسني",
       "rating": 5,
-      "comment": "كتاب عملي يمكن تطبيقه فوراً",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-12.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 8,
       "customerName": "لينا الحداد",
       "rating": 5,
-      "comment": "مذهل",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-60.jpg",
       "type": "simple_text"
     },
@@ -1200,7 +1200,7 @@
       "id": 10,
       "customerName": "سلطان المالكي",
       "rating": 4,
-      "comment": "مذهل",
+      "comment": "مرة حلو",
       "avatar": "/images/avatars/avatar-26.jpg",
       "type": "simple_text"
     },
@@ -1208,23 +1208,23 @@
       "id": 11,
       "customerName": "ريما اللبنانية",
       "rating": 4,
-      "comment": "استفدت كثيراً من هذا الكتاب، ينصح به بشدة",
+      "comment": "يستاهل",
       "avatar": "/images/avatars/avatar-57.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 12,
       "customerName": "خديجة الحسني",
       "rating": 4,
-      "comment": "شرح واضح ومفصل، أنصح بقراءته",
+      "comment": "",
       "avatar": "/images/avatars/avatar-82.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 13,
       "customerName": "خديجة الحسني",
       "rating": 3,
-      "comment": "ممتاز",
+      "comment": "كتير حلو",
       "avatar": "/images/avatars/avatar-87.jpg",
       "type": "simple_text"
     },
@@ -1240,9 +1240,9 @@
       "id": 15,
       "customerName": "مريم محمد",
       "rating": 5,
-      "comment": "جيد",
+      "comment": "",
       "avatar": "/images/avatars/avatar-22.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 16,
@@ -1256,9 +1256,9 @@
       "id": 17,
       "customerName": "رشا محمود",
       "rating": 5,
-      "comment": "كتاب يوفر الكثير من الوقت والجهد",
+      "comment": "جامد جداً",
       "avatar": "/images/avatars/avatar-95.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 18,
@@ -1288,23 +1288,23 @@
       "id": 21,
       "customerName": "سارة الدوسري",
       "rating": 3,
-      "comment": "محتوى مناسب للمستوى المتوسط",
+      "comment": "",
       "avatar": "/images/avatars/avatar-83.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 22,
       "customerName": "حيدر العراقي",
       "rating": 5,
-      "comment": "جيد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-63.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 23,
       "customerName": "عبدالرحمن الفيصل",
       "rating": 5,
-      "comment": "احترافي",
+      "comment": "روعة",
       "avatar": "/images/avatars/avatar-30.jpg",
       "type": "simple_text"
     },
@@ -1328,15 +1328,15 @@
       "id": 26,
       "customerName": "عمر الزعبي",
       "rating": 3,
-      "comment": "جيد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-10.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 27,
       "customerName": "نور الهدى",
       "rating": 3,
-      "comment": "قيم",
+      "comment": "ممتاز",
       "avatar": "/images/avatars/avatar-100.jpg",
       "type": "simple_text"
     },
@@ -1352,7 +1352,7 @@
       "id": 29,
       "customerName": "عبدالله الشمري",
       "rating": 5,
-      "comment": "مفيد جداً",
+      "comment": "حبيته",
       "avatar": "/images/avatars/avatar-77.jpg",
       "type": "simple_text"
     },
@@ -1360,15 +1360,15 @@
       "id": 30,
       "customerName": "نور الهدى",
       "rating": 4,
-      "comment": "كتاب رائع يستحق القراءة",
+      "comment": "كتير حلو",
       "avatar": "/images/avatars/avatar-23.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 31,
       "customerName": "حيدر العراقي",
       "rating": 3,
-      "comment": "ممتاز جداً",
+      "comment": "عسل",
       "avatar": "/images/avatars/avatar-43.jpg",
       "type": "simple_text"
     },
@@ -1376,7 +1376,7 @@
       "id": 32,
       "customerName": "طارق محمود",
       "rating": 4,
-      "comment": "جميل",
+      "comment": "جامد جداً",
       "avatar": "/images/avatars/avatar-65.jpg",
       "type": "simple_text"
     },
@@ -1384,23 +1384,23 @@
       "id": 33,
       "customerName": "لارا الحلبي",
       "rating": 5,
-      "comment": "رائع جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-57.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 34,
       "customerName": "باسل الدمشقي",
       "rating": 5,
-      "comment": "استطعت تطبيق ما تعلمته من الكتاب بسهولة",
+      "comment": "بجنن",
       "avatar": "/images/avatars/avatar-24.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 35,
       "customerName": "عمر الزعبي",
       "rating": 5,
-      "comment": "جيد",
+      "comment": "جميل",
       "avatar": "/images/avatars/avatar-20.jpg",
       "type": "simple_text"
     },
@@ -1408,7 +1408,7 @@
       "id": 36,
       "customerName": "عبدالرحمن الفيصل",
       "rating": 5,
-      "comment": "ممتاز جداً",
+      "comment": "يستاهل",
       "avatar": "/images/avatars/avatar-53.jpg",
       "type": "simple_text"
     },
@@ -1416,7 +1416,7 @@
       "id": 37,
       "customerName": "خديجة الحسني",
       "rating": 4,
-      "comment": "ممتاز جداً",
+      "comment": "ممتاز",
       "avatar": "/images/avatars/avatar-53.jpg",
       "type": "simple_text"
     },
@@ -1424,15 +1424,15 @@
       "id": 38,
       "customerName": "خالد المطيري",
       "rating": 2,
-      "comment": "توقعت معلومات أكثر تفصيلاً",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-18.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 39,
       "customerName": "سمر عبدالرحمن",
       "rating": 5,
-      "comment": "ممتاز جداً",
+      "comment": "مرة حلو",
       "avatar": "/images/avatars/avatar-30.jpg",
       "type": "simple_text"
     },
@@ -1440,7 +1440,7 @@
       "id": 40,
       "customerName": "سامر الشامي",
       "rating": 5,
-      "comment": "رائع",
+      "comment": "بستاهل",
       "avatar": "/images/avatars/avatar-92.jpg",
       "type": "simple_text"
     },
@@ -1448,17 +1448,17 @@
       "id": 41,
       "customerName": "ريم الغامدي",
       "rating": 4,
-      "comment": "معلومات حديثة ومواكبة للعصر",
+      "comment": "",
       "avatar": "/images/avatars/avatar-51.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 42,
       "customerName": "نور الهدى",
       "rating": 5,
-      "comment": "استفدت كثيراً من هذا الكتاب، ينصح به بشدة",
+      "comment": "",
       "avatar": "/images/avatars/avatar-96.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 43,
@@ -1472,15 +1472,15 @@
       "id": 44,
       "customerName": "باسل الدمشقي",
       "rating": 4,
-      "comment": "معلومات قيمة ومفيدة للغاية",
+      "comment": "جامد جداً",
       "avatar": "/images/avatars/avatar-100.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 45,
       "customerName": "مريم الحربي",
       "rating": 5,
-      "comment": "ممتاز جداً",
+      "comment": "حلو أوي",
       "avatar": "/images/avatars/avatar-99.jpg",
       "type": "simple_text"
     },
@@ -1488,9 +1488,9 @@
       "id": 46,
       "customerName": "أمير صلاح",
       "rating": 5,
-      "comment": "عادي",
+      "comment": "",
       "avatar": "/images/avatars/avatar-82.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 47,
@@ -1504,9 +1504,9 @@
       "id": 48,
       "customerName": "سامر الشامي",
       "rating": 3,
-      "comment": "كتاب لا بأس به",
+      "comment": "",
       "avatar": "/images/avatars/avatar-15.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 49,
@@ -1520,9 +1520,9 @@
       "id": 50,
       "customerName": "عمر الزعبي",
       "rating": 4,
-      "comment": "احترافي",
+      "comment": "",
       "avatar": "/images/avatars/avatar-22.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 51,
@@ -1536,47 +1536,47 @@
       "id": 52,
       "customerName": "ريم الغامدي",
       "rating": 5,
-      "comment": "استفدت كثيراً من هذا الكتاب، ينصح به بشدة",
+      "comment": "",
       "avatar": "/images/avatars/avatar-3.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 53,
       "customerName": "نادر الحموي",
       "rating": 4,
-      "comment": "استفدت كثيراً من هذا الكتاب، ينصح به بشدة",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-17.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 54,
       "customerName": "علي الكربلائي",
       "rating": 4,
-      "comment": "مفيد",
+      "comment": "",
       "avatar": "/images/avatars/avatar-8.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 55,
       "customerName": "حيدر العراقي",
       "rating": 5,
-      "comment": "كتاب رائع يستحق القراءة",
+      "comment": "حلو أوي",
       "avatar": "/images/avatars/avatar-95.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 56,
       "customerName": "باسل الدمشقي",
       "rating": 4,
-      "comment": "محتوى عملي ومفيد جداً",
+      "comment": "جميل",
       "avatar": "/images/avatars/avatar-39.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 57,
       "customerName": "أحمد السالم",
       "rating": 5,
-      "comment": "عادي",
+      "comment": "مرة حلو",
       "avatar": "/images/avatars/avatar-99.jpg",
       "type": "simple_text"
     },
@@ -1608,9 +1608,9 @@
       "id": 61,
       "customerName": "علي الكربلائي",
       "rating": 4,
-      "comment": "كتاب رائع يستحق القراءة",
+      "comment": "يجنن",
       "avatar": "/images/avatars/avatar-6.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 62,
@@ -1624,15 +1624,15 @@
       "id": 63,
       "customerName": "أمير صلاح",
       "rating": 4,
-      "comment": "معلومات حديثة ومواكبة للعصر",
+      "comment": "مفيد جداً",
       "avatar": "/images/avatars/avatar-16.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 64,
       "customerName": "محمد العتيبي",
       "rating": 5,
-      "comment": "لا بأس به",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-19.jpg",
       "type": "simple_text"
     },
@@ -1640,7 +1640,7 @@
       "id": 65,
       "customerName": "أحمد الشريف",
       "rating": 5,
-      "comment": "عادي",
+      "comment": "مرة حلو",
       "avatar": "/images/avatars/avatar-19.jpg",
       "type": "simple_text"
     },
@@ -1664,9 +1664,9 @@
       "id": 68,
       "customerName": "هند الراشد",
       "rating": 5,
-      "comment": "كتاب عملي يمكن تطبيقه فوراً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-27.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 69,
@@ -1680,9 +1680,9 @@
       "id": 70,
       "customerName": "هبة عثمان",
       "rating": 5,
-      "comment": "كتاب يغطي الموضوع بشكل شامل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-98.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 71,
@@ -1696,7 +1696,7 @@
       "id": 72,
       "customerName": "علي الكربلائي",
       "rating": 4,
-      "comment": "جميل",
+      "comment": "كتير مفيد",
       "avatar": "/images/avatars/avatar-13.jpg",
       "type": "simple_text"
     },
@@ -1720,7 +1720,7 @@
       "id": 75,
       "customerName": "أحمد السالم",
       "rating": 3,
-      "comment": "احترافي",
+      "comment": "بستاهل",
       "avatar": "/images/avatars/avatar-10.jpg",
       "type": "simple_text"
     }
@@ -1730,7 +1730,7 @@
       "id": 1,
       "customerName": "سلمى الخوري",
       "rating": 4,
-      "comment": "مفيد",
+      "comment": "روعة",
       "avatar": "/images/avatars/avatar-99.jpg",
       "type": "simple_text"
     },
@@ -1746,15 +1746,15 @@
       "id": 3,
       "customerName": "ريم الغامدي",
       "rating": 5,
-      "comment": "تحسنت إنتاجيتي بشكل كبير",
+      "comment": "",
       "avatar": "/images/avatars/avatar-23.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 4,
       "customerName": "عمر الإدريسي",
       "rating": 4,
-      "comment": "جميل",
+      "comment": "مرة حلو",
       "avatar": "/images/avatars/avatar-46.jpg",
       "type": "simple_text"
     },
@@ -1762,9 +1762,9 @@
       "id": 5,
       "customerName": "نورا القحطاني",
       "rating": 4,
-      "comment": "وفرت علي الكثير من الوقت والجهد",
+      "comment": "روعة",
       "avatar": "/images/avatars/avatar-84.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 6,
@@ -1778,17 +1778,17 @@
       "id": 7,
       "customerName": "لينا الحداد",
       "rating": 5,
-      "comment": "أداة رائعة وسهلة الاستخدام",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-79.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 8,
       "customerName": "مصطفى البغدادي",
       "rating": 5,
-      "comment": "سهولة في الاستخدام ونتائج ممتازة",
+      "comment": "",
       "avatar": "/images/avatars/avatar-91.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 9,
@@ -1812,9 +1812,9 @@
       "id": 1,
       "customerName": "لينا الحداد",
       "rating": 5,
-      "comment": "سهولة في الاستخدام ونتائج ممتازة",
+      "comment": "روعة",
       "avatar": "/images/avatars/avatar-78.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 2,
@@ -1828,9 +1828,9 @@
       "id": 3,
       "customerName": "هند الراشد",
       "rating": 4,
-      "comment": "تصميم ممتاز وواجهة سهلة",
+      "comment": "",
       "avatar": "/images/avatars/avatar-18.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 4,
@@ -1844,33 +1844,33 @@
       "id": 5,
       "customerName": "عمر الزعبي",
       "rating": 5,
-      "comment": "مقبول",
+      "comment": "",
       "avatar": "/images/avatars/avatar-46.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 6,
       "customerName": "محمد العتيبي",
       "rating": 5,
-      "comment": "أداة رائعة وسهلة الاستخدام",
+      "comment": "والله زين",
       "avatar": "/images/avatars/avatar-23.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 7,
       "customerName": "طارق محمود",
       "rating": 4,
-      "comment": "أداة فعالة جداً في عملي",
+      "comment": "",
       "avatar": "/images/avatars/avatar-19.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 8,
       "customerName": "لطيفة السديري",
       "rating": 5,
-      "comment": "أداة رائعة وسهلة الاستخدام",
+      "comment": "يستاهل",
       "avatar": "/images/avatars/avatar-42.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 9,
@@ -1884,9 +1884,9 @@
       "id": 10,
       "customerName": "حيدر العراقي",
       "rating": 3,
-      "comment": "أداة لا بأس بها",
+      "comment": "بستاهل",
       "avatar": "/images/avatars/avatar-75.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 11,
@@ -1924,7 +1924,7 @@
       "id": 15,
       "customerName": "دينا حسن",
       "rating": 3,
-      "comment": "رائع",
+      "comment": "كتير مفيد",
       "avatar": "/images/avatars/avatar-10.jpg",
       "type": "simple_text"
     },
@@ -1932,7 +1932,7 @@
       "id": 16,
       "customerName": "نادر الحموي",
       "rating": 5,
-      "comment": "عادي",
+      "comment": "والله زين",
       "avatar": "/images/avatars/avatar-7.jpg",
       "type": "simple_text"
     },
@@ -1940,9 +1940,9 @@
       "id": 17,
       "customerName": "رنا العبدالله",
       "rating": 2,
-      "comment": "تحتاج المزيد من الميزات",
+      "comment": "عسل",
       "avatar": "/images/avatars/avatar-67.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 18,
@@ -1956,7 +1956,7 @@
       "id": 19,
       "customerName": "سارة الدوسري",
       "rating": 4,
-      "comment": "جيد",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-82.jpg",
       "type": "simple_text"
     },
@@ -1964,33 +1964,33 @@
       "id": 20,
       "customerName": "عبدالرحيم المغربي",
       "rating": 5,
-      "comment": "قيم",
+      "comment": "",
       "avatar": "/images/avatars/avatar-85.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 21,
       "customerName": "حيدر العراقي",
       "rating": 3,
-      "comment": "أداة جيدة بشكل عام",
+      "comment": "تحفة",
       "avatar": "/images/avatars/avatar-30.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 22,
       "customerName": "نورا القحطاني",
       "rating": 4,
-      "comment": "تحسنت إنتاجيتي بشكل كبير",
+      "comment": "ما شاء الله",
       "avatar": "/images/avatars/avatar-11.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 23,
       "customerName": "فاطمة الزهراني",
       "rating": 5,
-      "comment": "تطبيق ممتاز ومفيد",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-15.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 24,
@@ -2004,7 +2004,7 @@
       "id": 25,
       "customerName": "أحمد الشريف",
       "rating": 5,
-      "comment": "قيم",
+      "comment": "حلو كتير",
       "avatar": "/images/avatars/avatar-90.jpg",
       "type": "simple_text"
     },
@@ -2012,17 +2012,17 @@
       "id": 26,
       "customerName": "حسام علي",
       "rating": 5,
-      "comment": "مذهل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-28.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 27,
       "customerName": "علي الأردني",
       "rating": 5,
-      "comment": "سهولة في الاستخدام ونتائج ممتازة",
+      "comment": "والله زين",
       "avatar": "/images/avatars/avatar-14.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 28,
@@ -2044,25 +2044,25 @@
       "id": 30,
       "customerName": "محمد العتيبي",
       "rating": 5,
-      "comment": "تحسنت إنتاجيتي بشكل كبير",
+      "comment": "مفيد جداً",
       "avatar": "/images/avatars/avatar-63.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 31,
       "customerName": "نور الهدى",
       "rating": 5,
-      "comment": "قيم",
+      "comment": "",
       "avatar": "/images/avatars/avatar-51.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 32,
       "customerName": "كريم عبدالله",
       "rating": 5,
-      "comment": "جيد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-1.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 33,
@@ -2076,7 +2076,7 @@
       "id": 34,
       "customerName": "مريم الحربي",
       "rating": 5,
-      "comment": "ممتاز جداً",
+      "comment": "حلو أوي",
       "avatar": "/images/avatars/avatar-37.jpg",
       "type": "simple_text"
     },
@@ -2084,23 +2084,23 @@
       "id": 35,
       "customerName": "علي الأردني",
       "rating": 5,
-      "comment": "تطبيق ممتاز ومفيد",
+      "comment": "رهيب",
       "avatar": "/images/avatars/avatar-48.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 36,
       "customerName": "رنا العبدالله",
       "rating": 5,
-      "comment": "لا بأس به",
+      "comment": "",
       "avatar": "/images/avatars/avatar-47.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 37,
       "customerName": "أمير صلاح",
       "rating": 3,
-      "comment": "رائع جداً",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-67.jpg",
       "type": "simple_text"
     },
@@ -2116,7 +2116,7 @@
       "id": 39,
       "customerName": "فاطمة الزهراني",
       "rating": 4,
-      "comment": "احترافي",
+      "comment": "زي العسل",
       "avatar": "/images/avatars/avatar-32.jpg",
       "type": "simple_text"
     },
@@ -2148,9 +2148,9 @@
       "id": 43,
       "customerName": "عمر الزعبي",
       "rating": 4,
-      "comment": "أداة رائعة وسهلة الاستخدام",
+      "comment": "ما شاء الله",
       "avatar": "/images/avatars/avatar-46.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 44,
@@ -2188,15 +2188,15 @@
       "id": 48,
       "customerName": "عمر الإدريسي",
       "rating": 4,
-      "comment": "سهولة في الاستخدام ونتائج ممتازة",
+      "comment": "",
       "avatar": "/images/avatars/avatar-27.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 49,
       "customerName": "باسل الدمشقي",
       "rating": 5,
-      "comment": "مذهل",
+      "comment": "كتير حلو",
       "avatar": "/images/avatars/avatar-67.jpg",
       "type": "simple_text"
     },
@@ -2204,9 +2204,9 @@
       "id": 50,
       "customerName": "ديانا العمري",
       "rating": 4,
-      "comment": "وفرت علي الكثير من الوقت والجهد",
+      "comment": "جميل",
       "avatar": "/images/avatars/avatar-73.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 51,
@@ -2220,49 +2220,49 @@
       "id": 52,
       "customerName": "عبدالرحيم المغربي",
       "rating": 3,
-      "comment": "أداة لا بأس بها",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-88.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 53,
       "customerName": "لارا الحلبي",
       "rating": 5,
-      "comment": "أداة لا غنى عنها",
+      "comment": "",
       "avatar": "/images/avatars/avatar-71.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 54,
       "customerName": "محمود الطراونة",
       "rating": 3,
-      "comment": "أداة لا بأس بها",
+      "comment": "كتير مفيد",
       "avatar": "/images/avatars/avatar-10.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 55,
       "customerName": "نادر الحموي",
       "rating": 4,
-      "comment": "تحسنت إنتاجيتي بشكل كبير",
+      "comment": "",
       "avatar": "/images/avatars/avatar-33.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 56,
       "customerName": "سمر عبدالرحمن",
       "rating": 5,
-      "comment": "تحسنت إنتاجيتي بشكل كبير",
+      "comment": "جامد جداً",
       "avatar": "/images/avatars/avatar-96.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 57,
       "customerName": "خديجة الحسني",
       "rating": 3,
-      "comment": "قيم",
+      "comment": "",
       "avatar": "/images/avatars/avatar-21.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 58,
@@ -2284,31 +2284,31 @@
       "id": 60,
       "customerName": "رنا العبدالله",
       "rating": 5,
-      "comment": "لا بأس به",
+      "comment": "",
       "avatar": "/images/avatars/avatar-35.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 61,
       "customerName": "ريما اللبنانية",
       "rating": 3,
-      "comment": "أداة جيدة بشكل عام",
+      "comment": "مفيد جداً",
       "avatar": "/images/avatars/avatar-97.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 62,
       "customerName": "محمد العتيبي",
       "rating": 3,
-      "comment": "مفيدة لكن تحتاج تحسينات",
+      "comment": "ما شاء الله",
       "avatar": "/images/avatars/avatar-8.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 63,
       "customerName": "عمر الزعبي",
       "rating": 5,
-      "comment": "مقبول",
+      "comment": "كتير مفيد",
       "avatar": "/images/avatars/avatar-60.jpg",
       "type": "simple_text"
     },
@@ -2316,7 +2316,7 @@
       "id": 64,
       "customerName": "سلطان المالكي",
       "rating": 5,
-      "comment": "مذهل",
+      "comment": "كويس جداً",
       "avatar": "/images/avatars/avatar-47.jpg",
       "type": "simple_text"
     },
@@ -2324,33 +2324,33 @@
       "id": 65,
       "customerName": "سامر الشامي",
       "rating": 5,
-      "comment": "أداة لا غنى عنها",
+      "comment": "",
       "avatar": "/images/avatars/avatar-94.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 66,
       "customerName": "ياسمين أحمد",
       "rating": 4,
-      "comment": "أداة تستحق كل ريال",
+      "comment": "",
       "avatar": "/images/avatars/avatar-9.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 67,
       "customerName": "يوسف القاسم",
       "rating": 5,
-      "comment": "أداة احترافية وتستحق الشراء",
+      "comment": "",
       "avatar": "/images/avatars/avatar-98.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 68,
       "customerName": "نور الهدى",
       "rating": 5,
-      "comment": "أداة لا غنى عنها",
+      "comment": "بجنن",
       "avatar": "/images/avatars/avatar-48.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 69,
@@ -2364,9 +2364,9 @@
       "id": 70,
       "customerName": "سارة الدوسري",
       "rating": 4,
-      "comment": "تحسنت إنتاجيتي بشكل كبير",
+      "comment": "بجنن",
       "avatar": "/images/avatars/avatar-81.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 71,
@@ -2380,9 +2380,9 @@
       "id": 72,
       "customerName": "ياسمين أحمد",
       "rating": 4,
-      "comment": "تصميم ممتاز وواجهة سهلة",
+      "comment": "تحفة",
       "avatar": "/images/avatars/avatar-55.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 73,
@@ -2412,7 +2412,7 @@
       "id": 76,
       "customerName": "رشا محمود",
       "rating": 5,
-      "comment": "رائع",
+      "comment": "بستاهل",
       "avatar": "/images/avatars/avatar-51.jpg",
       "type": "simple_text"
     },
@@ -2420,7 +2420,7 @@
       "id": 77,
       "customerName": "فهد العنزي",
       "rating": 5,
-      "comment": "متميز",
+      "comment": "روعة",
       "avatar": "/images/avatars/avatar-35.jpg",
       "type": "simple_text"
     },
@@ -2428,15 +2428,15 @@
       "id": 78,
       "customerName": "علي الكربلائي",
       "rating": 5,
-      "comment": "أداة احترافية وتستحق الشراء",
+      "comment": "كويس جداً",
       "avatar": "/images/avatars/avatar-69.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 79,
       "customerName": "طارق محمود",
       "rating": 5,
-      "comment": "ممتاز",
+      "comment": "بستاهل",
       "avatar": "/images/avatars/avatar-22.jpg",
       "type": "simple_text"
     },
@@ -2460,23 +2460,23 @@
       "id": 82,
       "customerName": "ريما اللبنانية",
       "rating": 5,
-      "comment": "رائع",
+      "comment": "",
       "avatar": "/images/avatars/avatar-70.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 83,
       "customerName": "عمر الإدريسي",
       "rating": 5,
-      "comment": "سهولة في الاستخدام ونتائج ممتازة",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-89.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 84,
       "customerName": "حسام علي",
       "rating": 3,
-      "comment": "رائع",
+      "comment": "والله زين",
       "avatar": "/images/avatars/avatar-84.jpg",
       "type": "simple_text"
     },
@@ -2484,7 +2484,7 @@
       "id": 85,
       "customerName": "فهد العنزي",
       "rating": 5,
-      "comment": "مفيد",
+      "comment": "يستاهل",
       "avatar": "/images/avatars/avatar-50.jpg",
       "type": "simple_text"
     },
@@ -2492,15 +2492,15 @@
       "id": 86,
       "customerName": "عبدالرحمن الفيصل",
       "rating": 5,
-      "comment": "مفيد جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-75.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 87,
       "customerName": "عمر الزعبي",
       "rating": 5,
-      "comment": "عادي",
+      "comment": "ممتاز",
       "avatar": "/images/avatars/avatar-62.jpg",
       "type": "simple_text"
     },
@@ -2516,15 +2516,15 @@
       "id": 89,
       "customerName": "عبدالله الشمري",
       "rating": 4,
-      "comment": "أداة لا غنى عنها",
+      "comment": "كتير مفيد",
       "avatar": "/images/avatars/avatar-22.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 90,
       "customerName": "سلمى الخوري",
       "rating": 4,
-      "comment": "مفيد",
+      "comment": "يستاهل",
       "avatar": "/images/avatars/avatar-82.jpg",
       "type": "simple_text"
     },
@@ -2532,31 +2532,31 @@
       "id": 91,
       "customerName": "نورا القحطاني",
       "rating": 5,
-      "comment": "وفرت علي الكثير من الوقت والجهد",
+      "comment": "",
       "avatar": "/images/avatars/avatar-23.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 92,
       "customerName": "طارق محمود",
       "rating": 4,
-      "comment": "وفرت علي الكثير من الوقت والجهد",
+      "comment": "مفيد جداً",
       "avatar": "/images/avatars/avatar-16.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 93,
       "customerName": "خديجة الحسني",
       "rating": 3,
-      "comment": "مفيدة لكن تحتاج تحسينات",
+      "comment": "يستاهل",
       "avatar": "/images/avatars/avatar-56.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 94,
       "customerName": "ياسمين أحمد",
       "rating": 5,
-      "comment": "متميز",
+      "comment": "تحفة",
       "avatar": "/images/avatars/avatar-9.jpg",
       "type": "simple_text"
     },
@@ -2564,49 +2564,49 @@
       "id": 95,
       "customerName": "باسل الدمشقي",
       "rating": 2,
-      "comment": "واجهة معقدة قليلاً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-85.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 96,
       "customerName": "أحمد السالم",
       "rating": 4,
-      "comment": "أداة لا غنى عنها",
+      "comment": "",
       "avatar": "/images/avatars/avatar-21.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 97,
       "customerName": "ياسمين أحمد",
       "rating": 5,
-      "comment": "أداة احترافية وتستحق الشراء",
+      "comment": "",
       "avatar": "/images/avatars/avatar-13.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 98,
       "customerName": "عمر الإدريسي",
       "rating": 2,
-      "comment": "توقعت أداء أفضل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-5.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 99,
       "customerName": "نادية إبراهيم",
       "rating": 5,
-      "comment": "سهولة في الاستخدام ونتائج ممتازة",
+      "comment": "حلو أوي",
       "avatar": "/images/avatars/avatar-18.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 100,
       "customerName": "لينا الحداد",
       "rating": 3,
-      "comment": "أداة لا بأس بها",
+      "comment": "",
       "avatar": "/images/avatars/avatar-41.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 101,
@@ -2628,31 +2628,31 @@
       "id": 103,
       "customerName": "باسل الدمشقي",
       "rating": 5,
-      "comment": "وفرت علي الكثير من الوقت والجهد",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-20.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 104,
       "customerName": "أحمد الشريف",
       "rating": 5,
-      "comment": "قيم",
+      "comment": "",
       "avatar": "/images/avatars/avatar-42.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 105,
       "customerName": "رنا العبدالله",
       "rating": 3,
-      "comment": "أداة جيدة بشكل عام",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-23.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 106,
       "customerName": "دينا حسن",
       "rating": 4,
-      "comment": "مفيد جداً",
+      "comment": "روعة",
       "avatar": "/images/avatars/avatar-23.jpg",
       "type": "simple_text"
     },
@@ -2660,23 +2660,23 @@
       "id": 107,
       "customerName": "هند الراشد",
       "rating": 4,
-      "comment": "أداة تستحق كل ريال",
+      "comment": "حلو أوي",
       "avatar": "/images/avatars/avatar-64.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 108,
       "customerName": "أحمد السالم",
       "rating": 4,
-      "comment": "تصميم ممتاز وواجهة سهلة",
+      "comment": "بجنن",
       "avatar": "/images/avatars/avatar-51.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 109,
       "customerName": "عبدالله الشمري",
       "rating": 5,
-      "comment": "رائع",
+      "comment": "يجنن",
       "avatar": "/images/avatars/avatar-31.jpg",
       "type": "simple_text"
     },
@@ -2708,9 +2708,9 @@
       "id": 113,
       "customerName": "عبدالرحمن الفيصل",
       "rating": 5,
-      "comment": "عادي",
+      "comment": "",
       "avatar": "/images/avatars/avatar-15.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 114,
@@ -2724,33 +2724,33 @@
       "id": 115,
       "customerName": "مريم الحربي",
       "rating": 4,
-      "comment": "أداة لا غنى عنها",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-84.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 116,
       "customerName": "لارا الحلبي",
       "rating": 3,
-      "comment": "تؤدي الغرض المطلوب",
+      "comment": "مفيد جداً",
       "avatar": "/images/avatars/avatar-91.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 117,
       "customerName": "زينب الحسيني",
       "rating": 3,
-      "comment": "أداة لا بأس بها",
+      "comment": "",
       "avatar": "/images/avatars/avatar-99.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 118,
       "customerName": "حسام علي",
       "rating": 5,
-      "comment": "أداة تستحق كل ريال",
+      "comment": "ممتاز",
       "avatar": "/images/avatars/avatar-46.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 119,
@@ -2764,7 +2764,7 @@
       "id": 120,
       "customerName": "عبدالله الشمري",
       "rating": 4,
-      "comment": "جيد جداً",
+      "comment": "بستاهل",
       "avatar": "/images/avatars/avatar-60.jpg",
       "type": "simple_text"
     },
@@ -2772,7 +2772,7 @@
       "id": 121,
       "customerName": "نور الهدى",
       "rating": 5,
-      "comment": "متميز",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-8.jpg",
       "type": "simple_text"
     },
@@ -2812,17 +2812,17 @@
       "id": 126,
       "customerName": "سامر الشامي",
       "rating": 5,
-      "comment": "تصميم ممتاز وواجهة سهلة",
+      "comment": "والله زين",
       "avatar": "/images/avatars/avatar-49.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 127,
       "customerName": "أحمد الشريف",
       "rating": 4,
-      "comment": "وفرت علي الكثير من الوقت والجهد",
+      "comment": "كتير حلو",
       "avatar": "/images/avatars/avatar-86.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 128,
@@ -2836,7 +2836,7 @@
       "id": 129,
       "customerName": "عمر الإدريسي",
       "rating": 5,
-      "comment": "مقبول",
+      "comment": "كويس جداً",
       "avatar": "/images/avatars/avatar-31.jpg",
       "type": "simple_text"
     },
@@ -2844,15 +2844,15 @@
       "id": 130,
       "customerName": "فهد العنزي",
       "rating": 3,
-      "comment": "أداة لا بأس بها",
+      "comment": "",
       "avatar": "/images/avatars/avatar-72.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 131,
       "customerName": "أحمد الشريف",
       "rating": 5,
-      "comment": "جميل",
+      "comment": "زي العسل",
       "avatar": "/images/avatars/avatar-71.jpg",
       "type": "simple_text"
     },
@@ -2860,9 +2860,9 @@
       "id": 132,
       "customerName": "بندر الخالد",
       "rating": 3,
-      "comment": "أداة لا بأس بها",
+      "comment": "",
       "avatar": "/images/avatars/avatar-4.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 133,
@@ -2884,41 +2884,41 @@
       "id": 135,
       "customerName": "طارق محمود",
       "rating": 4,
-      "comment": "قيم",
+      "comment": "",
       "avatar": "/images/avatars/avatar-24.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 136,
       "customerName": "لارا الحلبي",
       "rating": 5,
-      "comment": "لا بأس به",
+      "comment": "",
       "avatar": "/images/avatars/avatar-58.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 137,
       "customerName": "عبدالله الشمري",
       "rating": 5,
-      "comment": "تطبيق ممتاز ومفيد",
+      "comment": "",
       "avatar": "/images/avatars/avatar-54.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 138,
       "customerName": "مريم محمد",
       "rating": 4,
-      "comment": "سهولة في الاستخدام ونتائج ممتازة",
+      "comment": "روعة",
       "avatar": "/images/avatars/avatar-30.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 139,
       "customerName": "طارق محمود",
       "rating": 4,
-      "comment": "سهولة في الاستخدام ونتائج ممتازة",
+      "comment": "",
       "avatar": "/images/avatars/avatar-69.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 140,
@@ -2932,7 +2932,7 @@
       "id": 141,
       "customerName": "علي الكربلائي",
       "rating": 4,
-      "comment": "لا بأس به",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-68.jpg",
       "type": "simple_text"
     },
@@ -2940,9 +2940,9 @@
       "id": 142,
       "customerName": "عبدالرحمن الفيصل",
       "rating": 4,
-      "comment": "وفرت علي الكثير من الوقت والجهد",
+      "comment": "يستاهل",
       "avatar": "/images/avatars/avatar-82.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 143,
@@ -2956,7 +2956,7 @@
       "id": 144,
       "customerName": "لطيفة السديري",
       "rating": 4,
-      "comment": "جيد",
+      "comment": "يستاهل",
       "avatar": "/images/avatars/avatar-35.jpg",
       "type": "simple_text"
     },
@@ -2964,9 +2964,9 @@
       "id": 145,
       "customerName": "لارا الحلبي",
       "rating": 5,
-      "comment": "أداة تستحق كل ريال",
+      "comment": "جامد جداً",
       "avatar": "/images/avatars/avatar-27.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 146,
@@ -2980,7 +2980,7 @@
       "id": 147,
       "customerName": "مصطفى البغدادي",
       "rating": 4,
-      "comment": "جيد جداً",
+      "comment": "ممتاز",
       "avatar": "/images/avatars/avatar-7.jpg",
       "type": "simple_text"
     },
@@ -2988,9 +2988,9 @@
       "id": 148,
       "customerName": "نادية إبراهيم",
       "rating": 5,
-      "comment": "أداة احترافية وتستحق الشراء",
+      "comment": "مفيد جداً",
       "avatar": "/images/avatars/avatar-56.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 149,
@@ -3012,7 +3012,7 @@
       "id": 151,
       "customerName": "زينب الحسيني",
       "rating": 5,
-      "comment": "رائع جداً",
+      "comment": "ممتاز",
       "avatar": "/images/avatars/avatar-17.jpg",
       "type": "simple_text"
     },
@@ -3036,7 +3036,7 @@
       "id": 154,
       "customerName": "فاطمة الزهراء",
       "rating": 5,
-      "comment": "متميز",
+      "comment": "جميل",
       "avatar": "/images/avatars/avatar-4.jpg",
       "type": "simple_text"
     },
@@ -3044,9 +3044,9 @@
       "id": 155,
       "customerName": "محمد العتيبي",
       "rating": 5,
-      "comment": "تصميم ممتاز وواجهة سهلة",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-55.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 156,
@@ -3068,17 +3068,17 @@
       "id": 158,
       "customerName": "عبدالله الشمري",
       "rating": 5,
-      "comment": "أداة تستحق كل ريال",
+      "comment": "روعة",
       "avatar": "/images/avatars/avatar-75.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 159,
       "customerName": "سامر الشامي",
       "rating": 5,
-      "comment": "سهولة في الاستخدام ونتائج ممتازة",
+      "comment": "كويس جداً",
       "avatar": "/images/avatars/avatar-36.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 160,
@@ -3092,25 +3092,25 @@
       "id": 161,
       "customerName": "زينب الحسيني",
       "rating": 5,
-      "comment": "أداة تستحق كل ريال",
+      "comment": "يستاهل",
       "avatar": "/images/avatars/avatar-14.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 162,
       "customerName": "زينب الحسيني",
       "rating": 5,
-      "comment": "وفرت علي الكثير من الوقت والجهد",
+      "comment": "حلو أوي",
       "avatar": "/images/avatars/avatar-96.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 163,
       "customerName": "نادية إبراهيم",
       "rating": 4,
-      "comment": "سهولة في الاستخدام ونتائج ممتازة",
+      "comment": "مفيد جداً",
       "avatar": "/images/avatars/avatar-99.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 164,
@@ -3124,17 +3124,17 @@
       "id": 165,
       "customerName": "باسل الدمشقي",
       "rating": 5,
-      "comment": "لا بأس به",
+      "comment": "",
       "avatar": "/images/avatars/avatar-18.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 166,
       "customerName": "لطيفة السديري",
       "rating": 5,
-      "comment": "رائع",
+      "comment": "",
       "avatar": "/images/avatars/avatar-83.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 167,
@@ -3148,31 +3148,31 @@
       "id": 168,
       "customerName": "فاطمة الزهراني",
       "rating": 5,
-      "comment": "تطبيق ممتاز ومفيد",
+      "comment": "كتير مفيد",
       "avatar": "/images/avatars/avatar-65.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 169,
       "customerName": "عبدالرحيم المغربي",
       "rating": 3,
-      "comment": "ممتاز جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-63.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 170,
       "customerName": "أحمد الشريف",
       "rating": 5,
-      "comment": "متميز",
+      "comment": "",
       "avatar": "/images/avatars/avatar-8.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 171,
       "customerName": "ياسمين أحمد",
       "rating": 4,
-      "comment": "رائع جداً",
+      "comment": "جميل",
       "avatar": "/images/avatars/avatar-68.jpg",
       "type": "simple_text"
     },
@@ -3180,33 +3180,33 @@
       "id": 172,
       "customerName": "سامر الشامي",
       "rating": 5,
-      "comment": "سهولة في الاستخدام ونتائج ممتازة",
+      "comment": "عجبني كتير",
       "avatar": "/images/avatars/avatar-38.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 173,
       "customerName": "سلمى الخوري",
       "rating": 5,
-      "comment": "جميل",
+      "comment": "",
       "avatar": "/images/avatars/avatar-18.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 174,
       "customerName": "رشا محمود",
       "rating": 5,
-      "comment": "أداة رائعة وسهلة الاستخدام",
+      "comment": "ممتاز صراحة",
       "avatar": "/images/avatars/avatar-8.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 175,
       "customerName": "عمر الزعبي",
       "rating": 4,
-      "comment": "أداة تستحق كل ريال",
+      "comment": "يستاهل",
       "avatar": "/images/avatars/avatar-57.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 176,
@@ -3220,15 +3220,15 @@
       "id": 177,
       "customerName": "عمر الإدريسي",
       "rating": 5,
-      "comment": "أداة لا غنى عنها",
+      "comment": "جميل",
       "avatar": "/images/avatars/avatar-87.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 178,
       "customerName": "سلطان المالكي",
       "rating": 5,
-      "comment": "عادي",
+      "comment": "يجنن",
       "avatar": "/images/avatars/avatar-61.jpg",
       "type": "simple_text"
     },
@@ -3244,23 +3244,23 @@
       "id": 180,
       "customerName": "لطيفة السديري",
       "rating": 4,
-      "comment": "أداة رائعة وسهلة الاستخدام",
+      "comment": "زي العسل",
       "avatar": "/images/avatars/avatar-54.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 181,
       "customerName": "حسام علي",
       "rating": 5,
-      "comment": "وفرت علي الكثير من الوقت والجهد",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-35.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 182,
       "customerName": "عبدالرحيم المغربي",
       "rating": 5,
-      "comment": "مفيد جداً",
+      "comment": "يستاهل",
       "avatar": "/images/avatars/avatar-100.jpg",
       "type": "simple_text"
     },
@@ -3284,33 +3284,33 @@
       "id": 185,
       "customerName": "كريم عبدالله",
       "rating": 4,
-      "comment": "أداة احترافية وتستحق الشراء",
+      "comment": "",
       "avatar": "/images/avatars/avatar-83.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 186,
       "customerName": "نادر الحموي",
       "rating": 5,
-      "comment": "سهولة في الاستخدام ونتائج ممتازة",
+      "comment": "يجنن",
       "avatar": "/images/avatars/avatar-58.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 187,
       "customerName": "سلطان المالكي",
       "rating": 4,
-      "comment": "وفرت علي الكثير من الوقت والجهد",
+      "comment": "مرة حلو",
       "avatar": "/images/avatars/avatar-21.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 188,
       "customerName": "محمد العتيبي",
       "rating": 5,
-      "comment": "جيد",
+      "comment": "",
       "avatar": "/images/avatars/avatar-14.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 189,
@@ -3324,7 +3324,7 @@
       "id": 190,
       "customerName": "يوسف القاسم",
       "rating": 4,
-      "comment": "قيم",
+      "comment": "كويس جداً",
       "avatar": "/images/avatars/avatar-59.jpg",
       "type": "simple_text"
     },
@@ -3340,25 +3340,25 @@
       "id": 192,
       "customerName": "سلمى الخوري",
       "rating": 5,
-      "comment": "أداة احترافية وتستحق الشراء",
+      "comment": "",
       "avatar": "/images/avatars/avatar-2.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 193,
       "customerName": "محمد العتيبي",
       "rating": 5,
-      "comment": "أداة تستحق كل ريال",
+      "comment": "",
       "avatar": "/images/avatars/avatar-28.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 194,
       "customerName": "فاطمة الزهراني",
       "rating": 4,
-      "comment": "أداة لا غنى عنها",
+      "comment": "ممتاز",
       "avatar": "/images/avatars/avatar-14.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 195,
@@ -3372,15 +3372,15 @@
       "id": 196,
       "customerName": "عمر الزعبي",
       "rating": 4,
-      "comment": "تطبيق ممتاز ومفيد",
+      "comment": "ما شاء الله",
       "avatar": "/images/avatars/avatar-25.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 197,
       "customerName": "سلمى الخوري",
       "rating": 5,
-      "comment": "عادي",
+      "comment": "عجبني كتير",
       "avatar": "/images/avatars/avatar-12.jpg",
       "type": "simple_text"
     },
@@ -3388,7 +3388,7 @@
       "id": 198,
       "customerName": "رشا محمود",
       "rating": 5,
-      "comment": "ممتاز",
+      "comment": "بجنن",
       "avatar": "/images/avatars/avatar-17.jpg",
       "type": "simple_text"
     }
@@ -3406,25 +3406,25 @@
       "id": 2,
       "customerName": "سارة الدوسري",
       "rating": 3,
-      "comment": "أداة لا بأس بها",
+      "comment": "",
       "avatar": "/images/avatars/avatar-36.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 3,
       "customerName": "فهد العنزي",
       "rating": 4,
-      "comment": "تطبيق ممتاز ومفيد",
+      "comment": "تحفة",
       "avatar": "/images/avatars/avatar-32.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 4,
       "customerName": "زينب الحسيني",
       "rating": 1,
-      "comment": "واجهة معقدة قليلاً",
+      "comment": "حلو أوي",
       "avatar": "/images/avatars/avatar-16.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 5,
@@ -3446,15 +3446,15 @@
       "id": 7,
       "customerName": "هبة عثمان",
       "rating": 5,
-      "comment": "تحسنت إنتاجيتي بشكل كبير",
+      "comment": "حبيته",
       "avatar": "/images/avatars/avatar-29.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 8,
       "customerName": "نورا القحطاني",
       "rating": 4,
-      "comment": "ممتاز",
+      "comment": "حلو أوي",
       "avatar": "/images/avatars/avatar-99.jpg",
       "type": "simple_text"
     },
@@ -3486,9 +3486,9 @@
       "id": 12,
       "customerName": "لطيفة السديري",
       "rating": 4,
-      "comment": "أداة فعالة جداً في عملي",
+      "comment": "حلو كتير",
       "avatar": "/images/avatars/avatar-72.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 13,
@@ -3502,15 +3502,15 @@
       "id": 14,
       "customerName": "مصطفى البغدادي",
       "rating": 5,
-      "comment": "أداة لا غنى عنها",
+      "comment": "كتير حلو",
       "avatar": "/images/avatars/avatar-8.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 15,
       "customerName": "ديانا العمري",
       "rating": 5,
-      "comment": "مفيد جداً",
+      "comment": "ممتاز",
       "avatar": "/images/avatars/avatar-83.jpg",
       "type": "simple_text"
     },
@@ -3518,7 +3518,7 @@
       "id": 16,
       "customerName": "زينب الحسيني",
       "rating": 5,
-      "comment": "لا بأس به",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-7.jpg",
       "type": "simple_text"
     },
@@ -3526,47 +3526,47 @@
       "id": 17,
       "customerName": "أمير صلاح",
       "rating": 5,
-      "comment": "أداة لا غنى عنها",
+      "comment": "",
       "avatar": "/images/avatars/avatar-79.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 18,
       "customerName": "مريم محمد",
       "rating": 4,
-      "comment": "سهولة في الاستخدام ونتائج ممتازة",
+      "comment": "كتير مفيد",
       "avatar": "/images/avatars/avatar-21.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 19,
       "customerName": "علي الأردني",
       "rating": 3,
-      "comment": "مفيدة لكن تحتاج تحسينات",
+      "comment": "جامد جداً",
       "avatar": "/images/avatars/avatar-30.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 20,
       "customerName": "بندر الخالد",
       "rating": 5,
-      "comment": "أداة فعالة جداً في عملي",
+      "comment": "",
       "avatar": "/images/avatars/avatar-74.jpg",
-      "type": "full"
+      "type": "stars_only"
     },
     {
       "id": 21,
       "customerName": "فاطمة الزهراني",
       "rating": 4,
-      "comment": "أداة تستحق كل ريال",
+      "comment": "عجبني",
       "avatar": "/images/avatars/avatar-21.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 22,
       "customerName": "سارة الدوسري",
       "rating": 4,
-      "comment": "مقبول",
+      "comment": "والله زين",
       "avatar": "/images/avatars/avatar-22.jpg",
       "type": "simple_text"
     },
@@ -3574,7 +3574,7 @@
       "id": 23,
       "customerName": "سلطان المالكي",
       "rating": 3,
-      "comment": "مذهل",
+      "comment": "كتير مفيد",
       "avatar": "/images/avatars/avatar-51.jpg",
       "type": "simple_text"
     },
@@ -3590,7 +3590,7 @@
       "id": 25,
       "customerName": "عبدالرحمن الفيصل",
       "rating": 5,
-      "comment": "قيم",
+      "comment": "كويس جداً",
       "avatar": "/images/avatars/avatar-50.jpg",
       "type": "simple_text"
     },
@@ -3606,7 +3606,7 @@
       "id": 27,
       "customerName": "لينا الحداد",
       "rating": 5,
-      "comment": "مقبول",
+      "comment": "مرة حلو",
       "avatar": "/images/avatars/avatar-89.jpg",
       "type": "simple_text"
     },
@@ -3614,9 +3614,9 @@
       "id": 28,
       "customerName": "فهد العنزي",
       "rating": 5,
-      "comment": "ممتاز جداً",
+      "comment": "",
       "avatar": "/images/avatars/avatar-90.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 29,
@@ -3630,9 +3630,9 @@
       "id": 30,
       "customerName": "رشا محمود",
       "rating": 5,
-      "comment": "أداة احترافية وتستحق الشراء",
+      "comment": "مفيد جداً",
       "avatar": "/images/avatars/avatar-15.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 31,
@@ -3646,23 +3646,23 @@
       "id": 32,
       "customerName": "لارا الحلبي",
       "rating": 4,
-      "comment": "أداة تستحق كل ريال",
+      "comment": "روعة",
       "avatar": "/images/avatars/avatar-82.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 33,
       "customerName": "عبدالرحيم المغربي",
       "rating": 5,
-      "comment": "احترافي",
+      "comment": "",
       "avatar": "/images/avatars/avatar-81.jpg",
-      "type": "simple_text"
+      "type": "stars_only"
     },
     {
       "id": 34,
       "customerName": "أحمد الشريف",
       "rating": 5,
-      "comment": "ممتاز جداً",
+      "comment": "زي العسل",
       "avatar": "/images/avatars/avatar-50.jpg",
       "type": "simple_text"
     },
@@ -3670,9 +3670,9 @@
       "id": 35,
       "customerName": "ريما اللبنانية",
       "rating": 5,
-      "comment": "تطبيق ممتاز ومفيد",
+      "comment": "حلو كتير",
       "avatar": "/images/avatars/avatar-50.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 36,
@@ -3686,7 +3686,7 @@
       "id": 37,
       "customerName": "محمود الطراونة",
       "rating": 5,
-      "comment": "متميز",
+      "comment": "بستاهل",
       "avatar": "/images/avatars/avatar-36.jpg",
       "type": "simple_text"
     },
@@ -3694,9 +3694,9 @@
       "id": 38,
       "customerName": "سامر الشامي",
       "rating": 4,
-      "comment": "سهولة في الاستخدام ونتائج ممتازة",
+      "comment": "مرة حلو",
       "avatar": "/images/avatars/avatar-13.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 39,
@@ -3710,9 +3710,9 @@
       "id": 40,
       "customerName": "سمر عبدالرحمن",
       "rating": 3,
-      "comment": "أداة لا بأس بها",
+      "comment": "كويس جداً",
       "avatar": "/images/avatars/avatar-43.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 41,
@@ -3726,7 +3726,7 @@
       "id": 42,
       "customerName": "ريم الغامدي",
       "rating": 4,
-      "comment": "مقبول",
+      "comment": "جميل",
       "avatar": "/images/avatars/avatar-32.jpg",
       "type": "simple_text"
     },
@@ -3734,25 +3734,25 @@
       "id": 43,
       "customerName": "خديجة الحسني",
       "rating": 3,
-      "comment": "أداة جيدة بشكل عام",
+      "comment": "عجبني كتير",
       "avatar": "/images/avatars/avatar-14.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 44,
       "customerName": "عمر الإدريسي",
       "rating": 3,
-      "comment": "مفيدة لكن تحتاج تحسينات",
+      "comment": "حلو أوي",
       "avatar": "/images/avatars/avatar-38.jpg",
-      "type": "full"
+      "type": "simple_text"
     },
     {
       "id": 45,
       "customerName": "هبة عثمان",
       "rating": 5,
-      "comment": "أداة احترافية وتستحق الشراء",
+      "comment": "",
       "avatar": "/images/avatars/avatar-27.jpg",
-      "type": "full"
+      "type": "stars_only"
     }
   ]
 }

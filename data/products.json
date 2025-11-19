@@ -20,7 +20,7 @@
     ],
     "active": true,
     "rating": 4.8,
-    "buyers": "تم الشراء أكثر من 300 مرة",
+    "buyers": "عدد مرات الشراء: 300+",
     "featured": true,
     "isFree": true
   },
@@ -44,7 +44,7 @@
     ],
     "active": true,
     "rating": 4.9,
-    "buyers": "تم الشراء أكثر من 129 مرة",
+    "buyers": "عدد مرات الشراء: 129+",
     "featured": true,
     "originalPrice": 97.5
   },
@@ -69,7 +69,7 @@
     ],
     "active": true,
     "rating": 4.7,
-    "buyers": "تم الشراء أكثر من 200 مرة",
+    "buyers": "عدد مرات الشراء: 200+",
     "featured": true,
     "originalPrice": 142.5
   },
@@ -97,7 +97,7 @@
     ],
     "active": true,
     "rating": 4.9,
-    "buyers": "تم الشراء أكثر من 25 مرة",
+    "buyers": "عدد مرات الشراء: 25+",
     "featured": true,
     "isFree": false
   },
@@ -123,7 +123,7 @@
     ],
     "active": true,
     "rating": 4.8,
-    "buyers": "تم الشراء أكثر من 300 مرة",
+    "buyers": "عدد مرات الشراء: 300+",
     "featured": true,
     "isFree": false
   },
@@ -151,7 +151,7 @@
     ],
     "active": true,
     "rating": 4.9,
-    "buyers": "منتج جديد",
+    "buyers": "عدد مرات الشراء: 90",
     "featured": true,
     "isFree": false
   }

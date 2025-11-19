@@ -474,16 +474,16 @@ export default function ProductDetail({ product }: { product?: Product }) {
           <ProductReviews productId={productId} reviews={[]} />
           
           {/* Info Message */}
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-6 text-center">
+          <div className="bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm border border-primary-300/20 rounded-xl p-6 text-center">
             <div className="flex items-center justify-center mb-3">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-r from-primary-300 to-accent-600 rounded-full flex items-center justify-center">
                 <span className="text-white text-xl">⭐</span>
               </div>
             </div>
-            <h3 className="text-lg font-bold text-gray-800 mb-2">
+            <h3 className="text-lg font-bold text-white mb-2">
               شارك تقييمك بعد الشراء
             </h3>
-            <p className="text-gray-600">
+            <p className="text-gray-300">
               بعد شراء المنتج، ستتمكن من إضافة تقييمك في صفحة النجاح لمساعدة الآخرين في اتخاذ قرار الشراء
             </p>
           </div>

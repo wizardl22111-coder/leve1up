@@ -55,20 +55,25 @@ export default function ProductReviews({ productId, reviews: initialReviews = []
 
   if (loading) {
     return (
-      <section className="py-16 px-4 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+      <section className="py-16 px-4 bg-dark-400 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-accent-600/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-primary-300/5 rounded-full filter blur-3xl"></div>
+        
+        <div className="container mx-auto relative z-10">
+          <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent">
             تقييمات العملاء
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(3)].map((_, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl shadow-lg p-6 animate-pulse"
+                className="bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-2xl p-6 border border-primary-300/10 animate-pulse"
               >
-                <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
-                <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
-                <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+                <div className="h-4 bg-gray-600 rounded w-3/4 mb-4"></div>
+                <div className="h-4 bg-gray-600 rounded w-full mb-2"></div>
+                <div className="h-4 bg-gray-600 rounded w-5/6"></div>
               </div>
             ))}
           </div>
@@ -79,14 +84,19 @@ export default function ProductReviews({ productId, reviews: initialReviews = []
 
   if (reviews.length === 0) {
     return (
-      <section className="py-16 px-4 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+      <section className="py-16 px-4 bg-dark-400 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-accent-600/5 rounded-full filter blur-3xl"></div>
+        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-primary-300/5 rounded-full filter blur-3xl"></div>
+        
+        <div className="container mx-auto text-center relative z-10">
+          <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent">
             تقييمات العملاء
           </h2>
-          <div className="bg-white rounded-2xl shadow-lg p-12 max-w-2xl mx-auto">
-            <Quote size={48} className="mx-auto mb-4 text-gray-300" />
-            <p className="text-gray-600 text-lg">
+          <div className="bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-2xl p-12 max-w-2xl mx-auto border border-primary-300/10">
+            <Quote size={48} className="mx-auto mb-4 text-primary-300/30" />
+            <p className="text-gray-300 text-lg">
               كن أول من يترك تقييماً! 🌟
             </p>
           </div>
@@ -96,9 +106,14 @@ export default function ProductReviews({ productId, reviews: initialReviews = []
   }
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+    <section className="py-16 px-4 bg-dark-400 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none"></div>
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-accent-600/5 rounded-full filter blur-3xl"></div>
+      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-primary-300/5 rounded-full filter blur-3xl"></div>
+      
+      <div className="container mx-auto relative z-10">
+        <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent">
           تقييمات العملاء ({reviews.length})
         </h2>
 
@@ -106,16 +121,24 @@ export default function ProductReviews({ productId, reviews: initialReviews = []
           {reviews.map((review) => (
             <div
               key={review.id}
-              className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+              className="bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-2xl p-6 border border-primary-300/10 hover:border-primary-300/30 hover:shadow-xl hover:shadow-primary-300/10 transition-all duration-300"
             >
               {/* رأس البطاقة */}
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white">
-                    <User size={24} />
-                  </div>
+                  {review.avatar ? (
+                    <img
+                      src={review.avatar}
+                      alt={review.customerName}
+                      className="w-16 h-16 rounded-full object-cover border-2 border-primary-300/20"
+                    />
+                  ) : (
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary-300 to-accent-600 flex items-center justify-center text-white">
+                      <User size={24} />
+                    </div>
+                  )}
                   <div>
-                    <h3 className="font-semibold text-gray-800">
+                    <h3 className="font-semibold text-white">
                       {review.customerName}
                     </h3>
                   </div>
@@ -128,17 +151,17 @@ export default function ProductReviews({ productId, reviews: initialReviews = []
                 <div className="relative">
                   <Quote
                     size={24}
-                    className="absolute -top-2 -right-2 text-purple-200"
+                    className="absolute -top-2 -right-2 text-primary-300/30"
                   />
-                  <p className="text-gray-700 leading-relaxed pr-6">
+                  <p className="text-gray-300 leading-relaxed pr-6">
                     {review.comment}
                   </p>
                 </div>
               )}
 
               {/* شارة التحقق */}
-              <div className="mt-4 pt-4 border-t border-gray-100">
-                <span className="inline-flex items-center gap-1 text-xs text-green-600 bg-green-50 px-3 py-1 rounded-full">
+              <div className="mt-4 pt-4 border-t border-primary-300/10">
+                <span className="inline-flex items-center gap-1 text-xs text-green-400 bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">
                   ✓ عميل موثّق
                 </span>
               </div>
@@ -149,7 +172,7 @@ export default function ProductReviews({ productId, reviews: initialReviews = []
         {/* رسالة إذا كان هناك المزيد */}
         {reviews.length > 0 && (
           <div className="text-center mt-12">
-            <p className="text-gray-600">
+            <p className="text-gray-300">
               وغيرهم الكثير من العملاء السعداء! 🎉
             </p>
           </div>

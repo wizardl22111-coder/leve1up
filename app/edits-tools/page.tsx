@@ -212,7 +212,7 @@ export default function EditToolsPage() {
                                     150+ انتقال سلس
                                   </div>
                                 </>
-                              ) : (
+                              ) : product.product_id === 5 ? (
                                 <>
                                   <div className="flex items-center gap-2 text-sm text-gray-300">
                                     <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
@@ -221,6 +221,17 @@ export default function EditToolsPage() {
                                   <div className="flex items-center gap-2 text-sm text-gray-300">
                                     <div className="w-2 h-2 bg-red-400 rounded-full"></div>
                                     دقة عالية الجودة
+                                  </div>
+                                </>
+                              ) : (
+                                <>
+                                  <div className="flex items-center gap-2 text-sm text-gray-300">
+                                    <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                                    1100 أيقونة PNG شفافة
+                                  </div>
+                                  <div className="flex items-center gap-2 text-sm text-gray-300">
+                                    <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                                    أكثر من 50 خط مميز
                                   </div>
                                 </>
                               )}
