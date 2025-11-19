@@ -61,12 +61,10 @@ export default function CancelPage() {
           <div className="mt-8 pt-6 border-t border-gray-700">
             <p className="text-gray-400 text-sm mb-4">هل تواجه مشكلة؟</p>
             <a
-              href="https://wa.me/971503492848"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg shadow-green-500/20"
+              href="mailto:leve1up999q@gmail.com"
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg shadow-blue-500/20"
             >
-              تواصل معنا على WhatsApp 💬
+              تواصل معنا عبر الإيميل 📧
             </a>
           </div>
         </div>
@@ -81,4 +79,3 @@ export default function CancelPage() {
     </div>
   );
 }
-

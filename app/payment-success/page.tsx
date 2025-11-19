@@ -61,9 +61,7 @@ function PaymentSuccessContent() {
   const [reviewSubmitted, setReviewSubmitted] = useState(false);
   const [reviewLoading, setReviewLoading] = useState(false);
 
-  // رقم الواتساب
-  const WHATSAPP_NUMBER = "971503492848";
-  const WHATSAPP_MESSAGE = "مرحباً، لدي استفسار بخصوص طلبي";
+
 
   useEffect(() => {
     const orderId = searchParams.get("order_id");
@@ -539,10 +537,8 @@ function PaymentSuccessContent() {
             </Link>
 
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 transition-colors"
+              href="mailto:leve1up999q@gmail.com"
+              className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors"
             >
               <MessageCircle className="w-5 h-5" />
               تواصل معنا

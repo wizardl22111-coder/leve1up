@@ -3,9 +3,11 @@
 import { Mail, Home, ShoppingBag, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import SocialMediaIcons from './SocialMediaIcons';
 
 export default function Footer() {
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -43,6 +45,7 @@ export default function Footer() {
               whatsappMessage="مرحباً، أريد الاستفسار عن منتجات Level Up"
               instagramUrl="https://www.instagram.com/lvlup3211/"
               tiktokUrl="https://www.tiktok.com/@lvlup321"
+              showWhatsApp={pathname === '/'}
             />
           </div>
 

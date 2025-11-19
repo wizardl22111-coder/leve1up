@@ -168,6 +168,7 @@ export default function ContactPage() {
               whatsappMessage="مرحباً، أريد الاستفسار عن منتجات Level Up"
               instagramUrl="https://www.instagram.com/lvlup3211/"
               tiktokUrl="https://www.tiktok.com/@lvlup321"
+              showWhatsApp={false}
             />
           </motion.div>
 

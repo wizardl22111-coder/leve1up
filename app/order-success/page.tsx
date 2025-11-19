@@ -203,16 +203,14 @@ function OrderSuccessContent() {
             هل واجهت مشكلة في التحميل؟
           </h3>
           <p className="text-gray-400 mb-4">
-            تواصل معنا مباشرة عبر واتساب وسنساعدك فوراً
+            تواصل معنا مباشرة عبر الإيميل وسنساعدك فوراً
           </p>
           <a
-            href="https://wa.me/966XXXXXXXXX"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl transition-all"
+            href="mailto:leve1up999q@gmail.com"
+            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-all"
           >
             <MessageCircle className="w-5 h-5" />
-            تواصل عبر واتساب
+            تواصل عبر الإيميل
           </a>
         </div>
 

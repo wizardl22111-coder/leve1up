@@ -58,9 +58,7 @@ function SuccessPageContent() {
   const [reviewSubmitted, setReviewSubmitted] = useState(false);
   const [reviewLoading, setReviewLoading] = useState(false);
 
-  // رقم الواتساب
-  const WHATSAPP_NUMBER = "971503492848";
-  const WHATSAPP_MESSAGE = "مرحباً، لدي استفسار بخصوص طلبي";
+
 
   useEffect(() => {
     const session = searchParams.get("session");
@@ -467,13 +465,11 @@ function SuccessPageContent() {
             </h2>
             
             <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              href="mailto:leve1up999q@gmail.com"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               <MessageCircle className="w-5 h-5" />
-              تواصل عبر الواتساب
+              تواصل عبر الإيميل
             </a>
           </motion.div>
 
