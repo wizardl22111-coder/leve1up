@@ -225,7 +225,10 @@ export function getStoredReviews(): RealisticReview[] {
 export async function getProductReviews(productId: number): Promise<RealisticReview[]> {
   try {
     // جلب التقييمات الأساسية من الملف
-    const response = await fetch('/data/product-reviews.json');
+    const response = await fetch('/product-reviews.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const allReviews = await response.json();
     const baseReviews = allReviews[productId.toString()] || [];
     
@@ -237,7 +240,10 @@ export async function getProductReviews(productId: number): Promise<RealisticRev
     return combinedReviews.sort(() => Math.random() - 0.5);
   } catch (error) {
     console.error('Error fetching product reviews:', error);
-    return [];
+    
+    // في حالة الفشل، إرجاع التقييمات المحفوظة محلياً فقط
+    const storedReviews = getStoredReviews().filter(review => review.productId === productId);
+    return storedReviews;
   }
 }
 

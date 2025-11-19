@@ -153,12 +153,47 @@ export default function ContactPage() {
             </motion.div>
           </div>
 
+          {/* Contact Info */}
+          <motion.div 
+            className="text-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <h3 className="text-xl font-semibold text-white mb-6">
+              📧 معلومات التواصل
+            </h3>
+            <div className="flex justify-center items-center gap-8 flex-wrap">
+              {/* البريد الإلكتروني */}
+              <div className="flex items-center gap-3 bg-slate-800/30 backdrop-blur-sm rounded-xl px-6 py-4 border border-slate-600/30">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                  <FaEnvelope className="w-5 h-5 text-white" />
+                </div>
+                <div className="text-right">
+                  <p className="text-slate-300 text-sm">البريد الإلكتروني</p>
+                  <p className="text-white font-medium">leve1up999q@gmail.com</p>
+                </div>
+              </div>
+              
+              {/* الإنستغرام */}
+              <div className="flex items-center gap-3 bg-slate-800/30 backdrop-blur-sm rounded-xl px-6 py-4 border border-slate-600/30">
+                <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
+                  <FaInstagram className="w-5 h-5 text-white" />
+                </div>
+                <div className="text-right">
+                  <p className="text-slate-300 text-sm">إنستغرام</p>
+                  <p className="text-white font-medium">@1level1up1</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Social Media Icons */}
           <motion.div 
             className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.4 }}
           >
             <h3 className="text-xl font-semibold text-white mb-6">
               🌟 تابعنا على وسائل التواصل الاجتماعي

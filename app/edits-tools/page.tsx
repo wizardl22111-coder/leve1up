@@ -33,9 +33,9 @@ export default function EditToolsPage() {
         const response = await fetch('/api/products');
         const allProducts = await response.json();
         
-        // فلترة المنتجات لعرض باقة المونتاج (ID: 4) وحزمة الأيقونات (ID: 5) فقط
+        // فلترة المنتجات لعرض منتجات أدوات المونتاج (ID: 4, 5, 6)
         const editingProducts = allProducts.filter((product: Product) => 
-          product.product_id === 4 || product.product_id === 5
+          product.product_id === 4 || product.product_id === 5 || product.product_id === 6
         );
         
         setProducts(editingProducts);

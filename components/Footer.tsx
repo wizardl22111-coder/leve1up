@@ -45,7 +45,7 @@ export default function Footer() {
               whatsappMessage="مرحباً، أريد الاستفسار عن منتجات Level Up"
               instagramUrl="https://www.instagram.com/1level1up1/"
               tiktokUrl="https://www.tiktok.com/@lvlup321"
-              showWhatsApp={pathname === '/'}
+              showWhatsApp={true}
             />
           </div>
 
