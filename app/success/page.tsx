@@ -128,10 +128,9 @@ function SuccessPageContent() {
                 localStorage.removeItem('currency');
                 
                 setLoading(false);
-              } else {
-                console.log("❌ Order not found in API");
                 return;
-              }
+            } else {
+              console.log("❌ Order not found in API");
             }
           } catch (apiError) {
             console.log("⚠️ API fetch failed, trying localStorage fallback:", apiError);
@@ -196,8 +195,6 @@ function SuccessPageContent() {
         console.error("Error fetching order data:", error);
       } finally {
         setLoading(false);
-              } else {
-                console.log("❌ Order not found in API");
       }
     };
 

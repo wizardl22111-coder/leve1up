@@ -12,7 +12,7 @@ import { findOrderBySessionId, findOrderByPaymentId } from "@/lib/orders-store";
  */
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
+    const searchParams = request.nextUrl.searchParams;
     const sessionId = searchParams.get('session');
     const paymentId = searchParams.get('payment_id');
     
@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
       order_id: order.id,
       payment_id: order.paymentId || paymentId || sessionId,
       user_email: order.customerEmail,
-      total_amount: order.totalAmount,
+      total_amount: order.amount,
       currency: order.currency,
       created_at: order.createdAt,
       products: order.items.map((item: any) => ({
