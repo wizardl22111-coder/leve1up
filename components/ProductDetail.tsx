@@ -71,6 +71,7 @@ interface Product {
   inStock?: boolean;
   featured?: boolean;
   features?: string[];
+  variants?: any[];
 }
 
 export default function ProductDetail({ product }: { product?: Product }) {
