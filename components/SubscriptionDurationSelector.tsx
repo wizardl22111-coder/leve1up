@@ -101,7 +101,7 @@ export default function SubscriptionDurationSelector({
       </div>
 
       {/* خيارات المدة */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-3">
         {options.map((option) => (
           <div
             key={option.id}
