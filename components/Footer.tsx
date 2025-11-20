@@ -13,11 +13,11 @@ export default function Footer() {
   return (
     <footer id="contact" className="bg-dark-400 border-t border-primary-300/10 text-white safe-bottom">
       <div className="container-mobile py-8 sm:py-12">
-        {/* Mobile: Optimized 2-column layout | Desktop: 4-column layout */}
+        {/* Mobile: Company logo full width, then 2-column for links | Desktop: 4-column layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
           
           {/* Column 1: Company Logo with Email Link */}
-          <div className="text-center sm:text-right">
+          <div className="text-center sm:text-right lg:col-span-1 col-span-1 sm:col-span-2 lg:col-span-1">
             <a 
               href="mailto:leve1up999q@gmail.com"
               className="inline-flex flex-col items-center sm:items-start gap-3 mb-4 group"
@@ -49,79 +49,81 @@ export default function Footer() {
             />
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div className="text-center sm:text-right">
-            <h4 className="text-base sm:text-lg font-bold mb-4 text-primary-300">روابط سريعة</h4>
-            <ul className="space-y-2.5">
-              <li>
-                <Link 
-                  href="/" 
-                  className="inline-flex items-center gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group"
-                >
-                  <Home className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  الرئيسية
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/#products" 
-                  className="inline-flex items-center gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group"
-                >
-                  <ShoppingBag className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  المنتجات
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/#faq" 
-                  className="inline-flex items-center gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group"
-                >
-                  <HelpCircle className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  الأسئلة الشائعة
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/contact" 
-                  className="inline-flex items-center gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group"
-                >
-                  <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  تواصل معنا
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Mobile: Quick Links and Policies side by side | Desktop: Separate columns */}
+          <div className="grid grid-cols-2 gap-6 sm:contents">
+            {/* Column 2: Quick Links */}
+            <div className="text-center sm:text-right">
+              <h4 className="text-base sm:text-lg font-bold mb-4 text-primary-300">روابط سريعة</h4>
+              <ul className="space-y-2.5">
+                <li>
+                  <Link 
+                    href="/" 
+                    className="inline-flex items-center gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group"
+                  >
+                    <Home className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    الرئيسية
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/#products" 
+                    className="inline-flex items-center gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group"
+                  >
+                    <ShoppingBag className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    المنتجات
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/#faq" 
+                    className="inline-flex items-center gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group"
+                  >
+                    <HelpCircle className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    الأسئلة الشائعة
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/contact" 
+                    className="inline-flex items-center gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group"
+                  >
+                    <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    تواصل معنا
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          {/* Column 3: Policies */}
-          <div className="text-center sm:text-right">
-            <h4 className="text-base sm:text-lg font-bold mb-4 text-accent-600">السياسات</h4>
-            {/* Mobile: Vertical List | Desktop: Vertical List (unchanged) */}
-            <ul className="space-y-2.5">
-              <li>
-                <Link 
-                  href="/privacy" 
-                  className="text-gray-400 hover:text-accent-600 transition-colors text-sm sm:text-base block touch-manipulation"
-                >
-                  سياسة الخصوصية
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/terms" 
-                  className="text-gray-400 hover:text-accent-600 transition-colors text-sm sm:text-base block touch-manipulation"
-                >
-                  شروط الاستخدام
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/refund" 
-                  className="text-gray-400 hover:text-accent-600 transition-colors text-sm sm:text-base block touch-manipulation"
-                >
-                  سياسة الاستبدال
-                </Link>
-              </li>
-            </ul>
+            {/* Column 3: Policies */}
+            <div className="text-center sm:text-right">
+              <h4 className="text-base sm:text-lg font-bold mb-4 text-accent-600">السياسات</h4>
+              <ul className="space-y-2.5">
+                <li>
+                  <Link 
+                    href="/privacy" 
+                    className="text-gray-400 hover:text-accent-600 transition-colors text-sm sm:text-base block touch-manipulation"
+                  >
+                    سياسة الخصوصية
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/terms" 
+                    className="text-gray-400 hover:text-accent-600 transition-colors text-sm sm:text-base block touch-manipulation"
+                  >
+                    شروط الاستخدام
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="/refund" 
+                    className="text-gray-400 hover:text-accent-600 transition-colors text-sm sm:text-base block touch-manipulation"
+                  >
+                    سياسة الاستبدال
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Column 4: Newsletter or Additional Info */}
