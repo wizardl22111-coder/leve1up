@@ -16,12 +16,14 @@ interface DurationOption {
 
 interface SubscriptionDurationSelectorProps {
   productId: number;
+  variants?: any[];
   onDurationChange: (option: DurationOption) => void;
   className?: string;
 }
 
 export default function SubscriptionDurationSelector({ 
   productId, 
+  variants,
   onDurationChange, 
   className = '' 
 }: SubscriptionDurationSelectorProps) {
@@ -30,15 +32,21 @@ export default function SubscriptionDurationSelector({
   const [selectedOption, setSelectedOption] = useState<DurationOption | null>(null);
 
   useEffect(() => {
-    // تحميل بيانات المنتج من ملف JSON
+    // استخدام البيانات المُمررة مباشرة أو تحميلها من ملف JSON
     const loadProductData = async () => {
       try {
-        const response = await fetch('/data/products.json');
-        const products = await response.json();
-        const product = products.find((p: any) => p.product_id === productId);
+        let productVariants = variants;
         
-        if (product && product.variants) {
-          const durationOptions: DurationOption[] = product.variants.map((variant: any, index: number) => ({
+        // إذا لم تُمرر البيانات، حمّلها من الملف
+        if (!productVariants) {
+          const response = await fetch('/data/products.json');
+          const products = await response.json();
+          const product = products.find((p: any) => p.product_id === productId);
+          productVariants = product?.variants;
+        }
+        
+        if (productVariants && productVariants.length > 0) {
+          const durationOptions: DurationOption[] = productVariants.map((variant: any, index: number) => ({
             id: `option-${index}`,
             duration: variant.duration,
             months: variant.duration === 'شهر' ? 1 : 
@@ -61,7 +69,7 @@ export default function SubscriptionDurationSelector({
     };
 
     loadProductData();
-  }, [productId]);
+  }, [productId, variants]);
 
   const handleOptionSelect = (option: DurationOption) => {
     setSelectedOption(option);

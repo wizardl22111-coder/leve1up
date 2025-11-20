@@ -215,6 +215,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
             {product.category === 'subscriptions' && productId === 10 && (
               <SubscriptionDurationSelector
                 productId={productId}
+                variants={product.variants}
                 onDurationChange={(option) => setSelectedDuration(option)}
                 className="mb-6"
               />
@@ -288,7 +289,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
                       style={{ fontSize: '16px' }}
                     >
                       <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
-                      اشتر الآن ⚡
+                      اشتر الآن
                     </button>
                     <button
                       onClick={handleAddToCart}
@@ -514,6 +515,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
         onClose={() => setShowFreeModal(false)}
         productName={productName}
         productId={productId}
+                variants={product.variants}
         downloadUrl={(product as any).download_url}
       />
     </section>
