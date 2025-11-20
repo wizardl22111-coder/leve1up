@@ -72,6 +72,7 @@ interface Product {
   featured?: boolean;
   features?: string[];
   variants?: any[];
+  subscription_plans?: any[];
 }
 
 export default function ProductDetail({ product }: { product?: Product }) {

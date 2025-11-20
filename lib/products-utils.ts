@@ -25,6 +25,7 @@ interface Product {
   product_image?: string;
   file_size_mb?: number;
   sections?: any;
+  subscription_plans?: any[];
 }
 
 /**
