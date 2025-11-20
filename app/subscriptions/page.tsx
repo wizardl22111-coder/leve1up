@@ -131,7 +131,7 @@ export default function SubscriptionsPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">الباقات المتاحة</h2>
             <p className="text-gray-400 text-lg">
-              اختر من مجموعة متنوعة من الباقات الرقمية بأسعار تنافسية
+              اختر من مجموعة متنوعة من الباقات الرقمية المميزة
             </p>
           </div>
           

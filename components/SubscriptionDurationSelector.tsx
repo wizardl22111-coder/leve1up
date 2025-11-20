@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Check, Clock, Star } from 'lucide-react';
 
 interface DurationOption {
@@ -26,47 +26,42 @@ export default function SubscriptionDurationSelector({
   className = '' 
 }: SubscriptionDurationSelectorProps) {
   
-  // خيارات Netflix المختلفة
-  const netflixOptions: DurationOption[] = [
-    {
-      id: 'monthly',
-      duration: 'شهري',
-      months: 1,
-      price: 12,
-      originalPrice: 15,
-      description: 'مثالي للتجربة'
-    },
-    {
-      id: 'quarterly',
-      duration: '3 أشهر',
-      months: 3,
-      price: 25,
-      originalPrice: 36,
-      savings: 'وفر 31%',
-      description: 'خيار شائع'
-    },
-    {
-      id: 'semi-annual',
-      duration: '6 أشهر',
-      months: 6,
-      price: 35,
-      originalPrice: 72,
-      savings: 'وفر 51%',
-      popular: true,
-      description: 'أفضل قيمة'
-    },
-    {
-      id: 'annual',
-      duration: 'سنوي',
-      months: 12,
-      price: 49,
-      originalPrice: 144,
-      savings: 'وفر 66%',
-      description: 'أقصى توفير'
-    }
-  ];
+  const [options, setOptions] = useState<DurationOption[]>([]);
+  const [selectedOption, setSelectedOption] = useState<DurationOption | null>(null);
 
-  const [selectedOption, setSelectedOption] = useState<DurationOption>(netflixOptions[2]); // Default to 6 months
+  useEffect(() => {
+    // تحميل بيانات المنتج من ملف JSON
+    const loadProductData = async () => {
+      try {
+        const response = await fetch('/data/products.json');
+        const products = await response.json();
+        const product = products.find((p: any) => p.product_id === productId);
+        
+        if (product && product.variants) {
+          const durationOptions: DurationOption[] = product.variants.map((variant: any, index: number) => ({
+            id: `option-${index}`,
+            duration: variant.duration,
+            months: variant.duration === 'شهر' ? 1 : 
+                   variant.duration === '3 أشهر' ? 3 :
+                   variant.duration === '6 أشهر' ? 6 : 12,
+            price: variant.price,
+            originalPrice: variant.originalPrice,
+            popular: variant.duration === '6 أشهر',
+            description: variant.duration === 'شهر' ? 'مثالي للتجربة' :
+                        variant.duration === '3 أشهر' ? 'خيار شائع' :
+                        variant.duration === '6 أشهر' ? 'أفضل قيمة' : 'أقصى توفير'
+          }));
+          
+          setOptions(durationOptions);
+          setSelectedOption(durationOptions[0]); // اختيار الخيار الأول افتراضياً
+        }
+      } catch (error) {
+        console.error('Error loading product data:', error);
+      }
+    };
+
+    loadProductData();
+  }, [productId]);
 
   const handleOptionSelect = (option: DurationOption) => {
     setSelectedOption(option);
@@ -78,6 +73,17 @@ export default function SubscriptionDurationSelector({
     return (option.price / option.months).toFixed(2);
   };
 
+  if (!selectedOption || options.length === 0) {
+    return (
+      <div className={`space-y-4 ${className}`}>
+        <div className="text-center py-8">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-400 mx-auto"></div>
+          <p className="text-gray-400 mt-2">جاري تحميل خيارات الاشتراك...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={`space-y-4 ${className}`}>
       {/* العنوان */}
@@ -88,7 +94,7 @@ export default function SubscriptionDurationSelector({
 
       {/* خيارات المدة */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        {netflixOptions.map((option) => (
+        {options.map((option) => (
           <div
             key={option.id}
             onClick={() => handleOptionSelect(option)}
@@ -125,7 +131,6 @@ export default function SubscriptionDurationSelector({
             <div className="space-y-2">
               {/* المدة والوصف */}
               <div className="flex items-center gap-2 mb-2">
-                <Clock className="w-4 h-4 text-primary-400" />
                 <span className="font-semibold text-white">{option.duration}</span>
               </div>
               
@@ -195,4 +200,3 @@ export default function SubscriptionDurationSelector({
     </div>
   );
 }
-

@@ -3754,5 +3754,2087 @@
       "avatar": "/images/avatars/avatar-27.jpg",
       "type": "stars_only"
     }
+  ],
+  "10": [
+    {
+      "id": 1,
+      "customerName": "رشا محمود",
+      "rating": 3,
+      "comment": "إمكانية التحميل للمشاهدة بدون إنترنت رائعة",
+      "avatar": "/images/avatars/avatar-42.jpg",
+      "type": "full"
+    },
+    {
+      "id": 2,
+      "customerName": "لينا الحداد",
+      "rating": 4,
+      "comment": "خدمة عملاء ممتازة وسريعة الاستجابة",
+      "avatar": "/images/avatars/avatar-45.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 3,
+      "customerName": "خديجة الحسني",
+      "rating": 5,
+      "comment": "جودة الصوت والصورة عالية جداً",
+      "avatar": "/images/avatars/avatar-26.jpg",
+      "type": "full"
+    },
+    {
+      "id": 4,
+      "customerName": "مصطفى البغدادي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-19.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 5,
+      "customerName": "يوسف القاسم",
+      "rating": 4,
+      "comment": "الترجمة العربية دقيقة ومفهومة",
+      "avatar": "/images/avatars/avatar-10.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 6,
+      "customerName": "نادية إبراهيم",
+      "rating": 5,
+      "comment": "المسلسلات الكورية والتركية متوفرة بكثرة",
+      "avatar": "/images/avatars/avatar-23.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 7,
+      "customerName": "نورا القحطاني",
+      "rating": 1,
+      "comment": "المحتوى الأصلي من Netflix مميز جداً",
+      "avatar": "/images/avatars/avatar-10.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 8,
+      "customerName": "ياسمين أحمد",
+      "rating": 3,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-3.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 9,
+      "customerName": "سلطان المالكي",
+      "rating": 2,
+      "comment": "مكتبة ضخمة من الأفلام والمسلسلات الحصرية",
+      "avatar": "/images/avatars/avatar-42.jpg",
+      "type": "full"
+    },
+    {
+      "id": 10,
+      "customerName": "حسام علي",
+      "rating": 5,
+      "comment": "المحتوى الأصلي من Netflix مميز جداً",
+      "avatar": "/images/avatars/avatar-36.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 11,
+      "customerName": "لينا الحداد",
+      "rating": 4,
+      "comment": "أسعار معقولة مقابل المحتوى المقدم",
+      "avatar": "/images/avatars/avatar-30.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 12,
+      "customerName": "طارق محمود",
+      "rating": 4,
+      "comment": "خدمة موثوقة وسريعة، لا توجد مشاكل في التشغيل",
+      "avatar": "/images/avatars/avatar-37.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 13,
+      "customerName": "حسام علي",
+      "rating": 5,
+      "comment": "أطفالي يحبون قسم الأطفال الآمن",
+      "avatar": "/images/avatars/avatar-38.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 14,
+      "customerName": "ديانا العمري",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-49.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 15,
+      "customerName": "عمر الزعبي",
+      "rating": 5,
+      "comment": "أفضل منصة للأفلام والمسلسلات، أنصح بها بشدة",
+      "avatar": "/images/avatars/avatar-30.jpg",
+      "type": "full"
+    },
+    {
+      "id": 16,
+      "customerName": "يوسف البركاني",
+      "rating": 2,
+      "comment": "إمكانية التحميل للمشاهدة بدون إنترنت رائعة",
+      "avatar": "/images/avatars/avatar-3.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 17,
+      "customerName": "رشا محمود",
+      "rating": 5,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-4.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 18,
+      "customerName": "حيدر العراقي",
+      "rating": 5,
+      "comment": "خدمة Netflix ممتازة، جودة عالية ومحتوى متنوع",
+      "avatar": "/images/avatars/avatar-41.jpg",
+      "type": "full"
+    },
+    {
+      "id": 19,
+      "customerName": "هبة عثمان",
+      "rating": 5,
+      "comment": "جودة 4K مذهلة، والتطبيق سهل الاستخدام",
+      "avatar": "/images/avatars/avatar-20.jpg",
+      "type": "full"
+    },
+    {
+      "id": 20,
+      "customerName": "نور الهدى",
+      "rating": 1,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-30.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 21,
+      "customerName": "كريم عبدالله",
+      "rating": 4,
+      "comment": "لا توجد إعلانات مزعجة أثناء المشاهدة",
+      "avatar": "/images/avatars/avatar-16.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 22,
+      "customerName": "ريما اللبنانية",
+      "rating": 4,
+      "comment": "تحديثات مستمرة للمحتوى الجديد",
+      "avatar": "/images/avatars/avatar-47.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 23,
+      "customerName": "لارا الحلبي",
+      "rating": 2,
+      "comment": "لا توجد إعلانات مزعجة أثناء المشاهدة",
+      "avatar": "/images/avatars/avatar-44.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 24,
+      "customerName": "يوسف القاسم",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-43.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 25,
+      "customerName": "عبدالله الشمري",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-49.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 26,
+      "customerName": "سلمى الخوري",
+      "rating": 4,
+      "comment": "المسلسلات الكورية والتركية متوفرة بكثرة",
+      "avatar": "/images/avatars/avatar-12.jpg",
+      "type": "full"
+    },
+    {
+      "id": 27,
+      "customerName": "ياسمين أحمد",
+      "rating": 4,
+      "comment": "خدمة Netflix ممتازة، جودة عالية ومحتوى متنوع",
+      "avatar": "/images/avatars/avatar-30.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 28,
+      "customerName": "باسل الدمشقي",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-32.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 29,
+      "customerName": "علي الأردني",
+      "rating": 5,
+      "comment": "لا توجد إعلانات مزعجة أثناء المشاهدة",
+      "avatar": "/images/avatars/avatar-22.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 30,
+      "customerName": "مصطفى البغدادي",
+      "rating": 2,
+      "comment": "يعمل على جميع الأجهزة بسلاسة",
+      "avatar": "/images/avatars/avatar-43.jpg",
+      "type": "full"
+    },
+    {
+      "id": 31,
+      "customerName": "ريما اللبنانية",
+      "rating": 4,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-7.jpg",
+      "type": "full"
+    },
+    {
+      "id": 32,
+      "customerName": "فاطمة الزهراني",
+      "rating": 3,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-42.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 33,
+      "customerName": "لارا الحلبي",
+      "rating": 5,
+      "comment": "جودة 4K مذهلة، والتطبيق سهل الاستخدام",
+      "avatar": "/images/avatars/avatar-35.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 34,
+      "customerName": "علي الكربلائي",
+      "rating": 5,
+      "comment": "المحتوى الأصلي من Netflix مميز جداً",
+      "avatar": "/images/avatars/avatar-18.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 35,
+      "customerName": "حسام علي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-8.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 36,
+      "customerName": "هند الراشد",
+      "rating": 5,
+      "comment": "واجهة المستخدم بسيطة وسهلة",
+      "avatar": "/images/avatars/avatar-18.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 37,
+      "customerName": "مصطفى البغدادي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-7.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 38,
+      "customerName": "مريم الحربي",
+      "rating": 5,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-24.jpg",
+      "type": "full"
+    },
+    {
+      "id": 39,
+      "customerName": "سامر الشامي",
+      "rating": 4,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-20.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 40,
+      "customerName": "نادر الحموي",
+      "rating": 4,
+      "comment": "المحتوى العربي والعالمي رائع، تستحق الاشتراك",
+      "avatar": "/images/avatars/avatar-3.jpg",
+      "type": "full"
+    },
+    {
+      "id": 41,
+      "customerName": "أحمد الشريف",
+      "rating": 5,
+      "comment": "المحتوى الأصلي من Netflix مميز جداً",
+      "avatar": "/images/avatars/avatar-28.jpg",
+      "type": "full"
+    },
+    {
+      "id": 42,
+      "customerName": "زينب الحسيني",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-22.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 43,
+      "customerName": "ريم الغامدي",
+      "rating": 2,
+      "comment": "المحتوى العربي والعالمي رائع، تستحق الاشتراك",
+      "avatar": "/images/avatars/avatar-35.jpg",
+      "type": "full"
+    },
+    {
+      "id": 44,
+      "customerName": "ياسمين أحمد",
+      "rating": 3,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-37.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 45,
+      "customerName": "هبة عثمان",
+      "rating": 4,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-41.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 46,
+      "customerName": "عمر الإدريسي",
+      "rating": 5,
+      "comment": "يعمل على جميع الأجهزة بسلاسة",
+      "avatar": "/images/avatars/avatar-43.jpg",
+      "type": "full"
+    },
+    {
+      "id": 47,
+      "customerName": "خالد المطيري",
+      "rating": 5,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-21.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 48,
+      "customerName": "خالد المطيري",
+      "rating": 5,
+      "comment": "مكتبة ضخمة من الأفلام والمسلسلات الحصرية",
+      "avatar": "/images/avatars/avatar-6.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 49,
+      "customerName": "مصطفى البغدادي",
+      "rating": 3,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-31.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 50,
+      "customerName": "نورا القحطاني",
+      "rating": 4,
+      "comment": "المحتوى الأصلي من Netflix مميز جداً",
+      "avatar": "/images/avatars/avatar-10.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 51,
+      "customerName": "سارة الدوسري",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-47.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 52,
+      "customerName": "لارا الحلبي",
+      "rating": 3,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-39.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 53,
+      "customerName": "خديجة الحسني",
+      "rating": 4,
+      "comment": "الترجمة العربية دقيقة ومفهومة",
+      "avatar": "/images/avatars/avatar-13.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 54,
+      "customerName": "لينا الحداد",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-48.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 55,
+      "customerName": "سمر عبدالرحمن",
+      "rating": 5,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-34.jpg",
+      "type": "full"
+    },
+    {
+      "id": 56,
+      "customerName": "نادية إبراهيم",
+      "rating": 3,
+      "comment": "أفضل منصة للأفلام والمسلسلات، أنصح بها بشدة",
+      "avatar": "/images/avatars/avatar-2.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 57,
+      "customerName": "كريم عبدالله",
+      "rating": 4,
+      "comment": "المسلسلات الكورية والتركية متوفرة بكثرة",
+      "avatar": "/images/avatars/avatar-47.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 58,
+      "customerName": "عبدالله الشمري",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-33.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 59,
+      "customerName": "هبة عثمان",
+      "rating": 5,
+      "comment": "جودة 4K مذهلة، والتطبيق سهل الاستخدام",
+      "avatar": "/images/avatars/avatar-27.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 60,
+      "customerName": "فاطمة الزهراني",
+      "rating": 5,
+      "comment": "الترجمة العربية دقيقة ومفهومة",
+      "avatar": "/images/avatars/avatar-24.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 61,
+      "customerName": "سلمى الخوري",
+      "rating": 5,
+      "comment": "جودة الصوت والصورة عالية جداً",
+      "avatar": "/images/avatars/avatar-9.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 62,
+      "customerName": "رشا محمود",
+      "rating": 3,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-47.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 63,
+      "customerName": "علي الأردني",
+      "rating": 5,
+      "comment": "مكتبة ضخمة من الأفلام والمسلسلات الحصرية",
+      "avatar": "/images/avatars/avatar-23.jpg",
+      "type": "full"
+    },
+    {
+      "id": 64,
+      "customerName": "محمود الطراونة",
+      "rating": 4,
+      "comment": "خدمة عملاء ممتازة وسريعة الاستجابة",
+      "avatar": "/images/avatars/avatar-27.jpg",
+      "type": "full"
+    },
+    {
+      "id": 65,
+      "customerName": "علي الكربلائي",
+      "rating": 5,
+      "comment": "تحديثات مستمرة للمحتوى الجديد",
+      "avatar": "/images/avatars/avatar-18.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 66,
+      "customerName": "رشا محمود",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-5.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 67,
+      "customerName": "كريم عبدالله",
+      "rating": 4,
+      "comment": "جودة 4K مذهلة، والتطبيق سهل الاستخدام",
+      "avatar": "/images/avatars/avatar-22.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 68,
+      "customerName": "أحمد الشريف",
+      "rating": 3,
+      "comment": "أفضل منصة للأفلام والمسلسلات، أنصح بها بشدة",
+      "avatar": "/images/avatars/avatar-25.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 69,
+      "customerName": "سارة الدوسري",
+      "rating": 4,
+      "comment": "إمكانية التحميل للمشاهدة بدون إنترنت رائعة",
+      "avatar": "/images/avatars/avatar-42.jpg",
+      "type": "full"
+    },
+    {
+      "id": 70,
+      "customerName": "عمر الزعبي",
+      "rating": 4,
+      "comment": "المحتوى العربي والعالمي رائع، تستحق الاشتراك",
+      "avatar": "/images/avatars/avatar-29.jpg",
+      "type": "full"
+    },
+    {
+      "id": 71,
+      "customerName": "عبدالرحيم المغربي",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-40.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 72,
+      "customerName": "ريما اللبنانية",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-15.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 73,
+      "customerName": "كريم عبدالله",
+      "rating": 4,
+      "comment": "المسلسلات الكورية والتركية متوفرة بكثرة",
+      "avatar": "/images/avatars/avatar-30.jpg",
+      "type": "full"
+    },
+    {
+      "id": 74,
+      "customerName": "عبدالرحيم المغربي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-36.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 75,
+      "customerName": "ياسمين أحمد",
+      "rating": 4,
+      "comment": "تحديثات مستمرة للمحتوى الجديد",
+      "avatar": "/images/avatars/avatar-31.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 76,
+      "customerName": "لينا الحداد",
+      "rating": 2,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-30.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 77,
+      "customerName": "فهد العنزي",
+      "rating": 5,
+      "comment": "جودة الصوت والصورة عالية جداً",
+      "avatar": "/images/avatars/avatar-23.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 78,
+      "customerName": "رشا محمود",
+      "rating": 5,
+      "comment": "إمكانية التحميل للمشاهدة بدون إنترنت رائعة",
+      "avatar": "/images/avatars/avatar-48.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 79,
+      "customerName": "سلطان المالكي",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-33.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 80,
+      "customerName": "مريم محمد",
+      "rating": 5,
+      "comment": "أطفالي يحبون قسم الأطفال الآمن",
+      "avatar": "/images/avatars/avatar-46.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 81,
+      "customerName": "يوسف القاسم",
+      "rating": 4,
+      "comment": "واجهة المستخدم بسيطة وسهلة",
+      "avatar": "/images/avatars/avatar-14.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 82,
+      "customerName": "فاطمة الزهراء",
+      "rating": 4,
+      "comment": "جودة الصوت والصورة عالية جداً",
+      "avatar": "/images/avatars/avatar-30.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 83,
+      "customerName": "ديانا العمري",
+      "rating": 3,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-24.jpg",
+      "type": "full"
+    },
+    {
+      "id": 84,
+      "customerName": "لارا الحلبي",
+      "rating": 4,
+      "comment": "مكتبة ضخمة من الأفلام والمسلسلات الحصرية",
+      "avatar": "/images/avatars/avatar-45.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 85,
+      "customerName": "محمد العتيبي",
+      "rating": 4,
+      "comment": "الترجمة العربية دقيقة ومفهومة",
+      "avatar": "/images/avatars/avatar-31.jpg",
+      "type": "full"
+    },
+    {
+      "id": 86,
+      "customerName": "أحمد السالم",
+      "rating": 5,
+      "comment": "المحتوى العربي والعالمي رائع، تستحق الاشتراك",
+      "avatar": "/images/avatars/avatar-42.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 87,
+      "customerName": "أحمد السالم",
+      "rating": 5,
+      "comment": "خدمة عملاء ممتازة وسريعة الاستجابة",
+      "avatar": "/images/avatars/avatar-43.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 88,
+      "customerName": "رشا محمود",
+      "rating": 5,
+      "comment": "المسلسلات الكورية والتركية متوفرة بكثرة",
+      "avatar": "/images/avatars/avatar-32.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 89,
+      "customerName": "ريما اللبنانية",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-29.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 90,
+      "customerName": "لطيفة السديري",
+      "rating": 3,
+      "comment": "مكتبة ضخمة من الأفلام والمسلسلات الحصرية",
+      "avatar": "/images/avatars/avatar-32.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 91,
+      "customerName": "سامر الشامي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-37.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 92,
+      "customerName": "حسام علي",
+      "rating": 5,
+      "comment": "إمكانية التحميل للمشاهدة بدون إنترنت رائعة",
+      "avatar": "/images/avatars/avatar-11.jpg",
+      "type": "full"
+    },
+    {
+      "id": 93,
+      "customerName": "سمر عبدالرحمن",
+      "rating": 3,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-29.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 94,
+      "customerName": "حيدر العراقي",
+      "rating": 3,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-1.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 95,
+      "customerName": "نور الهدى",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-10.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 96,
+      "customerName": "زينب الحسيني",
+      "rating": 4,
+      "comment": "جودة الصوت والصورة عالية جداً",
+      "avatar": "/images/avatars/avatar-27.jpg",
+      "type": "full"
+    },
+    {
+      "id": 97,
+      "customerName": "نور الهدى",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-13.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 98,
+      "customerName": "أحمد السالم",
+      "rating": 5,
+      "comment": "أطفالي يحبون قسم الأطفال الآمن",
+      "avatar": "/images/avatars/avatar-41.jpg",
+      "type": "full"
+    },
+    {
+      "id": 99,
+      "customerName": "عبدالله الشمري",
+      "rating": 4,
+      "comment": "المحتوى العربي والعالمي رائع، تستحق الاشتراك",
+      "avatar": "/images/avatars/avatar-44.jpg",
+      "type": "full"
+    },
+    {
+      "id": 100,
+      "customerName": "يوسف القاسم",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-31.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 101,
+      "customerName": "مريم محمد",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-41.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 102,
+      "customerName": "ياسمين أحمد",
+      "rating": 5,
+      "comment": "أسعار معقولة مقابل المحتوى المقدم",
+      "avatar": "/images/avatars/avatar-28.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 103,
+      "customerName": "لطيفة السديري",
+      "rating": 4,
+      "comment": "واجهة المستخدم بسيطة وسهلة",
+      "avatar": "/images/avatars/avatar-8.jpg",
+      "type": "full"
+    },
+    {
+      "id": 104,
+      "customerName": "هند الراشد",
+      "rating": 4,
+      "comment": "أطفالي يحبون قسم الأطفال الآمن",
+      "avatar": "/images/avatars/avatar-48.jpg",
+      "type": "full"
+    },
+    {
+      "id": 105,
+      "customerName": "لينا الحداد",
+      "rating": 2,
+      "comment": "أفضل منصة للأفلام والمسلسلات، أنصح بها بشدة",
+      "avatar": "/images/avatars/avatar-10.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 106,
+      "customerName": "أمير صلاح",
+      "rating": 3,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-35.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 107,
+      "customerName": "مريم الحربي",
+      "rating": 5,
+      "comment": "الترجمة العربية دقيقة ومفهومة",
+      "avatar": "/images/avatars/avatar-11.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 108,
+      "customerName": "نادية إبراهيم",
+      "rating": 3,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-28.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 109,
+      "customerName": "دينا حسن",
+      "rating": 4,
+      "comment": "المسلسلات الكورية والتركية متوفرة بكثرة",
+      "avatar": "/images/avatars/avatar-3.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 110,
+      "customerName": "عبدالرحمن الفيصل",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-24.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 111,
+      "customerName": "فاطمة الزهراء",
+      "rating": 4,
+      "comment": "لا توجد إعلانات مزعجة أثناء المشاهدة",
+      "avatar": "/images/avatars/avatar-28.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 112,
+      "customerName": "سامر الشامي",
+      "rating": 2,
+      "comment": "المحتوى الأصلي من Netflix مميز جداً",
+      "avatar": "/images/avatars/avatar-43.jpg",
+      "type": "full"
+    },
+    {
+      "id": 113,
+      "customerName": "لطيفة السديري",
+      "rating": 1,
+      "comment": "يعمل على جميع الأجهزة بسلاسة",
+      "avatar": "/images/avatars/avatar-2.jpg",
+      "type": "full"
+    },
+    {
+      "id": 114,
+      "customerName": "ريم الغامدي",
+      "rating": 5,
+      "comment": "واجهة المستخدم بسيطة وسهلة",
+      "avatar": "/images/avatars/avatar-43.jpg",
+      "type": "full"
+    },
+    {
+      "id": 115,
+      "customerName": "نور الهدى",
+      "rating": 5,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-12.jpg",
+      "type": "full"
+    },
+    {
+      "id": 116,
+      "customerName": "ياسمين أحمد",
+      "rating": 4,
+      "comment": "إمكانية التحميل للمشاهدة بدون إنترنت رائعة",
+      "avatar": "/images/avatars/avatar-7.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 117,
+      "customerName": "فاطمة الزهراء",
+      "rating": 3,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-19.jpg",
+      "type": "full"
+    },
+    {
+      "id": 118,
+      "customerName": "ريما اللبنانية",
+      "rating": 4,
+      "comment": "يعمل على جميع الأجهزة بسلاسة",
+      "avatar": "/images/avatars/avatar-16.jpg",
+      "type": "full"
+    },
+    {
+      "id": 119,
+      "customerName": "ريم الغامدي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-45.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 120,
+      "customerName": "أحمد الشريف",
+      "rating": 4,
+      "comment": "المحتوى الأصلي من Netflix مميز جداً",
+      "avatar": "/images/avatars/avatar-7.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 121,
+      "customerName": "علي الكربلائي",
+      "rating": 5,
+      "comment": "أطفالي يحبون قسم الأطفال الآمن",
+      "avatar": "/images/avatars/avatar-15.jpg",
+      "type": "full"
+    },
+    {
+      "id": 122,
+      "customerName": "سامر الشامي",
+      "rating": 4,
+      "comment": "مكتبة ضخمة من الأفلام والمسلسلات الحصرية",
+      "avatar": "/images/avatars/avatar-11.jpg",
+      "type": "full"
+    },
+    {
+      "id": 123,
+      "customerName": "نور الهدى",
+      "rating": 5,
+      "comment": "أطفالي يحبون قسم الأطفال الآمن",
+      "avatar": "/images/avatars/avatar-36.jpg",
+      "type": "full"
+    },
+    {
+      "id": 124,
+      "customerName": "نورا القحطاني",
+      "rating": 4,
+      "comment": "أسعار معقولة مقابل المحتوى المقدم",
+      "avatar": "/images/avatars/avatar-41.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 125,
+      "customerName": "عبدالرحيم المغربي",
+      "rating": 3,
+      "comment": "خدمة عملاء ممتازة وسريعة الاستجابة",
+      "avatar": "/images/avatars/avatar-14.jpg",
+      "type": "full"
+    },
+    {
+      "id": 126,
+      "customerName": "سارة الدوسري",
+      "rating": 3,
+      "comment": "لا توجد إعلانات مزعجة أثناء المشاهدة",
+      "avatar": "/images/avatars/avatar-48.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 127,
+      "customerName": "لارا الحلبي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-10.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 128,
+      "customerName": "ياسمين أحمد",
+      "rating": 3,
+      "comment": "المحتوى العربي والعالمي رائع، تستحق الاشتراك",
+      "avatar": "/images/avatars/avatar-31.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 129,
+      "customerName": "لطيفة السديري",
+      "rating": 3,
+      "comment": "أفضل منصة للأفلام والمسلسلات، أنصح بها بشدة",
+      "avatar": "/images/avatars/avatar-9.jpg",
+      "type": "full"
+    },
+    {
+      "id": 130,
+      "customerName": "دينا حسن",
+      "rating": 5,
+      "comment": "جودة الصوت والصورة عالية جداً",
+      "avatar": "/images/avatars/avatar-21.jpg",
+      "type": "full"
+    },
+    {
+      "id": 131,
+      "customerName": "عمر الزعبي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-39.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 132,
+      "customerName": "لطيفة السديري",
+      "rating": 5,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-49.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 133,
+      "customerName": "عمر الزعبي",
+      "rating": 4,
+      "comment": "يعمل على جميع الأجهزة بسلاسة",
+      "avatar": "/images/avatars/avatar-22.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 134,
+      "customerName": "نور الهدى",
+      "rating": 4,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-8.jpg",
+      "type": "full"
+    },
+    {
+      "id": 135,
+      "customerName": "رشا محمود",
+      "rating": 5,
+      "comment": "المسلسلات الكورية والتركية متوفرة بكثرة",
+      "avatar": "/images/avatars/avatar-8.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 136,
+      "customerName": "أمير صلاح",
+      "rating": 4,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-28.jpg",
+      "type": "full"
+    },
+    {
+      "id": 137,
+      "customerName": "فهد العنزي",
+      "rating": 3,
+      "comment": "المسلسلات الكورية والتركية متوفرة بكثرة",
+      "avatar": "/images/avatars/avatar-42.jpg",
+      "type": "full"
+    },
+    {
+      "id": 138,
+      "customerName": "هبة عثمان",
+      "rating": 1,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-12.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 139,
+      "customerName": "زينب الحسيني",
+      "rating": 5,
+      "comment": "المحتوى العربي والعالمي رائع، تستحق الاشتراك",
+      "avatar": "/images/avatars/avatar-3.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 140,
+      "customerName": "نادية إبراهيم",
+      "rating": 5,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-8.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 141,
+      "customerName": "أحمد الشريف",
+      "rating": 4,
+      "comment": "خدمة موثوقة وسريعة، لا توجد مشاكل في التشغيل",
+      "avatar": "/images/avatars/avatar-47.jpg",
+      "type": "full"
+    },
+    {
+      "id": 142,
+      "customerName": "عبدالله الشمري",
+      "rating": 3,
+      "comment": "واجهة المستخدم بسيطة وسهلة",
+      "avatar": "/images/avatars/avatar-34.jpg",
+      "type": "full"
+    },
+    {
+      "id": 143,
+      "customerName": "أحمد الشريف",
+      "rating": 5,
+      "comment": "المحتوى الأصلي من Netflix مميز جداً",
+      "avatar": "/images/avatars/avatar-13.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 144,
+      "customerName": "نادر الحموي",
+      "rating": 2,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-50.jpg",
+      "type": "full"
+    },
+    {
+      "id": 145,
+      "customerName": "أحمد السالم",
+      "rating": 5,
+      "comment": "تحديثات مستمرة للمحتوى الجديد",
+      "avatar": "/images/avatars/avatar-4.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 146,
+      "customerName": "فاطمة الزهراء",
+      "rating": 3,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-37.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 147,
+      "customerName": "سارة الدوسري",
+      "rating": 4,
+      "comment": "يعمل على جميع الأجهزة بسلاسة",
+      "avatar": "/images/avatars/avatar-36.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 148,
+      "customerName": "ياسمين أحمد",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-12.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 149,
+      "customerName": "ديانا العمري",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-11.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 150,
+      "customerName": "ديانا العمري",
+      "rating": 5,
+      "comment": "المحتوى العربي والعالمي رائع، تستحق الاشتراك",
+      "avatar": "/images/avatars/avatar-31.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 151,
+      "customerName": "عمر الإدريسي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-22.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 152,
+      "customerName": "هبة عثمان",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-17.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 153,
+      "customerName": "مصطفى البغدادي",
+      "rating": 5,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-25.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 154,
+      "customerName": "عمر الزعبي",
+      "rating": 4,
+      "comment": "أطفالي يحبون قسم الأطفال الآمن",
+      "avatar": "/images/avatars/avatar-40.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 155,
+      "customerName": "ريما اللبنانية",
+      "rating": 5,
+      "comment": "خدمة عملاء ممتازة وسريعة الاستجابة",
+      "avatar": "/images/avatars/avatar-19.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 156,
+      "customerName": "بندر الخالد",
+      "rating": 5,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-36.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 157,
+      "customerName": "رشا محمود",
+      "rating": 4,
+      "comment": "أفضل منصة للأفلام والمسلسلات، أنصح بها بشدة",
+      "avatar": "/images/avatars/avatar-17.jpg",
+      "type": "full"
+    },
+    {
+      "id": 158,
+      "customerName": "يوسف القاسم",
+      "rating": 5,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-18.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 159,
+      "customerName": "هند الراشد",
+      "rating": 5,
+      "comment": "واجهة المستخدم بسيطة وسهلة",
+      "avatar": "/images/avatars/avatar-18.jpg",
+      "type": "full"
+    },
+    {
+      "id": 160,
+      "customerName": "نور الهدى",
+      "rating": 3,
+      "comment": "أسعار معقولة مقابل المحتوى المقدم",
+      "avatar": "/images/avatars/avatar-33.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 161,
+      "customerName": "أمير صلاح",
+      "rating": 4,
+      "comment": "خدمة Netflix ممتازة، جودة عالية ومحتوى متنوع",
+      "avatar": "/images/avatars/avatar-48.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 162,
+      "customerName": "خالد المطيري",
+      "rating": 4,
+      "comment": "خدمة Netflix ممتازة، جودة عالية ومحتوى متنوع",
+      "avatar": "/images/avatars/avatar-19.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 163,
+      "customerName": "حسام علي",
+      "rating": 4,
+      "comment": "خدمة Netflix ممتازة، جودة عالية ومحتوى متنوع",
+      "avatar": "/images/avatars/avatar-47.jpg",
+      "type": "full"
+    },
+    {
+      "id": 164,
+      "customerName": "كريم عبدالله",
+      "rating": 4,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-50.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 165,
+      "customerName": "محمد العتيبي",
+      "rating": 2,
+      "comment": "خدمة عملاء ممتازة وسريعة الاستجابة",
+      "avatar": "/images/avatars/avatar-30.jpg",
+      "type": "full"
+    },
+    {
+      "id": 166,
+      "customerName": "أحمد الشريف",
+      "rating": 5,
+      "comment": "جودة 4K مذهلة، والتطبيق سهل الاستخدام",
+      "avatar": "/images/avatars/avatar-27.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 167,
+      "customerName": "عبدالرحمن الفيصل",
+      "rating": 5,
+      "comment": "المسلسلات الكورية والتركية متوفرة بكثرة",
+      "avatar": "/images/avatars/avatar-32.jpg",
+      "type": "full"
+    },
+    {
+      "id": 168,
+      "customerName": "رشا محمود",
+      "rating": 5,
+      "comment": "أطفالي يحبون قسم الأطفال الآمن",
+      "avatar": "/images/avatars/avatar-27.jpg",
+      "type": "full"
+    },
+    {
+      "id": 169,
+      "customerName": "لطيفة السديري",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-26.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 170,
+      "customerName": "هند الراشد",
+      "rating": 5,
+      "comment": "خدمة Netflix ممتازة، جودة عالية ومحتوى متنوع",
+      "avatar": "/images/avatars/avatar-36.jpg",
+      "type": "full"
+    },
+    {
+      "id": 171,
+      "customerName": "باسل الدمشقي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-2.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 172,
+      "customerName": "سامر الشامي",
+      "rating": 5,
+      "comment": "المحتوى العربي والعالمي رائع، تستحق الاشتراك",
+      "avatar": "/images/avatars/avatar-9.jpg",
+      "type": "full"
+    },
+    {
+      "id": 173,
+      "customerName": "طارق محمود",
+      "rating": 3,
+      "comment": "خدمة Netflix ممتازة، جودة عالية ومحتوى متنوع",
+      "avatar": "/images/avatars/avatar-25.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 174,
+      "customerName": "سلطان المالكي",
+      "rating": 4,
+      "comment": "الترجمة العربية دقيقة ومفهومة",
+      "avatar": "/images/avatars/avatar-30.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 175,
+      "customerName": "سامر الشامي",
+      "rating": 4,
+      "comment": "إمكانية التحميل للمشاهدة بدون إنترنت رائعة",
+      "avatar": "/images/avatars/avatar-31.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 176,
+      "customerName": "سلمى الخوري",
+      "rating": 4,
+      "comment": "لا توجد إعلانات مزعجة أثناء المشاهدة",
+      "avatar": "/images/avatars/avatar-44.jpg",
+      "type": "full"
+    },
+    {
+      "id": 177,
+      "customerName": "سمر عبدالرحمن",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-7.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 178,
+      "customerName": "حيدر العراقي",
+      "rating": 5,
+      "comment": "أسعار معقولة مقابل المحتوى المقدم",
+      "avatar": "/images/avatars/avatar-8.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 179,
+      "customerName": "لارا الحلبي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-18.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 180,
+      "customerName": "لينا الحداد",
+      "rating": 5,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-25.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 181,
+      "customerName": "لارا الحلبي",
+      "rating": 5,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-2.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 182,
+      "customerName": "هبة عثمان",
+      "rating": 5,
+      "comment": "أسعار معقولة مقابل المحتوى المقدم",
+      "avatar": "/images/avatars/avatar-19.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 183,
+      "customerName": "مريم الحربي",
+      "rating": 4,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-27.jpg",
+      "type": "full"
+    },
+    {
+      "id": 184,
+      "customerName": "طارق محمود",
+      "rating": 3,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-26.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 185,
+      "customerName": "نادية إبراهيم",
+      "rating": 5,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-8.jpg",
+      "type": "full"
+    },
+    {
+      "id": 186,
+      "customerName": "طارق محمود",
+      "rating": 5,
+      "comment": "أطفالي يحبون قسم الأطفال الآمن",
+      "avatar": "/images/avatars/avatar-29.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 187,
+      "customerName": "باسل الدمشقي",
+      "rating": 3,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-47.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 188,
+      "customerName": "نادية إبراهيم",
+      "rating": 4,
+      "comment": "جودة الصوت والصورة عالية جداً",
+      "avatar": "/images/avatars/avatar-13.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 189,
+      "customerName": "طارق محمود",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-12.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 190,
+      "customerName": "ياسمين أحمد",
+      "rating": 5,
+      "comment": "المحتوى الأصلي من Netflix مميز جداً",
+      "avatar": "/images/avatars/avatar-37.jpg",
+      "type": "full"
+    },
+    {
+      "id": 191,
+      "customerName": "مصطفى البغدادي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-42.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 192,
+      "customerName": "محمد العتيبي",
+      "rating": 5,
+      "comment": "الترجمة العربية دقيقة ومفهومة",
+      "avatar": "/images/avatars/avatar-44.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 193,
+      "customerName": "علي الكربلائي",
+      "rating": 4,
+      "comment": "واجهة المستخدم بسيطة وسهلة",
+      "avatar": "/images/avatars/avatar-40.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 194,
+      "customerName": "رشا محمود",
+      "rating": 4,
+      "comment": "جودة 4K مذهلة، والتطبيق سهل الاستخدام",
+      "avatar": "/images/avatars/avatar-38.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 195,
+      "customerName": "هند الراشد",
+      "rating": 2,
+      "comment": "لا توجد إعلانات مزعجة أثناء المشاهدة",
+      "avatar": "/images/avatars/avatar-43.jpg",
+      "type": "full"
+    },
+    {
+      "id": 196,
+      "customerName": "نادر الحموي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-27.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 197,
+      "customerName": "أمير صلاح",
+      "rating": 5,
+      "comment": "خدمة Netflix ممتازة، جودة عالية ومحتوى متنوع",
+      "avatar": "/images/avatars/avatar-40.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 198,
+      "customerName": "محمد العتيبي",
+      "rating": 4,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-39.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 199,
+      "customerName": "عبدالرحيم المغربي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-33.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 200,
+      "customerName": "ياسمين أحمد",
+      "rating": 3,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-33.jpg",
+      "type": "full"
+    },
+    {
+      "id": 201,
+      "customerName": "ياسمين أحمد",
+      "rating": 3,
+      "comment": "يعمل على جميع الأجهزة بسلاسة",
+      "avatar": "/images/avatars/avatar-46.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 202,
+      "customerName": "هند الراشد",
+      "rating": 4,
+      "comment": "جودة الصوت والصورة عالية جداً",
+      "avatar": "/images/avatars/avatar-12.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 203,
+      "customerName": "طارق محمود",
+      "rating": 5,
+      "comment": "أسعار معقولة مقابل المحتوى المقدم",
+      "avatar": "/images/avatars/avatar-26.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 204,
+      "customerName": "لارا الحلبي",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-4.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 205,
+      "customerName": "نورا القحطاني",
+      "rating": 4,
+      "comment": "أفضل منصة للأفلام والمسلسلات، أنصح بها بشدة",
+      "avatar": "/images/avatars/avatar-44.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 206,
+      "customerName": "هبة عثمان",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-11.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 207,
+      "customerName": "عمر الإدريسي",
+      "rating": 4,
+      "comment": "تحديثات مستمرة للمحتوى الجديد",
+      "avatar": "/images/avatars/avatar-4.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 208,
+      "customerName": "نور الهدى",
+      "rating": 3,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-26.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 209,
+      "customerName": "ياسمين أحمد",
+      "rating": 4,
+      "comment": "يعمل على جميع الأجهزة بسلاسة",
+      "avatar": "/images/avatars/avatar-35.jpg",
+      "type": "full"
+    },
+    {
+      "id": 210,
+      "customerName": "سمر عبدالرحمن",
+      "rating": 4,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-12.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 211,
+      "customerName": "باسل الدمشقي",
+      "rating": 5,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-42.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 212,
+      "customerName": "بندر الخالد",
+      "rating": 5,
+      "comment": "إمكانية التحميل للمشاهدة بدون إنترنت رائعة",
+      "avatar": "/images/avatars/avatar-9.jpg",
+      "type": "full"
+    },
+    {
+      "id": 213,
+      "customerName": "نادية إبراهيم",
+      "rating": 2,
+      "comment": "واجهة المستخدم بسيطة وسهلة",
+      "avatar": "/images/avatars/avatar-35.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 214,
+      "customerName": "بندر الخالد",
+      "rating": 2,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-12.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 215,
+      "customerName": "عمر الزعبي",
+      "rating": 1,
+      "comment": "أسعار معقولة مقابل المحتوى المقدم",
+      "avatar": "/images/avatars/avatar-31.jpg",
+      "type": "full"
+    },
+    {
+      "id": 216,
+      "customerName": "علي الكربلائي",
+      "rating": 2,
+      "comment": "لا توجد إعلانات مزعجة أثناء المشاهدة",
+      "avatar": "/images/avatars/avatar-27.jpg",
+      "type": "full"
+    },
+    {
+      "id": 217,
+      "customerName": "ياسمين أحمد",
+      "rating": 5,
+      "comment": "الترجمة العربية دقيقة ومفهومة",
+      "avatar": "/images/avatars/avatar-1.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 218,
+      "customerName": "فاطمة الزهراء",
+      "rating": 4,
+      "comment": "جودة الصوت والصورة عالية جداً",
+      "avatar": "/images/avatars/avatar-19.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 219,
+      "customerName": "عبدالرحيم المغربي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-16.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 220,
+      "customerName": "بندر الخالد",
+      "rating": 4,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-10.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 221,
+      "customerName": "عبدالله الشمري",
+      "rating": 4,
+      "comment": "أسعار معقولة مقابل المحتوى المقدم",
+      "avatar": "/images/avatars/avatar-9.jpg",
+      "type": "full"
+    },
+    {
+      "id": 222,
+      "customerName": "نادر الحموي",
+      "rating": 4,
+      "comment": "تحديثات مستمرة للمحتوى الجديد",
+      "avatar": "/images/avatars/avatar-37.jpg",
+      "type": "full"
+    },
+    {
+      "id": 223,
+      "customerName": "طارق محمود",
+      "rating": 3,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-16.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 224,
+      "customerName": "أحمد السالم",
+      "rating": 5,
+      "comment": "أطفالي يحبون قسم الأطفال الآمن",
+      "avatar": "/images/avatars/avatar-5.jpg",
+      "type": "full"
+    },
+    {
+      "id": 225,
+      "customerName": "فاطمة الزهراء",
+      "rating": 4,
+      "comment": "الترجمة العربية دقيقة ومفهومة",
+      "avatar": "/images/avatars/avatar-8.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 226,
+      "customerName": "ياسمين أحمد",
+      "rating": 3,
+      "comment": "مكتبة ضخمة من الأفلام والمسلسلات الحصرية",
+      "avatar": "/images/avatars/avatar-11.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 227,
+      "customerName": "أمير صلاح",
+      "rating": 3,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-13.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 228,
+      "customerName": "نادية إبراهيم",
+      "rating": 4,
+      "comment": "لا توجد إعلانات مزعجة أثناء المشاهدة",
+      "avatar": "/images/avatars/avatar-33.jpg",
+      "type": "full"
+    },
+    {
+      "id": 229,
+      "customerName": "محمد العتيبي",
+      "rating": 5,
+      "comment": "المحتوى العربي والعالمي رائع، تستحق الاشتراك",
+      "avatar": "/images/avatars/avatar-42.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 230,
+      "customerName": "مريم محمد",
+      "rating": 5,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-1.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 231,
+      "customerName": "دينا حسن",
+      "rating": 3,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-1.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 232,
+      "customerName": "نادية إبراهيم",
+      "rating": 5,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-48.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 233,
+      "customerName": "نور الهدى",
+      "rating": 3,
+      "comment": "خدمة موثوقة وسريعة، لا توجد مشاكل في التشغيل",
+      "avatar": "/images/avatars/avatar-11.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 234,
+      "customerName": "كريم عبدالله",
+      "rating": 5,
+      "comment": "مكتبة ضخمة من الأفلام والمسلسلات الحصرية",
+      "avatar": "/images/avatars/avatar-13.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 235,
+      "customerName": "نادر الحموي",
+      "rating": 4,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-40.jpg",
+      "type": "full"
+    },
+    {
+      "id": 236,
+      "customerName": "علي الأردني",
+      "rating": 5,
+      "comment": "جودة 4K مذهلة، والتطبيق سهل الاستخدام",
+      "avatar": "/images/avatars/avatar-10.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 237,
+      "customerName": "علي الأردني",
+      "rating": 5,
+      "comment": "جودة 4K مذهلة، والتطبيق سهل الاستخدام",
+      "avatar": "/images/avatars/avatar-27.jpg",
+      "type": "full"
+    },
+    {
+      "id": 238,
+      "customerName": "طارق محمود",
+      "rating": 3,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-5.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 239,
+      "customerName": "علي الكربلائي",
+      "rating": 3,
+      "comment": "الترجمة العربية دقيقة ومفهومة",
+      "avatar": "/images/avatars/avatar-29.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 240,
+      "customerName": "فاطمة الزهراء",
+      "rating": 5,
+      "comment": "تطبيق سريع ولا يتعلق أبداً",
+      "avatar": "/images/avatars/avatar-27.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 241,
+      "customerName": "عبدالرحيم المغربي",
+      "rating": 4,
+      "comment": "خدمة موثوقة وسريعة، لا توجد مشاكل في التشغيل",
+      "avatar": "/images/avatars/avatar-12.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 242,
+      "customerName": "رنا العبدالله",
+      "rating": 2,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-7.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 243,
+      "customerName": "نادر الحموي",
+      "rating": 5,
+      "comment": "جودة الصوت والصورة عالية جداً",
+      "avatar": "/images/avatars/avatar-48.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 244,
+      "customerName": "فهد العنزي",
+      "rating": 5,
+      "comment": "إمكانية التحميل للمشاهدة بدون إنترنت رائعة",
+      "avatar": "/images/avatars/avatar-38.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 245,
+      "customerName": "عمر الإدريسي",
+      "rating": 5,
+      "comment": "لا توجد إعلانات مزعجة أثناء المشاهدة",
+      "avatar": "/images/avatars/avatar-2.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 246,
+      "customerName": "عبدالرحيم المغربي",
+      "rating": 3,
+      "comment": "أطفالي يحبون قسم الأطفال الآمن",
+      "avatar": "/images/avatars/avatar-19.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 247,
+      "customerName": "سارة الدوسري",
+      "rating": 4,
+      "comment": "خدمة Netflix ممتازة، جودة عالية ومحتوى متنوع",
+      "avatar": "/images/avatars/avatar-49.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 248,
+      "customerName": "حيدر العراقي",
+      "rating": 3,
+      "comment": "أطفالي يحبون قسم الأطفال الآمن",
+      "avatar": "/images/avatars/avatar-16.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 249,
+      "customerName": "يوسف القاسم",
+      "rating": 5,
+      "comment": "تحديثات مستمرة للمحتوى الجديد",
+      "avatar": "/images/avatars/avatar-19.jpg",
+      "type": "full"
+    },
+    {
+      "id": 250,
+      "customerName": "محمود الطراونة",
+      "rating": 4,
+      "comment": "لا توجد إعلانات مزعجة أثناء المشاهدة",
+      "avatar": "/images/avatars/avatar-4.jpg",
+      "type": "full"
+    },
+    {
+      "id": 251,
+      "customerName": "عمر الزعبي",
+      "rating": 4,
+      "comment": "إمكانية التحميل للمشاهدة بدون إنترنت رائعة",
+      "avatar": "/images/avatars/avatar-34.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 252,
+      "customerName": "خديجة الحسني",
+      "rating": 3,
+      "comment": "يعمل على جميع الأجهزة بسلاسة",
+      "avatar": "/images/avatars/avatar-25.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 253,
+      "customerName": "باسل الدمشقي",
+      "rating": 4,
+      "comment": "مشاهدة على 4 شاشات في نفس الوقت مفيدة للعائلة",
+      "avatar": "/images/avatars/avatar-37.jpg",
+      "type": "full"
+    },
+    {
+      "id": 254,
+      "customerName": "رشا محمود",
+      "rating": 5,
+      "comment": "تحديثات مستمرة للمحتوى الجديد",
+      "avatar": "/images/avatars/avatar-19.jpg",
+      "type": "full"
+    },
+    {
+      "id": 255,
+      "customerName": "سلطان المالكي",
+      "rating": 5,
+      "comment": "",
+      "avatar": "/images/avatars/avatar-10.jpg",
+      "type": "stars_only"
+    },
+    {
+      "id": 256,
+      "customerName": "سلطان المالكي",
+      "rating": 5,
+      "comment": "خدمة عملاء ممتازة وسريعة الاستجابة",
+      "avatar": "/images/avatars/avatar-22.jpg",
+      "type": "full"
+    },
+    {
+      "id": 257,
+      "customerName": "محمود الطراونة",
+      "rating": 5,
+      "comment": "المحتوى الأصلي من Netflix مميز جداً",
+      "avatar": "/images/avatars/avatar-49.jpg",
+      "type": "simple_text"
+    },
+    {
+      "id": 258,
+      "customerName": "ياسمين أحمد",
+      "rating": 4,
+      "comment": "المحتوى الأصلي من Netflix مميز جداً",
+      "avatar": "/images/avatars/avatar-35.jpg",
+      "type": "full"
+    },
+    {
+      "id": 259,
+      "customerName": "سمر عبدالرحمن",
+      "rating": 4,
+      "comment": "جودة 4K مذهلة، والتطبيق سهل الاستخدام",
+      "avatar": "/images/avatars/avatar-1.jpg",
+      "type": "full"
+    },
+    {
+      "id": 260,
+      "customerName": "لطيفة السديري",
+      "rating": 4,
+      "comment": "مكتبة ضخمة من الأفلام والمسلسلات الحصرية",
+      "avatar": "/images/avatars/avatar-8.jpg",
+      "type": "simple_text"
+    }
   ]
 }

@@ -257,8 +257,8 @@ const ProductDescriptionBoxes: React.FC<ProductDescriptionBoxesProps> = ({ produ
           box1: {
             title: "🤖 ما ستحصل عليه:",
             items: [
-              "اشتراك ChatGPT Plus لمدة 12 شهر",
-              "وصول لـ GPT-4 و GPT-4o",
+              "اشتراك ChatGPT Go لمدة 12 شهر",
+              "وصول لـ GPT-5 و GPT-5.1",
               "استخدام غير محدود يومياً",
               "أولوية في الاستجابة"
             ]
@@ -277,7 +277,6 @@ const ProductDescriptionBoxes: React.FC<ProductDescriptionBoxesProps> = ({ produ
             items: [
               "تسليم فوري بعد الدفع",
               "بيانات الحساب عبر واتساب",
-              "دعم فني مجاني",
               "ضمان الاستبدال"
             ]
           },
@@ -317,7 +316,6 @@ const ProductDescriptionBoxes: React.FC<ProductDescriptionBoxesProps> = ({ produ
             items: [
               "تسليم فوري بعد الدفع",
               "بيانات الحساب عبر واتساب",
-              "دعم فني مجاني",
               "ضمان الاستبدال"
             ]
           },
@@ -357,7 +355,6 @@ const ProductDescriptionBoxes: React.FC<ProductDescriptionBoxesProps> = ({ produ
             items: [
               "تسليم فوري بعد الدفع",
               "بيانات الحساب عبر واتساب",
-              "دعم فني مجاني",
               "ضمان الاستبدال"
             ]
           },
@@ -397,7 +394,6 @@ const ProductDescriptionBoxes: React.FC<ProductDescriptionBoxesProps> = ({ produ
             items: [
               "تسليم فوري بعد الدفع",
               "بيانات الحساب عبر واتساب",
-              "دعم فني مجاني",
               "ضمان الاستبدال"
             ]
           },

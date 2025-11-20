@@ -8,16 +8,31 @@ interface PriceDisplayProps {
   currency: Currency;
   className?: string;
   showCurrencyFirst?: boolean; // لعرض العملة قبل السعر (مثل ﷼ 29.99)
+  originalPrice?: number; // السعر الأصلي للمنتجات المجانية
 }
 
 export default function PriceDisplay({ 
   price, 
   currency, 
   className = '', 
-  showCurrencyFirst = false 
+  showCurrencyFirst = false,
+  originalPrice 
 }: PriceDisplayProps) {
-  // إذا كان السعر 0، عرض "مجاني"
+  // إذا كان السعر 0، عرض السعر الأصلي + مجاني
   if (price === 0) {
+    if (originalPrice && originalPrice > 0) {
+      const formattedOriginalPrice = formatPriceValue(originalPrice);
+      return (
+        <div className={`${className} flex items-center gap-2`}>
+          <span className="text-gray-400 line-through text-sm">
+            {formattedOriginalPrice} <CurrencyDisplay currency={currency} />
+          </span>
+          <span className="text-green-400 font-bold">
+            مجاني
+          </span>
+        </div>
+      );
+    }
     return (
       <span className={`${className} text-green-400 font-bold`}>
         مجاني
