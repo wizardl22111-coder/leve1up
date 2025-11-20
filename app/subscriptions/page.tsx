@@ -102,28 +102,7 @@ export default function SubscriptionsPage() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 bg-dark-400">
-        <div className="container-mobile">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Smartphone className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">دعم فني</h3>
-              <p className="text-gray-400">دعم فني متاح 24/7 لمساعدتك</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Tv className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2">أسعار تنافسية</h3>
-              <p className="text-gray-400">أسعار تنافسية وعروض حصرية</p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Subscription Products Section */}
       <section className="py-16 bg-dark-500">

@@ -103,7 +103,10 @@ export default function ProductDetail({ product }: { product?: Product }) {
   const getProductImage = () => product.image ?? product.product_image ?? '/placeholder.jpg';
 
   // حساب السعر باستخدام النظام الموحد
-  const priceCalc = calculatePrice(product, currency);
+  // إذا كان هناك خطة محددة للاشتراك، استخدم سعرها، وإلا استخدم السعر الأساسي
+  const currentPrice = selectedDuration ? selectedDuration.price : (product.price ?? 0);
+  const productWithUpdatedPrice = { ...product, price: currentPrice };
+  const priceCalc = calculatePrice(productWithUpdatedPrice, currency);
   const productId = getProductId();
   const productName = getProductName();
   const productImage = getProductImage();
@@ -122,11 +125,19 @@ export default function ProductDetail({ product }: { product?: Product }) {
     
     // نحفظ السعر المخفض بـ SAR (discountedPrice) وليس finalPrice
     // لأن AppContext سيحوله تلقائياً للعملة الحالية
+    // إذا كان هناك خطة محددة، استخدم سعرها
+    const finalPrice = selectedDuration ? selectedDuration.price : priceCalc.discountedPrice;
+    
     addToCart({
       id: productId,
       name: productName,
-      price: priceCalc.discountedPrice, // السعر بـ SAR بعد الخصم
+      price: finalPrice, // السعر بـ SAR بعد الخصم أو سعر الخطة المحددة
       image: productImage,
+      // إضافة معلومات الخطة إذا كانت موجودة
+      ...(selectedDuration && { 
+        duration: selectedDuration.duration,
+        variant: selectedDuration 
+      })
     });
     showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'cart');
   };

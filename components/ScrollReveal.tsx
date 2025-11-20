@@ -76,7 +76,7 @@ export default function ScrollReveal({
       ref={elementRef}
       className={className}
       style={{
-        opacity: isVisible ? 1 : 0.1,
+        opacity: isVisible ? 1 : 0,
         transform: getTransform(),
         transition: `all ${duration}ms cubic-bezier(0.16, 1, 0.3, 1)`,
         willChange: 'transform, opacity'

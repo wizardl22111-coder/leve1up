@@ -435,19 +435,27 @@
     "variants": [
       {
         "duration": "شهر",
-        "price": 15
+        "price": 15,
+        "originalPrice": 25,
+        "savings": "وفر 40%"
       },
       {
         "duration": "3 أشهر",
-        "price": 40
+        "price": 40,
+        "originalPrice": 75,
+        "savings": "وفر 47%"
       },
       {
         "duration": "6 أشهر",
-        "price": 70
+        "price": 70,
+        "originalPrice": 150,
+        "savings": "وفر 53%"
       },
       {
         "duration": "12 شهر",
-        "price": 120
+        "price": 120,
+        "originalPrice": 300,
+        "savings": "وفر 60%"
       }
     ],
     "purchases": 320,
