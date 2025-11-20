@@ -42,7 +42,7 @@ export default function SubscriptionDurationSelector({
           const response = await fetch('/data/products.json');
           const products = await response.json();
           const product = products.find((p: any) => p.product_id === productId);
-          productVariants = product?.variants;
+          productVariants = product?.subscription_plans || product?.variants;
         }
         
         if (productVariants && productVariants.length > 0) {
@@ -54,10 +54,12 @@ export default function SubscriptionDurationSelector({
                    variant.duration === '6 أشهر' ? 6 : 12,
             price: variant.price,
             originalPrice: variant.originalPrice,
-            popular: variant.duration === '6 أشهر',
-            description: variant.duration === 'شهر' ? 'مثالي للتجربة' :
-                        variant.duration === '3 أشهر' ? 'خيار شائع' :
-                        variant.duration === '6 أشهر' ? 'أفضل قيمة' : 'أقصى توفير'
+            popular: variant.popular || variant.duration === '6 أشهر',
+            description: variant.description || (
+              variant.duration === 'شهر' ? 'مثالي للتجربة' :
+              variant.duration === '3 أشهر' ? 'خيار شائع' :
+              variant.duration === '6 أشهر' ? 'أفضل قيمة' : 'أقصى توفير'
+            )
           }));
           
           setOptions(durationOptions);

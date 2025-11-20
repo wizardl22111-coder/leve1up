@@ -239,7 +239,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
             {product.category === 'subscriptions' && productId === 10 && (
               <SubscriptionDurationSelector
                 productId={productId}
-                variants={product.variants}
+                variants={product.subscription_plans || product.variants}
                 onDurationChange={(option) => setSelectedDuration(option)}
                 className="mb-6"
               />
