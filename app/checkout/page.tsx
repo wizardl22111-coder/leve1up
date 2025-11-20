@@ -76,7 +76,7 @@ function CheckoutContent() {
       localStorage.setItem("leve1up_product_name", productName);
       localStorage.setItem("leve1up_price", price);
       localStorage.setItem("leve1up_currency", currency);
-      localStorage.setItem("leve1up_product_file", productFile);
+      localStorage.setItem("leve1up_product_file", productFile || "");
       
       const currencyCode = currencyCodeMap[currency] || "AED";
 
@@ -87,7 +87,7 @@ function CheckoutContent() {
           amount: parseFloat(price),
           currency_code: currencyCode,
           productName,
-          productFile,
+          productFile: productFile || "",
           customerEmail: email,
         }),
       });
