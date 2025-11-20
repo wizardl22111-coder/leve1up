@@ -180,6 +180,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
                 {product.category === 'ebooks' ? 'كتاب رقمي' : 
                  product.category === 'editing-tools' ? 'أدوات المونتاج' :
                  product.category === 'youtube-tools' ? 'أدوات المونتاج' :
+                 product.category === 'subscriptions' ? 'الاشتراكات' :
                  product.category ?? 'منتج رقمي'}
               </span>
             </div>

@@ -52,10 +52,11 @@ function CheckoutContent() {
         return;
       }
 
-      // استخدام رابط التحميل من قاعدة البيانات
+      // استخدام رابط التحميل من قاعدة البيانات (اختياري للاشتراكات)
       const productFile = product.download_url;
       
-      if (!productFile) {
+      // للاشتراكات، لا نحتاج رابط تحميل
+      if (!productFile && product.category !== 'subscriptions') {
         setError(`رابط تحميل المنتج غير متوفر. يرجى التواصل مع الدعم الفني.`);
         return;
       }
