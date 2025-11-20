@@ -56,7 +56,7 @@ export default function Hero() {
                 href="#products"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent-600 to-accent-700 text-white px-6 py-4 sm:px-8 sm:py-4 rounded-2xl font-bold text-base sm:text-lg shadow-lg shadow-accent-600/30 hover:shadow-2xl hover:shadow-accent-600/50 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 touch-manipulation border border-accent-500/30"
               >
-                <span>تصفح المنتجات</span>
+                <span>استكشف المنتجات</span>
               </Link>
             </div>
 

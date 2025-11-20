@@ -101,20 +101,20 @@ export default function WhyBuySection({ compact = false }: WhyBuySectionProps) {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="text-center p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm border border-primary-300/10 hover:border-primary-300/30 hover:shadow-xl hover:shadow-primary-300/10 transition-all duration-300 transform hover:-translate-y-2 animate-scale-in group"
+              className="text-center p-3 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm border border-primary-300/10 hover:border-primary-300/30 hover:shadow-xl hover:shadow-primary-300/10 transition-all duration-300 transform hover:-translate-y-2 animate-scale-in group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${feature.bgColor} mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                <feature.icon className={`w-8 h-8 ${feature.color}`} />
+              <div className={`inline-flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl ${feature.bgColor} mb-2 sm:mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                <feature.icon className={`w-5 h-5 sm:w-7 sm:h-7 lg:w-8 lg:h-8 ${feature.color}`} />
               </div>
-              <h3 className="text-lg font-bold text-white mb-3">
+              <h3 className="text-sm sm:text-base lg:text-lg font-bold text-white mb-1 sm:mb-2 lg:mb-3 leading-tight">
                 {feature.title}
               </h3>
-              <p className="text-sm text-gray-400 leading-relaxed">
+              <p className="text-xs sm:text-sm lg:text-sm text-gray-400 leading-relaxed">
                 {feature.description}
               </p>
             </div>
@@ -124,4 +124,3 @@ export default function WhyBuySection({ compact = false }: WhyBuySectionProps) {
     </section>
   );
 }
-

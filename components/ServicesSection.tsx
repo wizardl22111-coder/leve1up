@@ -52,8 +52,9 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+        {/* Services Grid - عرض أفقي على الجوال مع تمرير */}
+        <div className="flex gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto overflow-x-auto md:grid md:grid-cols-2 pb-4 md:pb-0">
+          <div className="flex gap-4 sm:gap-6 md:gap-8 md:contents">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             
@@ -67,7 +68,7 @@ export default function ServicesSection() {
               >
                 <Link
                   href={service.href}
-                  className="group block"
+                  className="group block flex-shrink-0 w-72 sm:w-80 md:w-auto"
                 >
                 <div className="bg-gradient-to-br from-dark-300 to-dark-500 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-700/50 hover:border-primary-300/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl h-full">
                   {/* Service Image */}
@@ -100,7 +101,7 @@ export default function ServicesSection() {
                     {/* Action Button */}
                     <div className="flex items-center justify-between">
                       <span className="text-primary-300 font-semibold text-xs sm:text-sm group-hover:text-white transition-colors">
-                        تصفح الآن
+                        استكشف الآن
                       </span>
                       <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4 text-primary-300 group-hover:text-white group-hover:translate-x-1 transition-all" />
                     </div>
@@ -110,6 +111,7 @@ export default function ServicesSection() {
               </ScrollReveal>
             );
           })}
+          </div>
         </div>
       </div>
     </section>
