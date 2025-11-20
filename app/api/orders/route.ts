@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { findOrderBySessionId, findOrderByPaymentId } from "@/lib/orders-store";
 
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
+
 /**
  * 🔍 API endpoint للبحث عن الطلبات
  * 
