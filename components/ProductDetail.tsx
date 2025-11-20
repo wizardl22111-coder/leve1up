@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ShoppingCart, Heart, Star, Check, Users, Shield, Zap, CheckCircle, ShoppingBag, Download } from 'lucide-react';
+import { ShoppingCart, Heart, Star, Check, Users, Shield, Zap, CheckCircle, ShoppingBag, Download, ArrowRight } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { showToast } from '@/components/ToastContainer';
 import { calculatePrice, formatPrice } from '@/lib/currency';
@@ -174,6 +174,17 @@ export default function ProductDetail({ product }: { product?: Product }) {
 
           {/* Right Column: Product Info */}
           <div className="animate-slide-up space-y-6">
+            {/* Back Button */}
+            <div>
+              <button
+                onClick={() => window.history.back()}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gray-700/50 hover:bg-gray-600/50 border border-gray-600/40 text-gray-300 hover:text-white rounded-xl text-sm font-medium transition-all duration-200"
+              >
+                <ArrowRight className="w-4 h-4" />
+                العودة للخلف
+              </button>
+            </div>
+            
             {/* Category Badge */}
             <div>
               <span className="inline-block px-4 py-2 bg-primary-300/20 border border-primary-300/40 text-primary-300 rounded-xl text-sm font-bold">
@@ -317,13 +328,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
                       style={{ fontSize: '16px' }}
                     >
                       <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
-                      {product.category === 'subscriptions' ? (
-                        product.product_id === 7 ? 'ابدأ المحادثة الآن' :
-                        product.product_id === 8 ? 'ابدأ الاستكشاف' :
-                        product.product_id === 9 ? 'ابدأ التصميم الآن' :
-                        product.product_id === 10 ? 'ابدأ المشاهدة الآن' :
-                        'اشتر الآن'
-                      ) : 'اشتر الآن'}
+                      {product.category === 'subscriptions' ? 'تفعيل فوري' : 'اشتر الآن'}
                     </button>
                     <button
                       onClick={handleAddToCart}
