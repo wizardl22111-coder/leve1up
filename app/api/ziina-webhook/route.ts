@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getCurrencySymbol, subunitMap, type Currency } from "@/lib/currency";
 import { findOrderBySessionId, findOrderByPaymentId, updateOrder } from "@/lib/orders-store";
+import { generateOrderNumber, linkOrderNumberToId } from "@/lib/order-numbers";
 import { Resend } from "resend";
 import { createSecureDownloadUrl } from "@/lib/download-utils";
 
@@ -190,10 +191,27 @@ export async function POST(req: Request) {
     console.log("📧 Customer email:", order.customerEmail);
     console.log("📦 Order items:", order.items?.length || 0);
     
-    // 🟢 تحديث حالة الطلب إلى paid
+    // 🔢 توليد رقم طلب فريد للعميل
+    let orderNumber: string | null = null;
+    if (order.customerEmail) {
+      try {
+        orderNumber = await generateOrderNumber(order.customerEmail);
+        console.log(`🔢 Generated order number: ${orderNumber} for customer: ${order.customerEmail}`);
+        
+        // ربط رقم الطلب بمعرف الطلب في Redis
+        await linkOrderNumberToId(orderNumber, order.id);
+        console.log(`🔗 Linked order number ${orderNumber} to order ID ${order.id}`);
+      } catch (error) {
+        console.error('❌ Error generating order number:', error);
+        // نستمر بدون رقم الطلب في حالة الخطأ
+      }
+    }
+
+    // 🟢 تحديث حالة الطلب إلى paid مع رقم الطلب
     const updatedOrder = await updateOrder(order.id, { 
       status: 'paid',
-      paidAt: new Date().toISOString() 
+      paidAt: new Date().toISOString(),
+      orderNumber: orderNumber || undefined // إضافة رقم الطلب إذا تم توليده
     });
     
     if (!updatedOrder) {
@@ -202,6 +220,9 @@ export async function POST(req: Request) {
     }
     
     console.log("🟢 Order status updated to: paid");
+    if (orderNumber) {
+      console.log(`🔢 Order number added: ${orderNumber}`);
+    }
     
     // ✉️ إرسال إيميل تأكيد فقط عند اكتمال الدفع
     if (status === "completed") {

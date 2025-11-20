@@ -39,6 +39,7 @@ interface OrderData {
   totalAmount: number;
   currency: string;
   orderId?: string;
+  orderNumber?: string; // ✨ رقم الطلب الفريد
   paymentId?: string;
   createdAt?: string;
   downloadLinks?: DownloadLink[];
@@ -115,6 +116,7 @@ function SuccessPageContent() {
                   totalAmount: foundOrder.total_amount,
                   currency: foundOrder.currency,
                   orderId: foundOrder.order_id,
+                  orderNumber: foundOrder.order_number, // ✨ رقم الطلب الفريد
                   paymentId: foundOrder.payment_id || searchId,
                   createdAt: foundOrder.created_at,
                   downloadLinks,
@@ -323,7 +325,7 @@ function SuccessPageContent() {
     );
   }
 
-  const { email, items, totalAmount, currency, orderId, paymentId, createdAt, downloadLinks, subscriptionItems } = orderData;
+  const { email, items, totalAmount, currency, orderId, orderNumber, paymentId, createdAt, downloadLinks, subscriptionItems } = orderData;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 relative overflow-hidden">
@@ -410,12 +412,12 @@ function SuccessPageContent() {
                   </div>
                 </div>
                 
-                {(orderId || paymentId) && (
+                {(orderNumber || orderId || paymentId) && (
                   <div className="flex items-center gap-3 text-white/90">
                     <Package className="w-5 h-5 text-blue-300" />
                     <div>
                       <p className="text-sm text-white/60">رقم الطلب</p>
-                      <p className="font-medium font-mono text-sm">{orderId || paymentId}</p>
+                      <p className="font-medium font-mono text-sm">{orderNumber || orderId || paymentId}</p>
                     </div>
                   </div>
                 )}

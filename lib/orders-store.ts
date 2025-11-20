@@ -22,6 +22,7 @@ export interface OrderItem {
 
 export interface Order {
   id: string;
+  orderNumber?: string; // رقم الطلب الفريد لكل عميل (مثل: user@example.com-001)
   sessionId?: string; // معرف الجلسة المؤقت الذي ننشئه نحن
   paymentId?: string; // معرف الدفع من Ziina بعد نجاح الدفع
   status: 'pending' | 'paid' | 'failed' | 'refunded' | 'completed';
@@ -406,4 +407,137 @@ export async function hasCustomerPurchasedProduct(email: string, productId: numb
 export function clearAllOrders(): void {
   ordersStore.clear();
   console.log('🗑️ All orders cleared');
+}
+
+// ==========================================
+// 🔢 دوال إدارة أرقام الطلبات الفريدة
+// ==========================================
+
+/**
+ * البحث عن طلب بواسطة رقم الطلب الفريد
+ * @param orderNumber رقم الطلب الفريد
+ * @returns الطلب أو null
+ */
+export async function findOrderByOrderNumber(orderNumber: string): Promise<Order | null> {
+  if (isRedisAvailable()) {
+    try {
+      const redis = await getRedis();
+      
+      // البحث عن معرف الطلب من رقم الطلب
+      const orderNumberKey = `orderNumber:${orderNumber}`;
+      const orderId = await redis?.get(orderNumberKey);
+      
+      if (!orderId) {
+        console.log(`❌ Order not found for order number: ${orderNumber}`);
+        return null;
+      }
+      
+      // جلب الطلب بواسطة معرف الطلب
+      const orderJson = await redis?.get<string>(`order:${orderId}`);
+      if (!orderJson) {
+        console.log(`❌ Order data not found for ID: ${orderId}`);
+        return null;
+      }
+      
+      const order = typeof orderJson === 'string' ? JSON.parse(orderJson) : orderJson;
+      console.log(`✅ Order found by order number: ${orderNumber}`);
+      return order;
+    } catch (error) {
+      console.error('❌ Redis Error during order number lookup:', error);
+    }
+  }
+  
+  // Fallback: البحث في memory (للتطوير المحلي)
+  for (const [key, order] of ordersStore.entries()) {
+    if (order.orderNumber === orderNumber) {
+      return order;
+    }
+  }
+  
+  return null;
+}
+
+/**
+ * الحصول على جميع طلبات عميل معين
+ * @param customerEmail البريد الإلكتروني للعميل
+ * @returns قائمة الطلبات
+ */
+export async function getCustomerOrders(customerEmail: string): Promise<Order[]> {
+  if (isRedisAvailable()) {
+    try {
+      const redis = await getRedis();
+      
+      // البحث عن جميع الطلبات في Redis
+      const keys = await redis?.keys('order:*');
+      if (!keys || keys.length === 0) return [];
+      
+      const orders: Order[] = [];
+      
+      for (const key of keys) {
+        // تجاهل المفاتيح التي تحتوي على ":number" (هذه للربط فقط)
+        if (key.includes(':number')) continue;
+        
+        const orderJson = await redis?.get<string>(key);
+        if (orderJson) {
+          const order = typeof orderJson === 'string' ? JSON.parse(orderJson) : orderJson;
+          if (order.customerEmail === customerEmail) {
+            orders.push(order);
+          }
+        }
+      }
+      
+      // ترتيب الطلبات حسب تاريخ الإنشاء (الأحدث أولاً)
+      orders.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+      
+      console.log(`✅ Found ${orders.length} orders for customer: ${customerEmail}`);
+      return orders;
+    } catch (error) {
+      console.error('❌ Redis Error during customer orders lookup:', error);
+    }
+  }
+  
+  // Fallback: البحث في memory
+  const orders = Array.from(ordersStore.values())
+    .filter(order => order.customerEmail === customerEmail)
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  
+  return orders;
+}
+
+/**
+ * الحصول على آخر طلب لعميل معين
+ * @param customerEmail البريد الإلكتروني للعميل
+ * @returns آخر طلب أو null
+ */
+export async function getLatestOrder(customerEmail: string): Promise<Order | null> {
+  const orders = await getCustomerOrders(customerEmail);
+  return orders.length > 0 ? orders[0] : null;
+}
+
+/**
+ * الحصول على طلب بدون رقم الطلب (للملف الشخصي)
+ * @param orderId معرف الطلب
+ * @returns الطلب بدون رقم الطلب
+ */
+export async function getOrderWithoutNumber(orderId: string): Promise<Omit<Order, 'orderNumber'> | null> {
+  const order = await findOrderById(orderId);
+  if (!order) return null;
+  
+  // إزالة رقم الطلب من البيانات المُرجعة
+  const { orderNumber, ...orderWithoutNumber } = order;
+  return orderWithoutNumber;
+}
+
+/**
+ * الحصول على آخر طلب لعميل بدون رقم الطلب (للملف الشخصي)
+ * @param customerEmail البريد الإلكتروني للعميل
+ * @returns آخر طلب بدون رقم الطلب
+ */
+export async function getLatestOrderWithoutNumber(customerEmail: string): Promise<Omit<Order, 'orderNumber'> | null> {
+  const order = await getLatestOrder(customerEmail);
+  if (!order) return null;
+  
+  // إزالة رقم الطلب من البيانات المُرجعة
+  const { orderNumber, ...orderWithoutNumber } = order;
+  return orderWithoutNumber;
 }

@@ -48,6 +48,7 @@ export async function GET(request: NextRequest) {
     // تحويل البيانات إلى التنسيق المطلوب لصفحة النجاح
     const orderData = {
       order_id: order.id,
+      order_number: order.orderNumber, // ✨ إضافة رقم الطلب الفريد
       payment_id: order.paymentId || paymentId || sessionId,
       user_email: order.customerEmail,
       total_amount: order.amount,
