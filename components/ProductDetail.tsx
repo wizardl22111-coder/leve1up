@@ -328,7 +328,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
                       style={{ fontSize: '16px' }}
                     >
                       <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
-                      {product.category === 'subscriptions' ? 'تفعيل فوري' : 'اشتر الآن'}
+                      اشتر الآن
                     </button>
                     <button
                       onClick={handleAddToCart}
