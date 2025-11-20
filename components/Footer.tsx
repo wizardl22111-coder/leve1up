@@ -1,6 +1,6 @@
 'use client';
 
-import { Mail, Home, ShoppingBag, HelpCircle, Youtube, Bell } from 'lucide-react';
+import { Mail, Home, ShoppingBag, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -49,152 +49,133 @@ export default function Footer() {
             />
           </div>
 
-          {/* Column 2: Quick Links - Mobile Horizontal Layout */}
+          {/* Column 2: Quick Links */}
           <div className="text-center sm:text-right">
             <h4 className="text-base sm:text-lg font-bold mb-4 text-primary-300">روابط سريعة</h4>
-            {/* Mobile: Horizontal Grid | Desktop: Vertical List */}
+            {/* Mobile: Horizontal Grid | Desktop: Vertical List (unchanged) */}
             <div className="grid grid-cols-2 gap-2 sm:block sm:space-y-2.5">
               <Link 
                 href="/" 
                 className="inline-flex items-center justify-center sm:justify-start gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group p-2 sm:p-0 rounded-lg hover:bg-primary-300/10 sm:hover:bg-transparent"
               >
                 <Home className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                <span className="hidden sm:inline">الرئيسية</span>
-                <span className="sm:hidden text-xs">الرئيسية</span>
+                <span className="text-xs sm:text-base">الرئيسية</span>
               </Link>
               <Link 
                 href="/#products" 
                 className="inline-flex items-center justify-center sm:justify-start gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group p-2 sm:p-0 rounded-lg hover:bg-primary-300/10 sm:hover:bg-transparent"
               >
                 <ShoppingBag className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                <span className="hidden sm:inline">المنتجات</span>
-                <span className="sm:hidden text-xs">المنتجات</span>
+                <span className="text-xs sm:text-base">المنتجات</span>
               </Link>
               <Link 
                 href="/#faq" 
                 className="inline-flex items-center justify-center sm:justify-start gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group p-2 sm:p-0 rounded-lg hover:bg-primary-300/10 sm:hover:bg-transparent"
               >
                 <HelpCircle className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                <span className="hidden sm:inline">الأسئلة الشائعة</span>
-                <span className="sm:hidden text-xs">الأسئلة</span>
+                <span className="text-xs sm:text-base">الأسئلة الشائعة</span>
               </Link>
               <Link 
                 href="/contact" 
                 className="inline-flex items-center justify-center sm:justify-start gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group p-2 sm:p-0 rounded-lg hover:bg-primary-300/10 sm:hover:bg-transparent"
               >
                 <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                <span className="hidden sm:inline">تواصل معنا</span>
-                <span className="sm:hidden text-xs">تواصل</span>
+                <span className="text-xs sm:text-base">تواصل معنا</span>
               </Link>
             </div>
           </div>
 
-          {/* Column 3: Policies - Mobile Horizontal Layout */}
+          {/* Column 3: Policies */}
           <div className="text-center sm:text-right">
             <h4 className="text-base sm:text-lg font-bold mb-4 text-accent-600">السياسات</h4>
-            {/* Mobile: Horizontal Grid | Desktop: Vertical List */}
-            <div className="grid grid-cols-1 gap-2 sm:space-y-2.5">
-              <Link 
-                href="/privacy" 
-                className="text-gray-400 hover:text-accent-600 transition-colors text-sm sm:text-base touch-manipulation p-2 sm:p-0 rounded-lg hover:bg-accent-600/10 sm:hover:bg-transparent text-center sm:text-right"
-              >
-                سياسة الخصوصية
-              </Link>
-              <Link 
-                href="/terms" 
-                className="text-gray-400 hover:text-accent-600 transition-colors text-sm sm:text-base touch-manipulation p-2 sm:p-0 rounded-lg hover:bg-accent-600/10 sm:hover:bg-transparent text-center sm:text-right"
-              >
-                شروط الاستخدام
-              </Link>
-              <Link 
-                href="/refund" 
-                className="text-gray-400 hover:text-accent-600 transition-colors text-sm sm:text-base touch-manipulation p-2 sm:p-0 rounded-lg hover:bg-accent-600/10 sm:hover:bg-transparent text-center sm:text-right"
-              >
-                سياسة الاستبدال
-              </Link>
-            </div>
+            {/* Mobile: Vertical List | Desktop: Vertical List (unchanged) */}
+            <ul className="space-y-2.5">
+              <li>
+                <Link 
+                  href="/privacy" 
+                  className="text-gray-400 hover:text-accent-600 transition-colors text-sm sm:text-base block touch-manipulation"
+                >
+                  سياسة الخصوصية
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/terms" 
+                  className="text-gray-400 hover:text-accent-600 transition-colors text-sm sm:text-base block touch-manipulation"
+                >
+                  شروط الاستخدام
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/refund" 
+                  className="text-gray-400 hover:text-accent-600 transition-colors text-sm sm:text-base block touch-manipulation"
+                >
+                  سياسة الاستبدال
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          {/* Column 4: Subscribe & Stay Connected */}
+          {/* Column 4: Newsletter or Additional Info */}
           <div className="text-center sm:text-right">
             <h4 className="text-base sm:text-lg font-bold mb-4 text-primary-300">ابق على تواصل</h4>
             <p className="text-gray-400 text-sm sm:text-base mb-4 leading-relaxed">
-              اشترك في قناتنا وتابعنا لمعرفة آخر العروض والمنتجات الجديدة
+              تابعنا على وسائل التواصل الاجتماعي لمعرفة آخر العروض والمنتجات الجديدة
             </p>
-            
-            {/* Subscribe Buttons - Mobile Horizontal */}
-            <div className="flex flex-col sm:flex-col gap-3 mb-4">
-              {/* YouTube Subscribe Button */}
-              <a
-                href="https://www.youtube.com/@lvlup321"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-red-600 to-red-500 text-white rounded-xl hover:shadow-lg hover:shadow-red-500/30 transition-all duration-300 font-semibold text-sm touch-manipulation group"
-              >
-                <Youtube className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                اشترك في القناة
-              </a>
-              
-              {/* Email Contact Button */}
-              <a
-                href="mailto:leve1up999q@gmail.com"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-primary-300 to-accent-600 text-white rounded-xl hover:shadow-lg hover:shadow-primary-300/30 transition-all duration-300 font-semibold text-sm touch-manipulation group"
-              >
-                <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                راسلنا
-              </a>
-            </div>
-            
-            {/* Notification Bell */}
-            <div className="flex items-center justify-center sm:justify-start gap-2 text-gray-400 text-xs">
-              <Bell className="w-3 h-3 animate-pulse" />
-              <span>فعّل الإشعارات لتصلك العروض الجديدة</span>
-            </div>
+            <a
+              href="mailto:leve1up999q@gmail.com"
+              className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-primary-300 to-accent-600 text-white rounded-xl hover:shadow-lg hover:shadow-primary-300/30 transition-all duration-300 font-semibold text-sm sm:text-base touch-manipulation group"
+            >
+              <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              راسلنا
+            </a>
           </div>
         </div>
 
-        {/* Payment Methods - Mobile Optimized */}
-        <div className="border-t border-primary-300/10 pt-6 sm:pt-8 pb-4">
+        {/* Payment Methods */}
+        <div className="border-t border-primary-300/10 pt-8 pb-4">
           <div className="text-center">
-            <h4 className="text-sm sm:text-lg font-bold mb-3 sm:mb-4 text-primary-300">طرق الدفع المتاحة</h4>
-            {/* Mobile: 2x2 Grid | Desktop: Horizontal Row */}
-            <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-2 sm:gap-4 max-w-xs sm:max-w-none mx-auto">
+            <h4 className="text-base sm:text-lg font-bold mb-4 text-primary-300">طرق الدفع المتاحة</h4>
+            {/* Mobile: 2x2 Grid | Desktop: Horizontal Row (unchanged) */}
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-3 sm:gap-4 max-w-xs sm:max-w-none mx-auto">
               <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
                   alt="Google Pay"
-                  width={40}
-                  height={16}
-                  className="h-4 sm:h-5 w-auto object-contain mx-auto"
+                  width={50}
+                  height={20}
+                  className="h-5 w-auto object-contain"
                 />
               </div>
               <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg"
                   alt="Apple Pay"
-                  width={40}
-                  height={16}
-                  className="h-4 sm:h-5 w-auto object-contain mx-auto"
+                  width={50}
+                  height={20}
+                  className="h-5 w-auto object-contain"
                 />
               </div>
               <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
                   alt="Visa"
-                  width={40}
-                  height={16}
-                  className="h-4 sm:h-5 w-auto object-contain mx-auto"
+                  width={50}
+                  height={20}
+                  className="h-5 w-auto object-contain"
                 />
               </div>
               <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg"
                   alt="Mastercard"
-                  width={40}
-                  height={16}
-                  className="h-4 sm:h-5 w-auto object-contain mx-auto"
+                  width={50}
+                  height={20}
+                  className="h-5 w-auto object-contain"
                 />
               </div>
+
             </div>
           </div>
         </div>
