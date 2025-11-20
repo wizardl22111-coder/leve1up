@@ -5,9 +5,10 @@ import { Shield, Lock, RefreshCw, Clock, CheckCircle, Award } from 'lucide-react
 interface TrustBadgesProps {
   variant?: 'compact' | 'full';
   className?: string;
+  productType?: 'subscription' | 'digital';
 }
 
-export default function TrustBadges({ variant = 'full', className = '' }: TrustBadgesProps) {
+export default function TrustBadges({ variant = 'full', className = '', productType = 'digital' }: TrustBadgesProps) {
   const badges = [
     {
       icon: Shield,
@@ -23,8 +24,8 @@ export default function TrustBadges({ variant = 'full', className = '' }: TrustB
     },
     {
       icon: Clock,
-      title: 'تسليم فوري',
-      description: 'احصل على منتجك فوراً عبر البريد الإلكتروني',
+      title: productType === 'subscription' ? 'تفعيل فوري' : 'تسليم فوري',
+      description: productType === 'subscription' ? 'احصل على وصولك فوراً عبر البريد الإلكتروني' : 'احصل على منتجك فوراً عبر البريد الإلكتروني',
       color: 'text-purple-600 dark:text-purple-400'
     },
     {

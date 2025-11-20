@@ -274,9 +274,24 @@ export default function ProductDetail({ product }: { product?: Product }) {
                   </div>
                 )}
               </div>
+              
+              {/* عبارة قصيرة للاشتراكات */}
+              {product.category === 'subscriptions' && (
+                <div className="text-center">
+                  <p className="text-sm text-gray-400">
+                    {product.product_id === 7 && "احصل على تفعيل مباشر لحسابك وابدأ استخدام أدوات ChatGPT فوراً."}
+                    {product.product_id === 8 && "تمكين الوصول لحساب Gemini يتم لحظياً — بدون انتظار أو تعقيد."}
+                    {product.product_id === 9 && "نحفّز اشتراكك مباشرة ليصبح جاهزاً للعمل خلال ثوانٍ."}
+                    {product.product_id === 10 && "يتم تجهيز حساب Netflix الخاص بك مباشرة لتبدأ المشاهدة بدون تأخير."}
+                  </p>
+                </div>
+              )}
+              
               <div className="flex items-center gap-2 px-4 py-2 bg-green-500/20 border border-green-500/40 rounded-xl">
                 <Zap className="w-5 h-5 text-green-400" />
-                <span className="text-green-400 font-bold text-sm">تسليم فوري</span>
+                <span className="text-green-400 font-bold text-sm">
+                  {product.category === 'subscriptions' ? 'تفعيل فوري' : 'تسليم فوري'}
+                </span>
               </div>
             </div>
 
@@ -302,7 +317,13 @@ export default function ProductDetail({ product }: { product?: Product }) {
                       style={{ fontSize: '16px' }}
                     >
                       <ShoppingBag className="w-5 h-5 sm:w-6 sm:h-6" />
-                      اشتر الآن
+                      {product.category === 'subscriptions' ? (
+                        product.product_id === 7 ? 'ابدأ المحادثة الآن' :
+                        product.product_id === 8 ? 'ابدأ الاستكشاف' :
+                        product.product_id === 9 ? 'ابدأ التصميم الآن' :
+                        product.product_id === 10 ? 'ابدأ المشاهدة الآن' :
+                        'اشتر الآن'
+                      ) : 'اشتر الآن'}
                     </button>
                     <button
                       onClick={handleAddToCart}
