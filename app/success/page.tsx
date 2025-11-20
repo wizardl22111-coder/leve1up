@@ -42,6 +42,7 @@ interface OrderData {
   paymentId?: string;
   createdAt?: string;
   downloadLinks?: DownloadLink[];
+  subscriptionItems?: CartItem[];
 }
 
 function SuccessPageContent() {
@@ -87,20 +88,31 @@ function SuccessPageContent() {
               if (foundOrder) {
                 console.log("✅ Order found from JSON:", foundOrder);
                 
-                // إنشاء روابط التحميل لكل منتج
-                const downloadLinks: DownloadLink[] = foundOrder.products.map((product: any) => ({
-                  productId: product.product_id,
-                  productName: product.product_name,
-                  downloadUrl: product.download_url
-                }));
+                // فصل المنتجات إلى اشتراكات ومنتجات قابلة للتحميل
+                const downloadLinks: DownloadLink[] = [];
+                const subscriptionItems: CartItem[] = [];
+                const items: CartItem[] = [];
                 
-                // تحويل المنتجات إلى تنسيق CartItem
-                const items: CartItem[] = foundOrder.products.map((product: any) => ({
-                  id: product.product_id,
-                  name: product.product_name,
-                  price: product.price,
-                  quantity: 1
-                }));
+                foundOrder.products.forEach((product: any) => {
+                  const cartItem: CartItem = {
+                    id: product.product_id,
+                    name: product.product_name,
+                    price: product.price,
+                    quantity: 1
+                  };
+                  
+                  items.push(cartItem);
+                  
+                  if (product.category === 'subscriptions') {
+                    subscriptionItems.push(cartItem);
+                  } else if (product.download_url) {
+                    downloadLinks.push({
+                      productId: product.product_id,
+                      productName: product.product_name,
+                      downloadUrl: product.download_url
+                    });
+                  }
+                });
                 
                 setOrderData({
                   email: foundOrder.user_email,
@@ -110,7 +122,8 @@ function SuccessPageContent() {
                   orderId: foundOrder.order_id,
                   paymentId: foundOrder.payment_id || searchId,
                   createdAt: foundOrder.created_at,
-                  downloadLinks
+                  downloadLinks,
+                  subscriptionItems
                 });
                 
                 // تنظيف localStorage بعد النجاح
@@ -141,7 +154,11 @@ function SuccessPageContent() {
             const productsResponse = await fetch('/data/products.json');
             const products = await productsResponse.json();
             
-            const downloadLinks = items.map((item: CartItem): DownloadLink => {
+            // فصل المنتجات إلى اشتراكات ومنتجات قابلة للتحميل
+            const downloadLinks: DownloadLink[] = [];
+            const subscriptionItems: CartItem[] = [];
+            
+            items.forEach((item: CartItem) => {
               const product = products.find((p: any) => 
                 p.product_id === item.id || 
                 p.id === item.id ||
@@ -149,21 +166,24 @@ function SuccessPageContent() {
                 p.id === parseInt(String(item.id))
               );
               
-              const correctProductId = product?.product_id || item.id;
-              
-              return {
-                productId: correctProductId,
-                productName: item.name,
-                downloadUrl: product?.download_url || ''
-              };
-            }).filter((link: DownloadLink) => link.downloadUrl);
+              if (product?.category === 'subscriptions') {
+                subscriptionItems.push(item);
+              } else if (product?.download_url) {
+                downloadLinks.push({
+                  productId: product?.product_id || item.id,
+                  productName: item.name,
+                  downloadUrl: product.download_url
+                });
+              }
+            });
             
             setOrderData({
               email: savedEmail,
               items,
               totalAmount: savedTotalAmount ? parseFloat(savedTotalAmount) : 0,
               currency: savedCurrency || 'SAR',
-              downloadLinks
+              downloadLinks,
+              subscriptionItems
             });
           } catch (e) {
             console.error("Error fetching products:", e);
@@ -307,7 +327,7 @@ function SuccessPageContent() {
     );
   }
 
-  const { email, items, totalAmount, currency, orderId, paymentId, createdAt, downloadLinks } = orderData;
+  const { email, items, totalAmount, currency, orderId, paymentId, createdAt, downloadLinks, subscriptionItems } = orderData;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 relative overflow-hidden">
@@ -467,6 +487,92 @@ function SuccessPageContent() {
               >
                 💡 <strong>ملاحظة مهمة:</strong> احفظ الرابط في مكان آمن – صالح لمدة 7 أيام
               </motion.p>
+            </motion.div>
+          )}
+
+          {/* Subscription Products Section */}
+          {orderData.subscriptionItems && orderData.subscriptionItems.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1, duration: 0.6 }}
+              className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-lg rounded-2xl p-6 md:p-8 border border-purple-300/30"
+            >
+              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                🎯 اشتراكك جاهز للتفعيل
+              </h2>
+              
+              <div className="space-y-4">
+                {orderData.subscriptionItems.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 1.3 + index * 0.1 }}
+                    className="bg-white/10 rounded-xl p-6"
+                  >
+                    <h3 className="font-semibold text-white mb-4 text-lg">{item.name}</h3>
+                    
+                    <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg p-4 mb-4 border border-blue-300/30">
+                      <p className="text-white/90 mb-3">
+                        🎉 <strong>تم الدفع بنجاح!</strong> لاستلام اشتراكك، تواصل معنا عبر إحدى الطرق التالية:
+                      </p>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {/* WhatsApp */}
+                      <a
+                        href={`https://wa.me/971503492848?text=${encodeURIComponent(`مرحباً، أريد استلام اشتراك ${item.name} - رقم الطلب: ${orderData.paymentId || 'غير متوفر'}`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold px-4 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                      >
+                        <MessageCircle className="w-5 h-5" />
+                        واتساب
+                      </a>
+                      
+                      {/* Email */}
+                      <a
+                        href={`mailto:support@leve1up.store?subject=${encodeURIComponent(`استلام اشتراك ${item.name}`)}&body=${encodeURIComponent(`مرحباً،\n\nأريد استلام اشتراك ${item.name}\nرقم الطلب: ${orderData.paymentId || 'غير متوفر'}\nالبريد الإلكتروني: ${orderData.email}\n\nشكراً لكم`)}`}
+                        className="flex items-center justify-center gap-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold px-4 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                      >
+                        <Mail className="w-5 h-5" />
+                        إيميل
+                      </a>
+                      
+                      {/* Instagram */}
+                      <a
+                        href="https://instagram.com/leve1up.store"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-3 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold px-4 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                      >
+                        <Send className="w-5 h-5" />
+                        إنستغرام
+                      </a>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5 }}
+                className="text-sm text-white/70 mt-6 bg-blue-500/20 rounded-lg p-4 border border-blue-300/30"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="text-2xl">📋</div>
+                  <div>
+                    <p className="font-semibold text-white mb-2">معلومات مهمة:</p>
+                    <ul className="space-y-1 text-white/80">
+                      <li>• سيتم تفعيل اشتراكك خلال 24 ساعة من التواصل</li>
+                      <li>• احتفظ برقم الطلب للمراجعة</li>
+                      <li>• ستحصل على تعليمات التفعيل عبر البريد الإلكتروني</li>
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           )}
 
