@@ -51,6 +51,21 @@ export default function PriceDisplay({
     );
   }
 
+  // إذا كان هناك سعر أصلي أعلى، عرض الخصم
+  if (originalPrice && originalPrice > price) {
+    const formattedOriginalPrice = formatPriceValue(originalPrice);
+    return (
+      <div className={`${className} flex items-center gap-2`}>
+        <span className="text-gray-400 line-through text-sm">
+          {formattedOriginalPrice} <CurrencyDisplay currency={currency} />
+        </span>
+        <span className="text-white font-bold">
+          {formattedPrice} <CurrencyDisplay currency={currency} />
+        </span>
+      </div>
+    );
+  }
+
   return (
     <span className={className}>
       {formattedPrice}{' '}

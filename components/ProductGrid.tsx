@@ -142,7 +142,7 @@ export default function ProductGrid({
                     />
                   ))}
                   <span className="text-gray-400 text-sm mr-2">
-                    ({product.rating || 5}.0)
+                    ({product.rating || 5})
                   </span>
                 </div>
 
@@ -151,6 +151,7 @@ export default function ProductGrid({
                   <PriceDisplay 
                     price={priceCalc.finalPrice} 
                     currency={currency}
+                    originalPrice={product.originalPrice}
                     className="text-xl sm:text-2xl font-bold"
                   />
                 </div>
