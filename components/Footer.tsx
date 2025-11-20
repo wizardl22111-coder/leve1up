@@ -52,37 +52,44 @@ export default function Footer() {
           {/* Column 2: Quick Links */}
           <div className="text-center sm:text-right">
             <h4 className="text-base sm:text-lg font-bold mb-4 text-primary-300">روابط سريعة</h4>
-            {/* Mobile: Horizontal Grid | Desktop: Vertical List (unchanged) */}
-            <div className="grid grid-cols-2 gap-2 sm:block sm:space-y-2.5">
-              <Link 
-                href="/" 
-                className="inline-flex items-center justify-center sm:justify-start gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group p-2 sm:p-0 rounded-lg hover:bg-primary-300/10 sm:hover:bg-transparent"
-              >
-                <Home className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                <span className="text-xs sm:text-base">الرئيسية</span>
-              </Link>
-              <Link 
-                href="/#products" 
-                className="inline-flex items-center justify-center sm:justify-start gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group p-2 sm:p-0 rounded-lg hover:bg-primary-300/10 sm:hover:bg-transparent"
-              >
-                <ShoppingBag className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                <span className="text-xs sm:text-base">المنتجات</span>
-              </Link>
-              <Link 
-                href="/#faq" 
-                className="inline-flex items-center justify-center sm:justify-start gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group p-2 sm:p-0 rounded-lg hover:bg-primary-300/10 sm:hover:bg-transparent"
-              >
-                <HelpCircle className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                <span className="text-xs sm:text-base">الأسئلة الشائعة</span>
-              </Link>
-              <Link 
-                href="/contact" 
-                className="inline-flex items-center justify-center sm:justify-start gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group p-2 sm:p-0 rounded-lg hover:bg-primary-300/10 sm:hover:bg-transparent"
-              >
-                <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                <span className="text-xs sm:text-base">تواصل معنا</span>
-              </Link>
-            </div>
+            <ul className="space-y-2.5">
+              <li>
+                <Link 
+                  href="/" 
+                  className="inline-flex items-center gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group"
+                >
+                  <Home className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                  الرئيسية
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/#products" 
+                  className="inline-flex items-center gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group"
+                >
+                  <ShoppingBag className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                  المنتجات
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/#faq" 
+                  className="inline-flex items-center gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group"
+                >
+                  <HelpCircle className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                  الأسئلة الشائعة
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/contact" 
+                  className="inline-flex items-center gap-2 text-gray-400 hover:text-primary-300 transition-colors text-sm sm:text-base touch-manipulation group"
+                >
+                  <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                  تواصل معنا
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Column 3: Policies */}
@@ -137,8 +144,7 @@ export default function Footer() {
         <div className="border-t border-primary-300/10 pt-8 pb-4">
           <div className="text-center">
             <h4 className="text-base sm:text-lg font-bold mb-4 text-primary-300">طرق الدفع المتاحة</h4>
-            {/* Mobile: 2x2 Grid | Desktop: Horizontal Row (unchanged) */}
-            <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-3 sm:gap-4 max-w-xs sm:max-w-none mx-auto">
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
               <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
