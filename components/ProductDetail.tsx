@@ -68,6 +68,7 @@ interface Product {
   image?: string;
   rating?: number;
   buyers?: number | string;
+  buyers_text?: string;
   inStock?: boolean;
   featured?: boolean;
   features?: string[];
@@ -106,7 +107,12 @@ export default function ProductDetail({ product }: { product?: Product }) {
   // حساب السعر باستخدام النظام الموحد
   // إذا كان هناك خطة محددة للاشتراك، استخدم سعرها، وإلا استخدم السعر الأساسي
   const currentPrice = selectedDuration ? selectedDuration.price : (product.price ?? 0);
-  const productWithUpdatedPrice = { ...product, price: currentPrice };
+  const currentOriginalPrice = selectedDuration ? selectedDuration.originalPrice : (product.originalPrice ?? currentPrice);
+  const productWithUpdatedPrice = { 
+    ...product, 
+    price: currentPrice,
+    originalPrice: currentOriginalPrice
+  };
   const priceCalc = calculatePrice(productWithUpdatedPrice, currency);
   const productId = getProductId();
   const productName = getProductName();
@@ -229,9 +235,10 @@ export default function ProductDetail({ product }: { product?: Product }) {
               <div className="flex items-center gap-2 text-gray-300">
                 <Users className="w-5 h-5 text-primary-300" />
                 <span className="font-semibold">
-                  {typeof product.buyers === 'string' 
-                    ? product.buyers 
-                    : `${(product.buyers ?? 0).toLocaleString()} مشتري`}
+                  {(product as any).buyers_text ? `${(product as any).buyers_text}: ${product.buyers}` :
+                    (typeof product.buyers === 'string' 
+                      ? product.buyers 
+                      : `${(product.buyers ?? 0).toLocaleString()} مشتري`)}
                 </span>
               </div>
             </div>
