@@ -48,6 +48,7 @@ interface Product {
   description?: string;
   sections?: ProductSections;
   price?: number;
+  originalPrice?: number;
   priceAED?: number;
   priceKWD?: number;
   priceQAR?: number;
