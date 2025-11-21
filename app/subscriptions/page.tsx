@@ -6,8 +6,8 @@ import { Zap, Play, Music, Gamepad2, Tv, Smartphone } from 'lucide-react';
 import { getActiveProducts } from '@/lib/products-utils';
 
 export const metadata = {
-  title: 'الباقات الرقمية | متجر لفل اب',
-  description: 'نتفليكس، بلايستيشن بلس، سبوتيفاي والمزيد من الباقات الرقمية بأسعار تنافسية',
+  title: 'الاشتراكات الرقمية | متجر لفل اب',
+  description: 'نتفليكس، بلايستيشن بلس، سبوتيفاي والمزيد من الاشتراكات الرقمية بأسعار تنافسية',
 };
 
 export default function SubscriptionsPage() {
@@ -60,7 +60,7 @@ export default function SubscriptionsPage() {
             <ScrollReveal delay={0} duration={800} distance={60}>
               <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-600/20 backdrop-blur-sm text-green-300 px-4 py-2 rounded-full mb-6 border border-green-500/30">
                 <Zap className="w-4 h-4" />
-                <span className="text-sm font-bold">الباقات الرقمية</span>
+                <span className="text-sm font-bold">الاشتراكات الرقمية</span>
               </div>
             </ScrollReveal>
             
@@ -108,9 +108,9 @@ export default function SubscriptionsPage() {
       <section className="py-16 bg-dark-500">
         <div className="container-mobile">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">الباقات المتاحة</h2>
+            <h2 className="text-3xl font-bold text-white mb-4">الاشتراكات المتاحة</h2>
             <p className="text-gray-400 text-lg">
-              اختر من مجموعة متنوعة من الباقات الرقمية المميزة
+              اختر من مجموعة متنوعة من الاشتراكات الرقمية المميزة
             </p>
           </div>
           

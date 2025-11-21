@@ -18,7 +18,7 @@ export default function ServicesSection() {
     },
     {
       id: 2,
-      title: "الباقات الرقمية",
+      title: "الاشتراكات الرقمية",
       description: "نتفليكس، بلايستيشن بلس، سبوتيفاي… والمزيد.",
       image: "/images/services/subscriptions.jpg",
       href: "/subscriptions",
