@@ -21,6 +21,8 @@ import {
   Calendar
 } from "lucide-react";
 import UserOrders from "@/components/UserOrders";
+import ProfileSummary from "@/components/ProfileSummary";
+import LatestOrder from "@/components/LatestOrder";
 import CustomToggle from "@/components/CustomToggle";
 import LogoutButton from "@/components/LogoutButton";
 
@@ -419,8 +421,11 @@ export default function ProfilePage() {
             </div>
           </motion.div>
 
-          {/* User Orders Section */}
-          <UserOrders className="mb-8" />
+          {/* Profile Summary Section */}
+          <ProfileSummary className="mb-8" />
+          
+          {/* Latest Order Section */}
+          <LatestOrder className="mb-8" />
 
           {/* Back to Home Button */}
           <motion.div 
