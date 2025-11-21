@@ -140,8 +140,8 @@ export default function SubscriptionDurationSelector({
             {/* محتوى الخيار */}
             <div className="space-y-2">
               {/* المدة والوصف */}
-              <div className="flex items-center gap-2 mb-2">
-                <span className="font-semibold text-white">{option.duration}</span>
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <span className="font-semibold text-white text-center">{option.duration}</span>
               </div>
               
               <p className="text-gray-400 text-sm">{option.description}</p>
