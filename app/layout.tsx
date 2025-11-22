@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/Toaster';
 import { AppProvider } from '@/contexts/AppContext';
 import ToastContainer from '@/components/ToastContainer';
 import SessionProvider from '@/components/SessionProvider';
+import TawkToWidget from '@/components/TawkToWidget';
 
 
 const ibmPlexArabic = IBM_Plex_Sans_Arabic({ 
@@ -82,6 +83,7 @@ export default function RootLayout({
 
             <Toaster />
             <ToastContainer />
+            <TawkToWidget />
           </AppProvider>
         </SessionProvider>
       </body>
