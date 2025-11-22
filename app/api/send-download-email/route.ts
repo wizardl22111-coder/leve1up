@@ -132,7 +132,7 @@ export async function POST(req: NextRequest) {
               </p>
               <p style="color: #6b7280; font-size: 12px; margin: 0;">
                 <a href="https://leve1up.store" style="color: #3b82f6; text-decoration: none;">leve1up.store</a> |
-                <a href="https://wa.me/971503492848" style="color: #3b82f6; text-decoration: none;">الدعم الفني</a>
+                <a href="mailto:leve1up999q@gmail.com" style="color: #3b82f6; text-decoration: none;">الدعم الفني</a>
               </p>
             </div>
 

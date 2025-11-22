@@ -18,6 +18,7 @@ function OrderSuccessContent() {
   const productImage = searchParams.get('productImage') || '/images/default-product.jpg';
   const price = searchParams.get('price') || '0';
   const email = searchParams.get('email') || '';
+  const category = searchParams.get('category') || '';
 
   // Calculate expiry time (30 minutes from now)
   const [timeLeft, setTimeLeft] = useState(30 * 60); // 30 minutes in seconds
@@ -196,22 +197,64 @@ function OrderSuccessContent() {
           )}
         </div>
 
+        {/* Subscription Activation Notice */}
+        {category === 'subscriptions' && (
+          <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-2xl p-6 mb-6">
+            <div className="text-center">
+              <MessageCircle className="w-12 h-12 text-blue-400 mx-auto mb-4" />
+              <h3 className="text-xl font-bold text-white mb-3">
+                🔔 تفعيل الاشتراك مطلوب
+              </h3>
+              <p className="text-gray-300 mb-4 leading-relaxed">
+                لتفعيل اشتراكك في <span className="text-blue-400 font-semibold">{productName}</span>، 
+                يرجى التواصل معنا عبر الشات المباشر أسفل الصفحة لإكمال عملية التفعيل.
+              </p>
+              <div className="bg-blue-500/20 rounded-xl p-4 mb-4">
+                <p className="text-blue-300 text-sm">
+                  💡 <strong>نصيحة:</strong> ابحث عن أيقونة الشات في الزاوية السفلى واضغط عليها للتواصل المباشر
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Support Section */}
         <div className="bg-dark-400 rounded-2xl border border-primary-300/20 p-6 text-center">
           <MessageCircle className="w-10 h-10 text-primary-300 mx-auto mb-3" />
           <h3 className="text-lg font-bold text-white mb-2">
-            هل واجهت مشكلة في التحميل؟
+            {category === 'subscriptions' ? 'تحتاج مساعدة إضافية؟' : 'هل واجهت مشكلة في التحميل؟'}
           </h3>
           <p className="text-gray-400 mb-4">
-            تواصل معنا مباشرة عبر الإيميل وسنساعدك فوراً
+            {category === 'subscriptions' 
+              ? 'يمكنك أيضاً التواصل معنا عبر الإيميل للحصول على الدعم'
+              : 'تواصل معنا مباشرة عبر الإيميل وسنساعدك فوراً'
+            }
           </p>
-          <a
-            href="mailto:leve1up999q@gmail.com"
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-all"
-          >
-            <MessageCircle className="w-5 h-5" />
-            تواصل عبر الإيميل
-          </a>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            {category === 'subscriptions' && (
+              <button
+                onClick={() => {
+                  // محاولة فتح الشات إذا كان متاحاً
+                  if (window.Tawk_API && window.Tawk_API.maximize) {
+                    window.Tawk_API.maximize();
+                  } else {
+                    alert('يرجى البحث عن أيقونة الشات في أسفل الصفحة للتواصل المباشر');
+                  }
+                }}
+                className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl transition-all"
+              >
+                <MessageCircle className="w-5 h-5" />
+                فتح الشات المباشر
+              </button>
+            )}
+            <a
+              href="mailto:leve1up999q@gmail.com"
+              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-all"
+            >
+              <MessageCircle className="w-5 h-5" />
+              تواصل عبر الإيميل
+            </a>
+          </div>
         </div>
 
         {/* Back to Home */}
