@@ -17,21 +17,21 @@ export default function SubscriptionsPage() {
   
   const subscriptions = [
     {
-      name: 'Netflix',
+      name: 'Netflix Premium',
       icon: Play,
       color: 'text-red-400',
       bgColor: 'from-red-500/10 to-red-600/10',
       borderColor: 'border-red-500/20'
     },
     {
-      name: 'ChatGPT',
+      name: 'ChatGPT Plus',
       icon: Zap,
       color: 'text-green-400',
       bgColor: 'from-green-500/10 to-green-600/10',
       borderColor: 'border-green-500/20'
     },
     {
-      name: 'Google Gemini',
+      name: 'Google Gemini Pro',
       icon: Zap,
       color: 'text-blue-400',
       bgColor: 'from-blue-500/10 to-blue-600/10',
@@ -75,8 +75,19 @@ export default function SubscriptionsPage() {
             
             <ScrollReveal delay={400} duration={800} distance={60}>
               <p className="text-xl text-gray-400 mb-8 leading-relaxed">
-                Netflix، ChatGPT، Google Gemini، Canva Pro… والمزيد
+                اشتراكات رقمية مميزة بأسعار تنافسية وتسليم فوري
               </p>
+            </ScrollReveal>
+            
+            {/* Banner Image */}
+            <ScrollReveal delay={600} duration={800} distance={60}>
+              <div className="relative w-full max-w-4xl mx-auto mb-8 rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src="/images/services/banner.jpg" 
+                  alt="الاشتراكات الرقمية" 
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </ScrollReveal>
             
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12">
