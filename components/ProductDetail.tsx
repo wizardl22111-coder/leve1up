@@ -564,6 +564,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
         productName={productName}
         productId={productId}
         downloadUrl={(product as any).download_url}
+        category={(product as any).category}
       />
     </section>
   );

@@ -41,11 +41,9 @@ export default function Footer() {
             {/* Social Icons */}
             <SocialMediaIcons 
               className="justify-center sm:justify-start"
-              whatsappNumber="+971503492848"
-              whatsappMessage="مرحباً، أريد الاستفسار عن منتجات Level Up"
               instagramUrl="https://www.instagram.com/1level1up1/"
               tiktokUrl="https://www.tiktok.com/@lvlup321"
-              showWhatsApp={true}
+              showWhatsApp={false}
             />
           </div>
 

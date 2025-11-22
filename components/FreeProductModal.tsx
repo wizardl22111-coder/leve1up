@@ -9,9 +9,10 @@ interface FreeProductModalProps {
   productName: string;
   productId: number;
   downloadUrl?: string;
+  category?: string;
 }
 
-export default function FreeProductModal({ isOpen, onClose, productName, productId, downloadUrl }: FreeProductModalProps) {
+export default function FreeProductModal({ isOpen, onClose, productName, productId, downloadUrl, category }: FreeProductModalProps) {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,6 +53,7 @@ export default function FreeProductModal({ isOpen, onClose, productName, product
         productImage: '/images/product1.jpg',
         price: '0',
         email,
+        category: category || 'digital',
       });
 
       window.location.href = `/order-success?${params.toString()}`;

@@ -174,8 +174,6 @@ export default function ContactPage() {
               🌟 تابعنا على وسائل التواصل الاجتماعي
             </h3>
             <SocialMediaIcons 
-              whatsappNumber="+971503492848"
-              whatsappMessage="مرحباً، أريد الاستفسار عن منتجات Level Up"
               instagramUrl="https://www.instagram.com/1level1up1/"
               tiktokUrl="https://www.tiktok.com/@lvlup321"
               showWhatsApp={false}

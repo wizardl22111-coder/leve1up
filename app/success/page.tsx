@@ -518,7 +518,7 @@ function SuccessPageContent() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       {/* WhatsApp */}
                       <a
-                        href={`https://wa.me/971503492848?text=${encodeURIComponent(`مرحباً، أريد استلام اشتراك ${item.name} - رقم الطلب: ${orderData.paymentId || 'غير متوفر'}`)}`}
+                        href={`mailto:leve1up999q@gmail.com
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold px-4 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
@@ -585,7 +585,7 @@ function SuccessPageContent() {
             </h2>
             
             <a
-              href="https://wa.me/971503492848?text=مرحباً، لدي استفسار بخصوص طلبي"
+              href="mailto:leve1up999q@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
