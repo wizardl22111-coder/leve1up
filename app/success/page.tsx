@@ -45,6 +45,32 @@ interface OrderData {
   subscriptionItems?: CartItem[];
 }
 
+// مكون النجوم
+const StarRating = ({ rating, onRatingChange }: { rating: number, onRatingChange?: (rating: number) => void }) => {
+return (
+<div className="flex gap-1">
+{[1, 2, 3, 4, 5].map((star) => (
+<button
+key={star}
+type="button"
+onClick={() => onRatingChange && onRatingChange(star)}
+className={`transition-colors ${onRatingChange ? 'cursor-pointer hover:scale-110' : 'cursor-default'}`}
+disabled={!onRatingChange}
+>
+<Star
+className={`w-6 h-6 ${
+star <= rating 
+? 'text-yellow-400 fill-yellow-400' 
+: 'text-gray-400'
+}`}
+/>
+</button>
+))}
+</div>
+);
+};
+
+
 function SuccessPageContent() {
   const searchParams = useSearchParams();
   const [orderData, setOrderData] = useState<OrderData | null>(null);
@@ -260,30 +286,6 @@ function SuccessPageContent() {
     }
   };
 
-  // مكون النجوم
-  const StarRating = ({ rating, onRatingChange }: { rating: number, onRatingChange?: (rating: number) => void }) => {
-    return (
-      <div className="flex gap-1">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <button
-            key={star}
-            type="button"
-            onClick={() => onRatingChange && onRatingChange(star)}
-            className={`transition-colors ${onRatingChange ? 'cursor-pointer hover:scale-110' : 'cursor-default'}`}
-            disabled={!onRatingChange}
-          >
-            <Star
-              className={`w-6 h-6 ${
-                star <= rating 
-                  ? 'text-yellow-400 fill-yellow-400' 
-                  : 'text-gray-400'
-              }`}
-            />
-          </button>
-        ))}
-      </div>
-    );
-  };
 
   if (loading) {
     return (
@@ -518,7 +520,7 @@ function SuccessPageContent() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       {/* WhatsApp */}
                       <a
-                        href={`mailto:leve1up999q@gmail.com
+                        href="mailto:leve1up999q@gmail.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold px-4 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
@@ -529,7 +531,7 @@ function SuccessPageContent() {
                       
                       {/* Email */}
                       <a
-                        href={`mailto:support@leve1up.store?subject=${encodeURIComponent(`استلام اشتراك ${item.name}`)}&body=${encodeURIComponent(`مرحباً،\n\nأريد استلام اشتراك ${item.name}\nرقم الطلب: ${orderData.paymentId || 'غير متوفر'}\nالبريد الإلكتروني: ${orderData.email}\n\nشكراً لكم`)}`}
+                        href="mailto:support@leve1up.store"
                         className="flex items-center justify-center gap-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold px-4 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                       >
                         <Mail className="w-5 h-5" />
