@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 export default function EnhancedFeaturesSection() {
-  const sectionRef = useRef<HTMLSection>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const features = [
     {
