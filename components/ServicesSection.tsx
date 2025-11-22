@@ -52,8 +52,9 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* Services Grid - عرض عمودي على الجوال، شبكة على الكمبيوتر */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto">
+        {/* Services Grid - عرض جنب بعض في الجوال بدون تمرير */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-8 max-w-4xl mx-auto">
+          <div className="contents">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             
@@ -67,11 +68,11 @@ export default function ServicesSection() {
               >
                 <Link
                   href={service.href}
-                  className="group block"
+                  className="group block w-full"
                 >
                 <div className="bg-gradient-to-br from-dark-300 to-dark-500 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-700/50 hover:border-primary-300/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl h-full">
                   {/* Service Image */}
-                  <div className="relative h-32 sm:h-48 md:h-56 overflow-hidden">
+                  <div className="relative h-24 sm:h-40 md:h-56 overflow-hidden">
                     <Image
                       src={service.image}
                       alt={service.title}
@@ -89,11 +90,11 @@ export default function ServicesSection() {
                   </div>
 
                   {/* Service Content */}
-                  <div className="p-3 sm:p-4 md:p-6">
-                    <h3 className="text-sm sm:text-lg md:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-primary-300 transition-colors leading-tight">
+                  <div className="p-2 sm:p-4 md:p-6">
+                    <h3 className="text-xs sm:text-lg md:text-xl font-bold text-white mb-1 sm:mb-3 group-hover:text-primary-300 transition-colors leading-tight">
                       {service.title}
                     </h3>
-                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-none">
+                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-2 sm:mb-4 line-clamp-2">
                       {service.description}
                     </p>
                     
@@ -110,6 +111,7 @@ export default function ServicesSection() {
               </ScrollReveal>
             );
           })}
+          </div>
         </div>
       </div>
     </section>
