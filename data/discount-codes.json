@@ -1,0 +1,36 @@
+{
+  "discountCodes": [
+    {
+      "code": "WELCOME10",
+      "discountPercent": 10,
+      "description": "خصم ترحيبي للعملاء الجدد",
+      "active": true,
+      "expiryDate": "2025-12-31",
+      "usageLimit": null,
+      "usedCount": 0
+    },
+    {
+      "code": "SAVE20",
+      "discountPercent": 20,
+      "description": "خصم خاص",
+      "active": true,
+      "expiryDate": "2025-06-30",
+      "usageLimit": 100,
+      "usedCount": 0
+    }
+  ],
+  "instructions": {
+    "ar": "لإضافة كود خصم جديد، أضف عنصر جديد في مصفوفة discountCodes أعلاه",
+    "en": "To add a new discount code, add a new item to the discountCodes array above",
+    "fields": {
+      "code": "كود الخصم (أحرف كبيرة)",
+      "discountPercent": "نسبة الخصم (رقم من 1 إلى 99)",
+      "description": "وصف الكود",
+      "active": "فعال أم لا (true/false)",
+      "expiryDate": "تاريخ انتهاء الصلاحية (YYYY-MM-DD)",
+      "usageLimit": "حد الاستخدام (null = بلا حدود)",
+      "usedCount": "عدد مرات الاستخدام الحالي"
+    }
+  }
+}
+
