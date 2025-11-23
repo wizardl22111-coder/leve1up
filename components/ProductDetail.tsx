@@ -174,7 +174,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
                 src={productImage}
                 alt={productName}
                 fill
-                className="object-cover"
+                className="object-contain bg-gradient-to-br from-gray-50 to-gray-100"
                 priority
               />
             </div>
