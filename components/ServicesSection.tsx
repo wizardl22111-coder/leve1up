@@ -70,9 +70,9 @@ export default function ServicesSection() {
                   href={service.href}
                   className="group block w-full"
                 >
-                <div className="bg-gradient-to-br from-dark-300 to-dark-500 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-700/50 hover:border-primary-300/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl h-full">
+                <div className="bg-gradient-to-br from-dark-300 to-dark-500 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-700/50 hover:border-primary-300/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl h-full flex flex-col">
                   {/* Service Image */}
-                  <div className="relative h-24 sm:h-40 md:h-56 overflow-hidden">
+                  <div className="relative h-32 sm:h-40 md:h-48 overflow-hidden flex-shrink-0">
                     <Image
                       src={service.image}
                       alt={service.title}
@@ -90,16 +90,16 @@ export default function ServicesSection() {
                   </div>
 
                   {/* Service Content */}
-                  <div className="p-2 sm:p-4 md:p-6">
+                  <div className="p-2 sm:p-4 md:p-6 flex-1 flex flex-col">
                     <h3 className="text-xs sm:text-lg md:text-xl font-bold text-white mb-1 sm:mb-3 group-hover:text-primary-300 transition-colors leading-tight">
                       {service.title}
                     </h3>
-                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-2 sm:mb-4 line-clamp-2">
+                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-2 sm:mb-4 flex-1">
                       {service.description}
                     </p>
                     
                     {/* Action Button */}
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between mt-auto">
                       <span className="text-primary-300 font-semibold text-xs sm:text-sm group-hover:text-white transition-colors">
                         استكشف الآن
                       </span>
