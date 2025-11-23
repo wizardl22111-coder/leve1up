@@ -7,7 +7,7 @@ import { showToast } from '@/components/ToastContainer';
 import { calculatePrice, formatPrice } from '@/lib/currency';
 import { youtubeToolsProducts } from './data';
 import Link from 'next/link';
-import Image from 'next/image';
+import { ProductImage } from '@/components/OptimizedImage';
 
 export default function YouTubeToolsPage() {
   const { currency, addToCart, addToWishlist, wishlist } = useApp();
@@ -109,11 +109,11 @@ export default function YouTubeToolsPage() {
                 {/* Product Image */}
                 <div className="relative h-48 sm:h-56 overflow-hidden">
                   <Link href={`/products/${productSlug}`}>
-                    <Image
+                    <ProductImage
                       src={productImage}
                       alt={productName}
                       fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="transition-transform duration-300 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </Link>
@@ -238,4 +238,3 @@ export default function YouTubeToolsPage() {
     </div>
   );
 }
-

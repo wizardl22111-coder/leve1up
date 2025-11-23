@@ -6,7 +6,7 @@ import { useApp } from '@/contexts/AppContext';
 import { showToast } from '@/components/ToastContainer';
 import { calculatePrice, formatPrice } from '@/lib/currency';
 import testimonials from '@/data/testimonials.json';
-import Image from 'next/image';
+import { ProductImage } from './OptimizedImage';
 import WhyBuySection from './WhyBuySection';
 import FreeProductModal from './FreeProductModal';
 import ProductDescriptionBoxes from './ProductDescriptionBoxes';
@@ -170,11 +170,11 @@ export default function ProductDetail({ product }: { product?: Product }) {
           {/* Left Column: Image */}
           <div className="animate-scale-in">
             <div className="relative aspect-square rounded-2xl overflow-hidden bg-dark-400 shadow-2xl">
-              <Image
+              <ProductImage
                 src={productImage}
                 alt={productName}
                 fill
-                className="object-contain bg-gradient-to-br from-gray-50 to-gray-100"
+                className=""
                 priority
               />
             </div>

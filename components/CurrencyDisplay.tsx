@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
+import { LogoImage } from './OptimizedImage';
 import { Currency } from '@/lib/currency';
 
 interface CurrencyDisplayProps {
@@ -35,7 +35,7 @@ export default function CurrencyDisplay({ currency, className = '' }: CurrencyDi
     }
     
     return (
-      <Image
+      <LogoImage
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/UAE_Dirham_symbol.svg/512px-UAE_Dirham_symbol.svg.png"
         alt="درهم إماراتي"
         width={16}
@@ -55,7 +55,7 @@ export default function CurrencyDisplay({ currency, className = '' }: CurrencyDi
     }
     
     return (
-      <Image
+      <LogoImage
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/512px-Saudi_Riyal_Symbol.svg.png"
         alt="ريال سعودي"
         width={16}

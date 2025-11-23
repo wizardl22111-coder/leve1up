@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { BannerImage } from './OptimizedImage';
 import { ArrowLeft, Edit3, Gamepad2, Zap } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
@@ -73,11 +73,11 @@ export default function ServicesSection() {
                 <div className="bg-gradient-to-br from-dark-300 to-dark-500 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-700/50 hover:border-primary-300/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl h-full flex flex-col">
                   {/* Service Image */}
                   <div className="relative h-32 sm:h-40 md:h-48 overflow-hidden flex-shrink-0">
-                    <Image
+                    <BannerImage
                       src={service.image}
                       alt={service.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     

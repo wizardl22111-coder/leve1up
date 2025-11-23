@@ -5,7 +5,7 @@ import { Menu, X, ShoppingCart, Heart, Globe, Home, Package, Mail, Receipt, User
 import { useApp } from '@/contexts/AppContext';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { LogoImage } from './OptimizedImage';
 
 
 export default function Navbar() {
@@ -65,11 +65,11 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex-shrink-0 flex items-center group" onClick={handleLinkClick}>
               <div className="relative w-10 h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
-                <Image
+                <LogoImage
                   src="/logo.png"
                   alt="Level Up Logo"
                   fill
-                  className="object-contain"
+                  className=""
                   priority
                 />
               </div>

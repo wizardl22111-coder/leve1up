@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Download, Mail, CheckCircle, Clock, Package, MessageCircle } from 'lucide-react';
-import Image from 'next/image';
+import { ProductImage } from '@/components/OptimizedImage';
 
 function OrderSuccessContent() {
   const searchParams = useSearchParams();
@@ -117,11 +117,11 @@ function OrderSuccessContent() {
           {/* Product Info */}
           <div className="flex gap-4 mb-6">
             <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden flex-shrink-0">
-              <Image
+              <ProductImage
                 src={productImage}
                 alt={productName}
                 fill
-                className="object-cover"
+                className=""
               />
             </div>
             <div className="flex-1">

@@ -2,7 +2,7 @@
 
 import { Mail, Home, ShoppingBag, HelpCircle } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { LogoImage } from './OptimizedImage';
 import { usePathname } from 'next/navigation';
 import SocialMediaIcons from './SocialMediaIcons';
 
@@ -23,11 +23,11 @@ export default function Footer() {
               className="inline-flex flex-col items-center sm:items-start gap-3 mb-4 group"
             >
               <div className="relative w-16 h-16 transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
-                <Image
+                <LogoImage
                   src="/logo.png"
                   alt="Level Up Logo"
                   fill
-                  className="object-contain"
+                  className=""
                 />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent">
@@ -148,7 +148,7 @@ export default function Footer() {
             <h4 className="text-base sm:text-lg font-bold mb-4 text-primary-300">طرق الدفع المتاحة</h4>
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
               <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <Image
+                <LogoImage
                   src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
                   alt="Google Pay"
                   width={50}
@@ -157,7 +157,7 @@ export default function Footer() {
                 />
               </div>
               <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <Image
+                <LogoImage
                   src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg"
                   alt="Apple Pay"
                   width={50}
@@ -166,7 +166,7 @@ export default function Footer() {
                 />
               </div>
               <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <Image
+                <LogoImage
                   src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
                   alt="Visa"
                   width={50}
@@ -175,7 +175,7 @@ export default function Footer() {
                 />
               </div>
               <div className="bg-white rounded-lg p-2 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <Image
+                <LogoImage
                   src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Mastercard_2019_logo.svg"
                   alt="Mastercard"
                   width={50}

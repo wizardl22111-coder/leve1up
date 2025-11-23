@@ -9,7 +9,7 @@ import { Trash2, Plus, Minus, ShoppingBag, CreditCard } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { getCurrencySymbol } from '@/lib/currency';
 import Link from 'next/link';
-import Image from 'next/image';
+import { ProductImage } from '@/components/OptimizedImage';
 import PriceDisplay from '@/components/PriceDisplay';
 
 export default function CartPage() {
@@ -157,11 +157,11 @@ export default function CartPage() {
                   <div className="flex flex-col md:flex-row gap-4">
                     {/* Product Image */}
                     <div className="relative w-full md:w-32 h-32 rounded-lg overflow-hidden flex-shrink-0 mx-auto md:mx-0">
-                      <Image
+                      <ProductImage
                         src={item.image}
                         alt={item.name}
                         fill
-                        className="object-cover"
+                        className=""
                       />
                     </div>
 

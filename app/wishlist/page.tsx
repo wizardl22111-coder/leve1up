@@ -7,7 +7,7 @@ import { Heart, ShoppingCart, ArrowRight, Trash2 } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { showToast } from '@/components/ToastContainer';
 import Link from 'next/link';
-import Image from 'next/image';
+import { ProductImage } from '@/components/OptimizedImage';
 import products from '@/data/products.json';
 import PriceDisplay from '@/components/PriceDisplay';
 
@@ -119,11 +119,11 @@ export default function WishlistPage() {
               >
                 {/* Product Image */}
                 <div className="relative h-48 overflow-hidden">
-                  <Image
+                  <ProductImage
                     src={product.product_image}
                     alt={product.product_name}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="group-hover:scale-105 transition-transform duration-300"
                   />
                   {product.featured && (
                     <span className="absolute top-3 left-3 bg-accent-600 text-white px-3 py-1 rounded-full text-sm font-semibold">

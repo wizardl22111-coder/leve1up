@@ -14,7 +14,7 @@ import {
   ShoppingBag,
   FileText
 } from 'lucide-react';
-import Image from 'next/image';
+import { ProductImage } from './OptimizedImage';
 
 interface OrderItem {
   id: number;
@@ -266,11 +266,11 @@ export default function UserOrders({ className = '' }: UserOrdersProps) {
                         {/* Product Image */}
                         <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-slate-600/50 flex-shrink-0">
                           {item.image ? (
-                            <Image
+                            <ProductImage
                               src={item.image}
                               alt={item.name}
                               fill
-                              className="object-cover"
+                              className=""
                             />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center">
