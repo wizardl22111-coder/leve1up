@@ -26,9 +26,9 @@ export default function SubscriptionsPage() {
         <ScrollReveal delay={0} duration={1000} distance={0}>
           <div className="relative w-full">
             <img 
-              src="/images/services/banner.jpg" 
+              src="/images/services/digital-subscriptions-new.png" 
               alt="الاشتراكات الرقمية" 
-              className="w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] object-cover"
+              className="w-full h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[55vh] object-contain bg-gradient-to-br from-dark-400 to-dark-500"
             />
             {/* Optional overlay for better text readability if needed */}
             <div className="absolute inset-0 bg-black/20"></div>
