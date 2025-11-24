@@ -175,7 +175,7 @@ export default function ContactPage() {
             </h3>
             <SocialMediaIcons 
               whatsappNumber="+971503492848"
-              whatsappMessage="مرحباً، أريد الاستفسار عن منتجات <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-6 w-auto object-contain mx-1" />"
+              whatsappMessage="مرحباً، أريد الاستفسار عن المنتجات"
               instagramUrl="https://www.instagram.com/1level1up1/"
               tiktokUrl="https://www.tiktok.com/@lvlup321"
               showWhatsApp={false}
