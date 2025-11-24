@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار الصور</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: white;
+            padding: 20px;
+        }
+        .image-test {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+        .image-test img {
+            max-width: 300px;
+            height: 200px;
+            object-fit: contain;
+            border: 1px solid #555;
+            background: #f0f0f0;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 اختبار صور المنتجات</h1>
+    
+    <div class="image-test">
+        <h3>ChatGPT Subscription</h3>
+        <img src="/images/products/chatgpt5-subscription.jpg" alt="ChatGPT" 
+             onload="this.nextElementSibling.innerHTML='✅ تم تحميل الصورة بنجاح'"
+             onerror="this.nextElementSibling.innerHTML='❌ فشل تحميل الصورة'">
+        <p class="status">⏳ جاري التحميل...</p>
+    </div>
+
+    <div class="image-test">
+        <h3>Gemini Pro Subscription</h3>
+        <img src="/images/products/gemini-pro-subscription.jpg" alt="Gemini" 
+             onload="this.nextElementSibling.innerHTML='✅ تم تحميل الصورة بنجاح'"
+             onerror="this.nextElementSibling.innerHTML='❌ فشل تحميل الصورة'">
+        <p class="status">⏳ جاري التحميل...</p>
+    </div>
+
+    <div class="image-test">
+        <h3>Canva Subscription</h3>
+        <img src="/images/products/canva-subscription.jpg" alt="Canva" 
+             onload="this.nextElementSibling.innerHTML='✅ تم تحميل الصورة بنجاح'"
+             onerror="this.nextElementSibling.innerHTML='❌ فشل تحميل الصورة'">
+        <p class="status">⏳ جاري التحميل...</p>
+    </div>
+
+    <div class="image-test">
+        <h3>Netflix Subscription</h3>
+        <img src="/images/products/netflix-subscription.jpg" alt="Netflix" 
+             onload="this.nextElementSibling.innerHTML='✅ تم تحميل الصورة بنجاح'"
+             onerror="this.nextElementSibling.innerHTML='❌ فشل تحميل الصورة'">
+        <p class="status">⏳ جاري التحميل...</p>
+    </div>
+
+    <div class="image-test">
+        <h3>Digital Products Profit</h3>
+        <img src="/images/products/digital-products-profit.jpg" alt="Digital Products" 
+             onload="this.nextElementSibling.innerHTML='✅ تم تحميل الصورة بنجاح'"
+             onerror="this.nextElementSibling.innerHTML='❌ فشل تحميل الصورة'">
+        <p class="status">⏳ جاري التحميل...</p>
+    </div>
+
+    <script>
+        // فحص إضافي للصور
+        setTimeout(() => {
+            const images = document.querySelectorAll('img');
+            images.forEach((img, index) => {
+                if (!img.complete || img.naturalHeight === 0) {
+                    console.error(`الصورة ${index + 1} لم يتم تحميلها:`, img.src);
+                } else {
+                    console.log(`الصورة ${index + 1} تم تحميلها بنجاح:`, img.src);
+                }
+            });
+        }, 3000);
+    </script>
+</body>
+</html>
