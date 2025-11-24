@@ -516,17 +516,7 @@ function SuccessPageContent() {
                       </p>
                     </div>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      {/* WhatsApp */}
-                      <a
-                        href="mailto:leve1up999q@gmail.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold px-4 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                      >
-                        <MessageCircle className="w-5 h-5" />
-                        واتساب
-                      </a>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       
                       {/* Email */}
                       <a
@@ -589,10 +579,10 @@ function SuccessPageContent() {
               href="mailto:leve1up999q@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
-              <MessageCircle className="w-5 h-5" />
-              تواصل عبر الواتساب
+              <Mail className="w-5 h-5" />
+              تواصل عبر البريد الإلكتروني
             </a>
           </motion.div>
 

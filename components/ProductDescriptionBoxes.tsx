@@ -277,7 +277,7 @@ const ProductDescriptionBoxes: React.FC<ProductDescriptionBoxesProps> = ({ produ
             items: [
               "تفعيل حسابك خلال لحظات",
               "الوصول جاهز فور إتمام الدفع",
-              "بيانات الحساب عبر واتساب"
+              "بيانات الحساب عبر البريد الإلكتروني"
             ]
           },
           box4: {
@@ -316,7 +316,7 @@ const ProductDescriptionBoxes: React.FC<ProductDescriptionBoxesProps> = ({ produ
             items: [
               "فتح الوصول مباشرة بعد الدفع",
               "ابدأ استكشاف Gemini فوراً",
-              "بيانات الحساب عبر واتساب"
+              "بيانات الحساب عبر البريد الإلكتروني"
             ]
           },
           box4: {
@@ -355,7 +355,7 @@ const ProductDescriptionBoxes: React.FC<ProductDescriptionBoxesProps> = ({ produ
             items: [
               "تنشيط اشتراك Canva Pro مباشرة",
               "ابدأ التصميم فور التفعيل",
-              "بيانات الحساب عبر واتساب"
+              "بيانات الحساب عبر البريد الإلكتروني"
             ]
           },
           box4: {
@@ -394,7 +394,7 @@ const ProductDescriptionBoxes: React.FC<ProductDescriptionBoxesProps> = ({ produ
             items: [
               "تفعيل حساب المشاهدة فور الدفع",
               "جاهز للبدء خلال لحظات",
-              "بيانات الحساب عبر واتساب"
+              "بيانات الحساب عبر البريد الإلكتروني"
             ]
           },
           box4: {

@@ -91,15 +91,17 @@ export default function ProductGrid({
             <div className="bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-primary-300/10 hover:border-primary-300/30 transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
               {/* Product Image */}
               <Link href={`/products/${productId}`}>
-                <div className="relative h-56 sm:h-64 overflow-hidden group cursor-pointer">
+                <div className="relative h-56 sm:h-64 overflow-hidden group cursor-pointer bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
                   <img
                     src={`${productImage}?v=${Date.now()}`}
                     alt={productName}
-                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                    className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105 rounded-lg"
                     style={{ 
                       display: 'block',
                       visibility: 'visible',
-                      opacity: 1
+                      opacity: 1,
+                      maxWidth: '90%',
+                      maxHeight: '90%'
                     }}
                     onLoad={(e) => {
                       console.log('Image loaded:', productImage);
