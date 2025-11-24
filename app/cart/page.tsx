@@ -9,7 +9,7 @@ import { Trash2, Plus, Minus, ShoppingBag, CreditCard } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { getCurrencySymbol } from '@/lib/currency';
 import Link from 'next/link';
-import { ProductImage } from '@/components/OptimizedImage';
+// import { ProductImage } from '@/components/OptimizedImage'; // مؤقتاً معطل
 import PriceDisplay from '@/components/PriceDisplay';
 
 export default function CartPage() {
@@ -157,11 +157,24 @@ export default function CartPage() {
                   <div className="flex flex-col md:flex-row gap-4">
                     {/* Product Image */}
                     <div className="relative w-full md:w-32 h-32 rounded-lg overflow-hidden flex-shrink-0 mx-auto md:mx-0">
-                      <ProductImage
+                      <img
                         src={item.image}
                         alt={item.name}
-                        fill
-                        className=""
+                        className="w-full h-full object-contain"
+                        style={{ 
+                          display: 'block',
+                          visibility: 'visible',
+                          opacity: 1
+                        }}
+                        onLoad={(e) => {
+                          console.log('Cart image loaded:', item.image);
+                          e.currentTarget.style.opacity = '1';
+                        }}
+                        onError={(e) => {
+                          console.error('Cart image failed to load:', item.image);
+                          e.currentTarget.style.backgroundColor = '#f3f4f6';
+                          e.currentTarget.style.border = '2px dashed #d1d5db';
+                        }}
                       />
                     </div>
 

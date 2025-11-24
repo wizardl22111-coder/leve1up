@@ -3,7 +3,7 @@
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Download, Mail, CheckCircle, Clock, Package, MessageCircle } from 'lucide-react';
-import { ProductImage } from '@/components/OptimizedImage';
+// import { ProductImage } from '@/components/OptimizedImage'; // مؤقتاً معطل
 
 function OrderSuccessContent() {
   const searchParams = useSearchParams();
@@ -117,11 +117,24 @@ function OrderSuccessContent() {
           {/* Product Info */}
           <div className="flex gap-4 mb-6">
             <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden flex-shrink-0">
-              <ProductImage
+              <img
                 src={productImage}
                 alt={productName}
-                fill
-                className=""
+                className="w-full h-full object-contain"
+                style={{ 
+                  display: 'block',
+                  visibility: 'visible',
+                  opacity: 1
+                }}
+                onLoad={(e) => {
+                  console.log('Order success image loaded:', productImage);
+                  e.currentTarget.style.opacity = '1';
+                }}
+                onError={(e) => {
+                  console.error('Order success image failed to load:', productImage);
+                  e.currentTarget.style.backgroundColor = '#f3f4f6';
+                  e.currentTarget.style.border = '2px dashed #d1d5db';
+                }}
               />
             </div>
             <div className="flex-1">

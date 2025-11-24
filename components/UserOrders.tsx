@@ -14,7 +14,7 @@ import {
   ShoppingBag,
   FileText
 } from 'lucide-react';
-import { ProductImage } from './OptimizedImage';
+// import { ProductImage } from './OptimizedImage'; // مؤقتاً معطل
 
 interface OrderItem {
   id: number;
@@ -266,11 +266,24 @@ export default function UserOrders({ className = '' }: UserOrdersProps) {
                         {/* Product Image */}
                         <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-slate-600/50 flex-shrink-0">
                           {item.image ? (
-                            <ProductImage
+                            <img
                               src={item.image}
                               alt={item.name}
-                              fill
-                              className=""
+                              className="w-full h-full object-contain"
+                              style={{ 
+                                display: 'block',
+                                visibility: 'visible',
+                                opacity: 1
+                              }}
+                              onLoad={(e) => {
+                                console.log('User orders image loaded:', item.image);
+                                e.currentTarget.style.opacity = '1';
+                              }}
+                              onError={(e) => {
+                                console.error('User orders image failed to load:', item.image);
+                                e.currentTarget.style.backgroundColor = '#f3f4f6';
+                                e.currentTarget.style.border = '2px dashed #d1d5db';
+                              }}
                             />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center">
