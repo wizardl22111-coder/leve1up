@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اختبار الصور</title>
+    <title>اختبار الصور - Level Up (محدث)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,82 +11,241 @@
             color: white;
             padding: 20px;
         }
-        .image-test {
-            margin: 20px 0;
-            padding: 20px;
-            border: 1px solid #333;
-            border-radius: 8px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .image-test img {
-            max-width: 300px;
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #2a2a2a;
+            border-radius: 12px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .product-card {
+            background: #2a2a2a;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            border-color: #4f46e5;
+            transform: translateY(-5px);
+        }
+        .product-image {
+            width: 100%;
             height: 200px;
             object-fit: contain;
-            border: 1px solid #555;
-            background: #f0f0f0;
+            border-radius: 8px;
+            background: #333;
+            margin-bottom: 15px;
+            border: 1px solid #444;
         }
-        .error {
-            color: red;
+        .product-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #fff;
         }
-        .success {
-            color: green;
+        .image-path {
+            font-size: 12px;
+            color: #888;
+            word-break: break-all;
+            background: #1a1a1a;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .status {
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .success { background: #22c55e; color: white; }
+        .error { background: #ef4444; color: white; }
+        .loading { background: #f59e0b; color: white; }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding: 15px;
+            background: #2a2a2a;
+            border-radius: 8px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4f46e5;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #888;
         }
     </style>
 </head>
 <body>
-    <h1>🔍 اختبار صور المنتجات</h1>
-    
-    <div class="image-test">
-        <h3>ChatGPT Subscription</h3>
-        <img src="/images/products/chatgpt5-subscription.jpg" alt="ChatGPT" 
-             onload="this.nextElementSibling.innerHTML='✅ تم تحميل الصورة بنجاح'"
-             onerror="this.nextElementSibling.innerHTML='❌ فشل تحميل الصورة'">
-        <p class="status">⏳ جاري التحميل...</p>
-    </div>
-
-    <div class="image-test">
-        <h3>Gemini Pro Subscription</h3>
-        <img src="/images/products/gemini-pro-subscription.jpg" alt="Gemini" 
-             onload="this.nextElementSibling.innerHTML='✅ تم تحميل الصورة بنجاح'"
-             onerror="this.nextElementSibling.innerHTML='❌ فشل تحميل الصورة'">
-        <p class="status">⏳ جاري التحميل...</p>
-    </div>
-
-    <div class="image-test">
-        <h3>Canva Subscription</h3>
-        <img src="/images/products/canva-subscription.jpg" alt="Canva" 
-             onload="this.nextElementSibling.innerHTML='✅ تم تحميل الصورة بنجاح'"
-             onerror="this.nextElementSibling.innerHTML='❌ فشل تحميل الصورة'">
-        <p class="status">⏳ جاري التحميل...</p>
-    </div>
-
-    <div class="image-test">
-        <h3>Netflix Subscription</h3>
-        <img src="/images/products/netflix-subscription.jpg" alt="Netflix" 
-             onload="this.nextElementSibling.innerHTML='✅ تم تحميل الصورة بنجاح'"
-             onerror="this.nextElementSibling.innerHTML='❌ فشل تحميل الصورة'">
-        <p class="status">⏳ جاري التحميل...</p>
-    </div>
-
-    <div class="image-test">
-        <h3>Digital Products Profit</h3>
-        <img src="/images/products/digital-products-profit.jpg" alt="Digital Products" 
-             onload="this.nextElementSibling.innerHTML='✅ تم تحميل الصورة بنجاح'"
-             onerror="this.nextElementSibling.innerHTML='❌ فشل تحميل الصورة'">
-        <p class="status">⏳ جاري التحميل...</p>
+    <div class="container">
+        <div class="header">
+            <h1>🖼️ اختبار الصور - Level Up</h1>
+            <p>هذه الصفحة تختبر جميع الصور مباشرة بدون Next.js</p>
+            <p><strong>التحديث:</strong> <span id="timestamp"></span></p>
+        </div>
+        
+        <div class="stats" id="stats">
+            <div class="stat">
+                <div class="stat-number" id="total-count">10</div>
+                <div class="stat-label">إجمالي الصور</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="success-count">0</div>
+                <div class="stat-label">تم تحميلها</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="error-count">0</div>
+                <div class="stat-label">فشل التحميل</div>
+            </div>
+        </div>
+        
+        <div class="grid" id="products-grid">
+            <!-- سيتم ملء المنتجات هنا بواسطة JavaScript -->
+        </div>
     </div>
 
     <script>
-        // فحص إضافي للصور
-        setTimeout(() => {
-            const images = document.querySelectorAll('img');
-            images.forEach((img, index) => {
-                if (!img.complete || img.naturalHeight === 0) {
-                    console.error(`الصورة ${index + 1} لم يتم تحميلها:`, img.src);
-                } else {
-                    console.log(`الصورة ${index + 1} تم تحميلها بنجاح:`, img.src);
-                }
-            });
-        }, 3000);
+        // عرض الوقت الحالي
+        document.getElementById('timestamp').textContent = new Date().toLocaleString('ar-SA');
+        
+        // متغيرات الإحصائيات
+        let successCount = 0;
+        let errorCount = 0;
+        
+        // بيانات المنتجات
+        const products = [
+            {
+                id: 1,
+                name: "الدليل التمهيدي للربح من المنتجات الرقمية",
+                image: "/images/products/introductory-guide.png"
+            },
+            {
+                id: 2,
+                name: "خطة بناء مشروعك الرقمي من الصفر",
+                image: "/images/products/digital-products-profit.jpg"
+            },
+            {
+                id: 3,
+                name: "15 فكرة مشروع مربحة يمكنك تنفيذها اليوم",
+                image: "/images/products/15-project-ideas.jpg"
+            },
+            {
+                id: 4,
+                name: "حزمة المونتاج الاحترافية",
+                image: "/images/products/ultimate-video-editing-pack.png"
+            },
+            {
+                id: 5,
+                name: "حزمة الأيقونات المتحركة",
+                image: "/images/products/animated-icons-pack.png"
+            },
+            {
+                id: 6,
+                name: "حزمة المحتوى التصميمي",
+                image: "/images/products/design-content-pack.png"
+            },
+            {
+                id: 7,
+                name: "اشتراك ChatGPT Plus",
+                image: "/images/products/chatgpt5-subscription.jpg"
+            },
+            {
+                id: 8,
+                name: "اشتراك Gemini Pro",
+                image: "/images/products/gemini-pro-subscription.jpg"
+            },
+            {
+                id: 9,
+                name: "اشتراك Canva Pro",
+                image: "/images/products/canva-subscription.jpg"
+            },
+            {
+                id: 10,
+                name: "اشتراك Netflix",
+                image: "/images/products/netflix-subscription.jpg"
+            }
+        ];
+
+        // تحديث الإحصائيات
+        function updateStats() {
+            document.getElementById('success-count').textContent = successCount;
+            document.getElementById('error-count').textContent = errorCount;
+        }
+
+        // إنشاء بطاقات المنتجات
+        const grid = document.getElementById('products-grid');
+        
+        products.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            
+            const img = document.createElement('img');
+            img.className = 'product-image';
+            img.src = product.image + '?v=' + Date.now(); // Cache busting
+            img.alt = product.name;
+            
+            const name = document.createElement('div');
+            name.className = 'product-name';
+            name.textContent = product.name;
+            
+            const path = document.createElement('div');
+            path.className = 'image-path';
+            path.textContent = product.image;
+            
+            const status = document.createElement('div');
+            status.className = 'status loading';
+            status.textContent = '⏳ جاري التحميل...';
+            
+            // معالجة تحميل الصورة
+            img.onload = function() {
+                status.className = 'status success';
+                status.textContent = '✅ تم تحميل الصورة بنجاح';
+                successCount++;
+                updateStats();
+                console.log('✅ Image loaded:', product.image);
+            };
+            
+            img.onerror = function() {
+                status.className = 'status error';
+                status.textContent = '❌ فشل في تحميل الصورة';
+                errorCount++;
+                updateStats();
+                console.error('❌ Image failed:', product.image);
+                img.style.background = '#444';
+                img.style.border = '2px dashed #666';
+                img.alt = 'صورة غير متاحة';
+            };
+            
+            card.appendChild(img);
+            card.appendChild(name);
+            card.appendChild(path);
+            card.appendChild(status);
+            
+            grid.appendChild(card);
+        });
+        
+        // تحديث الإحصائيات كل ثانية
+        setInterval(updateStats, 1000);
     </script>
 </body>
 </html>
