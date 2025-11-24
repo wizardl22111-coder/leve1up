@@ -6,7 +6,7 @@ import { useApp } from '@/contexts/AppContext';
 import { showToast } from '@/components/ToastContainer';
 import { calculatePrice, formatPrice } from '@/lib/currency';
 import testimonials from '@/data/testimonials.json';
-import { ProductImage } from './OptimizedImage';
+// import { ProductImage } from './OptimizedImage'; // مؤقتاً معطل
 import WhyBuySection from './WhyBuySection';
 import FreeProductModal from './FreeProductModal';
 import ProductDescriptionBoxes from './ProductDescriptionBoxes';
@@ -170,12 +170,24 @@ export default function ProductDetail({ product }: { product?: Product }) {
           {/* Left Column: Image */}
           <div className="animate-scale-in">
             <div className="relative aspect-square rounded-2xl overflow-hidden bg-dark-400 shadow-2xl">
-              <ProductImage
+              <img
                 src={productImage}
                 alt={productName}
-                fill
-                className=""
-                priority
+                className="w-full h-full object-contain"
+                style={{ 
+                  display: 'block',
+                  visibility: 'visible',
+                  opacity: 1
+                }}
+                onLoad={(e) => {
+                  console.log('Product detail image loaded:', productImage);
+                  e.currentTarget.style.opacity = '1';
+                }}
+                onError={(e) => {
+                  console.error('Product detail image failed to load:', productImage);
+                  e.currentTarget.style.backgroundColor = '#f3f4f6';
+                  e.currentTarget.style.border = '2px dashed #d1d5db';
+                }}
               />
             </div>
           </div>
