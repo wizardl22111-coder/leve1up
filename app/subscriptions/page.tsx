@@ -31,20 +31,6 @@ export default function SubscriptionsPage() {
                 alt="الاشتراكات الرقمية" 
                 className="w-full h-[25vh] sm:h-[30vh] md:h-[35vh] lg:h-[40vh] object-cover"
               />
-              {/* Gradient overlay for better text readability */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40"></div>
-              
-              {/* Banner Text */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-white">
-                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 drop-shadow-lg">
-                    الاشتراكات الرقمية
-                  </h1>
-                  <p className="text-lg sm:text-xl text-gray-200 drop-shadow-md">
-                    نتفليكس، بلايستيشن بلس، سبوتيفاي والمزيد
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </ScrollReveal>
