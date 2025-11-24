@@ -76,6 +76,9 @@ export default function ProductGrid({
         const productImage = getProductImage(product);
         const isInWishlist = wishlist.includes(productId);
         
+        // Debug logging
+        console.log('ProductGrid - Product:', productName, 'Image:', productImage);
+        
         return (
           <ScrollReveal
             key={productId}
@@ -90,7 +93,7 @@ export default function ProductGrid({
               <Link href={`/products/${productId}`}>
                 <div className="relative h-56 sm:h-64 overflow-hidden group cursor-pointer">
                   <img
-                    src={productImage}
+                    src={`${productImage}?v=${Date.now()}`}
                     alt={productName}
                     className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                     style={{ 
