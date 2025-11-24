@@ -15,7 +15,7 @@ export default function PrivacyPage() {
               سياسة الاستخدام والخصوصية
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-6 w-auto object-contain mx-1" /> - حماية بياناتك أولويتنا
+              <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-8 sm:h-10 w-auto object-contain mx-1" /> - حماية بياناتك أولويتنا
             </p>
           </div>
 
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
             {/* مقدمة */}
             <div className="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 p-6 rounded-xl mb-8">
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                في <strong><img src="/images/levelup-logo.png" alt="Level Up" className="inline h-6 w-auto object-contain mx-1" /></strong>، نحن ملتزمون بحماية خصوصيتك وأمان بياناتك الشخصية. توضح هذه السياسة كيفية جمع واستخدام وحماية معلوماتك عند استخدام موقعنا وخدماتنا.
+                في <strong><img src="/images/levelup-logo.png" alt="Level Up" className="inline h-8 sm:h-10 w-auto object-contain mx-1" /></strong>، نحن ملتزمون بحماية خصوصيتك وأمان بياناتك الشخصية. توضح هذه السياسة كيفية جمع واستخدام وحماية معلوماتك عند استخدام موقعنا وخدماتنا.
               </p>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
                 باستخدامك لموقعنا، فإنك توافق على جمع واستخدام المعلومات وفقاً لهذه السياسة.

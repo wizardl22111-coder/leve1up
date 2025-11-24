@@ -14,7 +14,7 @@ export default function RefundPage() {
               سياسة الاستبدال والاسترجاع
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-6 w-auto object-contain mx-1" /> - المنتجات الرقمية
+              <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-8 sm:h-10 w-auto object-contain mx-1" /> - المنتجات الرقمية
             </p>
           </div>
 

@@ -14,14 +14,14 @@ export default function TermsPage() {
               🧾 اتفاقية الاستخدام
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-6 w-auto object-contain mx-1" />
+              <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-8 sm:h-10 w-auto object-contain mx-1" />
             </p>
           </div>
 
           <div className="prose prose-lg dark:prose-invert max-w-none">
             <div className="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 p-6 rounded-xl mb-8">
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                مرحبًا بكم في <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-6 w-auto object-contain mx-1" />، المتخصص ببيع الألعاب الرقمية، الأكواد، الحسابات والمنتجات الإلكترونية.
+                مرحبًا بكم في <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-8 sm:h-10 w-auto object-contain mx-1" />، المتخصص ببيع الألعاب الرقمية، الأكواد، الحسابات والمنتجات الإلكترونية.
               </p>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mt-4">
                 باستخدامك لهذا المتجر، فأنت توافق على الشروط والأحكام التالية وتُقرّ أنك تملك الأهلية القانونية الكاملة للتعامل الإلكتروني وفق القوانين المعمول بها في دولة الإمارات العربية المتحدة.
@@ -37,7 +37,7 @@ export default function TermsPage() {
                 <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                   <li className="flex gap-3">
                     <span className="text-primary-600 dark:text-primary-400">•</span>
-                    <span><strong>المتجر:</strong> <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-6 w-auto object-contain mx-1" /> الإلكتروني بكافة قنواته (الموقع الإلكتروني – التطبيق – الدعم الفني).</span>
+                    <span><strong>المتجر:</strong> <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-8 sm:h-10 w-auto object-contain mx-1" /> الإلكتروني بكافة قنواته (الموقع الإلكتروني – التطبيق – الدعم الفني).</span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-primary-600 dark:text-primary-400">•</span>
@@ -171,7 +171,7 @@ export default function TermsPage() {
                 <ul className="space-y-3 text-gray-700 dark:text-gray-300">
                   <li className="flex gap-3">
                     <span className="text-primary-600 dark:text-primary-400">•</span>
-                    <span>جميع محتويات الموقع والعلامة التجارية <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-6 w-auto object-contain mx-1" /> مملوكة بالكامل للمتجر.</span>
+                    <span>جميع محتويات الموقع والعلامة التجارية <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-8 sm:h-10 w-auto object-contain mx-1" /> مملوكة بالكامل للمتجر.</span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-primary-600 dark:text-primary-400">•</span>

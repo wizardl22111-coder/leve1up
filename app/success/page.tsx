@@ -366,7 +366,7 @@ function SuccessPageContent() {
             transition={{ delay: 0.7 }}
             className="text-xl text-white/80 max-w-2xl mx-auto"
           >
-            شكرًا لثقتك في <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-6 w-auto object-contain mx-1" />، تم تأكيد طلبك بنجاح.
+            شكرًا لثقتك في <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-8 sm:h-10 w-auto object-contain mx-1" />، تم تأكيد طلبك بنجاح.
           </motion.p>
         </motion.div>
 
@@ -736,7 +736,7 @@ function SuccessPageContent() {
           className="text-center mt-16 pb-8"
         >
           <p className="text-white/70 text-lg">
-            شكراً لاختيارك <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-6 w-auto object-contain mx-1" /> 💚 نتمنى لك تجربة تعلم ممتعة.
+            شكراً لاختيارك <img src="/images/levelup-logo.png" alt="Level Up" className="inline h-8 sm:h-10 w-auto object-contain mx-1" /> 💚 نتمنى لك تجربة تعلم ممتعة.
           </p>
         </motion.div>
       </div>
