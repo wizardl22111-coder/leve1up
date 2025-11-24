@@ -21,17 +21,31 @@ export default function SubscriptionsPage() {
     <main className="min-h-screen">
       <Navbar />
       
-      {/* Hero Section - Full Banner Image */}
-      <section className="relative overflow-hidden">
+      {/* Hero Section - Banner Style */}
+      <section className="relative overflow-hidden pt-20 pb-8">
         <ScrollReveal delay={0} duration={1000} distance={0}>
-          <div className="relative w-full">
-            <img 
-              src="/images/services/digital-subscriptions-new.png" 
-              alt="الاشتراكات الرقمية" 
-              className="w-full h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[55vh] object-contain bg-gradient-to-br from-dark-400 to-dark-500"
-            />
-            {/* Optional overlay for better text readability if needed */}
-            <div className="absolute inset-0 bg-black/20"></div>
+          <div className="container-mobile">
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src="/images/services/digital-subscriptions-new.png" 
+                alt="الاشتراكات الرقمية" 
+                className="w-full h-[25vh] sm:h-[30vh] md:h-[35vh] lg:h-[40vh] object-cover"
+              />
+              {/* Gradient overlay for better text readability */}
+              <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40"></div>
+              
+              {/* Banner Text */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center text-white">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 drop-shadow-lg">
+                    الاشتراكات الرقمية
+                  </h1>
+                  <p className="text-lg sm:text-xl text-gray-200 drop-shadow-md">
+                    نتفليكس، بلايستيشن بلس، سبوتيفاي والمزيد
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </ScrollReveal>
       </section>

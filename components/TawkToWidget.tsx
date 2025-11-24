@@ -15,7 +15,7 @@ export default function TawkToWidget() {
 
   useEffect(() => {
     // تحقق من أن الصفحة الحالية هي صفحة دفع أو نجاح
-    const isCheckoutPage = pathname.includes('/checkout') || pathname.includes('/order-success');
+    const isCheckoutPage = pathname.includes('/checkout') || pathname.includes('/success') || pathname.includes('/order-success');
     
     if (isCheckoutPage) {
       // تهيئة Tawk.to فقط على صفحات الدفع
