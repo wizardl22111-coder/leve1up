@@ -20,19 +20,17 @@ export default function Footer() {
           <div className="text-center sm:text-right lg:col-span-1 col-span-1 sm:col-span-2 lg:col-span-1">
             <a 
               href="mailto:leve1up999q@gmail.com"
-              className="inline-flex flex-col items-center sm:items-start gap-3 mb-4 group"
+              className="inline-flex justify-center sm:justify-start items-center mb-4 group"
             >
-              <div className="relative w-16 h-16 transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
+              <div className="relative h-12 w-auto transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
                 <LogoImage
-                  src="/logo.png"
+                  src="/images/levelup-logo.png"
                   alt="Level Up Logo"
-                  fill
-                  className=""
+                  width={150}
+                  height={48}
+                  className="h-12 w-auto object-contain"
                 />
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent">
-                Level Up
-              </span>
             </a>
             <p className="text-gray-400 leading-relaxed mb-6 text-sm sm:text-base">
               متجرك الموثوق للكتب والمنتجات الرقمية بأفضل الأسعار وتسليم فوري ⚡
@@ -42,7 +40,7 @@ export default function Footer() {
             <SocialMediaIcons 
               className="justify-center sm:justify-start"
               whatsappNumber="+971503492848"
-              whatsappMessage="مرحباً، أريد الاستفسار عن منتجات Level Up"
+              whatsappMessage="مرحباً، أريد الاستفسار عن المنتجات"
               instagramUrl="https://www.instagram.com/1level1up1/"
               tiktokUrl="https://www.tiktok.com/@lvlup321"
               showWhatsApp={false}
@@ -191,9 +189,15 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-primary-300/10 pt-6">
           <div className="text-center">
-            <p className="text-gray-400 text-xs sm:text-sm">
+            <p className="text-gray-400 text-xs sm:text-sm flex items-center justify-center gap-2">
               © {currentYear} جميع الحقوق محفوظة لمتجر{' '}
-              <span className="text-primary-300 font-bold">Level Up</span>
+              <LogoImage
+                src="/images/levelup-logo.png"
+                alt="Level Up Logo"
+                width={60}
+                height={20}
+                className="h-5 w-auto object-contain inline"
+              />
             </p>
           </div>
         </div>

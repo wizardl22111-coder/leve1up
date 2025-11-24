@@ -64,18 +64,16 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-16 sm:h-20">
             {/* Logo */}
             <Link href="/" className="flex-shrink-0 flex items-center group" onClick={handleLinkClick}>
-              <div className="relative w-10 h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
+              <div className="relative h-8 sm:h-10 w-auto transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
                 <LogoImage
-                  src="/logo.png"
+                  src="/images/levelup-logo.png"
                   alt="Level Up Logo"
-                  fill
-                  className=""
+                  width={120}
+                  height={40}
+                  className="h-8 sm:h-10 w-auto object-contain"
                   priority
                 />
               </div>
-              <span className="mr-2 sm:mr-3 text-lg sm:text-xl font-bold bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent hidden sm:inline">
-                Level Up
-              </span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -281,9 +279,15 @@ export default function Navbar() {
           <div className="bg-dark-400/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-primary-300/20 w-full max-w-md max-h-[85vh] overflow-hidden">
             {/* Header */}
             <div className="bg-gradient-to-r from-primary-300/20 to-accent-600/20 p-6 text-center border-b border-primary-300/10">
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent">
-                Level Up
-              </h3>
+              <div className="flex justify-center mb-2">
+                <LogoImage
+                  src="/images/levelup-logo.png"
+                  alt="Level Up Logo"
+                  width={100}
+                  height={32}
+                  className="h-8 w-auto object-contain"
+                />
+              </div>
               <p className="text-gray-400 text-sm mt-1">القائمة الرئيسية</p>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
