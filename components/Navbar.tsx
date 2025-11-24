@@ -64,13 +64,13 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-16 sm:h-20">
             {/* Logo */}
             <Link href="/" className="flex-shrink-0 flex items-center group" onClick={handleLinkClick}>
-              <div className="relative h-8 sm:h-10 w-auto transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
+              <div className="relative h-10 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-110 group-active:scale-95">
                 <LogoImage
                   src="/images/levelup-logo.png"
                   alt="Level Up Logo"
                   width={120}
                   height={40}
-                  className="h-8 sm:h-10 w-auto object-contain"
+                  className="h-10 sm:h-12 w-auto object-contain"
                   priority
                 />
               </div>
@@ -285,7 +285,7 @@ export default function Navbar() {
                   alt="Level Up Logo"
                   width={100}
                   height={32}
-                  className="h-8 w-auto object-contain"
+                  className="h-12 w-auto object-contain"
                 />
               </div>
               <p className="text-gray-400 text-sm mt-1">القائمة الرئيسية</p>
