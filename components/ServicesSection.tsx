@@ -77,7 +77,8 @@ export default function ServicesSection() {
                       src={service.image}
                       alt={service.title}
                       fill
-                      className="transition-transform duration-500 group-hover:scale-105"
+                      className="transition-transform duration-500 group-hover:scale-105 object-cover"
+                      priority={index === 0}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     

@@ -128,8 +128,8 @@ export default function OptimizedImage({
   // في حالة خطأ في تحميل الصورة
   if (imageError) {
     return (
-      <div className={`${containerClasses} ${fill ? 'w-full h-full' : ''}`} style={{ width, height }}>
-        <div className="flex flex-col items-center justify-center text-gray-400 p-4">
+      <div className={`${containerClasses} ${fill ? 'w-full h-full absolute inset-0' : ''} bg-gradient-to-br from-gray-100 to-gray-200`} style={{ width, height }}>
+        <div className="flex flex-col items-center justify-center text-gray-500 p-4 h-full">
           <svg className="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
@@ -158,9 +158,9 @@ export default function OptimizedImage({
           onError={handleError}
         />
         {/* طبقة تحميل */}
-        {!imageLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center bg-gray-100 animate-pulse">
-            <div className="w-8 h-8 border-2 border-gray-300 border-t-primary-500 rounded-full animate-spin"></div>
+        {!imageLoaded && !imageError && (
+          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse">
+            <div className="w-8 h-8 border-2 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
           </div>
         )}
       </div>
@@ -185,9 +185,9 @@ export default function OptimizedImage({
         onError={handleError}
       />
       {/* طبقة تحميل */}
-      {!imageLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 animate-pulse">
-          <div className="w-8 h-8 border-2 border-gray-300 border-t-primary-500 rounded-full animate-spin"></div>
+      {!imageLoaded && !imageError && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse">
+          <div className="w-8 h-8 border-2 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
         </div>
       )}
     </div>
@@ -221,6 +221,8 @@ export function BannerImage({ src, alt, className = '', ...props }: Omit<Optimiz
       objectFit="cover"
       objectPosition="center"
       showBackground={false}
+      loading="eager"
+      quality={90}
       {...props}
     />
   );
@@ -253,4 +255,3 @@ export function AvatarImage({ src, alt, className = '', ...props }: Omit<Optimiz
     />
   );
 }
-
