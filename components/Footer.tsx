@@ -189,7 +189,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-primary-300/10 pt-6">
           <div className="text-center">
-            <p className="text-gray-400 text-xs sm:text-sm flex items-center justify-center gap-2">
+            <p className="text-gray-400 text-xs sm:text-base md:text-lg flex items-center justify-center gap-2">
               © {currentYear} جميع الحقوق محفوظة لمتجر{' '}
               <LogoImage
                 src="/images/levelup-logo.png"
