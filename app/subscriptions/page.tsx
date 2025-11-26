@@ -22,19 +22,7 @@ export default function SubscriptionsPage() {
       <Navbar />
       
       {/* Hero Section - Banner Style */}
-      <section className="relative overflow-hidden pt-20 pb-8">
-        <ScrollReveal delay={0} duration={1000} distance={0}>
-          <div className="container-mobile">
-            <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src="/images/services/subscriptions-banner-new.jpg" 
-                alt="الاشتراكات الرقمية" 
-                className="w-full h-[25vh] sm:h-[30vh] md:h-[35vh] lg:h-[40vh] object-cover"
-              />
-            </div>
-          </div>
-        </ScrollReveal>
-      </section>
+
 
 
 
