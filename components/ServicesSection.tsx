@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { BannerImage } from './OptimizedImage';
-import { ArrowLeft, Edit3, Gamepad2, Zap } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowLeft, Edit3, Zap } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
 export default function ServicesSection() {
@@ -52,9 +52,8 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* Services Grid - عرض جنب بعض في الجوال بدون تمرير */}
+        {/* Services Grid */}
         <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-8 max-w-4xl mx-auto">
-          <div className="contents">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             
@@ -70,49 +69,50 @@ export default function ServicesSection() {
                   href={service.href}
                   className="group block w-full"
                 >
-                <div className="bg-gradient-to-br from-dark-300 to-dark-500 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-700/50 hover:border-primary-300/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl h-full flex flex-col">
-                  {/* Service Image */}
-                  <div className="relative h-32 sm:h-40 md:h-48 overflow-hidden flex-shrink-0">
-                    <BannerImage
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="transition-transform duration-500 group-hover:scale-105 object-cover"
-                      priority={index === 0}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    
-                    {/* Icon Overlay */}
-                    <div className="absolute top-2 right-2 sm:top-4 sm:right-4">
-                      <div className={`p-2 sm:p-3 bg-dark-400/80 backdrop-blur-sm rounded-lg sm:rounded-xl border border-white/10`}>
-                        <IconComponent className={`w-4 h-4 sm:w-6 sm:h-6 ${service.iconColor}`} />
+                  <div className="bg-gradient-to-br from-dark-300 to-dark-500 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-gray-700/50 hover:border-primary-300/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl h-full flex flex-col">
+                    {/* Service Image */}
+                    <div className="relative h-32 sm:h-40 md:h-48 overflow-hidden flex-shrink-0">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        priority={index === 0}
+                        quality={90}
+                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      
+                      {/* Icon Overlay */}
+                      <div className="absolute top-2 right-2 sm:top-4 sm:right-4">
+                        <div className={`p-2 sm:p-3 bg-dark-400/80 backdrop-blur-sm rounded-lg sm:rounded-xl border border-white/10`}>
+                          <IconComponent className={`w-4 h-4 sm:w-6 sm:h-6 ${service.iconColor}`} />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Service Content */}
+                    <div className="p-2 sm:p-4 md:p-6 flex-1 flex flex-col">
+                      <h3 className="text-xs sm:text-lg md:text-xl font-bold text-white mb-1 sm:mb-3 group-hover:text-primary-300 transition-colors leading-tight">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-2 sm:mb-4 flex-1">
+                        {service.description}
+                      </p>
+                      
+                      {/* Action Button */}
+                      <div className="flex items-center justify-between mt-auto">
+                        <span className="text-primary-300 font-semibold text-xs sm:text-sm group-hover:text-white transition-colors">
+                          استكشف الآن
+                        </span>
+                        <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4 text-primary-300 group-hover:text-white group-hover:translate-x-1 transition-all" />
                       </div>
                     </div>
                   </div>
-
-                  {/* Service Content */}
-                  <div className="p-2 sm:p-4 md:p-6 flex-1 flex flex-col">
-                    <h3 className="text-xs sm:text-lg md:text-xl font-bold text-white mb-1 sm:mb-3 group-hover:text-primary-300 transition-colors leading-tight">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-2 sm:mb-4 flex-1">
-                      {service.description}
-                    </p>
-                    
-                    {/* Action Button */}
-                    <div className="flex items-center justify-between mt-auto">
-                      <span className="text-primary-300 font-semibold text-xs sm:text-sm group-hover:text-white transition-colors">
-                        استكشف الآن
-                      </span>
-                      <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4 text-primary-300 group-hover:text-white group-hover:translate-x-1 transition-all" />
-                    </div>
-                  </div>
-                </div>
                 </Link>
               </ScrollReveal>
             );
           })}
-          </div>
         </div>
       </div>
     </section>
