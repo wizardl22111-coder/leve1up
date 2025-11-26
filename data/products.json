@@ -536,5 +536,33 @@
     "purchases": 190,
     "reviews": 75,
     "featured": false
+  },
+  {
+    "product_id": 13,
+    "product_name": "باقة المونتاج الاحترافية",
+    "product_name_en": "Professional Video Editing Pack",
+    "product_image": "/images/products/ultimate-video-editing-pack.png",
+    "description": "🎬 باقة شاملة لأدوات المونتاج الاحترافية تحتوي على كل ما تحتاجه لإنتاج فيديوهات احترافية مذهلة!\n\n📦 محتويات الباقة:\n• مؤثرات بصرية متقدمة (Visual Effects)\n• انتقالات سينمائية احترافية (Transitions)\n• قوالب نصوص متحركة (Animated Titles)\n• مؤثرات صوتية عالية الجودة (Sound Effects)\n• موسيقى خلفية خالية من حقوق الطبع\n• فلاتر وتأثيرات لونية احترافية\n• قوالب مونتاج جاهزة للاستخدام\n\n🎯 مناسبة لـ:\n• منتجي المحتوى على يوتيوب وتيك توك\n• المصورين والمونتيرين المحترفين\n• أصحاب الشركات والمشاريع\n• المبتدئين الذين يريدون نتائج احترافية\n\n💻 متوافقة مع:\n• Adobe Premiere Pro\n• Final Cut Pro\n• DaVinci Resolve\n• After Effects\n• وبرامج المونتاج الأخرى\n\n🚀 المميزات:\n✅ جودة عالية 4K\n✅ سهولة الاستخدام\n✅ تحديثات مجانية\n✅ دعم فني مجاني\n✅ ترخيص تجاري مدى الحياة\n\n📥 التحميل فوري بعد الدفع\n💾 حجم الملف: حوالي 2.5 جيجابايت",
+    "price": 59.99,
+    "originalPrice": 149.99,
+    "currency": "SAR",
+    "category": "editing-tools",
+    "tags": [
+      "مونتاج",
+      "فيديو",
+      "مؤثرات-بصرية",
+      "انتقالات",
+      "أدوات-احترافية"
+    ],
+    "active": true,
+    "rating": 4.7,
+    "buyers": "عدد مرات الشراء: 120+",
+    "featured": false,
+    "isFree": false,
+    "purchases": 120,
+    "reviews": 89,
+    "file_size_mb": 2500,
+    "download_url": "/downloads/professional-video-editing-pack.zip",
+    "filename": "professional-video-editing-pack.zip"
   }
 ]
