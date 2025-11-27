@@ -2,6 +2,7 @@
 
 import { ArrowLeft, Sparkles, Zap, Shield, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
+import ScrollReveal from './ScrollReveal';
 
 export default function Hero() {
   return (
@@ -20,77 +21,91 @@ export default function Hero() {
       <div className="container-mobile relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Content */}
-          <div className="text-center animate-fade-in">
+          <div className="text-center">
             {/* Badge - Hidden on Mobile */}
-            <div className="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-primary-300/20 to-accent-600/20 backdrop-blur-sm text-primary-300 px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-4 sm:mb-6 border border-primary-300/30 animate-scale-in">
-              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="text-xs sm:text-sm font-bold">أفضل العروض الرقمية 2025</span>
-            </div>
+            <ScrollReveal delay={0} duration={800} distance={60} direction="up">
+              <div className="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-primary-300/20 to-accent-600/20 backdrop-blur-sm text-primary-300 px-4 py-2 sm:px-6 sm:py-3 rounded-full mb-4 sm:mb-6 border border-primary-300/30">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-xs sm:text-sm font-bold">أفضل العروض الرقمية 2025</span>
+              </div>
+            </ScrollReveal>
 
             {/* Main Heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 mt-6 sm:mt-0 leading-tight animate-slide-up">
-              <span className="bg-gradient-to-r from-primary-300 via-accent-600 to-primary-300 bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto]">
-                متجرك الموثوق
-              </span>
-              <br className="sm:hidden" />{' '}
-              <span className="block sm:inline mt-2 sm:mt-0 bg-gradient-to-r from-primary-300 via-accent-600 to-primary-300 bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto]">
-                للمنتجات الرقمية
-              </span>
-            </h1>
+            <ScrollReveal delay={200} duration={800} distance={80} direction="up">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 mt-6 sm:mt-0 leading-tight">
+                <span className="bg-gradient-to-r from-primary-300 via-accent-600 to-primary-300 bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto]">
+                  متجرك الموثوق
+                </span>
+                <br className="sm:hidden" />{' '}
+                <span className="block sm:inline mt-2 sm:mt-0 bg-gradient-to-r from-primary-300 via-accent-600 to-primary-300 bg-clip-text text-transparent animate-gradient-x bg-[length:200%_auto]">
+                  للمنتجات الرقمية
+                </span>
+              </h1>
+            </ScrollReveal>
 
             {/* Description */}
-            <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto px-4 sm:px-0 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-              احصل على أفضل الكتب الإلكترونية والمنتجات الرقمية بأسعار تنافسية مع تسليم فوري ⚡
-            </p>
+            <ScrollReveal delay={400} duration={800} distance={60} direction="up">
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto px-4 sm:px-0">
+                احصل على أفضل الكتب الإلكترونية والمنتجات الرقمية بأسعار تنافسية مع تسليم فوري ⚡
+              </p>
+            </ScrollReveal>
 
             {/* CTA Buttons - Mobile First */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center px-4 sm:px-0 mb-8 sm:mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <Link
-                href="#products"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 text-gray-900 px-6 py-4 sm:px-8 sm:py-4 rounded-2xl font-bold text-base sm:text-lg shadow-lg shadow-primary-300/30 hover:shadow-2xl hover:shadow-primary-300/50 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 touch-manipulation"
-              >
-                <span>اشترِ الآن</span>
-                <ArrowLeft className="w-5 h-5" />
-              </Link>
-              <Link
-                href="#products"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent-600 to-accent-700 text-white px-6 py-4 sm:px-8 sm:py-4 rounded-2xl font-bold text-base sm:text-lg shadow-lg shadow-accent-600/30 hover:shadow-2xl hover:shadow-accent-600/50 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 touch-manipulation border border-accent-500/30"
-              >
-                <span>استكشف المنتجات</span>
-              </Link>
-            </div>
+            <ScrollReveal delay={600} duration={800} distance={60} direction="up">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center px-4 sm:px-0 mb-8 sm:mb-12">
+                <Link
+                  href="#products"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-primary-300 to-primary-400 text-gray-900 px-6 py-4 sm:px-8 sm:py-4 rounded-2xl font-bold text-base sm:text-lg shadow-lg shadow-primary-300/30 hover:shadow-2xl hover:shadow-primary-300/50 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 touch-manipulation"
+                >
+                  <span>اشترِ الآن</span>
+                  <ArrowLeft className="w-5 h-5" />
+                </Link>
+                <Link
+                  href="#products"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent-600 to-accent-700 text-white px-6 py-4 sm:px-8 sm:py-4 rounded-2xl font-bold text-base sm:text-lg shadow-lg shadow-accent-600/30 hover:shadow-2xl hover:shadow-accent-600/50 transition-all duration-300 transform hover:-translate-y-1 active:scale-95 touch-manipulation border border-accent-500/30"
+                >
+                  <span>استكشف المنتجات</span>
+                </Link>
+              </div>
+            </ScrollReveal>
 
             {/* Trust Badges - Mobile Optimized */}
-            <div className="grid grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto px-4 sm:px-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-              <div className="text-center p-3 sm:p-4 md:p-6 bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-primary-300/10 hover:border-primary-300/30 transition-all duration-300">
-                <div className="flex justify-center mb-2">
-                  <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-primary-300" />
+            <div className="grid grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto px-4 sm:px-0">
+              <ScrollReveal delay={800} duration={800} distance={60} direction="up">
+                <div className="text-center p-3 sm:p-4 md:p-6 bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-primary-300/10 hover:border-primary-300/30 transition-all duration-300">
+                  <div className="flex justify-center mb-2">
+                    <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-primary-300" />
+                  </div>
+                  <p className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary-300 to-primary-400 bg-clip-text text-transparent">
+                    فوري
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-400 mt-1">تسليم فوري</p>
                 </div>
-                <p className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary-300 to-primary-400 bg-clip-text text-transparent">
-                  فوري
-                </p>
-                <p className="text-xs sm:text-sm text-gray-400 mt-1">تسليم فوري</p>
-              </div>
+              </ScrollReveal>
               
-              <div className="text-center p-3 sm:p-4 md:p-6 bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-accent-600/10 hover:border-accent-600/30 transition-all duration-300">
-                <div className="flex justify-center mb-2">
-                  <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-accent-600" />
+              <ScrollReveal delay={900} duration={800} distance={60} direction="up">
+                <div className="text-center p-3 sm:p-4 md:p-6 bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-accent-600/10 hover:border-accent-600/30 transition-all duration-300">
+                  <div className="flex justify-center mb-2">
+                    <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-accent-600" />
+                  </div>
+                  <p className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-accent-600 to-accent-700 bg-clip-text text-transparent">
+                    99%
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-400 mt-1">رضا العملاء</p>
                 </div>
-                <p className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-accent-600 to-accent-700 bg-clip-text text-transparent">
-                  99%
-                </p>
-                <p className="text-xs sm:text-sm text-gray-400 mt-1">رضا العملاء</p>
-              </div>
+              </ScrollReveal>
               
-              <div className="text-center p-3 sm:p-4 md:p-6 bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-primary-300/10 hover:border-primary-300/30 transition-all duration-300">
-                <div className="flex justify-center mb-2">
-                  <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-primary-300" />
+              <ScrollReveal delay={1000} duration={800} distance={60} direction="up">
+                <div className="text-center p-3 sm:p-4 md:p-6 bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-primary-300/10 hover:border-primary-300/30 transition-all duration-300">
+                  <div className="flex justify-center mb-2">
+                    <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-primary-300" />
+                  </div>
+                  <p className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary-300 to-primary-400 bg-clip-text text-transparent">
+                    5000+
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-400 mt-1">عميل سعيد</p>
                 </div>
-                <p className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary-300 to-primary-400 bg-clip-text text-transparent">
-                  5000+
-                </p>
-                <p className="text-xs sm:text-sm text-gray-400 mt-1">عميل سعيد</p>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
         </div>

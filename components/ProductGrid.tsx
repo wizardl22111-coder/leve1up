@@ -86,7 +86,6 @@ export default function ProductGrid({
             duration={800}
             distance={80}
             direction="up"
-            disabled={true}
           >
             <div className="bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-primary-300/10 hover:border-primary-300/30 transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
               {/* Product Image */}
