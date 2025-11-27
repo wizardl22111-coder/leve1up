@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ChevronDown, ChevronUp, HelpCircle, MessageCircleQuestion } from 'lucide-react';
 import faq from '@/data/faq.json';
 import Link from 'next/link';
+import ScrollReveal from './ScrollReveal';
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -19,30 +20,35 @@ export default function FAQSection() {
       <div className="absolute top-0 left-1/2 w-96 h-96 bg-primary-300/5 rounded-full filter blur-3xl"></div>
       
       <div className="container-mobile relative z-10">
-        <div className="text-center mb-8 sm:mb-12 animate-fade-in">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300/20 to-accent-600/20 backdrop-blur-sm text-primary-300 px-4 py-2 rounded-full mb-4 border border-primary-300/30">
-            <MessageCircleQuestion className="w-4 h-4" />
-            <span className="text-xs sm:text-sm font-bold">كل ما تحتاج معرفته</span>
+        <ScrollReveal delay={0} duration={800} distance={60} direction="up">
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-300/20 to-accent-600/20 backdrop-blur-sm text-primary-300 px-4 py-2 rounded-full mb-4 border border-primary-300/30">
+              <MessageCircleQuestion className="w-4 h-4" />
+              <span className="text-xs sm:text-sm font-bold">كل ما تحتاج معرفته</span>
+            </div>
+            
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-3 sm:mb-4">
+              الأسئلة{' '}
+              <span className="bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent">
+                الشائعة
+              </span>
+            </h2>
+            <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto px-4 sm:px-0">
+              إجابات على أكثر الأسئلة شيوعاً حول خدماتنا ومنتجاتنا
+            </p>
           </div>
-          
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-3 sm:mb-4">
-            الأسئلة{' '}
-            <span className="bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent">
-              الشائعة
-            </span>
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto px-4 sm:px-0">
-            إجابات على أكثر الأسئلة شيوعاً حول خدماتنا ومنتجاتنا
-          </p>
-        </div>
+        </ScrollReveal>
 
         <div className="max-w-3xl mx-auto space-y-3 sm:space-y-4">
           {faq.map((item, index) => (
-            <div
+            <ScrollReveal
               key={item.id}
-              className="bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-primary-300/10 hover:border-primary-300/30 transition-all duration-300 animate-slide-up"
-              style={{ animationDelay: `${index * 0.05}s` }}
+              delay={index * 100}
+              duration={800}
+              distance={60}
+              direction="up"
             >
+              <div className="bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-primary-300/10 hover:border-primary-300/30 transition-all duration-300">
               <button
                 onClick={() => toggleFAQ(index)}
                 className="w-full flex items-center justify-between p-4 sm:p-5 md:p-6 text-right hover:bg-primary-300/5 transition-colors touch-manipulation"
@@ -68,11 +74,13 @@ export default function FAQSection() {
                   </div>
                 </div>
               )}
-            </div>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
 
-        <div className="mt-8 sm:mt-12 text-center animate-fade-in">
+        <ScrollReveal delay={200} duration={800} distance={60} direction="up">
+          <div className="mt-8 sm:mt-12 text-center">
           <p className="text-sm sm:text-base text-gray-400 mb-4 sm:mb-6">
             لم تجد إجابة لسؤالك؟
           </p>
@@ -83,9 +91,9 @@ export default function FAQSection() {
             <HelpCircle className="w-5 h-5" />
             تواصل معنا
           </Link>
-        </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
 }
-
