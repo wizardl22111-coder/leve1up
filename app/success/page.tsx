@@ -511,9 +511,16 @@ function SuccessPageContent() {
                     <h3 className="font-semibold text-white mb-4 text-lg">{item.name}</h3>
                     
                     <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg p-4 mb-4 border border-blue-300/30">
-                      <p className="text-white/90 mb-3">
-                        🎉 <strong>تم الدفع بنجاح!</strong> لاستلام اشتراكك، تواصل معنا عبر إحدى الطرق التالية:
-                      </p>
+                      {/* Discord Nitro specific message */}
+                      {(item.name.includes('ديسكورد') || item.name.includes('Discord')) ? (
+                        <p className="text-white/90 mb-3">
+                          🎉 <strong>تم الدفع بنجاح!</strong> سيتم تسليم كود ديسكورد نيترو عبر <strong>الشات المباشر</strong> داخل صفحة الطلب خلال دقائق.
+                        </p>
+                      ) : (
+                        <p className="text-white/90 mb-3">
+                          🎉 <strong>تم الدفع بنجاح!</strong> لاستلام اشتراكك، تواصل معنا عبر إحدى الطرق التالية:
+                        </p>
+                      )}
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -13,6 +13,7 @@ import ProductDescriptionBoxes from './ProductDescriptionBoxes';
 import PriceDisplay from './PriceDisplay';
 import ReviewSummary from './ReviewSummary';
 import SubscriptionDurationSelector from './SubscriptionDurationSelector';
+import DiscordNitroFAQ from './DiscordNitroFAQ';
 
 
 
@@ -539,6 +540,13 @@ export default function ProductDetail({ product }: { product?: Product }) {
         )}
 
 
+
+        {/* Discord Nitro FAQ - Only for Discord Nitro products */}
+        {(productId === 14 || productId === 15) && (
+          <div className="mt-12 sm:mt-16">
+            <DiscordNitroFAQ />
+          </div>
+        )}
 
         {/* Review Summary */}
         <div className="mt-12 sm:mt-16">
