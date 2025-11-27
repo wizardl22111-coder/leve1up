@@ -29,9 +29,9 @@ export default function SubscriptionsPage() {
       {/* Subscription Products Section */}
       <section className="py-16 bg-dark-500">
         <div className="container-mobile">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">الاشتراكات المتاحة</h2>
-            <p className="text-gray-400 text-lg">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-white mb-6">الاشتراكات المتاحة</h2>
+            <p className="text-gray-400 text-lg mb-8">
               اختر من مجموعة متنوعة من الاشتراكات الرقمية المميزة
             </p>
           </div>
@@ -39,8 +39,8 @@ export default function SubscriptionsPage() {
           {subscriptionProducts.length > 0 ? (
             <ProductGrid 
               products={subscriptionProducts} 
-              maxProducts={4}
-              gridCols="grid-cols-1 sm:grid-cols-2"
+              maxProducts={8}
+              gridCols="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
             />
           ) : (
             <div className="text-center py-12">

@@ -45,14 +45,14 @@ export default function EditToolsPage() {
             </ScrollReveal>
             
             <ScrollReveal delay={400} duration={800} distance={60}>
-              <p className="text-gray-400 text-lg">
+              <p className="text-gray-400 text-lg mb-16">
                 حزم احترافية جاهزة لتطوير مهاراتك في المونتاج
               </p>
             </ScrollReveal>
           </div>
 
           {/* Products Grid */}
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto mt-16">
             {editingProducts.length > 0 ? (
               <ProductGrid 
                 products={editingProducts} 
