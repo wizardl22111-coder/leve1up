@@ -267,42 +267,45 @@ export default function ProductDetail({ product }: { product?: Product }) {
               />
             )}
 
-            {/* Price - Prominent */}
-            <div className="flex items-center gap-4 p-4 sm:p-6 bg-dark-300/50 border border-primary-300/20 rounded-2xl">
-              <div className="flex-1">
-                <p className="text-gray-400 text-sm mb-1">السعر</p>
+            {/* Price Block - Enhanced */}
+            <div className="bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm border border-primary-300/30 rounded-2xl p-6 sm:p-8 space-y-4">
+              <div className="flex items-center justify-between">
+                <h3 className="text-lg sm:text-xl font-bold text-white">السعر</h3>
+                {priceCalc.discountPercentage > 0 && (
+                  <span className="px-3 py-1.5 bg-gradient-to-r from-red-500/20 to-red-600/20 border border-red-500/40 rounded-xl text-red-400 text-sm font-bold">
+                    خصم {priceCalc.discountPercentage}%
+                  </span>
+                )}
+              </div>
+              
+              <div className="space-y-3">
                 {priceCalc.finalPrice === 0 ? (
-                  <div className="flex flex-col gap-1">
+                  <div className="space-y-2">
                     {priceCalc.originalPrice > 0 && (
-                      <p className="text-lg sm:text-xl text-gray-500 line-through">
-                        <PriceDisplay price={priceCalc.originalPrice} currency={currency} />
+                      <p className="text-lg sm:text-xl text-gray-500 line-through leading-relaxed">
+                        السعر الأصلي: <PriceDisplay price={priceCalc.originalPrice} currency={currency} />
                       </p>
                     )}
-                    <div className="flex items-center gap-2">
-                      <p className="text-3xl sm:text-4xl font-extrabold text-green-400">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                      <p className="text-4xl sm:text-5xl font-extrabold text-green-400 leading-tight">
                         مجاني! 🎉
                       </p>
-                      <span className="px-3 py-1 bg-red-500/20 border border-red-500/40 rounded-lg text-red-400 text-sm font-bold">
-                        خصم {priceCalc.discountPercentage}%
-                      </span>
+                      <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-500/20 to-green-600/20 border border-green-500/40 rounded-xl">
+                        <span className="text-green-400 font-bold text-base">عرض محدود</span>
+                      </div>
                     </div>
                   </div>
                 ) : (
-                  <div className="flex flex-col gap-1">
+                  <div className="space-y-2">
                     {priceCalc.discountPercentage > 0 && (
-                      <p className="text-lg sm:text-xl text-gray-500 line-through">
-                        <PriceDisplay price={priceCalc.originalPrice} currency={currency} />
+                      <p className="text-lg sm:text-xl text-gray-500 line-through leading-relaxed">
+                        السعر الأصلي: <PriceDisplay price={priceCalc.originalPrice} currency={currency} />
                       </p>
                     )}
-                    <div className="flex items-center gap-2">
-                      <p className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                      <p className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-primary-300 to-accent-600 bg-clip-text text-transparent leading-tight">
                         <PriceDisplay price={priceCalc.finalPrice} currency={currency} />
                       </p>
-                      {priceCalc.discountPercentage > 0 && (
-                        <span className="px-3 py-1 bg-red-500/20 border border-red-500/40 rounded-lg text-red-400 text-sm font-bold">
-                          خصم {priceCalc.discountPercentage}%
-                        </span>
-                      )}
                     </div>
                   </div>
                 )}
