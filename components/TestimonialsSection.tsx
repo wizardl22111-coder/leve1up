@@ -4,6 +4,7 @@ import { Star, Quote, CheckCircle, ShoppingBag, MessageCircle, ChevronLeft, Chev
 import testimonials from '@/data/testimonials.json';
 import Image from 'next/image';
 import { useRef, useEffect, useState } from 'react';
+import ScrollReveal from './ScrollReveal';
 
 interface Review {
   id: string;

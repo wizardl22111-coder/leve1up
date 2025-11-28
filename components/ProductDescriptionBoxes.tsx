@@ -420,67 +420,67 @@ const ProductDescriptionBoxes: React.FC<ProductDescriptionBoxesProps> = ({ produ
   }
 
   return (
-    <div className="my-8">
-      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+    <div className="my-8 sm:my-12">
+      <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-8 sm:mb-10 text-center">
         تفاصيل المنتج
       </h3>
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
         {/* البوكس الأول */}
-        <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 border border-blue-500/20 rounded-lg p-4 hover:shadow-lg transition-shadow">
-          <h4 className="text-blue-600 dark:text-blue-400 font-bold mb-3 text-sm">
+        <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 border border-blue-500/20 rounded-xl p-6 sm:p-8 hover:shadow-lg transition-shadow">
+          <h4 className="text-blue-600 dark:text-blue-400 font-bold mb-4 sm:mb-6 text-lg leading-relaxed">
             {boxes.box1.title}
           </h4>
-          <ul className="space-y-2">
+          <ul className="space-y-3 sm:space-y-4">
             {boxes.box1.items.map((item, index) => (
-              <li key={index} className="text-gray-700 dark:text-gray-300 text-xs flex items-start gap-2">
-                <span className="text-blue-500 mt-1">•</span>
-                <span>{item}</span>
+              <li key={index} className="text-gray-700 dark:text-gray-300 text-base leading-relaxed flex items-start gap-3">
+                <span className="text-blue-500 mt-1 text-lg">•</span>
+                <span className="flex-1">{item}</span>
               </li>
             ))}
           </ul>
         </div>
 
         {/* البوكس الثاني */}
-        <div className="bg-gradient-to-br from-purple-500/10 to-purple-600/10 border border-purple-500/20 rounded-lg p-4 hover:shadow-lg transition-shadow">
-          <h4 className="text-purple-600 dark:text-purple-400 font-bold mb-3 text-sm">
+        <div className="bg-gradient-to-br from-purple-500/10 to-purple-600/10 border border-purple-500/20 rounded-xl p-6 sm:p-8 hover:shadow-lg transition-shadow">
+          <h4 className="text-purple-600 dark:text-purple-400 font-bold mb-4 sm:mb-6 text-lg leading-relaxed">
             {boxes.box2.title}
           </h4>
-          <ul className="space-y-2">
+          <ul className="space-y-3 sm:space-y-4">
             {boxes.box2.items.map((item, index) => (
-              <li key={index} className="text-gray-700 dark:text-gray-300 text-xs flex items-start gap-2">
-                <span className="text-purple-500 mt-1">•</span>
-                <span>{item}</span>
+              <li key={index} className="text-gray-700 dark:text-gray-300 text-base leading-relaxed flex items-start gap-3">
+                <span className="text-purple-500 mt-1 text-lg">•</span>
+                <span className="flex-1">{item}</span>
               </li>
             ))}
           </ul>
         </div>
 
         {/* البوكس الثالث */}
-        <div className="bg-gradient-to-br from-green-500/10 to-green-600/10 border border-green-500/20 rounded-lg p-4 hover:shadow-lg transition-shadow">
-          <h4 className="text-green-600 dark:text-green-400 font-bold mb-3 text-sm">
+        <div className="bg-gradient-to-br from-green-500/10 to-green-600/10 border border-green-500/20 rounded-xl p-6 sm:p-8 hover:shadow-lg transition-shadow">
+          <h4 className="text-green-600 dark:text-green-400 font-bold mb-4 sm:mb-6 text-lg leading-relaxed">
             {boxes.box3.title}
           </h4>
-          <ul className="space-y-2">
+          <ul className="space-y-3 sm:space-y-4">
             {boxes.box3.items.map((item, index) => (
-              <li key={index} className="text-gray-700 dark:text-gray-300 text-xs flex items-start gap-2">
-                <span className="text-green-500 mt-1">•</span>
-                <span>{item}</span>
+              <li key={index} className="text-gray-700 dark:text-gray-300 text-base leading-relaxed flex items-start gap-3">
+                <span className="text-green-500 mt-1 text-lg">•</span>
+                <span className="flex-1">{item}</span>
               </li>
             ))}
           </ul>
         </div>
 
         {/* البوكس الرابع */}
-        <div className="bg-gradient-to-br from-orange-500/10 to-orange-600/10 border border-orange-500/20 rounded-lg p-4 hover:shadow-lg transition-shadow">
-          <h4 className="text-orange-600 dark:text-orange-400 font-bold mb-3 text-sm">
+        <div className="bg-gradient-to-br from-orange-500/10 to-orange-600/10 border border-orange-500/20 rounded-xl p-6 sm:p-8 hover:shadow-lg transition-shadow">
+          <h4 className="text-orange-600 dark:text-orange-400 font-bold mb-4 sm:mb-6 text-lg leading-relaxed">
             {boxes.box4.title}
           </h4>
-          <ul className="space-y-2">
+          <ul className="space-y-3 sm:space-y-4">
             {boxes.box4.items.map((item, index) => (
-              <li key={index} className="text-gray-700 dark:text-gray-300 text-xs flex items-start gap-2">
-                <span className="text-orange-500 mt-1">•</span>
-                <span>{item}</span>
+              <li key={index} className="text-gray-700 dark:text-gray-300 text-base leading-relaxed flex items-start gap-3">
+                <span className="text-orange-500 mt-1 text-lg">•</span>
+                <span className="flex-1">{item}</span>
               </li>
             ))}
           </ul>

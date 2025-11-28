@@ -377,29 +377,100 @@ function PaymentSuccessContent() {
               </div>
 
               <div className="grid gap-4">
-                {orderData.downloadLinks.map((link, index) => (
-                  <motion.a
-                    key={link.productId}
-                    href={link.downloadUrl}
-                    className="flex items-center justify-between p-4 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 transition-colors group"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.8 + index * 0.1 }}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                        <Download className="w-5 h-5 text-white" />
+                {orderData.downloadLinks.map((link, index) => {
+                  // تحديد ما إذا كان المنتج اشتراك ديسكورد نيترو
+                  const isDiscordNitro = link.productName.toLowerCase().includes('ديسكورد') || 
+                                         link.productName.toLowerCase().includes('discord') ||
+                                         link.productName.toLowerCase().includes('نيترو') ||
+                                         link.productName.toLowerCase().includes('nitro');
+                  
+                  const isSubscription = link.productName.toLowerCase().includes('اشتراك') ||
+                                        link.productName.toLowerCase().includes('subscription');
+
+                  return (
+                    <motion.div
+                      key={link.productId}
+                      className={`p-6 rounded-xl border-2 ${
+                        isDiscordNitro || isSubscription 
+                          ? 'bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200' 
+                          : 'bg-green-50 border-green-200'
+                      }`}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.8 + index * 0.1 }}
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                          isDiscordNitro || isSubscription 
+                            ? 'bg-blue-600' 
+                            : 'bg-green-600'
+                        }`}>
+                          {isDiscordNitro || isSubscription ? (
+                            <MessageCircle className="w-6 h-6 text-white" />
+                          ) : (
+                            <Download className="w-6 h-6 text-white" />
+                          )}
+                        </div>
+                        
+                        <div className="flex-1 space-y-3">
+                          <div>
+                            <h3 className="text-lg font-bold text-gray-900 mb-2">
+                              🎁 منتجك جاهز للتفعيل
+                            </h3>
+                            <p className="text-base font-medium text-gray-800 leading-relaxed">
+                              {link.productName}
+                            </p>
+                          </div>
+
+                          {isDiscordNitro || isSubscription ? (
+                            <div className="space-y-4">
+                              <div className="bg-white/80 backdrop-blur-sm rounded-lg p-4 border border-blue-200">
+                                <h4 className="font-bold text-blue-800 mb-2 flex items-center gap-2">
+                                  <MessageCircle className="w-4 h-4" />
+                                  خطوات التفعيل:
+                                </h4>
+                                <ol className="text-sm text-blue-700 space-y-2 leading-relaxed">
+                                  <li className="flex items-start gap-2">
+                                    <span className="font-bold text-blue-600">1.</span>
+                                    <span>اضغط على أيقونة الدعم المباشر في الزاوية اليمنى أسفل الصفحة</span>
+                                  </li>
+                                  <li className="flex items-start gap-2">
+                                    <span className="font-bold text-blue-600">2.</span>
+                                    <span>اكتب "تفعيل اشتراكي" في الرسالة</span>
+                                  </li>
+                                  <li className="flex items-start gap-2">
+                                    <span className="font-bold text-blue-600">3.</span>
+                                    <span>اذكر اسم المنتج وفترة الاشتراك</span>
+                                  </li>
+                                  <li className="flex items-start gap-2">
+                                    <span className="font-bold text-blue-600">4.</span>
+                                    <span>سيتم تفعيل اشتراكك خلال دقائق</span>
+                                  </li>
+                                </ol>
+                              </div>
+                              
+                              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                                <p className="text-sm text-yellow-800 leading-relaxed">
+                                  <strong>💡 ملاحظة مهمة:</strong> يرجى التواصل معنا عبر الدعم المباشر لتفعيل اشتراكك فوراً
+                                </p>
+                              </div>
+                            </div>
+                          ) : (
+                            <motion.a
+                              href={link.downloadUrl}
+                              className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors font-medium"
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                            >
+                              <Download className="w-4 h-4" />
+                              تحميل المنتج الآن
+                            </motion.a>
+                          )}
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="font-medium text-gray-900">{link.productName}</h3>
-                        <p className="text-sm text-gray-500">اضغط للتحميل</p>
-                      </div>
-                    </div>
-                    <ExternalLink className="w-5 h-5 text-green-600 group-hover:translate-x-1 transition-transform" />
-                  </motion.a>
-                ))}
+                    </motion.div>
+                  );
+                })}
               </div>
 
               <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
