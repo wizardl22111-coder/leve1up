@@ -132,6 +132,21 @@ export default function SubscriptionDurationSelector({
     loadProductData();
   }, [productId, variants]);
 
+  // إعادة حساب الأسعار عند تغيير العملة
+  useEffect(() => {
+    if (selectedOption && selectedQuality) {
+      // تحويل السعر الأساسي
+      const basePriceConverted = calculatePrice({ price: selectedOption.price, currency: 'SAR' }, currency).finalPrice;
+      
+      // تحويل زيادة الجودة
+      const qualityIncreaseConverted = selectedQuality.priceIncrease > 0 ? 
+        calculatePrice({ price: selectedQuality.priceIncrease, currency: 'SAR' }, currency).finalPrice : 0;
+      
+      const finalPrice = basePriceConverted + qualityIncreaseConverted;
+      onDurationChange(selectedOption, selectedQuality, finalPrice);
+    }
+  }, [currency, selectedOption, selectedQuality, onDurationChange]);
+
   const handleOptionSelect = (option: DurationOption) => {
     setSelectedOption(option);
     if (selectedQuality) {
@@ -239,7 +254,7 @@ export default function SubscriptionDurationSelector({
       </div>
 
       {/* خيارات المدة - شبكة محسّنة */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {options.map((option) => (
           <div
             key={option.id}
