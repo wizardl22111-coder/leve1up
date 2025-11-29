@@ -90,11 +90,11 @@ export default function ProductGrid({
             <div className="bg-gradient-to-br from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden border border-primary-300/10 hover:border-primary-300/30 transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
               {/* Product Image */}
               <Link href={`/products/${productId}`}>
-                <div className="relative h-[230px] sm:h-[280px] overflow-hidden group cursor-pointer bg-black rounded-t-2xl">
+                <div className="relative overflow-hidden group cursor-pointer rounded-t-2xl aspect-[5/3] sm:aspect-[16/9]">
                   <img
                     src={`${productImage}?v=${Date.now()}`}
                     alt={productName}
-                    className="w-full h-full object-contain object-center transition-transform duration-300 group-hover:scale-105"
+                    className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
                     style={{ 
                       display: 'block',
                       visibility: 'visible',

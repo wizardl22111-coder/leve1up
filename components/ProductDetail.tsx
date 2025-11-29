@@ -170,11 +170,11 @@ export default function ProductDetail({ product }: { product?: Product }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Left Column: Image */}
           <div className="animate-scale-in">
-            <div className="relative aspect-square rounded-2xl overflow-hidden bg-black shadow-2xl">
+            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
               <img
                 src={productImage}
                 alt={productName}
-                className="w-full h-full object-contain object-center"
+                className="absolute inset-0 w-full h-full object-cover object-top"
                 style={{ 
                   display: 'block',
                   visibility: 'visible',

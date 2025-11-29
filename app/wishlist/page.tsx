@@ -118,11 +118,11 @@ export default function WishlistPage() {
                 className="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 animate-scale-in group"
               >
                 {/* Product Image */}
-                <div className="relative h-[230px] sm:h-[280px] overflow-hidden bg-black rounded-t-xl">
+                <div className="relative overflow-hidden rounded-t-xl aspect-[5/3] sm:aspect-[16/9]">
                   <img
                     src={product.product_image}
                     alt={product.product_name}
-                    className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-300"
+                    className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                     style={{ 
                       display: 'block',
                       visibility: 'visible',

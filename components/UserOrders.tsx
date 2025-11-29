@@ -264,12 +264,12 @@ export default function UserOrders({ className = '' }: UserOrdersProps) {
                     {order.items.map((item, itemIndex) => (
                       <div key={itemIndex} className="flex items-center gap-4 p-3 bg-slate-800/30 rounded-lg">
                         {/* Product Image */}
-                        <div className="relative w-16 h-16 rounded-lg overflow-hidden bg-black flex-shrink-0">
+                        <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                           {item.image ? (
                             <img
                               src={item.image}
                               alt={item.name}
-                              className="w-full h-full object-contain object-center"
+                              className="absolute inset-0 w-full h-full object-cover object-top"
                               style={{ 
                                 display: 'block',
                                 visibility: 'visible',

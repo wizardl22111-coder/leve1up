@@ -156,11 +156,11 @@ export default function CartPage() {
                 >
                   <div className="flex flex-col md:flex-row gap-4">
                     {/* Product Image */}
-                    <div className="relative w-full md:w-32 h-32 rounded-lg overflow-hidden flex-shrink-0 mx-auto md:mx-0 bg-black">
+                    <div className="relative w-full md:w-32 h-32 rounded-lg overflow-hidden flex-shrink-0 mx-auto md:mx-0">
                       <img
                         src={item.image}
                         alt={item.name}
-                        className="w-full h-full object-contain object-center"
+                        className="absolute inset-0 w-full h-full object-cover object-top"
                         style={{ 
                           display: 'block',
                           visibility: 'visible',
