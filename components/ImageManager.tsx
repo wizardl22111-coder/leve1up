@@ -21,20 +21,23 @@ export default function ImageManager() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<'all' | 'success' | 'error' | 'loading'>('all');
 
-  // قائمة الصور المتوقعة (من ملف المنتجات)
+  // قائمة الصور المتوقعة (من ملف المنتجات) - محدثة لتشمل جميع المنتجات
   const expectedImages: ProductImage[] = [
     { id: 1, name: "الدليل التمهيدي", image: "/images/products/introductory-guide.png", category: "ebooks" },
     { id: 2, name: "الربح من المنتجات الرقمية", image: "/images/products/digital-products-profit.jpg", category: "ebooks" },
-    { id: 3, name: "15 فكرة مشروع", image: "/images/products/15-project-ideas.jpg", category: "ebooks" },
-    { id: 4, name: "حزمة المونتاج الاحترافية", image: "/images/products/ultimate-video-editing-pack.png", category: "tools" },
-    { id: 5, name: "حزمة الأيقونات المتحركة", image: "/images/products/animated-icons-pack.png", category: "design" },
-    { id: 6, name: "حزمة المحتوى التصميمي", image: "/images/products/design-content-pack.png", category: "design" },
-    { id: 7, name: "اشتراك ChatGPT Plus", image: "/images/products/chatgpt5-subscription.jpg", category: "subscriptions" },
-    { id: 8, name: "اشتراك Gemini Pro", image: "/images/products/gemini-pro-subscription.jpg", category: "subscriptions" },
-    { id: 9, name: "اشتراك Canva Pro", image: "/images/products/canva-subscription.jpg", category: "subscriptions" },
-    { id: 10, name: "اشتراك Netflix", image: "/images/products/netflix-subscription.jpg", category: "subscriptions" },
-    { id: 11, name: "Discord Nitro سنة", image: "/images/products/discord-nitro-1year.png", category: "subscriptions" },
-    { id: 12, name: "Discord Nitro 3 شهور", image: "/images/products/discord-nitro-3months.png", category: "subscriptions" },
+    { id: 3, name: "15 فكرة مشروع رقمي", image: "/images/products/15-project-ideas.jpg", category: "ebooks" },
+    { id: 4, name: "باقة المونتاج الاحترافية", image: "/images/products/ultimate-video-editing-pack.png", category: "editing-tools" },
+    { id: 5, name: "باقة أيقونات متحركة", image: "/images/products/animated-icons-pack.png", category: "youtube-tools" },
+    { id: 6, name: "باقة التصميم وصناعة المحتوى", image: "/images/products/design-content-pack.png", category: "youtube-tools" },
+    { id: 7, name: "باقة ChatGPT Go", image: "/images/products/chatgpt5-subscription.jpg", category: "subscriptions" },
+    { id: 8, name: "باقة Google Gemini Advanced", image: "/images/products/gemini-pro-subscription.jpg", category: "subscriptions" },
+    { id: 9, name: "باقة Canva Pro", image: "/images/products/canva-subscription.jpg", category: "subscriptions" },
+    { id: 10, name: "باقة Netflix", image: "/images/products/netflix-subscription.jpg", category: "subscriptions" },
+    { id: 11, name: "منتج 11", image: "/images/products/product-11.png", category: "digital" },
+    { id: 12, name: "منتج 12", image: "/images/products/product-12.png", category: "digital" },
+    { id: 13, name: "منتج 13", image: "/images/products/product-13.png", category: "digital" },
+    { id: 14, name: "Discord Nitro 12 شهر", image: "/images/products/discord-nitro-1year.png", category: "subscriptions" },
+    { id: 15, name: "Discord Nitro 3 أشهر", image: "/images/products/discord-nitro-3months.png", category: "subscriptions" },
   ];
 
   useEffect(() => {
