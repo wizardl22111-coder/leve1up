@@ -253,8 +253,8 @@ export default function SubscriptionDurationSelector({
         <p className="text-gray-400 text-base leading-relaxed">كلما زادت المدة، كلما وفرت أكثر!</p>
       </div>
 
-      {/* خيارات المدة - شبكة محسّنة */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      {/* خيارات المدة - شبكة محسّنة 2×2 على الكمبيوتر */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
         {options.map((option) => (
           <div
             key={option.id}
@@ -262,7 +262,7 @@ export default function SubscriptionDurationSelector({
             role="radio"
             aria-checked={selectedOption.id === option.id}
             tabIndex={0}
-            className={`relative p-6 rounded-xl border-2 cursor-pointer transition-all duration-300 hover:scale-[1.02] ${
+            className={`relative p-6 lg:aspect-square lg:flex lg:flex-col lg:justify-center rounded-xl border-2 cursor-pointer transition-all duration-300 lg:hover:-translate-y-1 lg:hover:shadow-xl ${
               selectedOption.id === option.id
                 ? 'border-primary-400 bg-primary-500/10 shadow-xl shadow-primary-500/25 ring-2 ring-primary-400/20'
                 : 'border-gray-600 bg-dark-400/50 hover:border-gray-500 hover:bg-dark-400/70'
