@@ -262,7 +262,13 @@ export default function ProductDetail({ product }: { product?: Product }) {
               <SubscriptionDurationSelector
                 productId={productId}
                 variants={product.subscription_plans || product.variants}
-                onDurationChange={(option) => setSelectedDuration(option)}
+                onDurationChange={(option, quality, finalPrice) => {
+                  setSelectedDuration({
+                    ...option,
+                    price: finalPrice, // استخدام السعر النهائي مع الجودة
+                    qualityOption: quality // حفظ خيار الجودة
+                  });
+                }}
                 className="mb-6"
               />
             )}

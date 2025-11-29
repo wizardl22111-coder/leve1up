@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Check, Clock, Star } from 'lucide-react';
+import { Check, Star, Zap } from 'lucide-react';
 
 interface DurationOption {
   id: string;
@@ -14,10 +14,17 @@ interface DurationOption {
   description: string;
 }
 
+interface QualityOption {
+  id: string;
+  name: string;
+  description: string;
+  priceIncrease: number;
+}
+
 interface SubscriptionDurationSelectorProps {
   productId: number;
   variants?: any[];
-  onDurationChange: (option: DurationOption) => void;
+  onDurationChange: (option: DurationOption, quality: QualityOption, finalPrice: number) => void;
   className?: string;
 }
 
@@ -30,6 +37,23 @@ export default function SubscriptionDurationSelector({
   
   const [options, setOptions] = useState<DurationOption[]>([]);
   const [selectedOption, setSelectedOption] = useState<DurationOption | null>(null);
+  const [selectedQuality, setSelectedQuality] = useState<QualityOption | null>(null);
+
+  // خيارات الجودة
+  const qualityOptions: QualityOption[] = [
+    {
+      id: 'basic',
+      name: 'أساسي 1080p',
+      description: 'جودة عالية الوضوح',
+      priceIncrease: 0
+    },
+    {
+      id: 'premium',
+      name: 'مميز 4K UHD',
+      description: 'جودة فائقة الوضوح',
+      priceIncrease: 5
+    }
+  ];
 
   useEffect(() => {
     // استخدام البيانات المُمررة مباشرة أو تحميلها من ملف JSON
@@ -37,12 +61,43 @@ export default function SubscriptionDurationSelector({
       try {
         let productVariants = variants;
         
-        // إذا لم تُمرر البيانات، حمّلها من الملف
+        // إذا لم تُمرر البيانات، حمّلها من الملف أو استخدم البيانات الافتراضية لـ Netflix
         if (!productVariants) {
-          const response = await fetch('/data/products.json');
-          const products = await response.json();
-          const product = products.find((p: any) => p.product_id === productId);
-          productVariants = product?.subscription_plans || product?.variants;
+          // بيانات افتراضية لمنتج Netflix
+          if (productId === 10) {
+            productVariants = [
+              {
+                duration: 'شهر',
+                price: 11.99,
+                originalPrice: 49,
+                description: 'مثالي للتجربة'
+              },
+              {
+                duration: '3 أشهر',
+                price: 29.99,
+                originalPrice: 150,
+                description: 'خيار شائع',
+                popular: true
+              },
+              {
+                duration: '6 أشهر',
+                price: 49.99,
+                originalPrice: 300,
+                description: 'أفضل قيمة'
+              },
+              {
+                duration: '12 شهر',
+                price: 119.99,
+                originalPrice: 600,
+                description: 'أقصى توفير'
+              }
+            ];
+          } else {
+            const response = await fetch('/data/products.json');
+            const products = await response.json();
+            const product = products.find((p: any) => p.product_id === productId);
+            productVariants = product?.subscription_plans || product?.variants;
+          }
         }
         
         if (productVariants && productVariants.length > 0) {
@@ -54,7 +109,7 @@ export default function SubscriptionDurationSelector({
                    variant.duration === '6 أشهر' ? 6 : 12,
             price: variant.price,
             originalPrice: variant.originalPrice,
-            popular: variant.popular || variant.duration === '6 أشهر',
+            popular: variant.popular || variant.duration === '3 أشهر',
             description: variant.description || (
               variant.duration === 'شهر' ? 'مثالي للتجربة' :
               variant.duration === '3 أشهر' ? 'خيار شائع' :
@@ -64,6 +119,7 @@ export default function SubscriptionDurationSelector({
           
           setOptions(durationOptions);
           setSelectedOption(durationOptions[0]); // اختيار الخيار الأول افتراضياً
+          setSelectedQuality(qualityOptions[0]); // اختيار الجودة الأساسية افتراضياً
         }
       } catch (error) {
         console.error('Error loading product data:', error);
@@ -75,17 +131,41 @@ export default function SubscriptionDurationSelector({
 
   const handleOptionSelect = (option: DurationOption) => {
     setSelectedOption(option);
-    onDurationChange(option);
+    if (selectedQuality) {
+      const finalPrice = option.price + selectedQuality.priceIncrease;
+      onDurationChange(option, selectedQuality, finalPrice);
+    }
+  };
+
+  const handleQualitySelect = (quality: QualityOption) => {
+    setSelectedQuality(quality);
+    if (selectedOption) {
+      const finalPrice = selectedOption.price + quality.priceIncrease;
+      onDurationChange(selectedOption, quality, finalPrice);
+    }
   };
 
   // حساب السعر الشهري
-  const getMonthlyPrice = (option: DurationOption) => {
-    return (option.price / option.months).toFixed(2);
+  const getMonthlyPrice = (option: DurationOption, qualityIncrease: number = 0) => {
+    return ((option.price + qualityIncrease) / option.months).toFixed(2);
   };
 
-  if (!selectedOption || options.length === 0) {
+  // حساب السعر النهائي
+  const getFinalPrice = () => {
+    if (!selectedOption || !selectedQuality) return 0;
+    return selectedOption.price + selectedQuality.priceIncrease;
+  };
+
+  // حساب نسبة التوفير
+  const getSavingsPercentage = (option: DurationOption) => {
+    if (!option.originalPrice) return null;
+    const savings = ((option.originalPrice - option.price) / option.originalPrice * 100).toFixed(0);
+    return `وفر ${savings}%`;
+  };
+
+  if (!selectedOption || !selectedQuality || options.length === 0) {
     return (
-      <div className={`space-y-4 ${className}`}>
+      <div className={`space-y-6 ${className}`}>
         <div className="text-center py-8">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-400 mx-auto"></div>
           <p className="text-gray-400 mt-2">جاري تحميل خيارات الاشتراك...</p>
@@ -95,29 +175,38 @@ export default function SubscriptionDurationSelector({
   }
 
   return (
-    <div className={`space-y-4 ${className}`}>
-      {/* العنوان */}
-      <div className="text-center mb-6">
-        <h3 className="text-xl font-bold text-white mb-2">اختر مدة الاشتراك</h3>
-        <p className="text-gray-400 text-sm">كلما زادت المدة، كلما وفرت أكثر!</p>
+    <div className={`space-y-8 ${className}`}>
+      {/* العنوان الرئيسي */}
+      <div className="text-center">
+        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">اختر مدة الاشتراك</h3>
+        <p className="text-gray-400 text-base leading-relaxed">كلما زادت المدة، كلما وفرت أكثر!</p>
       </div>
 
-      {/* خيارات المدة */}
-      <div className="grid grid-cols-2 gap-3">
+      {/* خيارات المدة - شبكة محسّنة */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {options.map((option) => (
           <div
             key={option.id}
             onClick={() => handleOptionSelect(option)}
-            className={`relative p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
+            role="radio"
+            aria-checked={selectedOption.id === option.id}
+            tabIndex={0}
+            className={`relative p-6 rounded-xl border-2 cursor-pointer transition-all duration-300 hover:scale-[1.02] ${
               selectedOption.id === option.id
-                ? 'border-primary-400 bg-primary-500/10 shadow-lg shadow-primary-500/20'
-                : 'border-gray-600 bg-dark-400/50 hover:border-gray-500'
+                ? 'border-primary-400 bg-primary-500/10 shadow-xl shadow-primary-500/25 ring-2 ring-primary-400/20'
+                : 'border-gray-600 bg-dark-400/50 hover:border-gray-500 hover:bg-dark-400/70'
             }`}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleOptionSelect(option);
+              }
+            }}
           >
             {/* شارة الأكثر شعبية */}
             {option.popular && (
-              <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                <div className="bg-gradient-to-r from-primary-500 to-accent-500 text-white text-xs px-3 py-1 rounded-full flex items-center gap-1">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-4 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
                   <Star className="w-3 h-3 fill-current" />
                   <span>الأكثر شعبية</span>
                 </div>
@@ -125,47 +214,47 @@ export default function SubscriptionDurationSelector({
             )}
 
             {/* أيقونة التحديد */}
-            <div className="absolute top-3 right-3">
-              <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+            <div className="absolute top-4 right-4">
+              <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
                 selectedOption.id === option.id
-                  ? 'border-primary-400 bg-primary-500'
-                  : 'border-gray-500'
+                  ? 'border-primary-400 bg-primary-500 scale-110'
+                  : 'border-gray-500 bg-transparent'
               }`}>
                 {selectedOption.id === option.id && (
-                  <Check className="w-3 h-3 text-white" />
+                  <Check className="w-4 h-4 text-white" />
                 )}
               </div>
             </div>
 
-            {/* محتوى الخيار */}
-            <div className="space-y-2">
-              {/* المدة والوصف */}
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <span className="font-semibold text-white text-center">{option.duration}</span>
+            {/* محتوى البطاقة */}
+            <div className="space-y-4 pt-2">
+              {/* عنوان المدة */}
+              <div className="text-center">
+                <h4 className="text-xl font-bold text-white mb-1">{option.duration}</h4>
+                <p className="text-gray-400 text-sm leading-relaxed">{option.description}</p>
               </div>
-              
-              <p className="text-gray-400 text-sm">{option.description}</p>
 
-              {/* السعر */}
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl font-bold text-white">{option.price} ر.س</span>
+              {/* السعر الرئيسي */}
+              <div className="text-center space-y-2">
+                <div className="flex items-center justify-center gap-2 flex-wrap">
+                  <span className="text-3xl font-bold text-white">{option.price}</span>
+                  <span className="text-lg text-gray-300">ر.س</span>
                   {option.originalPrice && (
-                    <span className="text-gray-500 line-through text-sm">
+                    <span className="text-gray-500 line-through text-lg">
                       {option.originalPrice} ر.س
                     </span>
                   )}
                 </div>
                 
                 {/* السعر الشهري */}
-                <p className="text-gray-400 text-sm">
+                <p className="text-gray-400 text-sm font-medium">
                   {getMonthlyPrice(option)} ر.س/شهر
                 </p>
 
                 {/* نسبة التوفير */}
-                {option.savings && (
-                  <div className="inline-block bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded-full">
-                    {option.savings}
+                {getSavingsPercentage(option) && (
+                  <div className="inline-block bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1.5 rounded-full border border-green-500/30">
+                    {getSavingsPercentage(option)}
                   </div>
                 )}
               </div>
@@ -174,35 +263,112 @@ export default function SubscriptionDurationSelector({
         ))}
       </div>
 
-      {/* ملخص الخيار المحدد */}
-      <div className="bg-dark-300/50 rounded-lg p-4 border border-primary-300/20">
-        <div className="flex items-center justify-between">
-          <div>
-            <h4 className="font-semibold text-white">الخيار المحدد: {selectedOption.duration}</h4>
-            <p className="text-gray-400 text-sm">
-              {selectedOption.months} {selectedOption.months === 1 ? 'شهر' : 'أشهر'} من Netflix
-            </p>
-          </div>
-          <div className="text-right">
-            <div className="text-2xl font-bold text-primary-400">{selectedOption.price} ر.س</div>
-            <div className="text-gray-400 text-sm">{getMonthlyPrice(selectedOption)} ر.س/شهر</div>
+      {/* قسم اختيار جودة البث */}
+      <div className="space-y-4">
+        <div className="text-center">
+          <h4 className="text-xl font-bold text-white mb-2">اختر جودة البث</h4>
+          <p className="text-gray-400 text-sm">اختر الجودة التي تناسب احتياجاتك</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+          {qualityOptions.map((quality) => (
+            <div
+              key={quality.id}
+              onClick={() => handleQualitySelect(quality)}
+              role="radio"
+              aria-checked={selectedQuality.id === quality.id}
+              tabIndex={0}
+              className={`relative p-5 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
+                selectedQuality.id === quality.id
+                  ? 'border-blue-400 bg-blue-500/10 shadow-lg shadow-blue-500/20'
+                  : 'border-gray-600 bg-dark-400/50 hover:border-gray-500'
+              }`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleQualitySelect(quality);
+                }
+              }}
+            >
+              {/* أيقونة الجودة */}
+              <div className="flex items-center gap-4">
+                <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                  selectedQuality.id === quality.id
+                    ? 'border-blue-400 bg-blue-500'
+                    : 'border-gray-500'
+                }`}>
+                  {selectedQuality.id === quality.id && (
+                    <Check className="w-3 h-3 text-white" />
+                  )}
+                </div>
+
+                <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <h5 className="font-bold text-white">{quality.name}</h5>
+                    {quality.id === 'premium' && (
+                      <Zap className="w-4 h-4 text-yellow-400" />
+                    )}
+                    {quality.priceIncrease > 0 && (
+                      <span className="text-blue-400 text-sm font-medium">
+                        +{quality.priceIncrease} ر.س
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-gray-400 text-sm">{quality.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ملخص السعر النهائي */}
+      <div className="bg-gradient-to-r from-dark-300/80 to-dark-400/80 backdrop-blur-sm rounded-xl p-6 border border-primary-300/20 shadow-xl">
+        <div className="text-center space-y-4">
+          <h4 className="text-xl font-bold text-white">ملخص الطلب</h4>
+          
+          <div className="space-y-3">
+            <div className="flex justify-between items-center text-gray-300">
+              <span>المدة المختارة:</span>
+              <span className="font-medium">{selectedOption.duration}</span>
+            </div>
+            
+            <div className="flex justify-between items-center text-gray-300">
+              <span>جودة البث:</span>
+              <span className="font-medium">{selectedQuality.name}</span>
+            </div>
+            
+            <div className="border-t border-gray-600 pt-3">
+              <div className="flex justify-between items-center">
+                <span className="text-lg font-bold text-white">السعر الإجمالي:</span>
+                <div className="text-right">
+                  <div className="text-2xl font-bold text-primary-400">
+                    {getFinalPrice().toFixed(2)} ر.س
+                  </div>
+                  <div className="text-gray-400 text-sm">
+                    {getMonthlyPrice(selectedOption, selectedQuality.priceIncrease)} ر.س/شهر
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* معلومات إضافية */}
-      <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
-        <div className="flex items-start gap-2">
-          <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <span className="text-white text-xs">ℹ</span>
+      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-4">
+        <div className="flex items-start gap-3">
+          <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <span className="text-white text-sm font-bold">ℹ</span>
           </div>
-          <div className="text-sm text-blue-200">
-            <p className="font-medium mb-1">معلومات مهمة:</p>
-            <ul className="space-y-1 text-blue-300">
+          <div className="text-sm text-blue-200 space-y-2">
+            <p className="font-medium text-blue-100">معلومات مهمة:</p>
+            <ul className="space-y-1.5 text-blue-300 leading-relaxed">
               <li>• الحساب مشترك وليس شخصي</li>
-              <li>• يعمل في جميع الدول</li>
-              <li>• دعم فني 24/7</li>
-              <li>• ضمان لكامل المدة</li>
+              <li>• يعمل في جميع الدول العربية</li>
+              <li>• دعم فني متاح 24/7</li>
+              <li>• ضمان استرداد لكامل المدة</li>
+              <li>• تفعيل فوري خلال دقائق</li>
             </ul>
           </div>
         </div>
