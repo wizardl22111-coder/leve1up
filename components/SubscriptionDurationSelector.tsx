@@ -71,27 +71,27 @@ export default function SubscriptionDurationSelector({
             productVariants = [
               {
                 duration: 'شهر',
-                price: 80,
-                originalPrice: 120,
+                price: 11.99,
+                originalPrice: 50,
                 description: 'مثالي للتجربة'
               },
               {
                 duration: '3 أشهر',
-                price: 200,
-                originalPrice: 360,
+                price: 29.99,
+                originalPrice: 150,
                 description: 'خيار شائع',
                 popular: true
               },
               {
                 duration: '6 أشهر',
-                price: 350,
-                originalPrice: 720,
+                price: 49.99,
+                originalPrice: 300,
                 description: 'أفضل قيمة'
               },
               {
                 duration: '12 شهر',
-                price: 600,
-                originalPrice: 1440,
+                price: 119.99,
+                originalPrice: 600,
                 description: 'أقصى توفير'
               }
             ];
@@ -135,38 +135,59 @@ export default function SubscriptionDurationSelector({
   const handleOptionSelect = (option: DurationOption) => {
     setSelectedOption(option);
     if (selectedQuality) {
-      const basePrice = option.price + selectedQuality.priceIncrease;
-      const mockProduct = { price: basePrice, currency: 'SAR' };
-      const priceCalc = calculatePrice(mockProduct, currency);
-      onDurationChange(option, selectedQuality, priceCalc.finalPrice);
+      // تحويل السعر الأساسي
+      const basePriceConverted = calculatePrice({ price: option.price, currency: 'SAR' }, currency).finalPrice;
+      
+      // تحويل زيادة الجودة
+      const qualityIncreaseConverted = selectedQuality.priceIncrease > 0 ? 
+        calculatePrice({ price: selectedQuality.priceIncrease, currency: 'SAR' }, currency).finalPrice : 0;
+      
+      const finalPrice = basePriceConverted + qualityIncreaseConverted;
+      onDurationChange(option, selectedQuality, finalPrice);
     }
   };
 
   const handleQualitySelect = (quality: QualityOption) => {
     setSelectedQuality(quality);
     if (selectedOption) {
-      const basePrice = selectedOption.price + quality.priceIncrease;
-      const mockProduct = { price: basePrice, currency: 'SAR' };
-      const priceCalc = calculatePrice(mockProduct, currency);
-      onDurationChange(selectedOption, quality, priceCalc.finalPrice);
+      // تحويل السعر الأساسي
+      const basePriceConverted = calculatePrice({ price: selectedOption.price, currency: 'SAR' }, currency).finalPrice;
+      
+      // تحويل زيادة الجودة
+      const qualityIncreaseConverted = quality.priceIncrease > 0 ? 
+        calculatePrice({ price: quality.priceIncrease, currency: 'SAR' }, currency).finalPrice : 0;
+      
+      const finalPrice = basePriceConverted + qualityIncreaseConverted;
+      onDurationChange(selectedOption, quality, finalPrice);
     }
   };
 
   // حساب السعر الشهري مع العملة
   const getMonthlyPrice = (option: DurationOption, qualityIncrease: number = 0) => {
-    const basePrice = (option.price + qualityIncrease) / option.months;
-    const mockProduct = { price: basePrice, currency: 'SAR' };
-    const priceCalc = calculatePrice(mockProduct, currency);
-    return priceCalc.finalPrice.toFixed(2);
+    // تحويل السعر الأساسي
+    const basePriceConverted = calculatePrice({ price: option.price, currency: 'SAR' }, currency).finalPrice;
+    
+    // تحويل زيادة الجودة
+    const qualityIncreaseConverted = qualityIncrease > 0 ? 
+      calculatePrice({ price: qualityIncrease, currency: 'SAR' }, currency).finalPrice : 0;
+    
+    // حساب السعر الشهري
+    const monthlyPrice = (basePriceConverted + qualityIncreaseConverted) / option.months;
+    return monthlyPrice.toFixed(2);
   };
 
   // حساب السعر النهائي مع العملة
   const getFinalPrice = () => {
     if (!selectedOption || !selectedQuality) return 0;
-    const basePrice = selectedOption.price + selectedQuality.priceIncrease;
-    const mockProduct = { price: basePrice, currency: 'SAR' };
-    const priceCalc = calculatePrice(mockProduct, currency);
-    return priceCalc.finalPrice;
+    
+    // تحويل السعر الأساسي
+    const basePriceConverted = calculatePrice({ price: selectedOption.price, currency: 'SAR' }, currency).finalPrice;
+    
+    // تحويل زيادة الجودة
+    const qualityIncreaseConverted = selectedQuality.priceIncrease > 0 ? 
+      calculatePrice({ price: selectedQuality.priceIncrease, currency: 'SAR' }, currency).finalPrice : 0;
+    
+    return basePriceConverted + qualityIncreaseConverted;
   };
 
   // حساب سعر الخيار مع العملة
@@ -179,6 +200,14 @@ export default function SubscriptionDurationSelector({
   // حساب السعر الأصلي مع العملة
   const getOriginalPrice = (option: DurationOption) => {
     const mockProduct = { price: option.originalPrice, currency: 'SAR' };
+    const priceCalc = calculatePrice(mockProduct, currency);
+    return priceCalc.finalPrice;
+  };
+
+  // حساب زيادة الجودة مع العملة
+  const getQualityIncrease = (priceIncrease: number) => {
+    if (priceIncrease === 0) return 0;
+    const mockProduct = { price: priceIncrease, currency: 'SAR' };
     const priceCalc = calculatePrice(mockProduct, currency);
     return priceCalc.finalPrice;
   };
@@ -210,7 +239,7 @@ export default function SubscriptionDurationSelector({
       </div>
 
       {/* خيارات المدة - شبكة محسّنة */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
         {options.map((option) => (
           <div
             key={option.id}
@@ -337,7 +366,7 @@ export default function SubscriptionDurationSelector({
                     )}
                     {quality.priceIncrease > 0 && (
                       <span className="text-blue-400 text-sm font-medium">
-                        +{quality.priceIncrease} {currency}
+                        +{getQualityIncrease(quality.priceIncrease).toFixed(2)} {currency}
                       </span>
                     )}
                   </div>
