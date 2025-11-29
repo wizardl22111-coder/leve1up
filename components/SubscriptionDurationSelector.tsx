@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { Check, Star, Zap } from 'lucide-react';
+import { useApp } from '@/contexts/AppContext';
+import { calculatePrice } from '@/lib/currency';
 
 interface DurationOption {
   id: string;
@@ -35,6 +37,7 @@ export default function SubscriptionDurationSelector({
   className = '' 
 }: SubscriptionDurationSelectorProps) {
   
+  const { currency } = useApp();
   const [options, setOptions] = useState<DurationOption[]>([]);
   const [selectedOption, setSelectedOption] = useState<DurationOption | null>(null);
   const [selectedQuality, setSelectedQuality] = useState<QualityOption | null>(null);
@@ -68,27 +71,27 @@ export default function SubscriptionDurationSelector({
             productVariants = [
               {
                 duration: 'شهر',
-                price: 11.99,
-                originalPrice: 49,
+                price: 80,
+                originalPrice: 120,
                 description: 'مثالي للتجربة'
               },
               {
                 duration: '3 أشهر',
-                price: 29.99,
-                originalPrice: 150,
+                price: 200,
+                originalPrice: 360,
                 description: 'خيار شائع',
                 popular: true
               },
               {
                 duration: '6 أشهر',
-                price: 49.99,
-                originalPrice: 300,
+                price: 350,
+                originalPrice: 720,
                 description: 'أفضل قيمة'
               },
               {
                 duration: '12 شهر',
-                price: 119.99,
-                originalPrice: 600,
+                price: 600,
+                originalPrice: 1440,
                 description: 'أقصى توفير'
               }
             ];
@@ -132,28 +135,52 @@ export default function SubscriptionDurationSelector({
   const handleOptionSelect = (option: DurationOption) => {
     setSelectedOption(option);
     if (selectedQuality) {
-      const finalPrice = option.price + selectedQuality.priceIncrease;
-      onDurationChange(option, selectedQuality, finalPrice);
+      const basePrice = option.price + selectedQuality.priceIncrease;
+      const mockProduct = { price: basePrice, currency: 'SAR' };
+      const priceCalc = calculatePrice(mockProduct, currency);
+      onDurationChange(option, selectedQuality, priceCalc.finalPrice);
     }
   };
 
   const handleQualitySelect = (quality: QualityOption) => {
     setSelectedQuality(quality);
     if (selectedOption) {
-      const finalPrice = selectedOption.price + quality.priceIncrease;
-      onDurationChange(selectedOption, quality, finalPrice);
+      const basePrice = selectedOption.price + quality.priceIncrease;
+      const mockProduct = { price: basePrice, currency: 'SAR' };
+      const priceCalc = calculatePrice(mockProduct, currency);
+      onDurationChange(selectedOption, quality, priceCalc.finalPrice);
     }
   };
 
-  // حساب السعر الشهري
+  // حساب السعر الشهري مع العملة
   const getMonthlyPrice = (option: DurationOption, qualityIncrease: number = 0) => {
-    return ((option.price + qualityIncrease) / option.months).toFixed(2);
+    const basePrice = (option.price + qualityIncrease) / option.months;
+    const mockProduct = { price: basePrice, currency: 'SAR' };
+    const priceCalc = calculatePrice(mockProduct, currency);
+    return priceCalc.finalPrice.toFixed(2);
   };
 
-  // حساب السعر النهائي
+  // حساب السعر النهائي مع العملة
   const getFinalPrice = () => {
     if (!selectedOption || !selectedQuality) return 0;
-    return selectedOption.price + selectedQuality.priceIncrease;
+    const basePrice = selectedOption.price + selectedQuality.priceIncrease;
+    const mockProduct = { price: basePrice, currency: 'SAR' };
+    const priceCalc = calculatePrice(mockProduct, currency);
+    return priceCalc.finalPrice;
+  };
+
+  // حساب سعر الخيار مع العملة
+  const getOptionPrice = (option: DurationOption) => {
+    const mockProduct = { price: option.price, currency: 'SAR' };
+    const priceCalc = calculatePrice(mockProduct, currency);
+    return priceCalc.finalPrice;
+  };
+
+  // حساب السعر الأصلي مع العملة
+  const getOriginalPrice = (option: DurationOption) => {
+    const mockProduct = { price: option.originalPrice, currency: 'SAR' };
+    const priceCalc = calculatePrice(mockProduct, currency);
+    return priceCalc.finalPrice;
   };
 
   // حساب نسبة التوفير
@@ -237,18 +264,18 @@ export default function SubscriptionDurationSelector({
               {/* السعر الرئيسي */}
               <div className="text-center space-y-2">
                 <div className="flex items-center justify-center gap-2 flex-wrap">
-                  <span className="text-3xl font-bold text-white">{option.price}</span>
-                  <span className="text-lg text-gray-300">ر.س</span>
+                  <span className="text-3xl font-bold text-white">{getOptionPrice(option).toFixed(2)}</span>
+                  <span className="text-lg text-gray-300">{currency}</span>
                   {option.originalPrice && (
                     <span className="text-gray-500 line-through text-lg">
-                      {option.originalPrice} ر.س
+                      {getOriginalPrice(option).toFixed(2)} {currency}
                     </span>
                   )}
                 </div>
                 
                 {/* السعر الشهري */}
                 <p className="text-gray-400 text-sm font-medium">
-                  {getMonthlyPrice(option)} ر.س/شهر
+                  {getMonthlyPrice(option)} {currency}/شهر
                 </p>
 
                 {/* نسبة التوفير */}
@@ -310,7 +337,7 @@ export default function SubscriptionDurationSelector({
                     )}
                     {quality.priceIncrease > 0 && (
                       <span className="text-blue-400 text-sm font-medium">
-                        +{quality.priceIncrease} ر.س
+                        +{quality.priceIncrease} {currency}
                       </span>
                     )}
                   </div>
@@ -343,10 +370,10 @@ export default function SubscriptionDurationSelector({
                 <span className="text-lg font-bold text-white">السعر الإجمالي:</span>
                 <div className="text-right">
                   <div className="text-2xl font-bold text-primary-400">
-                    {getFinalPrice().toFixed(2)} ر.س
+                    {getFinalPrice().toFixed(2)} {currency}
                   </div>
                   <div className="text-gray-400 text-sm">
-                    {getMonthlyPrice(selectedOption, selectedQuality.priceIncrease)} ر.س/شهر
+                    {getMonthlyPrice(selectedOption, selectedQuality.priceIncrease)} {currency}/شهر
                   </div>
                 </div>
               </div>
