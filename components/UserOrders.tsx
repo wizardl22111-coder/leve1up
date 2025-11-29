@@ -12,7 +12,8 @@ import {
   Clock, 
   XCircle,
   ShoppingBag,
-  FileText
+  FileText,
+  MessageCircle
 } from 'lucide-react';
 // import { ProductImage } from './OptimizedImage'; // مؤقتاً معطل
 
@@ -68,6 +69,13 @@ export default function UserOrders({ className = '' }: UserOrdersProps) {
     } finally {
       setLoading(false);
     }
+  };
+
+  // دالة للتحقق من نوع المنتج (اشتراك أم منتج رقمي)
+  const isSubscriptionProduct = (item: OrderItem) => {
+    const subscriptionKeywords = ['نتفليكس', 'netflix', 'اشتراك', 'subscription', 'شهري', 'سنوي'];
+    const itemName = item.name?.toLowerCase() || '';
+    return subscriptionKeywords.some(keyword => itemName.includes(keyword.toLowerCase()));
   };
 
   const getStatusIcon = (status: string) => {
@@ -303,21 +311,40 @@ export default function UserOrders({ className = '' }: UserOrdersProps) {
                           </div>
                         </div>
 
-                        {/* Download Button */}
-                        <motion.button
-                          onClick={() => handleDownload(order, item)}
-                          className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                            ['paid', 'completed'].includes(order.status) || order.amount === 0
-                              ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg hover:shadow-emerald-500/25'
-                              : 'bg-slate-600 text-slate-400 cursor-not-allowed'
-                          }`}
-                          whileHover={['paid', 'completed'].includes(order.status) || order.amount === 0 ? { scale: 1.05 } : {}}
-                          whileTap={['paid', 'completed'].includes(order.status) || order.amount === 0 ? { scale: 0.95 } : {}}
-                          disabled={!['paid', 'completed'].includes(order.status) && order.amount > 0}
-                        >
-                          <Download className="w-4 h-4" />
-                          تحميل
-                        </motion.button>
+                        {/* Download/Contact Button */}
+                        {isSubscriptionProduct(item) ? (
+                          // زر التواصل للاشتراكات
+                          <motion.button
+                            onClick={() => window.open('https://wa.me/+971501234567', '_blank')}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                              ['paid', 'completed'].includes(order.status) || order.amount === 0
+                                ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-blue-500/25'
+                                : 'bg-slate-600 text-slate-400 cursor-not-allowed'
+                            }`}
+                            whileHover={['paid', 'completed'].includes(order.status) || order.amount === 0 ? { scale: 1.05 } : {}}
+                            whileTap={['paid', 'completed'].includes(order.status) || order.amount === 0 ? { scale: 0.95 } : {}}
+                            disabled={!['paid', 'completed'].includes(order.status) && order.amount > 0}
+                          >
+                            <MessageCircle className="w-4 h-4" />
+                            تواصل بالشات
+                          </motion.button>
+                        ) : (
+                          // زر التحميل للمنتجات الرقمية
+                          <motion.button
+                            onClick={() => handleDownload(order, item)}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                              ['paid', 'completed'].includes(order.status) || order.amount === 0
+                                ? 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg hover:shadow-emerald-500/25'
+                                : 'bg-slate-600 text-slate-400 cursor-not-allowed'
+                            }`}
+                            whileHover={['paid', 'completed'].includes(order.status) || order.amount === 0 ? { scale: 1.05 } : {}}
+                            whileTap={['paid', 'completed'].includes(order.status) || order.amount === 0 ? { scale: 0.95 } : {}}
+                            disabled={!['paid', 'completed'].includes(order.status) && order.amount > 0}
+                          >
+                            <Download className="w-4 h-4" />
+                            تحميل
+                          </motion.button>
+                        )}
                       </div>
                     ))}
                   </div>

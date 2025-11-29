@@ -1,0 +1,11 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#1DB954"/>
+  <rect x="50" y="50" width="300" height="300" rx="20" fill="#000000"/>
+  <circle cx="200" cy="150" r="40" fill="#1DB954"/>
+  <path d="M180 130 Q200 120 220 130" stroke="#000000" stroke-width="3" fill="none"/>
+  <path d="M175 145 Q200 135 225 145" stroke="#000000" stroke-width="3" fill="none"/>
+  <path d="M170 160 Q200 150 230 160" stroke="#000000" stroke-width="3" fill="none"/>
+  <text x="200" y="220" text-anchor="middle" fill="#1DB954" font-family="Arial, sans-serif" font-size="24" font-weight="bold">SPOTIFY</text>
+  <text x="200" y="250" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="16">Premium</text>
+</svg>
+

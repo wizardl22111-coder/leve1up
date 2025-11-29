@@ -60,13 +60,13 @@ export default function CartPage() {
       }));
 
       // 💳 إنشاء طلب الدفع
-      const response = await fetch('/api/payment_intent', {
+      const response = await fetch('/api/cart_payment_intent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          items: cartItems,
+          cartItems: cartItems,
           customerEmail: customerEmail,
           totalAmount: finalTotal,
           currency: currency
@@ -75,7 +75,7 @@ export default function CartPage() {
 
       const data = await response.json();
 
-      if (data.success && data.paymentUrl) {
+      if (data.success && data.redirect_url) {
         // 💾 حفظ بيانات السلة في localStorage للاسترجاع في صفحة النجاح
         localStorage.setItem('cart', JSON.stringify(cartItems));
         localStorage.setItem('customerEmail', customerEmail);
@@ -83,7 +83,7 @@ export default function CartPage() {
         localStorage.setItem('currency', currency);
 
         // 🔄 إعادة توجيه إلى صفحة الدفع
-        window.location.href = data.paymentUrl;
+        window.location.href = data.redirect_url;
       } else {
         throw new Error(data.error || 'فشل في إنشاء رابط الدفع');
       }
@@ -266,7 +266,7 @@ export default function CartPage() {
                 </div>
 
                 {/* مكون أكواد الخصم */}
-                <div className="mb-6 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
                   <DiscountCodeInput
                     onDiscountApplied={handleDiscountApplied}
                     onDiscountRemoved={handleDiscountRemoved}
