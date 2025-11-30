@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { LogoImage } from './OptimizedImage';
+import Image from 'next/image';
 import { Currency } from '@/lib/currency';
 
 interface CurrencyDisplayProps {
@@ -16,7 +16,7 @@ export default function CurrencyDisplay({ currency, className = '' }: CurrencyDi
   // رموز العملات النصية (fallback)
   const symbols: Record<Currency, string> = {
     AED: 'د.إ',
-    SAR: 'ريال', // تغيير من ﷼ إلى "ريال" كما طلبت
+    SAR: 'ريال',
     BHD: 'د.ب',
     KWD: 'د.ك',
     OMR: 'ر.ع',
@@ -27,40 +27,40 @@ export default function CurrencyDisplay({ currency, className = '' }: CurrencyDi
     INR: '₹',
   };
 
-  // للدرهم الإماراتي، نجرب الصورة أولاً
+  // للدرهم الإماراتي، نستخدم SVG المحلي
   if (currency === 'AED') {
     if (aedImageError) {
-      // إذا فشلت الصورة، نستخدم النص
+      // إذا فشل SVG، نستخدم النص
       return <span className={className}>{symbols.AED}</span>;
     }
     
     return (
-      <LogoImage
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/UAE_Dirham_symbol.svg/512px-UAE_Dirham_symbol.svg.png"
+      <Image
+        src="/icons/currency/aed.svg"
         alt="درهم إماراتي"
         width={16}
         height={16}
-        className={`inline-block ${className}`}
+        className={`inline-block opacity-80 ${className}`}
         onError={() => setAedImageError(true)}
         onLoad={() => setAedImageError(false)}
       />
     );
   }
 
-  // للريال السعودي، نجرب صورة الرمز ﷼
+  // للريال السعودي، نستخدم SVG المحلي
   if (currency === 'SAR') {
     if (sarImageError) {
-      // إذا فشلت الصورة، نستخدم كلمة "ريال"
+      // إذا فشل SVG، نستخدم كلمة "ريال"
       return <span className={className}>{symbols.SAR}</span>;
     }
     
     return (
-      <LogoImage
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Saudi_Riyal_Symbol.svg/512px-Saudi_Riyal_Symbol.svg.png"
+      <Image
+        src="/icons/currency/sar.svg"
         alt="ريال سعودي"
         width={16}
         height={16}
-        className={`inline-block ${className}`}
+        className={`inline-block opacity-80 ${className}`}
         onError={() => setSarImageError(true)}
         onLoad={() => setSarImageError(false)}
       />

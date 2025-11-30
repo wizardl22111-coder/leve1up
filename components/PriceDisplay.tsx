@@ -4,28 +4,29 @@ import { Currency, formatPriceValue } from '@/lib/currency';
 import CurrencyDisplay from './CurrencyDisplay';
 
 interface PriceDisplayProps {
-  price: number;
-  currency: Currency;
+  amount: number; // تغيير من price إلى amount كما طلبت
+  currency: 'SAR' | 'AED'; // تحديد العملات المدعومة
+  oldPrice?: number; // السعر القديم (اختياري)
   className?: string;
-  showCurrencyFirst?: boolean; // لعرض العملة قبل السعر (مثل ﷼ 29.99)
-  originalPrice?: number; // السعر الأصلي للمنتجات المجانية
+  showCurrencyFirst?: boolean; // لعرض العملة قبل السعر
 }
 
 export default function PriceDisplay({ 
-  price, 
+  amount, 
   currency, 
+  oldPrice,
   className = '', 
-  showCurrencyFirst = false,
-  originalPrice 
+  showCurrencyFirst = false
 }: PriceDisplayProps) {
-  // إذا كان السعر 0، عرض السعر الأصلي + مجاني
-  if (price === 0) {
-    if (originalPrice && originalPrice > 0) {
-      const formattedOriginalPrice = formatPriceValue(originalPrice);
+  // إذا كان السعر 0، عرض مجاني
+  if (amount === 0) {
+    if (oldPrice && oldPrice > 0) {
+      const formattedOldPrice = formatPriceValue(oldPrice);
       return (
-        <div className={`${className} flex items-center gap-2`}>
-          <span className="text-gray-400 line-through text-sm">
-            {formattedOriginalPrice} <CurrencyDisplay currency={currency} />
+        <div className={`${className} flex items-center gap-1 rtl:flex-row-reverse`}>
+          <span className="text-gray-400 line-through text-sm flex items-center gap-1">
+            {formattedOldPrice}
+            <CurrencyDisplay currency={currency} />
           </span>
           <span className="text-green-400 font-bold">
             مجاني
@@ -40,35 +41,40 @@ export default function PriceDisplay({
     );
   }
 
-  const formattedPrice = formatPriceValue(price);
+  const formattedAmount = formatPriceValue(amount);
 
-  if (showCurrencyFirst) {
+  // إذا كان هناك سعر قديم أعلى، عرض الخصم
+  if (oldPrice && oldPrice > amount) {
+    const formattedOldPrice = formatPriceValue(oldPrice);
     return (
-      <span className={className}>
-        <CurrencyDisplay currency={currency} className="ml-1" />
-        {formattedPrice}
-      </span>
-    );
-  }
-
-  // إذا كان هناك سعر أصلي أعلى، عرض الخصم
-  if (originalPrice && originalPrice > price) {
-    const formattedOriginalPrice = formatPriceValue(originalPrice);
-    return (
-      <div className={`${className} flex items-center gap-2`}>
-        <span className="text-gray-400 line-through text-sm">
-          {formattedOriginalPrice} <CurrencyDisplay currency={currency} />
+      <div className={`${className} flex items-center gap-1 rtl:flex-row-reverse`}>
+        {/* السعر القديم مع خط شطب */}
+        <span className="text-gray-400 line-through text-sm flex items-center gap-1">
+          {formattedOldPrice}
+          <CurrencyDisplay currency={currency} />
         </span>
-        <span className="text-white font-bold">
-          {formattedPrice} <CurrencyDisplay currency={currency} />
+        {/* السعر الجديد */}
+        <span className="text-white font-bold text-lg flex items-center gap-1">
+          {formattedAmount}
+          <CurrencyDisplay currency={currency} />
         </span>
       </div>
     );
   }
 
+  // العرض العادي للسعر
+  if (showCurrencyFirst) {
+    return (
+      <span className={`${className} flex items-center gap-1`}>
+        <CurrencyDisplay currency={currency} />
+        {formattedAmount}
+      </span>
+    );
+  }
+
   return (
-    <span className={className}>
-      {formattedPrice}{' '}
+    <span className={`${className} flex items-center gap-1`}>
+      {formattedAmount}
       <CurrencyDisplay currency={currency} />
     </span>
   );

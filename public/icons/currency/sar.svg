@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .sar-symbol {
+        fill: currentColor;
+        stroke: currentColor;
+        stroke-width: 0.5;
+      }
+    </style>
+  </defs>
+  <!-- رمز الريال السعودي ﷼ -->
+  <g class="sar-symbol">
+    <!-- الجزء العلوي من الرمز -->
+    <path d="M2 4 Q4 2 6 4 Q8 6 10 4 Q12 2 14 4 L14 8 Q12 10 10 8 Q8 6 6 8 Q4 10 2 8 Z"/>
+    <!-- الخطوط الأفقية -->
+    <line x1="1" y1="3" x2="15" y2="3" stroke-width="0.8"/>
+    <line x1="1" y1="12" x2="15" y2="12" stroke-width="0.8"/>
+    <!-- الخط الوسطي -->
+    <line x1="3" y1="9" x2="13" y2="9" stroke-width="0.6"/>
+  </g>
+</svg>
