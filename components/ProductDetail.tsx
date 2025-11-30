@@ -14,6 +14,7 @@ import PriceDisplay from './PriceDisplay';
 import ReviewSummary from './ReviewSummary';
 import SubscriptionDurationSelector from './SubscriptionDurationSelector';
 import DiscordNitroFAQ from './DiscordNitroFAQ';
+import RelatedProducts from './RelatedProducts';
 
 
 
@@ -581,6 +582,13 @@ export default function ProductDetail({ product }: { product?: Product }) {
             </div>
           </div>
         </div>
+
+        {/* Related Products Section */}
+        <RelatedProducts 
+          currentProductId={productId}
+          category={product.category}
+          maxProducts={4}
+        />
 
         {/* Why Buy Section */}
         <WhyBuySection />
