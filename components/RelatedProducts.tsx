@@ -37,19 +37,20 @@ export default function RelatedProducts({
     return productId !== currentProductId && product.active !== false;
   });
 
-  // Get related products - prefer same category if available
+  // Get related products - prefer same category if available, but ensure variety
   const getRelatedProducts = () => {
     let relatedProducts: any[] = [];
 
-    // First, try to get products from the same category
+    // First, try to get products from the same category (but limit to half of maxProducts)
     if (category) {
       const sameCategoryProducts = availableProducts.filter(product => 
         product.category === category
       );
-      relatedProducts = sameCategoryProducts.slice(0, maxProducts);
+      const maxSameCategory = Math.min(Math.ceil(maxProducts / 2), sameCategoryProducts.length);
+      relatedProducts = sameCategoryProducts.slice(0, maxSameCategory);
     }
 
-    // If we don't have enough products from the same category, fill with random products
+    // Fill remaining slots with products from other categories
     if (relatedProducts.length < maxProducts) {
       const remainingSlots = maxProducts - relatedProducts.length;
       const otherProducts = availableProducts.filter(product => 
@@ -61,7 +62,8 @@ export default function RelatedProducts({
       relatedProducts = [...relatedProducts, ...shuffled.slice(0, remainingSlots)];
     }
 
-    return relatedProducts;
+    // Final shuffle to mix same-category and different-category products
+    return relatedProducts.sort(() => Math.random() - 0.5);
   };
 
   const relatedProducts = getRelatedProducts();

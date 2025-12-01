@@ -1,0 +1,58 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="editsBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6A0DAD;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#5AC8FA;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="600" fill="url(#editsBg)"/>
+  
+  <!-- Grid Pattern -->
+  <defs>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(90, 200, 250, 0.1)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="600" fill="url(#grid)" />
+  
+  <!-- Video/Edit Icons -->
+  <g transform="translate(100, 100)">
+    <!-- Video Camera -->
+    <rect x="0" y="20" width="80" height="50" rx="8" fill="rgba(90, 200, 250, 0.3)" stroke="rgba(90, 200, 250, 0.6)" stroke-width="2"/>
+    <circle cx="90" cy="45" r="15" fill="rgba(106, 13, 173, 0.4)" stroke="rgba(106, 13, 173, 0.8)" stroke-width="2"/>
+    <rect x="105" y="40" width="20" height="10" fill="rgba(90, 200, 250, 0.5)"/>
+    
+    <!-- Timeline -->
+    <rect x="150" y="30" width="200" height="30" rx="4" fill="rgba(26, 26, 26, 0.6)" stroke="rgba(90, 200, 250, 0.4)" stroke-width="1"/>
+    <rect x="160" y="35" width="60" height="20" rx="2" fill="rgba(90, 200, 250, 0.6)"/>
+    <rect x="230" y="35" width="40" height="20" rx="2" fill="rgba(106, 13, 173, 0.6)"/>
+    <rect x="280" y="35" width="50" height="20" rx="2" fill="rgba(90, 200, 250, 0.4)"/>
+  </g>
+  
+  <!-- Effects Icons -->
+  <g transform="translate(800, 200)">
+    <!-- Magic Wand -->
+    <line x1="0" y1="0" x2="40" y2="40" stroke="rgba(90, 200, 250, 0.8)" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="5" cy="5" r="3" fill="rgba(106, 13, 173, 0.8)"/>
+    <circle cx="35" cy="35" r="3" fill="rgba(90, 200, 250, 0.8)"/>
+    
+    <!-- Stars -->
+    <g transform="translate(60, 10)">
+      <polygon points="0,8 2,2 8,0 2,-2 0,-8 -2,-2 -8,0 -2,2" fill="rgba(90, 200, 250, 0.6)"/>
+    </g>
+    <g transform="translate(80, 30)">
+      <polygon points="0,6 1.5,1.5 6,0 1.5,-1.5 0,-6 -1.5,-1.5 -6,0 -1.5,1.5" fill="rgba(106, 13, 173, 0.6)"/>
+    </g>
+  </g>
+  
+  <!-- Text -->
+  <text x="600" y="350" text-anchor="middle" fill="rgba(255, 255, 255, 0.9)" font-family="Arial, sans-serif" font-size="48" font-weight="bold">أدوات المونتاج</text>
+  <text x="600" y="400" text-anchor="middle" fill="rgba(255, 255, 255, 0.7)" font-family="Arial, sans-serif" font-size="24">الاحترافية</text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="200" cy="500" r="60" fill="rgba(90, 200, 250, 0.1)" />
+  <circle cx="1000" cy="100" r="80" fill="rgba(106, 13, 173, 0.1)" />
+</svg>
