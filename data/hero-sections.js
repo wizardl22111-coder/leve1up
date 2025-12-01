@@ -68,10 +68,11 @@ export const subscriptionsSection = {
     {
       id: 7,
       title: "اشتراك Netflix Premium",
-      excerpt: "اشتراك شهري في نتفليكس بجودة 4K ومشاهدة على 4 أجهزة",
+      excerpt: "اشتراك شهري في نتفليكس بجودة 4K ومشاهدة على 4 أجهزة - ابتداءً من 12 ريال",
       image: "/images/products/netflix-subscription.jpg",
-      price: 60,
-      href: "/products/7"
+      price: 12,
+      href: "/products/10",
+      badge: "ابتداءً من 12 ريال"
     },
     {
       id: 8,

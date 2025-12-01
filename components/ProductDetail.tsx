@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ShoppingCart, Heart, Star, Check, Users, Shield, Zap, CheckCircle, ShoppingBag, Download, ArrowRight } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { showToast } from '@/components/ToastContainer';
@@ -84,6 +84,15 @@ export default function ProductDetail({ product }: { product?: Product }) {
   const [showFreeModal, setShowFreeModal] = useState(false);
   const [showSimplifiedDescription, setShowSimplifiedDescription] = useState(false);
   const [selectedDuration, setSelectedDuration] = useState<any>(null);
+
+  // تنظيف الحالة عند مغادرة الصفحة
+  useEffect(() => {
+    return () => {
+      // تنظيف أي موارد أو حالات عند مغادرة الصفحة
+      setShowFreeModal(false);
+      setShowSimplifiedDescription(false);
+    };
+  }, []);
 
   // Early return if no product
   if (!product) {

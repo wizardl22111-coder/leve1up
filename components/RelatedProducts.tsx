@@ -126,7 +126,7 @@ export default function RelatedProducts({
                   <Link href={`/products/${productId}`}>
                     <div className="relative overflow-hidden group cursor-pointer rounded-t-2xl aspect-[4/3]">
                       <img
-                        src={`${productImage}?v=${Date.now()}`}
+                        src={productImage}
                         alt={productName}
                         className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                         style={{ 
@@ -139,8 +139,8 @@ export default function RelatedProducts({
                         }}
                         onError={(e) => {
                           console.error('Related product image failed to load:', productImage);
+                          e.currentTarget.src = '/images/default-product.jpg';
                           e.currentTarget.style.backgroundColor = '#374151';
-                          e.currentTarget.style.border = '2px dashed #6b7280';
                         }}
                       />
                       

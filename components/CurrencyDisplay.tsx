@@ -43,6 +43,8 @@ export default function CurrencyDisplay({ currency, className = '' }: CurrencyDi
         className={`inline-block opacity-80 ${className}`}
         onError={() => setAedImageError(true)}
         onLoad={() => setAedImageError(false)}
+        priority
+        quality={100}
       />
     );
   }
@@ -63,6 +65,8 @@ export default function CurrencyDisplay({ currency, className = '' }: CurrencyDi
         className={`inline-block opacity-80 ${className}`}
         onError={() => setSarImageError(true)}
         onLoad={() => setSarImageError(false)}
+        priority
+        quality={100}
       />
     );
   }
