@@ -193,9 +193,22 @@ export default function ProductDetail({ product }: { product?: Product }) {
   };
 
   const handleWishlist = () => {
-    if (!isInWishlist) {
-      addToWishlist(productId);
-      showToast('تمت إضافة المنتج إلى قائمة الأمنيات! ❤️', 'wishlist');
+    console.log('❤️ ProductDetail: Wishlist button clicked!');
+    console.log('Product ID:', productId);
+    console.log('Is in wishlist:', isInWishlist);
+    
+    try {
+      if (!isInWishlist) {
+        console.log('➕ Adding to wishlist...');
+        addToWishlist(productId);
+        showToast('تمت إضافة المنتج إلى قائمة الأمنيات! ❤️', 'wishlist');
+        console.log('✅ ProductDetail: Added to wishlist successfully');
+      } else {
+        console.log('ℹ️ Product already in wishlist');
+        showToast('المنتج موجود بالفعل في قائمة الأمنيات', 'wishlist');
+      }
+    } catch (error) {
+      console.error('❌ ProductDetail: Error in handleWishlist:', error);
     }
   };
 
@@ -397,6 +410,25 @@ export default function ProductDetail({ product }: { product?: Product }) {
 
             {/* CTA Buttons - Full Width Mobile */}
             <div className="space-y-3">
+              {/* Wishlist Button */}
+              <button
+                onClick={(e) => {
+                  console.log('❤️ ProductDetail: Wishlist button clicked!');
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleWishlist();
+                }}
+                className={`w-full flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 touch-manipulation ${
+                  isInWishlist 
+                    ? 'bg-gradient-to-r from-red-600 to-pink-600 text-white hover:shadow-2xl hover:shadow-red-500/30' 
+                    : 'bg-gradient-to-r from-gray-700 to-gray-600 text-white hover:from-red-600 hover:to-pink-600 hover:shadow-2xl hover:shadow-red-500/30'
+                } active:scale-95`}
+                style={{ fontSize: '16px' }}
+              >
+                <Heart className={`w-5 h-5 sm:w-6 sm:h-6 ${isInWishlist ? 'fill-current' : ''}`} />
+                {isInWishlist ? 'في قائمة الأمنيات ❤️' : 'أضف للأمنيات'}
+              </button>
+              
               {/* Buy Now / Direct Payment Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 {/* Show appropriate button based on product type */}
