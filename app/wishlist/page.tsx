@@ -53,19 +53,48 @@ export default function WishlistPage() {
   };
 
   const handleAddToCart = (product: any) => {
-    const price = getPrice(product);
-    addToCart({
-      id: product.product_id,
-      name: product.product_name,
-      price: price,
-      image: product.product_image,
-    });
-    showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'cart');
+    console.log('🛒 Wishlist: Add to Cart clicked!', product.product_name);
+    
+    try {
+      const price = getPrice(product);
+      console.log('🔍 Wishlist: Product data:', {
+        id: product.product_id,
+        name: product.product_name,
+        price: price,
+        addToCart: typeof addToCart
+      });
+      
+      addToCart({
+        id: product.product_id,
+        name: product.product_name,
+        price: price,
+        image: product.product_image,
+      });
+      
+      console.log('📢 Wishlist: Showing toast notification');
+      showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'cart');
+      console.log('✅ Wishlist: Add to cart completed successfully');
+    } catch (error) {
+      console.error('❌ Wishlist: Error in handleAddToCart:', error);
+    }
   };
 
   const handleRemoveFromWishlist = (productId: number) => {
-    removeFromWishlist(productId);
-    showToast('تمت إزالة المنتج من المفضلة', 'wishlist');
+    console.log('🗑️ Wishlist: Remove from wishlist clicked!', productId);
+    
+    try {
+      console.log('🔍 Wishlist: Remove data:', {
+        productId,
+        removeFromWishlist: typeof removeFromWishlist
+      });
+      
+      removeFromWishlist(productId);
+      console.log('📢 Wishlist: Showing remove toast');
+      showToast('تمت إزالة المنتج من المفضلة', 'wishlist');
+      console.log('✅ Wishlist: Remove completed successfully');
+    } catch (error) {
+      console.error('❌ Wishlist: Error in handleRemoveFromWishlist:', error);
+    }
   };
 
   if (wishlistProducts.length === 0) {
@@ -144,7 +173,12 @@ export default function WishlistPage() {
                     </span>
                   )}
                   <button
-                    onClick={() => handleRemoveFromWishlist(product.product_id)}
+                    onClick={(e) => {
+                      console.log('🗑️ Wishlist: Remove button clicked!');
+                      e.preventDefault();
+                      e.stopPropagation();
+                      handleRemoveFromWishlist(product.product_id);
+                    }}
                     className="absolute top-3 right-3 p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 transition group/btn"
                   >
                     <Heart className="w-5 h-5 text-red-600 fill-red-600" />
@@ -183,7 +217,12 @@ export default function WishlistPage() {
                       </p>
                     </div>
                     <button
-                      onClick={() => handleAddToCart(product)}
+                      onClick={(e) => {
+                        console.log('🛒 Wishlist: Add to cart button clicked!');
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleAddToCart(product);
+                      }}
                       className="bg-gradient-to-r from-primary-600 to-accent-600 text-white p-3 rounded-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
                     >
                       <ShoppingCart className="w-5 h-5" />

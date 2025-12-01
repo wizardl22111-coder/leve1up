@@ -51,9 +51,25 @@ export default function ProductGrid({
   };
 
   const handleWishlist = (productId: number) => {
-    if (!wishlist.includes(productId)) {
-      addToWishlist(productId);
-      showToast('تمت إضافة المنتج إلى قائمة الأمنيات! ❤️', 'wishlist');
+    console.log('❤️ ProductGrid: Wishlist button clicked!', productId);
+    
+    try {
+      console.log('🔍 ProductGrid: Wishlist data:', {
+        productId,
+        isInWishlist: wishlist.includes(productId),
+        addToWishlist: typeof addToWishlist
+      });
+      
+      if (!wishlist.includes(productId)) {
+        addToWishlist(productId);
+        console.log('📢 ProductGrid: Showing wishlist toast');
+        showToast('تمت إضافة المنتج إلى قائمة الأمنيات! ❤️', 'wishlist');
+        console.log('✅ ProductGrid: Add to wishlist completed successfully');
+      } else {
+        console.log('⚠️ ProductGrid: Product already in wishlist');
+      }
+    } catch (error) {
+      console.error('❌ ProductGrid: Error in handleWishlist:', error);
     }
   };
 
@@ -115,7 +131,9 @@ export default function ProductGrid({
                   {/* Wishlist Button */}
                   <button
                     onClick={(e) => {
+                      console.log('❤️ ProductGrid: Wishlist button clicked!');
                       e.preventDefault();
+                      e.stopPropagation();
                       handleWishlist(productId);
                     }}
                     className={`absolute top-3 right-3 p-2 rounded-full backdrop-blur-sm transition-all duration-300 ${

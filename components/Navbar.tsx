@@ -50,6 +50,7 @@ export default function Navbar() {
   ];
 
   const handleLinkClick = () => {
+    console.log('🔗 Navbar: Mobile menu link clicked!');
     setIsMobileMenuOpen(false);
   };
 
@@ -141,6 +142,7 @@ export default function Navbar() {
                 href="/wishlist"
                 className="relative p-2 sm:p-2.5 hover:bg-primary-300/10 rounded-xl transition-colors"
                 aria-label="قائمة الأمنيات"
+                onClick={() => console.log('❤️ Navbar: Desktop wishlist clicked!')}
               >
                 <Heart className="w-5 h-5 text-primary-300" />
                 {wishlist.length > 0 && (
@@ -155,6 +157,7 @@ export default function Navbar() {
                 href="/cart"
                 className="relative p-2 sm:p-2.5 hover:bg-primary-300/10 rounded-xl transition-colors"
                 aria-label="سلة التسوق"
+                onClick={() => console.log('🛒 Navbar: Desktop cart clicked!')}
               >
                 <ShoppingCart className="w-5 h-5 text-primary-300" />
                 {cartCount > 0 && (
@@ -221,7 +224,10 @@ export default function Navbar() {
                 href="/wishlist"
                 className="relative p-2.5 hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 touch-manipulation"
                 aria-label="قائمة الأمنيات"
-                onClick={handleLinkClick}
+                onClick={() => {
+                  console.log('❤️ Navbar: Mobile wishlist clicked!');
+                  handleLinkClick();
+                }}
               >
                 <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-primary-300" />
                 {wishlist.length > 0 && (
@@ -236,7 +242,10 @@ export default function Navbar() {
                 href="/cart"
                 className="relative p-2.5 hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 touch-manipulation"
                 aria-label="سلة التسوق"
-                onClick={handleLinkClick}
+                onClick={() => {
+                  console.log('🛒 Navbar: Mobile cart clicked!');
+                  handleLinkClick();
+                }}
               >
                 <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6 text-primary-300" />
                 {cartCount > 0 && (
@@ -248,7 +257,12 @@ export default function Navbar() {
 
               {/* Mobile Menu Button */}
               <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                onClick={(e) => {
+                  console.log('📱 Navbar: Mobile menu button clicked!', !isMobileMenuOpen ? 'Opening' : 'Closing');
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setIsMobileMenuOpen(!isMobileMenuOpen);
+                }}
                 className="p-2.5 hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 touch-manipulation"
                 aria-label={isMobileMenuOpen ? 'إغلاق القائمة' : 'فتح القائمة'}
               >
@@ -290,7 +304,12 @@ export default function Navbar() {
               </div>
               <p className="text-gray-400 text-sm mt-1">القائمة الرئيسية</p>
               <button
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) => {
+                  console.log('❌ Navbar: Mobile menu close button clicked!');
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setIsMobileMenuOpen(false);
+                }}
                 className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors"
               >
                 <X className="w-6 h-6 text-gray-300" />

@@ -90,18 +90,33 @@ export default function RelatedProducts({
   }
 
   const handleAddToCart = (product: any) => {
-    const priceCalc = calculatePrice(product, currency);
-    const productId = getProductId(product);
-    const productName = getProductName(product);
+    console.log('🛒 RelatedProducts: Add to Cart clicked!', getProductName(product));
     
-    addToCart({
-      id: productId,
-      name: productName,
-      price: priceCalc.finalPrice,
-      image: getProductImage(product)
-    });
-    
-    showToast(`تمت إضافة ${productName} إلى السلة! 🛒`, 'cart');
+    try {
+      const priceCalc = calculatePrice(product, currency);
+      const productId = getProductId(product);
+      const productName = getProductName(product);
+      
+      console.log('🔍 RelatedProducts: Product data:', {
+        id: productId,
+        name: productName,
+        finalPrice: priceCalc.finalPrice,
+        addToCart: typeof addToCart
+      });
+      
+      addToCart({
+        id: productId,
+        name: productName,
+        price: priceCalc.finalPrice,
+        image: getProductImage(product)
+      });
+      
+      console.log('📢 RelatedProducts: Showing toast notification');
+      showToast(`تمت إضافة ${productName} إلى السلة! 🛒`, 'cart');
+      console.log('✅ RelatedProducts: Add to cart completed successfully');
+    } catch (error) {
+      console.error('❌ RelatedProducts: Error in handleAddToCart:', error);
+    }
   };
 
   return (
@@ -229,7 +244,12 @@ export default function RelatedProducts({
 
                       {/* Add to Cart Button */}
                       <button
-                        onClick={() => handleAddToCart(product)}
+                        onClick={(e) => {
+                          console.log('🛒 RelatedProducts: Cart button clicked!');
+                          e.preventDefault();
+                          e.stopPropagation();
+                          handleAddToCart(product);
+                        }}
                         className="bg-gray-700/50 hover:bg-gray-600/50 border border-gray-600/40 text-gray-300 hover:text-white p-2.5 rounded-xl transition-all duration-200 hover:shadow-lg"
                         title="إضافة إلى السلة"
                       >

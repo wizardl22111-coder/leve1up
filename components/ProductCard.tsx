@@ -68,17 +68,31 @@ export default function ProductCard({ product, className = '', size = 'medium' }
   const priceCalc = calculatePrice(productForCalc, currency);
 
   const handleAddToCart = (e: React.MouseEvent) => {
+    console.log('🛒 ProductCard: Add to Cart clicked!', product.title);
     e.preventDefault();
     e.stopPropagation();
     
-    addToCart({
-      id: product.id,
-      name: product.title,
-      price: priceCalc.finalPrice,
-      image: product.image
-    });
-    
-    showToast(`تمت إضافة ${product.title} إلى السلة! 🛒`, 'cart');
+    try {
+      console.log('🔍 ProductCard: Product data:', {
+        id: product.id,
+        title: product.title,
+        finalPrice: priceCalc.finalPrice,
+        addToCart: typeof addToCart
+      });
+      
+      addToCart({
+        id: product.id,
+        name: product.title,
+        price: priceCalc.finalPrice,
+        image: product.image
+      });
+      
+      console.log('📢 ProductCard: Showing toast notification');
+      showToast(`تمت إضافة ${product.title} إلى السلة! 🛒`, 'cart');
+      console.log('✅ ProductCard: Add to cart completed successfully');
+    } catch (error) {
+      console.error('❌ ProductCard: Error in handleAddToCart:', error);
+    }
   };
 
   return (
