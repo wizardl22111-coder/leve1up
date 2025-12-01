@@ -80,10 +80,22 @@ interface Product {
 }
 
 export default function ProductDetail({ product }: { product?: Product }) {
+  console.log('🔍 ProductDetail rendered with product:', product);
+  
   const { currency, addToCart, addToWishlist, wishlist } = useApp();
   const [showFreeModal, setShowFreeModal] = useState(false);
   const [showSimplifiedDescription, setShowSimplifiedDescription] = useState(false);
   const [selectedDuration, setSelectedDuration] = useState<any>(null);
+  
+  console.log('🔧 ProductDetail state:', {
+    currency,
+    showFreeModal,
+    showSimplifiedDescription,
+    selectedDuration,
+    addToCart: typeof addToCart,
+    addToWishlist: typeof addToWishlist,
+    wishlist
+  });
 
   // تنظيف الحالة عند مغادرة الصفحة
   useEffect(() => {
@@ -136,31 +148,48 @@ export default function ProductDetail({ product }: { product?: Product }) {
   const isInWishlist = wishlist.includes(productId);
 
   const handleAddToCart = () => {
-    console.log('handleAddToCart clicked'); // Debug log
+    console.log('🛒 handleAddToCart clicked'); // Debug log
+    console.log('Product ID:', productId);
+    console.log('Product Name:', productName);
+    console.log('Price Calc:', priceCalc);
+    console.log('Selected Duration:', selectedDuration);
+    console.log('addToCart function:', typeof addToCart);
     
-    // Check if product is free
-    if (priceCalc.finalPrice === 0 && (product as any).isFree) {
-      setShowFreeModal(true);
-      return;
+    try {
+      // Check if product is free
+      if (priceCalc.finalPrice === 0 && (product as any).isFree) {
+        console.log('🎁 Free product detected, showing modal');
+        setShowFreeModal(true);
+        return;
+      }
+      
+      // نحفظ السعر المخفض بـ SAR (discountedPrice) وليس finalPrice
+      // لأن AppContext سيحوله تلقائياً للعملة الحالية
+      // إذا كان هناك خطة محددة، استخدم سعرها
+      const finalPrice = selectedDuration ? selectedDuration.price : priceCalc.discountedPrice;
+      console.log('💰 Final price to add:', finalPrice);
+      
+      const cartItem = {
+        id: productId,
+        name: productName,
+        price: finalPrice, // السعر بـ SAR بعد الخصم أو سعر الخطة المحددة
+        image: productImage,
+        // إضافة معلومات الخطة إذا كانت موجودة
+        ...(selectedDuration && { 
+          duration: selectedDuration.duration,
+          variant: selectedDuration 
+        })
+      };
+      
+      console.log('🛍️ Adding to cart:', cartItem);
+      addToCart(cartItem);
+      
+      console.log('📢 Showing toast notification');
+      showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'cart');
+      console.log('✅ handleAddToCart completed successfully');
+    } catch (error) {
+      console.error('❌ Error in handleAddToCart:', error);
     }
-    
-    // نحفظ السعر المخفض بـ SAR (discountedPrice) وليس finalPrice
-    // لأن AppContext سيحوله تلقائياً للعملة الحالية
-    // إذا كان هناك خطة محددة، استخدم سعرها
-    const finalPrice = selectedDuration ? selectedDuration.price : priceCalc.discountedPrice;
-    
-    addToCart({
-      id: productId,
-      name: productName,
-      price: finalPrice, // السعر بـ SAR بعد الخصم أو سعر الخطة المحددة
-      image: productImage,
-      // إضافة معلومات الخطة إذا كانت موجودة
-      ...(selectedDuration && { 
-        duration: selectedDuration.duration,
-        variant: selectedDuration 
-      })
-    });
-    showToast('تمت إضافة المنتج إلى السلة بنجاح! ✅', 'cart');
   };
 
   const handleWishlist = () => {
@@ -171,11 +200,21 @@ export default function ProductDetail({ product }: { product?: Product }) {
   };
 
   const handlePayment = () => {
-    console.log('handlePayment clicked'); // Debug log
+    console.log('💳 handlePayment clicked'); // Debug log
+    console.log('Product ID:', productId);
+    console.log('Product Name:', productName);
+    console.log('Final Price:', priceCalc.finalPrice);
+    console.log('Currency:', currency);
     
-    // التوجيه إلى صفحة checkout مع السعر المحسوب حسب العملة المختارة
-    const checkoutUrl = `/checkout?product=${productId}&name=${encodeURIComponent(productName)}&price=${priceCalc.finalPrice.toFixed(2)}&currency=${currency}`;
-    window.location.href = checkoutUrl;
+    try {
+      // التوجيه إلى صفحة checkout مع السعر المحسوب حسب العملة المختارة
+      const checkoutUrl = `/checkout?product=${productId}&name=${encodeURIComponent(productName)}&price=${priceCalc.finalPrice.toFixed(2)}&currency=${currency}`;
+      console.log('🔗 Checkout URL:', checkoutUrl);
+      console.log('🚀 Redirecting to checkout...');
+      window.location.href = checkoutUrl;
+    } catch (error) {
+      console.error('❌ Error in handlePayment:', error);
+    }
   };
 
   return (
@@ -213,6 +252,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
             <div>
               <button
                 onClick={(e) => {
+                  console.log('⬅️ Back button clicked!');
                   e.preventDefault();
                   e.stopPropagation();
                   window.history.back();
@@ -363,6 +403,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
                 {priceCalc.finalPrice === 0 && (product as any).isFree ? (
                   <button
                     onClick={(e) => {
+                      console.log('🟢 Free button clicked!');
                       e.preventDefault();
                       e.stopPropagation();
                       handleAddToCart();
@@ -377,6 +418,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
                   <>
                     <button
                       onClick={(e) => {
+                        console.log('💳 Buy Now button clicked!');
                         e.preventDefault();
                         e.stopPropagation();
                         handlePayment();
@@ -389,6 +431,7 @@ export default function ProductDetail({ product }: { product?: Product }) {
                     </button>
                     <button
                       onClick={(e) => {
+                        console.log('🛒 Add to Cart button clicked!');
                         e.preventDefault();
                         e.stopPropagation();
                         handleAddToCart();
