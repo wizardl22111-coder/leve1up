@@ -1,0 +1,472 @@
+[
+  {
+    "path": "public/favicon-placeholder.svg",
+    "size": 561,
+    "lastModified": "2025-11-10 12:13:31 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 90
+  },
+  {
+    "path": "public/placeholder.svg",
+    "size": 887,
+    "lastModified": "2025-11-29 13:14:43 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 90
+  },
+  {
+    "path": "public/images/products/spotify-placeholder.svg",
+    "size": 803,
+    "lastModified": "2025-11-29 17:23:40 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 90
+  },
+  {
+    "path": "public/images/products/netflix-placeholder.svg",
+    "size": 702,
+    "lastModified": "2025-11-29 17:23:40 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 90
+  },
+  {
+    "path": "public/grid.svg",
+    "size": 227,
+    "lastModified": "2025-11-11 15:38:50 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 90
+  },
+  {
+    "path": "public/favicon-96x96.png",
+    "size": 9029,
+    "lastModified": "2025-11-10 12:13:31 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/web-app-manifest-192x192.png",
+    "size": 23534,
+    "lastModified": "2025-11-10 12:13:31 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/collections/subscriptions-hero.webp",
+    "size": 4586,
+    "lastModified": "2025-12-01 07:54:13 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/collections/edits-hero.webp",
+    "size": 2864,
+    "lastModified": "2025-12-01 07:54:13 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/gemini-pro-subscription.jpg",
+    "size": 364068,
+    "lastModified": "2025-11-24 10:31:52 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/netflix-subscription.jpg",
+    "size": 371092,
+    "lastModified": "2025-11-24 10:31:52 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/discord-nitro-3months.png",
+    "size": 197853,
+    "lastModified": "2025-11-27 13:38:16 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/chatgpt5-subscription.jpg",
+    "size": 394312,
+    "lastModified": "2025-11-24 10:31:52 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/digital-products-profit.jpg",
+    "size": 765195,
+    "lastModified": "2025-11-24 10:31:52 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/animated-icons-pack.png",
+    "size": 273092,
+    "lastModified": "2025-11-24 10:31:52 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/canva-subscription.jpg",
+    "size": 306697,
+    "lastModified": "2025-11-24 10:31:52 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/digital-products-guide.png",
+    "size": 261854,
+    "lastModified": "2025-11-30 10:04:33 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/15-project-ideas.jpg",
+    "size": 1047520,
+    "lastModified": "2025-11-24 10:31:52 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/introductory-guide.jpg",
+    "size": 169377,
+    "lastModified": "2025-11-30 10:04:33 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/design-content-pack.png",
+    "size": 229211,
+    "lastModified": "2025-11-24 10:31:52 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/introductory-guide.png",
+    "size": 280240,
+    "lastModified": "2025-11-24 10:31:52 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/ultimate-video-editing-pack.png",
+    "size": 300891,
+    "lastModified": "2025-11-24 10:31:52 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/discord-nitro-1year.png",
+    "size": 191006,
+    "lastModified": "2025-11-27 13:38:16 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/products/15-project-ideas.png",
+    "size": 77214,
+    "lastModified": "2025-11-30 10:04:33 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/services/Gemini_Generated_Image_ia9czgia9czgia9c.jpg",
+    "size": 220698,
+    "lastModified": "2025-11-21 12:29:59 +0400",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/services/editing-tools.jpg",
+    "size": 56121,
+    "lastModified": "2025-11-22 00:39:53 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/services/digital-subscriptions-optimized.jpg",
+    "size": 29563,
+    "lastModified": "2025-11-24 12:42:44 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/services/digital-subscriptions.jpg",
+    "size": 52732,
+    "lastModified": "2025-11-22 00:39:53 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/services/subscriptions.jpg",
+    "size": 30518,
+    "lastModified": "2025-11-16 12:38:44 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/services/editing-tools-section.jpg",
+    "size": 26790,
+    "lastModified": "2025-11-24 10:55:56 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/services/editing-tools-optimized.jpg",
+    "size": 57140,
+    "lastModified": "2025-11-24 12:42:44 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/services/قسم أدوات المونتاج.jpg",
+    "size": 216607,
+    "lastModified": "2025-11-21 12:29:59 +0400",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/services/games-soon.jpg",
+    "size": 90875,
+    "lastModified": "2025-11-16 12:38:44 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/levelup-logo.png",
+    "size": 621415,
+    "lastModified": "2025-11-24 14:01:10 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/favicon.svg",
+    "size": 115194,
+    "lastModified": "2025-11-10 12:13:31 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/logo.png",
+    "size": 86117,
+    "lastModified": "2025-11-10 12:13:31 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/apple-touch-icon.png",
+    "size": 21041,
+    "lastModified": "2025-11-10 12:13:31 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/icons/currency/sar.svg",
+    "size": 28128,
+    "lastModified": "2025-12-01 07:54:13 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/icons/currency/aed.svg",
+    "size": 35394,
+    "lastModified": "2025-12-01 07:54:13 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/placeholder.jpg",
+    "size": 2160,
+    "lastModified": "2025-11-29 13:14:43 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/favicon.ico",
+    "size": 15086,
+    "lastModified": "2025-11-10 18:47:04 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/web-app-manifest-512x512.png",
+    "size": 86117,
+    "lastModified": "2025-11-10 12:13:31 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "delete",
+    "confidenceScore": 80
+  },
+  {
+    "path": "public/images/services/banner.jpg",
+    "size": 3511134,
+    "lastModified": "2025-11-23 05:34:22 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "backup",
+    "confidenceScore": 70
+  },
+  {
+    "path": "public/images/services/editing-tools-new.png",
+    "size": 5923117,
+    "lastModified": "2025-11-24 11:40:17 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "backup",
+    "confidenceScore": 70
+  },
+  {
+    "path": "public/images/services/digital-subscriptions-section.png",
+    "size": 1379830,
+    "lastModified": "2025-11-24 10:55:56 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "backup",
+    "confidenceScore": 70
+  },
+  {
+    "path": "public/images/services/subscriptions-banner-new.jpg",
+    "size": 4985526,
+    "lastModified": "2025-11-26 05:51:47 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "backup",
+    "confidenceScore": 70
+  },
+  {
+    "path": "public/images/services/digital-subscriptions-new.png",
+    "size": 4370646,
+    "lastModified": "2025-11-24 11:40:17 +0000",
+    "references": 0,
+    "foundIn": [],
+    "reason": "no-code-references",
+    "suggestedAction": "backup",
+    "confidenceScore": 70
+  }
+]
