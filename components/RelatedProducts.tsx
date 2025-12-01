@@ -8,6 +8,7 @@ import products from '@/data/products.json';
 import Link from 'next/link';
 import PriceDisplay from './PriceDisplay';
 import ScrollReveal from './ScrollReveal';
+import { useState, useEffect, useMemo } from 'react';
 
 interface RelatedProductsProps {
   currentProductId: number;
@@ -37,9 +38,26 @@ export default function RelatedProducts({
     return productId !== currentProductId && product.active !== false;
   });
 
-  // Get related products - prefer same category if available, but ensure variety
-  const getRelatedProducts = () => {
-    let relatedProducts: any[] = [];
+  // Get related products - stable selection based on current product ID
+  const relatedProducts = useMemo(() => {
+    let selectedProducts: any[] = [];
+
+    // Create a deterministic seed based on current product ID
+    const seed = currentProductId * 1234567;
+    
+    // Deterministic shuffle function
+    const deterministicShuffle = (array: any[], seedValue: number) => {
+      const shuffled = [...array];
+      let currentSeed = seedValue;
+      
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        // Simple linear congruential generator for deterministic randomness
+        currentSeed = (currentSeed * 9301 + 49297) % 233280;
+        const j = Math.floor((currentSeed / 233280) * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    };
 
     // First, try to get products from the same category (but limit to half of maxProducts)
     if (category) {
@@ -47,26 +65,24 @@ export default function RelatedProducts({
         product.category === category
       );
       const maxSameCategory = Math.min(Math.ceil(maxProducts / 2), sameCategoryProducts.length);
-      relatedProducts = sameCategoryProducts.slice(0, maxSameCategory);
+      selectedProducts = sameCategoryProducts.slice(0, maxSameCategory);
     }
 
     // Fill remaining slots with products from other categories
-    if (relatedProducts.length < maxProducts) {
-      const remainingSlots = maxProducts - relatedProducts.length;
+    if (selectedProducts.length < maxProducts) {
+      const remainingSlots = maxProducts - selectedProducts.length;
       const otherProducts = availableProducts.filter(product => 
-        !relatedProducts.some(related => getProductId(related) === getProductId(product))
+        !selectedProducts.some(selected => getProductId(selected) === getProductId(product))
       );
       
-      // Shuffle and take remaining slots
-      const shuffled = otherProducts.sort(() => Math.random() - 0.5);
-      relatedProducts = [...relatedProducts, ...shuffled.slice(0, remainingSlots)];
+      // Use deterministic shuffle
+      const shuffled = deterministicShuffle(otherProducts, seed);
+      selectedProducts = [...selectedProducts, ...shuffled.slice(0, remainingSlots)];
     }
 
-    // Final shuffle to mix same-category and different-category products
-    return relatedProducts.sort(() => Math.random() - 0.5);
-  };
-
-  const relatedProducts = getRelatedProducts();
+    // Final deterministic shuffle to mix same-category and different-category products
+    return deterministicShuffle(selectedProducts, seed + 1);
+  }, [currentProductId, maxProducts, category, availableProducts]);
 
   // Don't render if no related products
   if (relatedProducts.length === 0) {

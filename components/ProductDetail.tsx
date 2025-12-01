@@ -136,6 +136,8 @@ export default function ProductDetail({ product }: { product?: Product }) {
   const isInWishlist = wishlist.includes(productId);
 
   const handleAddToCart = () => {
+    console.log('handleAddToCart clicked'); // Debug log
+    
     // Check if product is free
     if (priceCalc.finalPrice === 0 && (product as any).isFree) {
       setShowFreeModal(true);
@@ -169,6 +171,8 @@ export default function ProductDetail({ product }: { product?: Product }) {
   };
 
   const handlePayment = () => {
+    console.log('handlePayment clicked'); // Debug log
+    
     // التوجيه إلى صفحة checkout مع السعر المحسوب حسب العملة المختارة
     const checkoutUrl = `/checkout?product=${productId}&name=${encodeURIComponent(productName)}&price=${priceCalc.finalPrice.toFixed(2)}&currency=${currency}`;
     window.location.href = checkoutUrl;
@@ -208,7 +212,11 @@ export default function ProductDetail({ product }: { product?: Product }) {
             {/* Back Button */}
             <div>
               <button
-                onClick={() => window.history.back()}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.history.back();
+                }}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-gray-700/50 hover:bg-gray-600/50 border border-gray-600/40 text-gray-300 hover:text-white rounded-xl text-sm font-medium transition-all duration-200"
               >
                 <ArrowRight className="w-4 h-4" />
@@ -354,7 +362,11 @@ export default function ProductDetail({ product }: { product?: Product }) {
                 {/* Show appropriate button based on product type */}
                 {priceCalc.finalPrice === 0 && (product as any).isFree ? (
                   <button
-                    onClick={handleAddToCart}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      handleAddToCart();
+                    }}
                     className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 sm:px-8 py-4 sm:py-5 rounded-xl font-bold text-base sm:text-lg hover:shadow-2xl hover:shadow-green-500/30 active:scale-95 transition-all duration-300 touch-manipulation"
                     style={{ fontSize: '16px' }}
                   >
@@ -364,7 +376,11 @@ export default function ProductDetail({ product }: { product?: Product }) {
                 ) : (
                   <>
                     <button
-                      onClick={handlePayment}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handlePayment();
+                      }}
                       className="w-full sm:flex-1 flex items-center justify-center gap-3 bg-gradient-to-r from-green-600 to-green-500 text-white px-6 sm:px-8 py-4 sm:py-5 rounded-xl font-bold text-base sm:text-lg hover:shadow-2xl hover:shadow-green-500/30 active:scale-95 transition-all duration-300 touch-manipulation"
                       style={{ fontSize: '16px' }}
                     >
@@ -372,7 +388,11 @@ export default function ProductDetail({ product }: { product?: Product }) {
                       اشتر الآن
                     </button>
                     <button
-                      onClick={handleAddToCart}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleAddToCart();
+                      }}
                       className="w-full sm:flex-1 flex items-center justify-center gap-3 bg-gradient-to-r from-primary-300 to-accent-600 text-white px-6 sm:px-8 py-4 sm:py-5 rounded-xl font-bold text-base sm:text-lg hover:shadow-2xl hover:shadow-primary-300/30 active:scale-95 transition-all duration-300 touch-manipulation"
                       style={{ fontSize: '16px' }}
                     >
