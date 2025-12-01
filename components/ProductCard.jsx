@@ -66,14 +66,16 @@ export default function ProductCard({
           
           {/* Price and Action */}
           <div className="flex items-center justify-between">
-            <div className="text-right">
-              <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                {price}
-              </span>
-              <span className="text-sm text-gray-500 dark:text-gray-400 mr-1">
-                ريال
-              </span>
-            </div>
+            {price && (
+              <div className="text-right">
+                <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                  {price}
+                </span>
+                <span className="text-sm text-gray-500 dark:text-gray-400 mr-1">
+                  ريال
+                </span>
+              </div>
+            )}
             
             {/* View Button */}
             <div className="flex items-center text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300">
