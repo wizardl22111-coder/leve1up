@@ -148,6 +148,91 @@ export default function UserOrders({ className = '' }: UserOrdersProps) {
     window.open(downloadUrl, '_blank');
   };
 
+  const handleChatClick = (order: Order, item: OrderItem) => {
+    // التحقق من حالة الطلب
+    if (!['paid', 'completed'].includes(order.status) && order.amount > 0) {
+      alert('لا يمكن فتح الشات. الطلب غير مدفوع.');
+      return;
+    }
+
+    // محاولة فتح الشات الداخلي
+    if (typeof window !== 'undefined') {
+      // التحقق من وجود Tawk.to API
+      if ((window as any).Tawk_API) {
+        try {
+          // تعيين معلومات المستخدم للشات
+          (window as any).Tawk_API.setAttributes({
+            name: order.customerName || 'عميل',
+            email: order.customerEmail || '',
+            orderId: order.id,
+            productName: item.name,
+            productId: item.id.toString()
+          });
+
+          // فتح الشات
+          (window as any).Tawk_API.maximize();
+          console.log('✅ Chat opened successfully for order:', order.id);
+        } catch (error) {
+          console.error('❌ Error opening chat:', error);
+          // Fallback إلى واتساب في حالة الخطأ
+          window.open('https://wa.me/+971501234567', '_blank');
+        }
+      } else {
+        // إذا لم يكن Tawk.to متاحاً، تحميل السكريبت أولاً
+        loadTawkScript().then(() => {
+          setTimeout(() => {
+            if ((window as any).Tawk_API) {
+              (window as any).Tawk_API.setAttributes({
+                name: order.customerName || 'عميل',
+                email: order.customerEmail || '',
+                orderId: order.id,
+                productName: item.name,
+                productId: item.id.toString()
+              });
+              (window as any).Tawk_API.maximize();
+            } else {
+              // Fallback إلى واتساب
+              window.open('https://wa.me/+971501234567', '_blank');
+            }
+          }, 2000);
+        });
+      }
+    }
+  };
+
+  const loadTawkScript = (): Promise<void> => {
+    return new Promise((resolve) => {
+      // التحقق من وجود السكريبت مسبقاً
+      const existingScript = document.querySelector('script[src*="embed.tawk.to"]');
+      if (existingScript) {
+        resolve();
+        return;
+      }
+
+      // تهيئة Tawk.to
+      (window as any).Tawk_API = (window as any).Tawk_API || {};
+      (window as any).Tawk_LoadStart = new Date();
+
+      // إنشاء وإدراج سكريبت Tawk.to
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://embed.tawk.to/6921c18027ad1319611fb72e/1jaltno6d';
+      script.charset = 'UTF-8';
+      script.setAttribute('crossorigin', '*');
+      
+      script.onload = () => {
+        console.log('✅ Tawk.to script loaded successfully');
+        resolve();
+      };
+
+      // إضافة السكريبت إلى الصفحة
+      const firstScript = document.getElementsByTagName('script')[0];
+      if (firstScript && firstScript.parentNode) {
+        firstScript.parentNode.insertBefore(script, firstScript);
+      }
+    });
+  };
+
   if (loading) {
     return (
       <div className={`${className}`}>
@@ -316,7 +401,7 @@ export default function UserOrders({ className = '' }: UserOrdersProps) {
                         {isSubscriptionProduct(item) ? (
                           // زر التواصل للاشتراكات
                           <motion.button
-                            onClick={() => window.open('https://wa.me/+971501234567', '_blank')}
+                            onClick={() => handleChatClick(order, item)}
                             className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
                               ['paid', 'completed'].includes(order.status) || order.amount === 0
                                 ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-blue-500/25'

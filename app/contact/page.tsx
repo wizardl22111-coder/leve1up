@@ -92,6 +92,79 @@ export default function ContactPage() {
     window.location.href = '/';
   };
 
+  // دالة فتح الشات
+  const handleChatClick = () => {
+    if (typeof window !== 'undefined') {
+      // التحقق من وجود Tawk.to API
+      if ((window as any).Tawk_API) {
+        try {
+          // تعيين معلومات أساسية للشات
+          (window as any).Tawk_API.setAttributes({
+            name: formData.fullName || 'زائر',
+            email: formData.email || '',
+            source: 'contact-page'
+          });
+
+          // فتح الشات
+          (window as any).Tawk_API.maximize();
+          console.log('✅ Chat opened from contact page');
+        } catch (error) {
+          console.error('❌ Error opening chat:', error);
+          showToast('حدث خطأ في فتح الشات. يرجى المحاولة مرة أخرى.', 'error');
+        }
+      } else {
+        // تحميل Tawk.to إذا لم يكن متاحاً
+        loadTawkScript().then(() => {
+          setTimeout(() => {
+            if ((window as any).Tawk_API) {
+              (window as any).Tawk_API.setAttributes({
+                name: formData.fullName || 'زائر',
+                email: formData.email || '',
+                source: 'contact-page'
+              });
+              (window as any).Tawk_API.maximize();
+            } else {
+              showToast('لا يمكن تحميل الشات حالياً. يرجى المحاولة لاحقاً.', 'error');
+            }
+          }, 2000);
+        });
+      }
+    }
+  };
+
+  const loadTawkScript = (): Promise<void> => {
+    return new Promise((resolve) => {
+      // التحقق من وجود السكريبت مسبقاً
+      const existingScript = document.querySelector('script[src*="embed.tawk.to"]');
+      if (existingScript) {
+        resolve();
+        return;
+      }
+
+      // تهيئة Tawk.to
+      (window as any).Tawk_API = (window as any).Tawk_API || {};
+      (window as any).Tawk_LoadStart = new Date();
+
+      // إنشاء وإدراج سكريبت Tawk.to
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://embed.tawk.to/6921c18027ad1319611fb72e/1jaltno6d';
+      script.charset = 'UTF-8';
+      script.setAttribute('crossorigin', '*');
+      
+      script.onload = () => {
+        console.log('✅ Tawk.to script loaded successfully');
+        resolve();
+      };
+
+      // إضافة السكريبت إلى الصفحة
+      const firstScript = document.getElementsByTagName('script')[0];
+      if (firstScript && firstScript.parentNode) {
+        firstScript.parentNode.insertBefore(script, firstScript);
+      }
+    });
+  };
+
   return (
     <main className="min-h-screen">
       <Navbar />
@@ -283,7 +356,38 @@ export default function ContactPage() {
             </form>
           </motion.div>
 
-
+          {/* زر الشات المباشر */}
+          <motion.div 
+            className="text-center mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 p-6">
+              <div className="flex flex-col items-center gap-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center">
+                  <MessageCircle className="w-8 h-8 text-white" />
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-semibold text-white mb-2">
+                    تحتاج مساعدة فورية؟
+                  </h3>
+                  <p className="text-slate-400 mb-4">
+                    تحدث معنا مباشرة عبر الشات للحصول على دعم سريع
+                  </p>
+                  <motion.button
+                    onClick={handleChatClick}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl font-medium shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    فتح الشات المباشر
+                  </motion.button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
           {/* زر العودة للرئيسية */}
           <motion.div 
