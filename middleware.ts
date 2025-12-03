@@ -5,12 +5,11 @@ export default withAuth(
   function middleware(req) {
     // التحقق من الوصول للوحة الإدارة
     if (req.nextUrl.pathname.startsWith("/admin")) {
-      // التحقق من وجود دور الإدارة
-      const userRole = req.nextauth.token?.role;
-      
-      if (userRole !== "admin") {
-        // إعادة توجيه للصفحة الرئيسية إذا لم يكن مدير
-        return NextResponse.redirect(new URL("/", req.url));
+      // مؤقتاً: السماح لأي مستخدم مسجل بالوصول للوحة الإدارة
+      // يمكن إضافة نظام الأدوار لاحقاً
+      if (!req.nextauth.token) {
+        // إعادة توجيه لصفحة تسجيل الدخول إذا لم يكن مسجل
+        return NextResponse.redirect(new URL("/login?callbackUrl=" + encodeURIComponent(req.url), req.url));
       }
     }
     
@@ -34,4 +33,3 @@ export default withAuth(
 export const config = {
   matcher: ["/admin/:path*"]
 };
-

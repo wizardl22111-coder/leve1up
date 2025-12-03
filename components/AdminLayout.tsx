@@ -71,7 +71,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       <AnimatePresence>
         {sidebarOpen && (
           <motion.div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[10000] lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -82,7 +82,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
       {/* Sidebar */}
       <motion.aside
-        className={`fixed top-0 right-0 h-full w-64 bg-slate-800/95 backdrop-blur-lg border-l border-slate-700/50 z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-64 bg-slate-800/95 backdrop-blur-lg border-l border-slate-700/50 z-[10001] transform transition-transform duration-300 ease-in-out ${
           sidebarOpen ? 'translate-x-0' : 'translate-x-full'
         } lg:translate-x-0`}
         initial={false}
@@ -238,4 +238,3 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
     </div>
   );
 }
-

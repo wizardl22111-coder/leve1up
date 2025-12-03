@@ -177,7 +177,8 @@ export default function ProfilePage() {
   // تنسيق التاريخ
   const formatDate = (dateString?: string) => {
     if (!dateString) return 'غير محدد';
-    return new Date(dateString).toLocaleDateString('ar-SA', {
+    return new Date(dateString).toLocaleDateString('ar-EG', {
+      calendar: 'gregory', // التأكد من استخدام التقويم الميلادي
       year: 'numeric',
       month: 'long',
       day: 'numeric'

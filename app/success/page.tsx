@@ -227,8 +227,8 @@ function SuccessPageContent() {
   }, [searchParams]);
 
   const formatDate = (dateString?: string) => {
-    if (!dateString) return new Date().toLocaleDateString('ar-SA');
-    return new Date(dateString).toLocaleDateString('ar-SA');
+    if (!dateString) return new Date().toLocaleDateString('ar-EG', { calendar: 'gregory' });
+    return new Date(dateString).toLocaleDateString('ar-EG', { calendar: 'gregory' });
   };
 
   const formatPrice = (amount: number, currency: string) => {
