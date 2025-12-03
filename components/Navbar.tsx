@@ -82,12 +82,20 @@ export default function Navbar() {
               <Link 
                 href="/" 
                 className="text-gray-300 hover:text-primary-300 transition-colors duration-200 font-semibold text-sm lg:text-base"
+                onClick={(e) => {
+                  console.log('🏠 Navbar: Desktop Home link clicked!');
+                  console.log('Target URL:', '/');
+                }}
               >
                 الرئيسية
               </Link>
               <Link 
                 href="/#products" 
                 className="text-gray-300 hover:text-primary-300 transition-colors duration-200 font-semibold text-sm lg:text-base"
+                onClick={(e) => {
+                  console.log('📦 Navbar: Desktop Products link clicked!');
+                  console.log('Target URL:', '/#products');
+                }}
               >
                 المنتجات
               </Link>
@@ -95,6 +103,10 @@ export default function Navbar() {
               <Link 
                 href="/contact" 
                 className="text-gray-300 hover:text-primary-300 transition-colors duration-200 font-semibold text-sm lg:text-base"
+                onClick={(e) => {
+                  console.log('📞 Navbar: Desktop Contact link clicked!');
+                  console.log('Target URL:', '/contact');
+                }}
               >
                 تواصل معنا
               </Link>
@@ -142,7 +154,11 @@ export default function Navbar() {
                 href="/wishlist"
                 className="relative p-2 sm:p-2.5 hover:bg-primary-300/10 rounded-xl transition-colors"
                 aria-label="قائمة الأمنيات"
-                onClick={() => console.log('❤️ Navbar: Desktop wishlist clicked!')}
+                onClick={(e) => {
+                  console.log('❤️ Navbar: Desktop wishlist clicked!');
+                  console.log('Target URL:', '/wishlist');
+                  console.log('Wishlist count:', wishlist.length);
+                }}
               >
                 <Heart className="w-5 h-5 text-primary-300" />
                 {wishlist.length > 0 && (
@@ -157,7 +173,11 @@ export default function Navbar() {
                 href="/cart"
                 className="relative p-2 sm:p-2.5 hover:bg-primary-300/10 rounded-xl transition-colors"
                 aria-label="سلة التسوق"
-                onClick={() => console.log('🛒 Navbar: Desktop cart clicked!')}
+                onClick={(e) => {
+                  console.log('🛒 Navbar: Desktop cart clicked!');
+                  console.log('Target URL:', '/cart');
+                  console.log('Cart count:', cartCount);
+                }}
               >
                 <ShoppingCart className="w-5 h-5 text-primary-300" />
                 {cartCount > 0 && (
@@ -224,8 +244,10 @@ export default function Navbar() {
                 href="/wishlist"
                 className="relative p-2.5 hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 touch-manipulation"
                 aria-label="قائمة الأمنيات"
-                onClick={() => {
+                onClick={(e) => {
                   console.log('❤️ Navbar: Mobile wishlist clicked!');
+                  console.log('Target URL:', '/wishlist');
+                  console.log('Wishlist count:', wishlist.length);
                   handleLinkClick();
                 }}
               >
@@ -242,8 +264,10 @@ export default function Navbar() {
                 href="/cart"
                 className="relative p-2.5 hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 touch-manipulation"
                 aria-label="سلة التسوق"
-                onClick={() => {
+                onClick={(e) => {
                   console.log('🛒 Navbar: Mobile cart clicked!');
+                  console.log('Target URL:', '/cart');
+                  console.log('Cart count:', cartCount);
                   handleLinkClick();
                 }}
               >
