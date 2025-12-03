@@ -126,7 +126,8 @@ export default function UserOrders({ className = '' }: UserOrdersProps) {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('ar-SA', {
+    return date.toLocaleDateString('ar-EG', {
+      calendar: 'gregory', // التأكد من استخدام التقويم الميلادي
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -270,7 +271,7 @@ export default function UserOrders({ className = '' }: UserOrdersProps) {
                   {/* Order Items */}
                   <div className="space-y-3">
                     {order.items.map((item, itemIndex) => (
-                      <div key={itemIndex} className="flex items-center gap-4 p-3 bg-slate-800/30 rounded-lg">
+                      <div key={itemIndex} className="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-3 bg-slate-800/30 rounded-lg">
                         {/* Product Image */}
                         <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                           {item.image ? (
@@ -302,10 +303,10 @@ export default function UserOrders({ className = '' }: UserOrdersProps) {
 
                         {/* Product Info */}
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-white truncate mb-1">
+                          <h4 className="font-medium text-white break-words mb-1 leading-relaxed">
                             {item.name}
                           </h4>
-                          <div className="flex items-center gap-4 text-sm text-slate-400">
+                          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 text-sm text-slate-400">
                             <span>الكمية: {item.quantity}</span>
                             <span>السعر: {item.price === 0 ? 'مجاني' : `${item.price} ${order.currency}`}</span>
                           </div>

@@ -214,6 +214,24 @@ export default function ProfilePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
+          {/* Back to Home Button at Top */}
+          <motion.div
+            className="mb-6"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+          >
+            <motion.button
+              onClick={goHome}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary-300/10 to-accent-600/10 hover:from-primary-300/20 hover:to-accent-600/20 text-primary-300 rounded-lg transition-colors duration-300 border border-primary-300/20"
+              whileHover={{ scale: 1.05, x: -4 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Home className="w-4 h-4" />
+              العودة للرئيسية
+            </motion.button>
+          </motion.div>
+
           {/* Header */}
           <div className="text-center mb-8">
             <motion.h1 
