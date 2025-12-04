@@ -52,7 +52,7 @@ export async function verifyToken(token: string): Promise<UserSession | null> {
  * الحصول على session من cookies
  */
 export async function getSession(): Promise<UserSession | null> {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const token = cookieStore.get('auth_token')?.value;
 
   if (!token) {
@@ -80,7 +80,7 @@ export async function getSessionFromRequest(req: NextRequest): Promise<UserSessi
  */
 export async function setSession(email: string, name?: string) {
   const token = await createToken(email, name);
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
 
   cookieStore.set('auth_token', token, {
     httpOnly: true,
@@ -94,8 +94,8 @@ export async function setSession(email: string, name?: string) {
 /**
  * حذف session (logout)
  */
-export function clearSession() {
-  const cookieStore = cookies();
+export async function clearSession() {
+  const cookieStore = await cookies();
   cookieStore.delete('auth_token');
 }
 
@@ -111,4 +111,3 @@ export async function requireAuth(): Promise<UserSession> {
 
   return session;
 }
-
