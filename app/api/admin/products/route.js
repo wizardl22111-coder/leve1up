@@ -1,11 +1,34 @@
 import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabaseClient'
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
 // Helper function to check admin access
 async function checkAdminAccess() {
-  const supabase = createServerComponentClient({ cookies })
+  // Check if environment variables are available
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    return { error: "Server configuration error", status: 500 }
+  }
+
+  // Check if environment variables are available
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    return { error: 'Server configuration error', status: 500 }
+  }
+
+  const cookieStore = cookies()
+  
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    {
+      cookies: {
+        get(name) {
+          return cookieStore.get(name)?.value
+        },
+      },
+    }
+  )
+  
   const { data: { session } } = await supabase.auth.getSession()
   
   if (!session) {
@@ -27,6 +50,14 @@ async function checkAdminAccess() {
 
 // GET /api/admin/products - Get all products
 export async function GET(request) {
+  if (!supabaseAdmin) {
+    return NextResponse.json({ error: "Server configuration error" }, { status: 500 })
+  }
+
+  if (!supabaseAdmin) {
+    return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
+  }
+
   const adminCheck = await checkAdminAccess()
   if (adminCheck.error) {
     return NextResponse.json({ error: adminCheck.error }, { status: adminCheck.status })
@@ -90,6 +121,14 @@ export async function GET(request) {
 
 // POST /api/admin/products - Create new product
 export async function POST(request) {
+  if (!supabaseAdmin) {
+    return NextResponse.json({ error: "Server configuration error" }, { status: 500 })
+  }
+
+  if (!supabaseAdmin) {
+    return NextResponse.json({ error: 'Server configuration error' }, { status: 500 })
+  }
+
   const adminCheck = await checkAdminAccess()
   if (adminCheck.error) {
     return NextResponse.json({ error: adminCheck.error }, { status: adminCheck.status })
