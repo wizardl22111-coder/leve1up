@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { saveOrder } from "@/lib/orders-store";
 import crypto from "crypto";
+import products from '@/data/products.json';
 
 export async function POST(req: Request) {
   try {
@@ -117,6 +118,22 @@ export async function POST(req: Request) {
     // 💾 حفظ الطلب في Redis قبل إرجاع الرابط للعميل
     const orderId = `order_${Date.now()}_${crypto.randomBytes(4).toString('hex')}`;
     
+    // 🖼️ البحث عن صورة المنتج من products.json
+    let productImage = '';
+    try {
+      const product = products.find((p: any) => 
+        p.product_name === productName || 
+        p.product_name_en === productName ||
+        p.download_url === productFile
+      );
+      if (product) {
+        productImage = product.product_image || '';
+        console.log('🖼️ Product image found:', productImage);
+      }
+    } catch (error) {
+      console.log('⚠️ Could not find product image:', error);
+    }
+    
     try {
       await saveOrder({
         id: orderId,
@@ -131,6 +148,7 @@ export async function POST(req: Request) {
           name: productName || 'منتج رقمي',
           quantity: 1,
           price: amount,
+          image: productImage, // ✅ إضافة صورة المنتج
           downloadUrl: productFile || ''
         }],
         createdAt: new Date().toISOString(),

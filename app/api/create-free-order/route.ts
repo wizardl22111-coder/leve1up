@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { nanoid } from 'nanoid';
 import { createOrder } from '@/lib/orders-store';
+import products from '@/data/products.json';
 
 export async function POST(request: NextRequest) {
   try {
@@ -22,6 +23,22 @@ export async function POST(request: NextRequest) {
     // Set expiry time (7 days from now for download link)
     const expiresAt = Date.now() + (7 * 24 * 60 * 60 * 1000);
 
+    // 🖼️ البحث عن صورة المنتج من products.json
+    let productImage = '';
+    try {
+      const product = products.find((p: any) => 
+        p.product_id === productId || 
+        p.product_name === productName ||
+        p.download_url === downloadUrl
+      );
+      if (product) {
+        productImage = product.product_image || '';
+        console.log('🖼️ Free product image found:', productImage);
+      }
+    } catch (error) {
+      console.log('⚠️ Could not find free product image:', error);
+    }
+
     // Create order using shared store
     const order = await createOrder({
       id: orderId,
@@ -35,6 +52,7 @@ export async function POST(request: NextRequest) {
         name: productName,
         quantity: 1,
         price: 0,
+        image: productImage, // ✅ إضافة صورة المنتج
       }],
       downloadUrl,
       createdAt: new Date().toISOString(),
