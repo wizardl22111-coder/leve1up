@@ -12,9 +12,9 @@ import { approveReview, deleteReview } from "@/lib/reviews";
 export const dynamic = 'force-dynamic';
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 /**
@@ -25,7 +25,8 @@ export async function PATCH(
   { params }: RouteParams
 ) {
   try {
-    const { id } = params;
+    const resolvedParams = await params;
+    const { id } = resolvedParams;
 
     if (!id) {
       return NextResponse.json({
@@ -67,7 +68,8 @@ export async function DELETE(
   { params }: RouteParams
 ) {
   try {
-    const { id } = params;
+    const resolvedParams = await params;
+    const { id } = resolvedParams;
 
     if (!id) {
       return NextResponse.json({

@@ -5,9 +5,9 @@ import ProductDetail from '@/components/ProductDetail';
 import products from '@/data/products.json';
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -17,7 +17,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const product = products.find((p) => p.product_id === parseInt(params.id));
+  const resolvedParams = await params;
+  const product = products.find((p) => p.product_id === parseInt(resolvedParams.id));
   
   if (!product) {
     return {
@@ -31,8 +32,9 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export default function ProductPage({ params }: Props) {
-  const product = products.find((p) => p.product_id === parseInt(params.id));
+export default async function ProductPage({ params }: Props) {
+  const resolvedParams = await params;
+  const product = products.find((p) => p.product_id === parseInt(resolvedParams.id));
 
   if (!product) {
     notFound();
