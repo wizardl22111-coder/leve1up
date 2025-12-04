@@ -3,9 +3,10 @@ import products from '@/data/products.json';
 
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const product = products.find((p) => p.product_id === parseInt(params.id));
+  const resolvedParams = await params;
+  const product = products.find((p) => p.product_id === parseInt(resolvedParams.id));
   
   if (!product) {
     return NextResponse.json(

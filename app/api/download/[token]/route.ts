@@ -4,10 +4,11 @@ import products from '@/data/products.json';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { token: string } }
+  { params }: { params: Promise<{ token: string }> }
 ) {
   try {
-    const token = params.token;
+    const resolvedParams = await params;
+    const token = resolvedParams.token;
     const { searchParams } = new URL(request.url);
     const productId = searchParams.get('product');
 
