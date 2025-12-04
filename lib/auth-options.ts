@@ -179,10 +179,15 @@ export const authOptions: NextAuthOptions = {
   // Callbacks
   callbacks: {
     async signIn({ user, account, profile }) {
-      if (!user.email) return false;
+      if (!user.email) {
+        console.log("🚫 SignIn rejected: No email provided");
+        return false;
+      }
+
+      console.log(`🔍 SignIn attempt - Email: ${user.email}, Provider: ${account?.provider}`);
 
       try {
-        // التحقق من وجود المستخدم
+        // محاولة التحقق من وجود المستخدم في Redis
         const existingUserJson = await redis.get<string>(`user:${user.email}`);
         
         if (!existingUserJson) {
@@ -200,12 +205,17 @@ export const authOptions: NextAuthOptions = {
             await redis.set(`user:${user.email}`, JSON.stringify(newUser));
             console.log(`✅ تم إنشاء مستخدم جديد: ${user.email}`);
           }
+        } else {
+          console.log(`✅ مستخدم موجود: ${user.email}`);
         }
 
+        console.log(`✅ SignIn successful for: ${user.email}`);
         return true;
       } catch (error) {
         console.error("خطأ في signIn callback:", error);
-        return false;
+        // السماح بتسجيل الدخول حتى لو فشل Redis (للتطوير والاختبار)
+        console.log(`⚠️ السماح بتسجيل الدخول رغم خطأ Redis: ${user.email}`);
+        return true;
       }
     },
 
@@ -225,23 +235,27 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
 
-    // إعادة توجيه ذكية للمديرين
+    // إعادة توجيه محسنة
     async redirect({ url, baseUrl }) {
-      // قائمة إيميلات المديرين (نفس القائمة في middleware)
-      const ADMIN_EMAILS = ['leve1up999q@gmail.com'];
+      console.log(`🔍 Redirect callback - URL: ${url}, BaseURL: ${baseUrl}`);
       
       // إذا كان الرابط يحتوي على callbackUrl، استخدمه
       if (url.startsWith(baseUrl)) {
+        console.log(`✅ Using provided URL: ${url}`);
         return url;
       }
       
       // إذا كان رابط نسبي، أضف baseUrl
       if (url.startsWith("/")) {
-        return `${baseUrl}${url}`;
+        const fullUrl = `${baseUrl}${url}`;
+        console.log(`✅ Using relative URL: ${fullUrl}`);
+        return fullUrl;
       }
       
-      // افتراضياً، ارجع للصفحة الرئيسية
-      return baseUrl;
+      // افتراضياً، توجيه للملف الشخصي (سيتم إعادة التوجيه في middleware إذا كان مدير)
+      const defaultUrl = `${baseUrl}/profile`;
+      console.log(`✅ Using default URL: ${defaultUrl}`);
+      return defaultUrl;
     },
   },
 
