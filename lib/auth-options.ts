@@ -224,6 +224,25 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
+
+    // إعادة توجيه ذكية للمديرين
+    async redirect({ url, baseUrl }) {
+      // قائمة إيميلات المديرين (نفس القائمة في middleware)
+      const ADMIN_EMAILS = ['leve1up999q@gmail.com'];
+      
+      // إذا كان الرابط يحتوي على callbackUrl، استخدمه
+      if (url.startsWith(baseUrl)) {
+        return url;
+      }
+      
+      // إذا كان رابط نسبي، أضف baseUrl
+      if (url.startsWith("/")) {
+        return `${baseUrl}${url}`;
+      }
+      
+      // افتراضياً، ارجع للصفحة الرئيسية
+      return baseUrl;
+    },
   },
 
   // إعدادات إضافية
