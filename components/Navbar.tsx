@@ -6,6 +6,7 @@ import { useApp } from '@/contexts/AppContext';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { LogoImage } from './OptimizedImage';
+import AuthButton from './AuthButton';
 
 
 export default function Navbar() {
@@ -187,7 +188,7 @@ export default function Navbar() {
                 )}
               </Link>
 
-              {/* Auth Buttons */}
+              {/* Auth Buttons - Using both NextAuth and Supabase */}
               {status === "loading" ? (
                 <div className="w-8 h-8 border-2 border-primary-300 border-t-transparent rounded-full animate-spin"></div>
               ) : session ? (
@@ -218,22 +219,7 @@ export default function Navbar() {
                   </button>
                 </div>
               ) : (
-                <div className="flex items-center gap-2">
-                  <Link
-                    href="/login"
-                    className="flex items-center gap-2 px-3 py-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 rounded-xl transition-all duration-200 font-semibold text-sm border border-blue-300/30"
-                  >
-                    <LogIn className="w-4 h-4" />
-                    <span className="hidden lg:inline">دخول</span>
-                  </Link>
-                  <Link
-                    href="/register"
-                    className="flex items-center gap-2 px-3 py-2 bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 rounded-xl transition-all duration-200 font-semibold text-sm border border-purple-300/30"
-                  >
-                    <User className="w-4 h-4" />
-                    <span className="hidden lg:inline">تسجيل</span>
-                  </Link>
-                </div>
+                <AuthButton />
               )}
             </div>
 
