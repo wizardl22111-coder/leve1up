@@ -1,26 +1,29 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AlertTriangle, X } from 'lucide-react';
 
 export default function AccessDeniedAlert() {
-  const searchParams = useSearchParams();
   const [showAlert, setShowAlert] = useState(false);
   
   useEffect(() => {
-    const error = searchParams.get('error');
-    if (error === 'access_denied') {
-      setShowAlert(true);
-      // إخفاء التنبيه تلقائياً بعد 10 ثوان
-      const timer = setTimeout(() => {
-        setShowAlert(false);
-      }, 10000);
+    // التحقق من معامل الخطأ في الرابط بعد تحميل الصفحة
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const error = urlParams.get('error');
       
-      return () => clearTimeout(timer);
+      if (error === 'access_denied') {
+        setShowAlert(true);
+        // إخفاء التنبيه تلقائياً بعد 10 ثوان
+        const timer = setTimeout(() => {
+          setShowAlert(false);
+        }, 10000);
+        
+        return () => clearTimeout(timer);
+      }
     }
-  }, [searchParams]);
+  }, []);
 
   const handleClose = () => {
     setShowAlert(false);
@@ -73,4 +76,3 @@ export default function AccessDeniedAlert() {
     </AnimatePresence>
   );
 }
-

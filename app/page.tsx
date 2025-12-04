@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import ServicesSection from '@/components/ServicesSection';
@@ -6,7 +7,11 @@ import StatsSection from '@/components/StatsSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import FAQSection from '@/components/FAQSection';
 import Footer from '@/components/Footer';
-import AccessDeniedAlert from '@/components/AccessDeniedAlert';
+
+// تحميل AccessDeniedAlert بشكل dynamic لتجنب مشاكل SSR
+const AccessDeniedAlert = dynamic(() => import('@/components/AccessDeniedAlert'), {
+  ssr: false
+});
 
 export default function Home() {
   return (
