@@ -51,6 +51,29 @@ export default function Profile() {
           full_name: data.full_name || '',
           avatar_url: data.avatar_url || ''
         })
+      } else {
+        // If no profile exists, create one from user metadata
+        const newProfile = {
+          id: user.id,
+          email: user.email,
+          full_name: user.user_metadata?.full_name || user.user_metadata?.name || '',
+          avatar_url: user.user_metadata?.avatar_url || user.user_metadata?.picture || '',
+          role: 'user',
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        }
+
+        const { error: createError } = await supabase
+          .from('users')
+          .upsert(newProfile)
+
+        if (!createError) {
+          setProfile(newProfile)
+          setFormData({
+            full_name: newProfile.full_name,
+            avatar_url: newProfile.avatar_url
+          })
+        }
       }
     } catch (error) {
       console.error('Error loading profile:', error)
