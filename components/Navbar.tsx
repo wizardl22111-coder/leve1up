@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, ShoppingCart, Heart, Globe, Home, Package, Mail, Receipt, User, LogIn, LogOut } from 'lucide-react';
+import { Menu, X, ShoppingCart, Heart, Globe, Home, Package, Mail, Receipt, User, LogIn, LogOut, Settings } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
@@ -239,45 +239,50 @@ export default function Navbar() {
 
             {/* Mobile Actions */}
             <div className="flex md:hidden items-center gap-2 sm:gap-3">
-              {/* Wishlist Mobile */}
-              <Link
-                href="/wishlist"
-                className="relative p-2.5 hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 touch-manipulation"
-                aria-label="قائمة الأمنيات"
-                onClick={(e) => {
-                  console.log('❤️ Navbar: Mobile wishlist clicked!');
-                  console.log('Target URL:', '/wishlist');
-                  console.log('Wishlist count:', wishlist.length);
-                  handleLinkClick();
-                }}
-              >
-                <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-primary-300" />
-                {wishlist.length > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-gradient-to-r from-accent-600 to-accent-700 text-white text-xs font-bold rounded-full min-w-[20px] h-5 px-1 flex items-center justify-center border-2 border-dark-400">
-                    {wishlist.length}
-                  </span>
-                )}
-              </Link>
+              {/* إخفاء أزرار الهيدر عند فتح القائمة الجانبية */}
+              {!isMobileMenuOpen && (
+                <>
+                  {/* Wishlist Mobile */}
+                  <Link
+                    href="/wishlist"
+                    className="relative p-2.5 hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 touch-manipulation"
+                    aria-label="قائمة الأمنيات"
+                    onClick={(e) => {
+                      console.log('❤️ Navbar: Mobile wishlist clicked!');
+                      console.log('Target URL:', '/wishlist');
+                      console.log('Wishlist count:', wishlist.length);
+                      handleLinkClick();
+                    }}
+                  >
+                    <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-primary-300" />
+                    {wishlist.length > 0 && (
+                      <span className="absolute -top-1 -right-1 bg-gradient-to-r from-accent-600 to-accent-700 text-white text-xs font-bold rounded-full min-w-[20px] h-5 px-1 flex items-center justify-center border-2 border-dark-400">
+                        {wishlist.length}
+                      </span>
+                    )}
+                  </Link>
 
-              {/* Cart Mobile */}
-              <Link
-                href="/cart"
-                className="relative p-2.5 hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 touch-manipulation"
-                aria-label="سلة التسوق"
-                onClick={(e) => {
-                  console.log('🛒 Navbar: Mobile cart clicked!');
-                  console.log('Target URL:', '/cart');
-                  console.log('Cart count:', cartCount);
-                  handleLinkClick();
-                }}
-              >
-                <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6 text-primary-300" />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-gradient-to-r from-primary-300 to-primary-400 text-gray-900 text-xs font-bold rounded-full min-w-[20px] h-5 px-1 flex items-center justify-center border-2 border-dark-400">
-                    {cartCount}
-                  </span>
-                )}
-              </Link>
+                  {/* Cart Mobile */}
+                  <Link
+                    href="/cart"
+                    className="relative p-2.5 hover:bg-primary-300/10 active:bg-primary-300/20 rounded-xl transition-all duration-200 touch-manipulation"
+                    aria-label="سلة التسوق"
+                    onClick={(e) => {
+                      console.log('🛒 Navbar: Mobile cart clicked!');
+                      console.log('Target URL:', '/cart');
+                      console.log('Cart count:', cartCount);
+                      handleLinkClick();
+                    }}
+                  >
+                    <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6 text-primary-300" />
+                    {cartCount > 0 && (
+                      <span className="absolute -top-1 -right-1 bg-gradient-to-r from-primary-300 to-primary-400 text-gray-900 text-xs font-bold rounded-full min-w-[20px] h-5 px-1 flex items-center justify-center border-2 border-dark-400">
+                        {cartCount}
+                      </span>
+                    )}
+                  </Link>
+                </>
+              )}
 
               {/* Mobile Menu Button */}
               <button
@@ -374,6 +379,39 @@ export default function Navbar() {
 
               <div className="my-6 h-px bg-gradient-to-r from-transparent via-primary-300/30 to-transparent" />
 
+              {/* روابط سريعة للسلة وقائمة الأمنيات */}
+              <div className="space-y-3 mb-6">
+                <Link
+                  href="/cart"
+                  className="flex items-center justify-center gap-4 w-full px-6 py-4 text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-2xl transition-all duration-300 font-bold touch-manipulation group relative"
+                  onClick={handleLinkClick}
+                >
+                  <ShoppingCart className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
+                  <span>سلة التسوق</span>
+                  {cartCount > 0 && (
+                    <span className="absolute left-4 bg-gradient-to-r from-primary-300 to-primary-400 text-gray-900 text-xs font-bold rounded-full min-w-[20px] h-5 px-1 flex items-center justify-center">
+                      {cartCount}
+                    </span>
+                  )}
+                </Link>
+
+                <Link
+                  href="/wishlist"
+                  className="flex items-center justify-center gap-4 w-full px-6 py-4 text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-2xl transition-all duration-300 font-bold touch-manipulation group relative"
+                  onClick={handleLinkClick}
+                >
+                  <Heart className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
+                  <span>قائمة الأمنيات</span>
+                  {wishlist.length > 0 && (
+                    <span className="absolute left-4 bg-gradient-to-r from-accent-600 to-accent-700 text-white text-xs font-bold rounded-full min-w-[20px] h-5 px-1 flex items-center justify-center">
+                      {wishlist.length}
+                    </span>
+                  )}
+                </Link>
+              </div>
+
+              <div className="my-6 h-px bg-gradient-to-r from-transparent via-primary-300/30 to-transparent" />
+
               {/* Auth Section Mobile */}
               <div className="space-y-3 mb-6">
                 {status === "loading" ? (
@@ -397,6 +435,16 @@ export default function Navbar() {
                         <User className="w-6 h-6 text-primary-300 group-hover:scale-110 transition-transform" />
                       )}
                       <span>الملف الشخصي</span>
+                    </Link>
+                    
+                    {/* رابط لوحة الإدارة */}
+                    <Link
+                      href="/admin/dashboard"
+                      className="flex items-center justify-center gap-4 w-full px-6 py-4 text-lg text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-blue-500/10 active:bg-gradient-to-r active:from-purple-500/20 active:to-blue-500/20 rounded-2xl transition-all duration-300 font-bold touch-manipulation group border border-purple-400/20 hover:border-purple-400/40"
+                      onClick={handleLinkClick}
+                    >
+                      <Settings className="w-6 h-6 text-purple-400 group-hover:scale-110 group-hover:rotate-90 transition-all duration-300" />
+                      <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">لوحة الإدارة</span>
                     </Link>
                     <button
                       onClick={() => {
