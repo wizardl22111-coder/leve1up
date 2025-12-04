@@ -46,7 +46,7 @@ export default withAuth(
         
         // التحقق من أن الإيميل مخول للوصول للوحة الإدارة
         const userEmail = token.email;
-        return userEmail && ADMIN_EMAILS.includes(userEmail);
+        return !!(userEmail && ADMIN_EMAILS.includes(userEmail));
       },
     },
   }
