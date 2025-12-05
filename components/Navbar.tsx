@@ -421,7 +421,7 @@ export default function Navbar() {
                 ) : session ? (
                   <>
                     <Link
-                      href="/profile"
+                      href="/account"
                       className="flex items-center justify-center gap-4 w-full px-6 py-4 text-lg text-gray-300 hover:text-white hover:bg-primary-300/10 active:bg-primary-300/20 rounded-2xl transition-all duration-300 font-bold touch-manipulation group"
                       onClick={handleLinkClick}
                     >
@@ -437,15 +437,7 @@ export default function Navbar() {
                       <span>الملف الشخصي</span>
                     </Link>
                     
-                    {/* رابط لوحة الإدارة */}
-                    <Link
-                      href="/admin/dashboard"
-                      className="flex items-center justify-center gap-4 w-full px-6 py-4 text-lg text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-blue-500/10 active:bg-gradient-to-r active:from-purple-500/20 active:to-blue-500/20 rounded-2xl transition-all duration-300 font-bold touch-manipulation group border border-purple-400/20 hover:border-purple-400/40"
-                      onClick={handleLinkClick}
-                    >
-                      <Settings className="w-6 h-6 text-purple-400 group-hover:scale-110 group-hover:rotate-90 transition-all duration-300" />
-                      <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">لوحة الإدارة</span>
-                    </Link>
+
                     <button
                       onClick={() => {
                         signOut({ callbackUrl: '/' });
@@ -460,7 +452,7 @@ export default function Navbar() {
                 ) : (
                   <>
                     <Link
-                      href="/login"
+                      href="/api/auth/signin"
                       className="flex items-center justify-center gap-4 w-full px-6 py-4 text-lg text-blue-300 hover:text-blue-200 hover:bg-blue-500/10 active:bg-blue-500/20 rounded-2xl transition-all duration-300 font-bold touch-manipulation group"
                       onClick={handleLinkClick}
                     >

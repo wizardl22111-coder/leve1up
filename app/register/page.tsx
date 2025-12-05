@@ -63,9 +63,9 @@ export default function RegisterPage() {
         });
 
         if (result?.ok) {
-          router.push('/profile');
+          router.push('/account');
         } else {
-          router.push('/login');
+          router.push('/api/auth/signin');
         }
       } else {
         setError(data.message || 'حدث خطأ أثناء إنشاء الحساب');
@@ -243,7 +243,7 @@ export default function RegisterPage() {
             {/* OAuth Buttons - تظهر فقط إذا كانت متاحة */}
             {process.env.NEXT_PUBLIC_GOOGLE_ENABLED && (
               <button
-                onClick={() => signIn('google', { callbackUrl: '/profile' })}
+                onClick={() => signIn('google', { callbackUrl: '/account' })}
                 className="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-100 text-gray-900 font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-[1.02]"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -258,7 +258,7 @@ export default function RegisterPage() {
 
             {process.env.NEXT_PUBLIC_APPLE_ENABLED && (
               <button
-                onClick={() => signIn('apple', { callbackUrl: '/profile' })}
+                onClick={() => signIn('apple', { callbackUrl: '/account' })}
                 className="w-full flex items-center justify-center gap-3 bg-black hover:bg-gray-900 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-[1.02] border border-gray-700"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -270,7 +270,7 @@ export default function RegisterPage() {
 
             {/* Discord OAuth Button */}
             <button
-              onClick={() => signIn('discord', { callbackUrl: '/profile' })}
+              onClick={() => signIn('discord', { callbackUrl: '/account' })}
               className="w-full flex items-center justify-center gap-3 bg-[#5865F2] hover:bg-[#4752C4] text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 transform hover:scale-[1.02]"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -293,7 +293,7 @@ export default function RegisterPage() {
           <div className="mt-6 text-center">
             <p className="text-gray-400">
               لديك حساب بالفعل؟{' '}
-              <Link href="/login" className="text-primary-300 hover:text-primary-400 font-semibold transition-colors">
+              <Link href="/api/auth/signin" className="text-primary-300 hover:text-primary-400 font-semibold transition-colors">
                 تسجيل الدخول
               </Link>
             </p>

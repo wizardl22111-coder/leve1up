@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 import { 
   User,
@@ -14,49 +15,27 @@ import {
   CreditCard
 } from "lucide-react";
 
-interface UserSession {
-  email: string;
-  name?: string;
-  isAuthenticated: boolean;
-}
-
 export default function AccountPage() {
-  const [user, setUser] = useState<UserSession | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
-    checkUserSession();
-  }, []);
-
-  const checkUserSession = async () => {
-    try {
-      const response = await fetch('/api/auth/session');
-      const data = await response.json();
-      
-      if (data.isAuthenticated) {
-        setUser(data.user);
-      } else {
-        router.push('/login');
-      }
-    } catch (error) {
-      console.error('Error checking session:', error);
-      router.push('/login');
-    } finally {
-      setLoading(false);
+    if (status === "loading") return; // Still loading
+    
+    if (!session) {
+      router.push('/api/auth/signin');
     }
-  };
+  }, [session, status, router]);
 
   const handleLogout = async () => {
     try {
-      await fetch('/api/auth/logout', { method: 'POST' });
-      router.push('/');
+      await signOut({ callbackUrl: '/' });
     } catch (error) {
       console.error('Error logging out:', error);
     }
   };
 
-  if (loading) {
+  if (status === "loading") {
     return (
       <div className="min-h-screen bg-dark-500 flex items-center justify-center">
         <div className="text-center">
@@ -67,7 +46,7 @@ export default function AccountPage() {
     );
   }
 
-  if (!user) {
+  if (!session) {
     return null;
   }
 
@@ -82,8 +61,8 @@ export default function AccountPage() {
                 <User className="w-8 h-8 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-white">مرحباً، {user.name || user.email.split('@')[0]}</h1>
-                <p className="text-gray-400">{user.email}</p>
+                <h1 className="text-2xl font-bold text-white">مرحباً، {session.user?.name || session.user?.email?.split('@')[0]}</h1>
+                <p className="text-gray-400">{session.user?.email}</p>
               </div>
             </div>
             <button
@@ -107,11 +86,11 @@ export default function AccountPage() {
             <div className="space-y-4">
               <div>
                 <label className="block text-gray-400 text-sm mb-1">البريد الإلكتروني</label>
-                <p className="text-white bg-dark-300 px-4 py-2 rounded-lg">{user.email}</p>
+                <p className="text-white bg-dark-300 px-4 py-2 rounded-lg">{session.user?.email}</p>
               </div>
               <div>
                 <label className="block text-gray-400 text-sm mb-1">الاسم</label>
-                <p className="text-white bg-dark-300 px-4 py-2 rounded-lg">{user.name || user.email.split('@')[0]}</p>
+                <p className="text-white bg-dark-300 px-4 py-2 rounded-lg">{session.user?.name || session.user?.email?.split('@')[0]}</p>
               </div>
             </div>
           </div>
@@ -192,4 +171,3 @@ export default function AccountPage() {
     </div>
   );
 }
-

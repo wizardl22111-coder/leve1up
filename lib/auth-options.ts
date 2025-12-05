@@ -44,7 +44,7 @@ export const authOptions: NextAuthOptions = {
       // إعادة التوجيه للملف الشخصي بعد تسجيل الدخول
       if (url.startsWith("/")) return `${baseUrl}${url}`;
       else if (new URL(url).origin === baseUrl) return url;
-      return `${baseUrl}/profile`;
+      return `${baseUrl}/account`;
     },
 
     async session({ session, token }) {
@@ -63,8 +63,8 @@ export const authOptions: NextAuthOptions = {
   },
 
   pages: {
-    signIn: '/login',
-    error: '/login',
+    signIn: '/api/auth/signin',
+    error: '/api/auth/signin',
   },
 
   session: {
