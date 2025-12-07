@@ -3,6 +3,15 @@ import { saveOrder } from "@/lib/orders-store";
 import crypto from "crypto";
 import products from '@/data/products.json';
 
+// 🔄 تخزين مؤقت لمعرفات الدفع المنشأة لمنع التكرار
+const paymentIntentCache = new Map<string, any>();
+
+// 🧹 تنظيف الكاش كل 30 دقيقة
+setInterval(() => {
+  paymentIntentCache.clear();
+  console.log('🧹 Cleared payment intent cache');
+}, 30 * 60 * 1000);
+
 export async function POST(req: Request) {
   try {
     // ✅ التحقق من وجود مفتاح Ziina API
@@ -21,6 +30,19 @@ export async function POST(req: Request) {
     console.log("💰 Received amount:", amount, finalCurrency);
     console.log("📦 Product:", productName);
     console.log("📧 Customer email:", customerEmail);
+
+    // 🔄 إنشاء مفتاح idempotency للتحقق من التكرار
+    const idempotencyKey = crypto
+      .createHash('sha256')
+      .update(`${customerEmail}-${productName}-${amount}-${finalCurrency}`)
+      .digest('hex');
+
+    // التحقق من وجود payment intent مسبق لنفس البيانات
+    if (paymentIntentCache.has(idempotencyKey)) {
+      const cachedIntent = paymentIntentCache.get(idempotencyKey);
+      console.log("🔄 Returning cached payment intent:", cachedIntent.id);
+      return NextResponse.json(cachedIntent);
+    }
     
     // 🆔 إنشاء sessionId فريد محلياً (قبل الاتصال بـ Ziina)
     const sessionId = crypto.randomUUID();
@@ -114,6 +136,9 @@ export async function POST(req: Request) {
     const data = await res.json();
     const paymentIntentId = data.id;
     console.log("✅ Payment intent created:", paymentIntentId);
+
+    // 💾 حفظ payment intent في الكاش لمنع التكرار
+    paymentIntentCache.set(idempotencyKey, data);
     
     // 💾 حفظ الطلب في Redis قبل إرجاع الرابط للعميل
     const orderId = `order_${Date.now()}_${crypto.randomBytes(4).toString('hex')}`;
