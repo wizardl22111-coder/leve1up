@@ -92,7 +92,7 @@ function PaymentSuccessContent() {
           const downloadLinks: DownloadLink[] = order.cartItems.map((item: CartItem) => ({
             productId: item.id,
             productName: item.name,
-            downloadUrl: `/api/download/${orderId}?product=${encodeURIComponent(item.name)}`
+            downloadUrl: `/api/download/${orderId}?product=${item.id}`
           }));
           
           setOrderData({

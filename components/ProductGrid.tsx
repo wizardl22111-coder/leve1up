@@ -197,7 +197,7 @@ export default function ProductGrid({
                       className="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white py-2.5 rounded-lg font-semibold hover:shadow-lg hover:shadow-green-500/30 transition-all flex items-center justify-center gap-2"
                     >
                       <Zap className="w-4 h-4" />
-                      <span className="text-sm">تحميل مجاني</span>
+                      <span className="text-sm">عرض التفاصيل</span>
                     </button>
                   ) : (
                     <>
