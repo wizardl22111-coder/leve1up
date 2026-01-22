@@ -3,6 +3,7 @@ import { getCurrencySymbol, subunitMap, type Currency } from "@/lib/currency";
 import { findOrderBySessionId, findOrderByPaymentId, updateOrder } from "@/lib/orders-store";
 import { Resend } from "resend";
 import { createSecureDownloadUrl } from "@/lib/download-utils";
+import crypto from "crypto";
 
 // 📧 دالة للحصول على Resend client (lazy initialization)
 const getResend = () => {
@@ -11,6 +12,40 @@ const getResend = () => {
   }
   return new Resend(process.env.RESEND_API_KEY);
 };
+
+// 🔐 دالة التحقق من توقيع الـ webhook
+function verifyWebhookSignature(payload: string, signature: string, secret: string): boolean {
+  if (!signature || !secret) {
+    return false;
+  }
+
+  try {
+    // إنشاء HMAC باستخدام SHA256
+    const expectedSignature = crypto
+      .createHmac('sha256', secret)
+      .update(payload, 'utf8')
+      .digest('hex');
+
+    // مقارنة التوقيعات بطريقة آمنة
+    const providedSignature = signature.replace('sha256=', '');
+    return crypto.timingSafeEqual(
+      Buffer.from(expectedSignature, 'hex'),
+      Buffer.from(providedSignature, 'hex')
+    );
+  } catch (error) {
+    console.error('❌ Error verifying webhook signature:', error);
+    return false;
+  }
+}
+
+// 🔄 تخزين معرفات الأحداث المعالجة لمنع التكرار
+const processedEvents = new Set<string>();
+
+// 🧹 تنظيف الأحداث القديمة (كل ساعة)
+setInterval(() => {
+  processedEvents.clear();
+  console.log('🧹 Cleared processed events cache');
+}, 60 * 60 * 1000);
 
 // دالة تحويل من الوحدة الصغرى إلى المبلغ الأساسي
 function convertFromSubunit(amount: number, currency: string): number {
@@ -148,16 +183,47 @@ async function sendOrderEmail(order: any, amount: number, currency: string): Pro
 }
 
 export async function POST(req: Request) {
-  const body = await req.json();
+  try {
+    // 🔐 التحقق من توقيع الـ webhook
+    const signature = req.headers.get('ziina-signature') || req.headers.get('x-ziina-signature');
+    const webhookSecret = process.env.ZIINA_WEBHOOK_SECRET;
+    
+    if (webhookSecret && signature) {
+      const rawBody = await req.text();
+      const isValidSignature = verifyWebhookSignature(rawBody, signature, webhookSecret);
+      
+      if (!isValidSignature) {
+        console.error('❌ Invalid webhook signature');
+        return NextResponse.json({ error: 'Invalid signature' }, { status: 401 });
+      }
+      
+      console.log('✅ Webhook signature verified');
+      var body = JSON.parse(rawBody);
+    } else {
+      if (webhookSecret) {
+        console.warn('⚠️ Webhook secret configured but no signature provided');
+      }
+      var body = await req.json();
+    }
 
-  console.log("📦 Webhook received from Ziina:", new Date().toISOString());
-  console.log("📦 Payload:", JSON.stringify(body, null, 2));
+    console.log("📦 Webhook received from Ziina:", new Date().toISOString());
+    console.log("📦 Payload:", JSON.stringify(body, null, 2));
 
-  const event = body?.event;
-  const data = body?.data;
+    const event = body?.event;
+    const data = body?.data;
+    const eventId = data?.id || `${event}_${Date.now()}`;
 
-  // فقط نهتم بحدث الدفع الناجح
-  if (event === "payment_intent.status.updated" && data?.status === "completed") {
+    // 🔄 التحقق من عدم معالجة الحدث مسبقاً (idempotency)
+    if (processedEvents.has(eventId)) {
+      console.log(`ℹ️ Event ${eventId} already processed, skipping`);
+      return NextResponse.json({ received: true, status: 'already_processed' }, { status: 200 });
+    }
+
+    // إضافة الحدث إلى قائمة المعالجة
+    processedEvents.add(eventId);
+
+    // فقط نهتم بحدث الدفع الناجح
+    if (event === "payment_intent.status.updated" && data?.status === "completed") {
     const status = data?.status;
     const currencyCode = data?.currency_code || data?.currency || "SAR";
     const amountInSubunit = data?.amount || 0;
@@ -214,10 +280,23 @@ export async function POST(req: Request) {
       }
     }
     
-    console.log("✅ Payment processed successfully!");
-  } else {
-    console.log("ℹ️ Webhook received but not a completed payment:", { event, status: data?.status });
-  }
+      console.log("✅ Payment processed successfully!");
+    } else {
+      console.log("ℹ️ Webhook received but not a completed payment:", { event, status: data?.status });
+    }
 
-  return NextResponse.json({ received: true }, { status: 200 });
+    return NextResponse.json({ received: true }, { status: 200 });
+  } catch (error) {
+    console.error('❌ Error processing webhook:', error);
+    
+    // إزالة الحدث من قائمة المعالجة في حالة الخطأ للسماح بإعادة المحاولة
+    const data = error instanceof Error ? null : (error as any)?.data;
+    const eventId = data?.id || 'unknown';
+    processedEvents.delete(eventId);
+    
+    return NextResponse.json({ 
+      received: false, 
+      error: 'Internal server error' 
+    }, { status: 500 });
+  }
 }
