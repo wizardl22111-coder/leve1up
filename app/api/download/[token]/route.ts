@@ -114,7 +114,24 @@ export async function GET(
     console.log('✅ File fetched successfully. Size:', fileBlob.size);
     
     // Create filename from product name (sanitize it)
-    const filename = `${productName.replace(/[^a-zA-Z0-9\u0600-\u06FF\s]/g, '')}.pdf`;
+    // Extract filename from URL or use product name
+    let filename;
+    try {
+      const urlPath = new URL(downloadUrl).pathname;
+      const urlFilename = decodeURIComponent(urlPath.split('/').pop() || '');
+      if (urlFilename && urlFilename.includes('.')) {
+        // Use the actual filename from URL
+        filename = urlFilename;
+      } else {
+        // Fallback to product name with .pdf extension
+        const sanitizedName = productName.replace(/[^a-zA-Z0-9\u0600-\u06FF\s]/g, '');
+        filename = `${sanitizedName}.pdf`;
+      }
+    } catch (error) {
+      // Fallback to product name with .pdf extension
+      const sanitizedName = productName.replace(/[^a-zA-Z0-9\u0600-\u06FF\s]/g, '');
+      filename = `${sanitizedName}.pdf`;
+    }
 
     // Return the file with secure headers
     return new NextResponse(fileBlob, {
