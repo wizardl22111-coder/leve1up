@@ -118,6 +118,22 @@ export async function POST(req: Request) {
     console.log("📦 Product:", productName);
     console.log("📧 Customer email:", customerEmail);
 
+    // 🖼️ البحث عن صورة المنتج من products.json (تعريف مبكر لتجنب خطأ الاستخدام قبل التعريف)
+    let productImage = '';
+    try {
+      const product = products.find((p: any) => 
+        p.product_name === productName || 
+        p.product_name_en === productName ||
+        p.download_url === productFile
+      );
+      if (product) {
+        productImage = product.product_image || '';
+        console.log('🖼️ Product image found:', productImage);
+      }
+    } catch (error) {
+      console.log('⚠️ Could not find product image:', error);
+    }
+
     // 🔄 إنشاء مفتاح idempotency للتحقق من التكرار
     const idempotencyKey = crypto
       .createHash('sha256')
@@ -171,7 +187,7 @@ export async function POST(req: Request) {
       const freeOrder = {
         id: orderId,
         sessionId: freeSessionId,
-        status: 'completed', // مكتمل مباشرة
+        status: 'completed' as const, // مكتمل مباشرة
         amount: 0,
         currency: finalCurrency,
         customerEmail: customerEmail || '',
@@ -281,21 +297,7 @@ export async function POST(req: Request) {
     // 💾 حفظ الطلب في Redis قبل إرجاع الرابط للعميل
     const orderId = `order_${Date.now()}_${crypto.randomBytes(4).toString('hex')}`;
     
-    // 🖼️ البحث عن صورة المنتج من products.json
-    let productImage = '';
-    try {
-      const product = products.find((p: any) => 
-        p.product_name === productName || 
-        p.product_name_en === productName ||
-        p.download_url === productFile
-      );
-      if (product) {
-        productImage = product.product_image || '';
-        console.log('🖼️ Product image found:', productImage);
-      }
-    } catch (error) {
-      console.log('⚠️ Could not find product image:', error);
-    }
+
     
     try {
       await saveOrder({
