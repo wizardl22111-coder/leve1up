@@ -101,7 +101,19 @@ function CheckoutContent() {
       const data = await res.json();
       console.log("📊 Payment response:", data);
 
-      // ✅ دعم متغيرات اسم الرابط المختلفة
+      // 🆓 معالجة المنتجات المجانية
+      if (data.isFree && data.success) {
+        console.log("🆓 Free product processed successfully");
+        
+        // عرض رسالة نجاح للمنتج المجاني
+        alert(`🎉 ${data.message}\n\n📧 تم إرسال رابط التحميل إلى بريدك الإلكتروني.`);
+        
+        // إعادة توجيه للصفحة الرئيسية أو صفحة الشكر
+        window.location.href = '/';
+        return;
+      }
+
+      // ✅ دعم متغيرات اسم الرابط المختلفة للمنتجات المدفوعة
       if (data.redirect_url) {
         console.log("🔗 Redirecting to:", data.redirect_url);
         window.location.href = data.redirect_url;
@@ -152,12 +164,24 @@ function CheckoutContent() {
         <button
           disabled={!email || loading}
           onClick={handlePay}
-          className="bg-green-600 hover:bg-green-700 text-white w-full py-3 rounded-lg font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className={`${
+            parseFloat(price as string) === 0 
+              ? "bg-blue-600 hover:bg-blue-700" 
+              : "bg-green-600 hover:bg-green-700"
+          } text-white w-full py-3 rounded-lg font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
         >
-          {loading ? "جارٍ إنشاء الدفع..." : "متابعة للدفع"}
+          {loading 
+            ? (parseFloat(price as string) === 0 ? "جارٍ إرسال المنتج المجاني..." : "جارٍ إنشاء الدفع...") 
+            : (parseFloat(price as string) === 0 ? "🆓 احصل على المنتج مجاناً" : "متابعة للدفع")
+          }
         </button>
 
-        <p className="text-sm text-gray-400 mt-4">الدفع آمن ومشفر عبر Ziina 🔒</p>
+        <p className="text-sm text-gray-400 mt-4">
+          {parseFloat(price as string) === 0 
+            ? "المنتج مجاني 100% - لا توجد رسوم خفية 🆓" 
+            : "الدفع آمن ومشفر عبر Ziina 🔒"
+          }
+        </p>
       </div>
     </div>
   );

@@ -1,0 +1,401 @@
+{
+  "payment_system_diagnosis": {
+    "scan_date": "2024-12-07T06:05:00Z",
+    "repository": "leve1up",
+    "branch": "fresh-nextjs-migration",
+    "payment_provider": "Ziina",
+    "architecture": "Next.js App Router with Redis storage"
+  },
+  
+  "payment_endpoints": [
+    {
+      "path": "/api/payment_intent",
+      "file": "app/api/payment_intent/route.ts",
+      "method": "POST",
+      "purpose": "Create Ziina payment intent",
+      "handler_function": "POST",
+      "line_range": "6-175",
+      "dependencies": ["@/lib/orders-store", "crypto", "@/data/products.json"],
+      "env_vars_required": ["ZIINA_SECRET_KEY", "ZIINA_API_KEY"],
+      "security_issues": [
+        {
+          "type": "missing_webhook_signature_verification",
+          "severity": "high",
+          "description": "No webhook signature verification implemented"
+        },
+        {
+          "type": "no_idempotency_handling",
+          "severity": "medium", 
+          "description": "No protection against duplicate payment intents"
+        }
+      ]
+    },
+    {
+      "path": "/api/ziina-webhook",
+      "file": "app/api/ziina-webhook/route.ts",
+      "method": "POST", 
+      "purpose": "Handle Ziina webhook notifications",
+      "handler_function": "POST",
+      "line_range": "150-223",
+      "dependencies": ["@/lib/currency", "@/lib/orders-store", "resend", "@/lib/download-utils"],
+      "env_vars_required": ["RESEND_API_KEY"],
+      "security_issues": [
+        {
+          "type": "missing_webhook_signature_verification",
+          "severity": "critical",
+          "description": "Webhook accepts any POST request without signature verification"
+        },
+        {
+          "type": "no_idempotency_protection",
+          "severity": "high",
+          "description": "Same webhook can be processed multiple times"
+        },
+        {
+          "type": "no_rate_limiting",
+          "severity": "medium",
+          "description": "No rate limiting on webhook endpoint"
+        }
+      ]
+    },
+    {
+      "path": "/api/webhook",
+      "file": "app/api/webhook/route.ts",
+      "method": "POST",
+      "purpose": "Legacy webhook handler",
+      "handler_function": "POST",
+      "line_range": "1-50+",
+      "dependencies": ["@vercel/blob", "crypto", "@/data/products.json"],
+      "env_vars_required": ["BLOB_READ_WRITE_TOKEN"],
+      "security_issues": [
+        {
+          "type": "legacy_endpoint",
+          "severity": "low",
+          "description": "Appears to be legacy code, may cause conflicts"
+        }
+      ]
+    },
+    {
+      "path": "/api/cart_payment_intent", 
+      "file": "app/api/cart_payment_intent/route.js",
+      "method": "POST",
+      "purpose": "Cart payment intent creation",
+      "handler_function": "unknown",
+      "line_range": "unknown",
+      "dependencies": ["unknown"],
+      "env_vars_required": ["ZIINA_SECRET_KEY"],
+      "security_issues": [
+        {
+          "type": "duplicate_functionality",
+          "severity": "medium",
+          "description": "Duplicate payment intent creation logic"
+        }
+      ]
+    }
+  ],
+
+  "environment_variables": {
+    "required": [
+      {
+        "name": "ZIINA_SECRET_KEY",
+        "purpose": "Ziina API authentication",
+        "used_in": ["app/api/payment_intent/route.ts", "app/api/cart_payment_intent/route.js"],
+        "fallback": "ZIINA_API_KEY",
+        "status": "present_in_example"
+      },
+      {
+        "name": "ZIINA_API_KEY", 
+        "purpose": "Ziina API authentication (fallback)",
+        "used_in": ["app/api/payment_intent/route.ts"],
+        "status": "present_in_example"
+      },
+      {
+        "name": "ZIINA_MERCHANT_ID",
+        "purpose": "Ziina merchant identification",
+        "used_in": [],
+        "status": "present_in_example_unused"
+      },
+      {
+        "name": "ZIINA_WEBHOOK_SECRET",
+        "purpose": "Webhook signature verification",
+        "used_in": [],
+        "status": "present_in_example_unused",
+        "issue": "Defined but not implemented in webhook handlers"
+      }
+    ],
+    "missing_critical": [
+      {
+        "name": "STRIPE_SECRET",
+        "purpose": "Stripe API key for alternative payment provider",
+        "status": "missing"
+      },
+      {
+        "name": "STRIPE_WEBHOOK_SECRET", 
+        "purpose": "Stripe webhook signature verification",
+        "status": "missing"
+      },
+      {
+        "name": "PAYPAL_CLIENT_ID",
+        "purpose": "PayPal API authentication",
+        "status": "missing"
+      },
+      {
+        "name": "PAYPAL_SECRET",
+        "purpose": "PayPal API secret",
+        "status": "missing"
+      }
+    ],
+    "storage": [
+      {
+        "name": "KV_REST_API_URL",
+        "purpose": "Upstash Redis connection URL",
+        "used_in": ["lib/orders-store.ts", "lib/auth-options.ts"],
+        "status": "present_in_example"
+      },
+      {
+        "name": "KV_REST_API_TOKEN",
+        "purpose": "Upstash Redis authentication token", 
+        "used_in": ["lib/orders-store.ts", "lib/auth-options.ts"],
+        "status": "present_in_example"
+      },
+      {
+        "name": "BLOB_READ_WRITE_TOKEN",
+        "purpose": "Vercel Blob storage access",
+        "used_in": ["app/api/webhook/route.ts"],
+        "status": "present_in_example"
+      }
+    ]
+  },
+
+  "payment_flow_analysis": {
+    "current_flow": [
+      {
+        "step": 1,
+        "action": "User initiates checkout",
+        "file": "app/checkout/page.tsx",
+        "function": "handlePay",
+        "description": "User enters email and clicks pay button"
+      },
+      {
+        "step": 2,
+        "action": "Create payment intent",
+        "file": "app/api/payment_intent/route.ts", 
+        "function": "POST",
+        "description": "Generate sessionId, call Ziina API, save order to Redis"
+      },
+      {
+        "step": 3,
+        "action": "Redirect to payment gateway",
+        "file": "Ziina hosted page",
+        "function": "external",
+        "description": "User completes payment on Ziina's secure page"
+      },
+      {
+        "step": 4,
+        "action": "Webhook notification",
+        "file": "app/api/ziina-webhook/route.ts",
+        "function": "POST", 
+        "description": "Ziina sends payment completion notification"
+      },
+      {
+        "step": 5,
+        "action": "Order fulfillment",
+        "file": "app/api/ziina-webhook/route.ts",
+        "function": "sendOrderEmail",
+        "description": "Update order status, send email with download links"
+      },
+      {
+        "step": 6,
+        "action": "Success page",
+        "file": "app/payment-success/page.tsx",
+        "function": "unknown",
+        "description": "User redirected to success page with download access"
+      }
+    ],
+    "flow_issues": [
+      {
+        "step": 4,
+        "issue": "No webhook signature verification",
+        "impact": "Critical security vulnerability - fake webhooks can trigger order fulfillment",
+        "priority": "critical"
+      },
+      {
+        "step": 2,
+        "issue": "No idempotency handling",
+        "impact": "Duplicate payment intents can be created",
+        "priority": "medium"
+      },
+      {
+        "step": 4,
+        "issue": "No duplicate webhook protection",
+        "impact": "Same order can be fulfilled multiple times",
+        "priority": "high"
+      }
+    ]
+  },
+
+  "security_vulnerabilities": [
+    {
+      "id": "WEBHOOK_001",
+      "title": "Missing Webhook Signature Verification",
+      "severity": "critical",
+      "description": "Ziina webhook endpoint accepts any POST request without verifying the signature",
+      "affected_files": ["app/api/ziina-webhook/route.ts"],
+      "impact": "Attackers can send fake payment notifications to trigger unauthorized order fulfillment",
+      "cwe": "CWE-345: Insufficient Verification of Data Authenticity",
+      "fix_priority": "immediate"
+    },
+    {
+      "id": "WEBHOOK_002", 
+      "title": "No Idempotency Protection",
+      "severity": "high",
+      "description": "Webhook can process the same payment event multiple times",
+      "affected_files": ["app/api/ziina-webhook/route.ts"],
+      "impact": "Duplicate emails sent, potential double fulfillment",
+      "cwe": "CWE-837: Improper Enforcement of a Single, Unique Action",
+      "fix_priority": "high"
+    },
+    {
+      "id": "PAYMENT_001",
+      "title": "No Payment Intent Idempotency",
+      "severity": "medium",
+      "description": "Multiple payment intents can be created for same order",
+      "affected_files": ["app/api/payment_intent/route.ts"],
+      "impact": "Potential duplicate charges, user confusion",
+      "cwe": "CWE-837: Improper Enforcement of a Single, Unique Action", 
+      "fix_priority": "medium"
+    },
+    {
+      "id": "STORAGE_001",
+      "title": "No Atomic Order Updates",
+      "severity": "medium",
+      "description": "Order status updates not wrapped in transactions",
+      "affected_files": ["lib/orders-store.ts"],
+      "impact": "Race conditions, inconsistent order states",
+      "cwe": "CWE-362: Concurrent Execution using Shared Resource with Improper Synchronization",
+      "fix_priority": "medium"
+    },
+    {
+      "id": "ERROR_001",
+      "title": "Insufficient Error Handling",
+      "severity": "low",
+      "description": "Limited retry logic and error recovery mechanisms",
+      "affected_files": ["app/api/ziina-webhook/route.ts"],
+      "impact": "Failed webhooks may not be retried, lost orders",
+      "cwe": "CWE-754: Improper Check for Unusual or Exceptional Conditions",
+      "fix_priority": "low"
+    }
+  ],
+
+  "functional_issues": [
+    {
+      "id": "FUNC_001",
+      "title": "Duplicate Payment Intent Endpoints",
+      "severity": "medium",
+      "description": "Both /api/payment_intent and /api/cart_payment_intent exist with similar functionality",
+      "affected_files": ["app/api/payment_intent/route.ts", "app/api/cart_payment_intent/route.js"],
+      "impact": "Code duplication, maintenance overhead, potential inconsistencies"
+    },
+    {
+      "id": "FUNC_002", 
+      "title": "Legacy Webhook Handler",
+      "severity": "low",
+      "description": "Old webhook handler at /api/webhook may conflict with new Ziina webhook",
+      "affected_files": ["app/api/webhook/route.ts"],
+      "impact": "Confusion, potential routing conflicts"
+    },
+    {
+      "id": "FUNC_003",
+      "title": "Hardcoded Success URLs",
+      "severity": "low", 
+      "description": "Success/cancel URLs are hardcoded to leve1up.store domain",
+      "affected_files": ["app/api/payment_intent/route.ts"],
+      "impact": "Cannot test locally or use different domains"
+    }
+  ],
+
+  "production_readiness": {
+    "missing_features": [
+      {
+        "feature": "Webhook signature verification",
+        "priority": "critical",
+        "estimated_effort": "2 hours"
+      },
+      {
+        "feature": "Idempotency handling",
+        "priority": "high", 
+        "estimated_effort": "4 hours"
+      },
+      {
+        "feature": "Retry mechanism for failed webhooks",
+        "priority": "medium",
+        "estimated_effort": "6 hours"
+      },
+      {
+        "feature": "Dead letter queue for failed events",
+        "priority": "medium",
+        "estimated_effort": "8 hours"
+      },
+      {
+        "feature": "Payment provider abstraction",
+        "priority": "low",
+        "estimated_effort": "16 hours"
+      }
+    ],
+    "monitoring_gaps": [
+      {
+        "area": "Payment success/failure rates",
+        "impact": "Cannot track payment performance"
+      },
+      {
+        "area": "Webhook delivery success",
+        "impact": "Cannot detect failed webhook deliveries"
+      },
+      {
+        "area": "Order fulfillment tracking",
+        "impact": "Cannot track if orders are properly fulfilled"
+      }
+    ]
+  },
+
+  "recommendations": {
+    "immediate_fixes": [
+      "Implement webhook signature verification using ZIINA_WEBHOOK_SECRET",
+      "Add idempotency keys to prevent duplicate webhook processing",
+      "Wrap order status updates in atomic operations"
+    ],
+    "short_term_improvements": [
+      "Add comprehensive error handling and logging",
+      "Implement retry mechanism for failed operations",
+      "Add payment provider abstraction layer",
+      "Consolidate duplicate payment intent endpoints"
+    ],
+    "long_term_enhancements": [
+      "Add support for multiple payment providers (Stripe, PayPal)",
+      "Implement dead letter queue for failed events",
+      "Add comprehensive monitoring and alerting",
+      "Add automated testing for payment flows"
+    ]
+  },
+
+  "testing_requirements": {
+    "unit_tests_needed": [
+      "Webhook signature verification",
+      "Idempotency key validation", 
+      "Order status transitions",
+      "Currency conversion functions"
+    ],
+    "integration_tests_needed": [
+      "End-to-end payment flow",
+      "Webhook delivery and processing",
+      "Email delivery after payment",
+      "Download link generation"
+    ],
+    "manual_testing_scenarios": [
+      "Successful payment with Ziina test cards",
+      "Failed payment handling",
+      "Duplicate webhook delivery",
+      "Network timeout during payment"
+    ]
+  }
+}
+

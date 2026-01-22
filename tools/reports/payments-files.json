@@ -1,0 +1,118 @@
+{
+  "payment_related_files": {
+    "api_endpoints": [
+      {
+        "file": "app/api/payment_intent/route.ts",
+        "purpose": "Create Ziina payment intent",
+        "lines": "1-175",
+        "key_functions": ["POST handler", "saveOrder", "Ziina API call"],
+        "env_vars": ["ZIINA_SECRET_KEY", "ZIINA_API_KEY"]
+      },
+      {
+        "file": "app/api/ziina-webhook/route.ts", 
+        "purpose": "Handle Ziina webhook notifications",
+        "lines": "1-223",
+        "key_functions": ["POST handler", "findOrderByPaymentId", "updateOrder", "sendOrderEmail"],
+        "env_vars": ["RESEND_API_KEY"]
+      },
+      {
+        "file": "app/api/webhook/route.ts",
+        "purpose": "Legacy webhook handler",
+        "lines": "1-50+",
+        "key_functions": ["generateSecureToken", "generateOrderNumber"],
+        "env_vars": ["BLOB_READ_WRITE_TOKEN"]
+      },
+      {
+        "file": "app/api/cart_payment_intent/route.js",
+        "purpose": "Cart payment intent creation",
+        "lines": "unknown",
+        "key_functions": ["cart payment processing"],
+        "env_vars": ["ZIINA_SECRET_KEY"]
+      },
+      {
+        "file": "app/api/payments/latest/route.ts",
+        "purpose": "Latest payments API",
+        "lines": "unknown",
+        "key_functions": ["payment history"],
+        "env_vars": []
+      }
+    ],
+    "frontend_pages": [
+      {
+        "file": "app/checkout/page.tsx",
+        "purpose": "Checkout page UI",
+        "lines": "1-50+",
+        "key_functions": ["handlePay", "product lookup", "email validation"],
+        "env_vars": []
+      },
+      {
+        "file": "app/payment-success/page.tsx",
+        "purpose": "Payment success page",
+        "lines": "unknown",
+        "key_functions": ["success handling"],
+        "env_vars": []
+      },
+      {
+        "file": "app/cart/page.tsx",
+        "purpose": "Shopping cart page",
+        "lines": "1-30+",
+        "key_functions": ["cart management", "checkout initiation"],
+        "env_vars": []
+      }
+    ],
+    "utility_files": [
+      {
+        "file": "lib/orders-store.ts",
+        "purpose": "Order management with Redis/memory fallback",
+        "lines": "unknown",
+        "key_functions": ["saveOrder", "findOrderByPaymentId", "updateOrder"],
+        "env_vars": ["KV_REST_API_URL", "KV_REST_API_TOKEN"]
+      },
+      {
+        "file": "lib/currency.ts",
+        "purpose": "Currency conversion utilities",
+        "lines": "unknown",
+        "key_functions": ["convertPrice", "getCurrencySymbol"],
+        "env_vars": []
+      },
+      {
+        "file": "lib/download-utils.ts",
+        "purpose": "Secure download URL generation",
+        "lines": "unknown",
+        "key_functions": ["createSecureDownloadUrl"],
+        "env_vars": []
+      }
+    ],
+    "config_files": [
+      {
+        "file": ".env.example",
+        "purpose": "Environment variables template",
+        "lines": "1-59",
+        "key_vars": ["ZIINA_API_KEY", "ZIINA_MERCHANT_ID", "ZIINA_WEBHOOK_SECRET", "BLOB_READ_WRITE_TOKEN", "RESEND_API_KEY"],
+        "missing_vars": ["STRIPE_SECRET", "STRIPE_WEBHOOK_SECRET", "PAYPAL_CLIENT_ID"]
+      },
+      {
+        "file": "next.config.mjs",
+        "purpose": "Next.js configuration",
+        "lines": "1-17",
+        "key_settings": ["image domains", "compression", "poweredByHeader"],
+        "env_vars": []
+      }
+    ]
+  },
+  "environment_variables_found": {
+    "payment_providers": {
+      "ziina": ["ZIINA_SECRET_KEY", "ZIINA_API_KEY", "ZIINA_MERCHANT_ID", "ZIINA_WEBHOOK_SECRET"],
+      "stripe": [],
+      "paypal": []
+    },
+    "storage": ["BLOB_READ_WRITE_TOKEN", "KV_REST_API_URL", "KV_REST_API_TOKEN"],
+    "email": ["RESEND_API_KEY"],
+    "notifications": ["DISCORD_WEBHOOK_URL"],
+    "auth": ["JWT_SECRET", "NEXTAUTH_SECRET"],
+    "base": ["NEXT_PUBLIC_BASE_URL"]
+  },
+  "scan_timestamp": "2024-12-07T06:05:00Z",
+  "total_files_scanned": 15
+}
+
