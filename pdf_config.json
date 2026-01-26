@@ -1,0 +1,41 @@
+{
+  "product_title": "باقة المونتاج الاحترافية",
+  "product_subtitle": "مجموعة شاملة من القوالب والمؤثرات الاحترافية للمونتاج",
+  "download_link": "https://drive.google.com/file/d/1234567890abcdef/view",
+  "logo_path": "logo.png",
+  "output_path": "./professional_editing_package_delivery.pdf",
+  "vendor_email": "leve1up999q@gmail.com",
+  "buyer_name": "أحمد محمد العلي",
+  "expiry_days": 7,
+  "use_shortener": false,
+  "locale": "ar",
+  "format": "A4",
+  "store_info": {
+    "name": "متجر لفل اب",
+    "website": "https://levelup-store.com",
+    "support_phone": "+971 50 123 4567"
+  },
+  "branding": {
+    "primary_color": "#1a365d",
+    "secondary_color": "#3182ce",
+    "accent_color": "#10b981"
+  },
+  "templates": {
+    "professional_editing": {
+      "title": "باقة المونتاج الاحترافية",
+      "subtitle": "قوالب وتأثيرات احترافية للمونتاج",
+      "category": "video_editing"
+    },
+    "design_bundle": {
+      "title": "حزمة التصميم الشاملة",
+      "subtitle": "قوالب وأدوات تصميم متنوعة",
+      "category": "graphic_design"
+    },
+    "social_media_pack": {
+      "title": "باقة السوشيال ميديا",
+      "subtitle": "قوالب وتصاميم لجميع المنصات",
+      "category": "social_media"
+    }
+  }
+}
+

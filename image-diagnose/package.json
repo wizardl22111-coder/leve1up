@@ -1,0 +1,30 @@
+{
+  "name": "image-diagnose",
+  "version": "1.0.0",
+  "description": "Comprehensive diagnostic tool for Next.js image display issues",
+  "main": "src/index.js",
+  "bin": {
+    "image-diagnose": "./src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node test/test.js"
+  },
+  "dependencies": {
+    "fast-glob": "^3.3.2",
+    "simple-git": "^3.20.0",
+    "commander": "^11.1.0",
+    "chalk": "^4.1.2",
+    "fs-extra": "^11.1.1",
+    "node-fetch": "^2.7.0",
+    "cheerio": "^1.0.0-rc.12",
+    "mime-types": "^2.1.35",
+    "fuzzy": "^0.1.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "keywords": ["nextjs", "images", "diagnostic", "debugging"],
+  "author": "LevelUp Store",
+  "license": "MIT"
+}

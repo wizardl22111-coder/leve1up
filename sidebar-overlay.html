@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Sidebar Overlay</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Main page content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-content h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        .main-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .trigger-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .trigger-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Sidebar Overlay Styles */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sidebar-content {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transform: scale(0.8) translateY(20px);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+        }
+
+        .sidebar-overlay.active .sidebar-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .sidebar-header {
+            padding: 25px 30px 20px;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .sidebar-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin: 0;
+            padding-right: 40px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f8f9fa;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #e9ecef;
+            color: #333;
+            transform: rotate(90deg);
+        }
+
+        .sidebar-body {
+            padding: 30px;
+            max-height: calc(80vh - 120px);
+            overflow-y: auto;
+        }
+
+        .sidebar-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar-body::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .sidebar-body::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 10px;
+        }
+
+        .sidebar-body::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .sidebar-section p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .product-item {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-item:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .product-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar-content {
+                width: 95%;
+                max-height: 90vh;
+            }
+
+            .sidebar-header {
+                padding: 20px 25px 15px;
+            }
+
+            .sidebar-title {
+                font-size: 1.5rem;
+            }
+
+            .sidebar-body {
+                padding: 25px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 20px;
+            }
+
+            .main-content h1 {
+                font-size: 2rem;
+            }
+
+            .sidebar-content {
+                width: 98%;
+            }
+
+            .sidebar-header {
+                padding: 15px 20px 10px;
+            }
+
+            .sidebar-body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Page Content -->
+    <div class="main-content">
+        <h1>Modern Sidebar Overlay Demo</h1>
+        <p>This is the main page content. Click the button below to open the sidebar overlay.</p>
+        <p>The sidebar will appear centered on the screen with a smooth animation and can be closed by clicking the × button or clicking outside the content area.</p>
+        <button class="trigger-btn" onclick="openSidebar()">Open Sidebar</button>
+    </div>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar(event)">
+        <div class="sidebar-content" onclick="event.stopPropagation()">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title">Product Showcase</h2>
+                <button class="close-btn" onclick="closeSidebar()">&times;</button>
+            </div>
+            
+            <div class="sidebar-body">
+                <div class="sidebar-section">
+                    <h3>Welcome to Our Store</h3>
+                    <p>Discover our amazing collection of digital products designed to enhance your productivity and creativity. Each product is carefully crafted with attention to detail and user experience.</p>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Featured Products</h3>
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <div class="product-icon">📱</div>
+                            <div class="product-name">Mobile App</div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-icon">💻</div>
+                            <div class="product-name">Web Platform</div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-icon">🎨</div>
+                            <div class="product-name">Design Tools</div>
+                        </div>
+                        <div class="product-item">
+                            <div class="product-icon">📊</div>
+                            <div class="product-name">Analytics</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Key Features</h3>
+                    <ul class="feature-list">
+                        <li>Modern and responsive design</li>
+                        <li>Cross-platform compatibility</li>
+                        <li>Advanced security features</li>
+                        <li>24/7 customer support</li>
+                        <li>Regular updates and improvements</li>
+                        <li>Easy integration with existing systems</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Special Offer</h3>
+                    <p>Get started today with our special launch offer. Limited time only - don't miss out on this opportunity to transform your workflow!</p>
+                    <button class="cta-button" onclick="alert('Thank you for your interest!')">Get Started Now</button>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Additional Information</h3>
+                    <p>This sidebar demonstrates smooth animations, responsive design, and modern UI patterns. It's perfect for showcasing products, displaying detailed information, or creating engaging user interactions.</p>
+                    <p>The overlay uses backdrop-filter for a modern blur effect and includes smooth scaling animations that feel natural and polished.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar functionality
+        function openSidebar() {
+            const overlay = document.getElementById('sidebarOverlay');
+            overlay.classList.add('active');
+            
+            // Prevent body scroll when sidebar is open
+            document.body.style.overflow = 'hidden';
+            
+            // Add escape key listener
+            document.addEventListener('keydown', handleEscapeKey);
+        }
+
+        function closeSidebar(event) {
+            // If event is provided and the click target is not the overlay itself, don't close
+            if (event && event.target !== event.currentTarget) {
+                return;
+            }
+            
+            const overlay = document.getElementById('sidebarOverlay');
+            overlay.classList.remove('active');
+            
+            // Restore body scroll
+            document.body.style.overflow = '';
+            
+            // Remove escape key listener
+            document.removeEventListener('keydown', handleEscapeKey);
+        }
+
+        function handleEscapeKey(event) {
+            if (event.key === 'Escape') {
+                closeSidebar();
+            }
+        }
+
+        // Initialize sidebar state
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            // Ensure sidebar is hidden on page load
+            overlay.classList.remove('active');
+            
+            // Add smooth transition after page load
+            setTimeout(() => {
+                overlay.style.transition = 'all 0.3s ease';
+            }, 100);
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            const overlay = document.getElementById('sidebarOverlay');
+            if (overlay.classList.contains('active')) {
+                // Recalculate positioning if needed
+                // This ensures the sidebar stays centered on resize
+            }
+        });
+
+        // Optional: Auto-close sidebar after a certain time (uncomment if needed)
+        /*
+        let autoCloseTimer;
+        
+        function startAutoCloseTimer() {
+            autoCloseTimer = setTimeout(() => {
+                closeSidebar();
+            }, 30000); // Auto-close after 30 seconds
+        }
+        
+        function clearAutoCloseTimer() {
+            if (autoCloseTimer) {
+                clearTimeout(autoCloseTimer);
+            }
+        }
+        
+        // Modify openSidebar to include auto-close
+        function openSidebarWithAutoClose() {
+            openSidebar();
+            startAutoCloseTimer();
+        }
+        
+        // Modify closeSidebar to clear timer
+        function closeSidebarAndClearTimer(event) {
+            closeSidebar(event);
+            clearAutoCloseTimer();
+        }
+        */
+    </script>
+</body>
+</html>
+

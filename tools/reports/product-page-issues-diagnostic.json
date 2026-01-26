@@ -1,0 +1,153 @@
+{
+  "diagnostic_report": {
+    "timestamp": "2025-12-03T17:59:37Z",
+    "website": "leve1up.store",
+    "branch": "fresh-nextjs-migration",
+    "issues_analyzed": 7,
+    "findings": {
+      "issue_1_product_names_in_orders": {
+        "status": "IDENTIFIED",
+        "description": "أسماء المنتجات لا تظهر في صفحة الطلبات",
+        "root_cause": "CSS layout issue with responsive design",
+        "location": "components/UserOrders.tsx:304-312",
+        "current_implementation": {
+          "display_element": "item.name",
+          "css_classes": "font-medium text-white truncate mb-1",
+          "container_classes": "flex-1 min-w-0"
+        },
+        "problem_analysis": {
+          "truncate_class": "قد يقطع النص الطويل",
+          "responsive_layout": "تداخل في الشاشات الصغيرة",
+          "flex_layout": "min-w-0 قد يسبب انكماش مفرط"
+        },
+        "data_flow": {
+          "api_endpoint": "/api/user/orders",
+          "data_source": "lib/orders-store.ts",
+          "field_mapping": "order.items[].name -> item.name"
+        }
+      },
+      "issue_2_chat_button_whatsapp": {
+        "status": "IDENTIFIED", 
+        "description": "زر الشات يفتح واتساب بدلاً من الشات الداخلي",
+        "root_cause": "Hardcoded WhatsApp URL",
+        "location": "components/UserOrders.tsx:318",
+        "current_implementation": {
+          "action": "window.open('https://wa.me/+971501234567', '_blank')",
+          "trigger": "subscription products only"
+        },
+        "required_change": "Replace with internal chat widget API call"
+      },
+      "issue_3_chat_restrictions": {
+        "status": "NEEDS_INVESTIGATION",
+        "description": "الشات يجب أن يكون مقيد للمشترين فقط",
+        "current_state": "No access restrictions implemented",
+        "requirements": [
+          "Verify buyer status before showing chat",
+          "Link chat to order/product ID",
+          "Restore chat history for returning users"
+        ]
+      },
+      "issue_4_hijri_dates": {
+        "status": "IDENTIFIED",
+        "description": "التواريخ تعرض هجرياً بدلاً من ميلادي",
+        "root_cause": "Using 'ar-SA' locale which defaults to Hijri calendar",
+        "location": "components/UserOrders.tsx:127-136",
+        "current_implementation": {
+          "locale": "ar-SA",
+          "format_options": "year, month, day, hour, minute"
+        },
+        "solution": "Change to 'ar-EG' or add calendar: 'gregory'"
+      },
+      "issue_5_netflix_header_buttons": {
+        "status": "RESOLVED",
+        "description": "أزرار الهيدر لا تعمل في صفحة Netflix",
+        "resolution": {
+          "date": "2025-12-03",
+          "changes": [
+            "Increased Navbar z-index from z-50 to z-[9999]",
+            "Fixed product image positioning and z-index"
+          ],
+          "files_modified": [
+            "components/Navbar.tsx",
+            "components/ProductDetail.tsx"
+          ]
+        }
+      },
+      "issue_6_profile_home_button": {
+        "status": "IDENTIFIED",
+        "description": "زر العودة للرئيسية مطلوب في أعلى صفحة الملف الشخصي",
+        "current_state": "Button exists only at bottom of profile page",
+        "location": "app/profile/page.tsx",
+        "solution": "Duplicate existing home button at top of page"
+      },
+      "issue_7_contact_chat_button": {
+        "status": "IDENTIFIED", 
+        "description": "إضافة زر شات في صفحة التواصل",
+        "location": "app/contact/page.tsx",
+        "requirements": [
+          "Add clickable chat image/button",
+          "Restrict to buyers only",
+          "Show guidance message for non-buyers"
+        ]
+      }
+    },
+    "dom_analysis": {
+      "netflix_product_page": "/products/10",
+      "header_elements": {
+        "home_button": {
+          "selector": "nav a[href='/']",
+          "expected_z_index": "9999",
+          "pointer_events": "auto"
+        },
+        "cart_button": {
+          "selector": "nav button[aria-label*='cart']",
+          "expected_z_index": "9999", 
+          "pointer_events": "auto"
+        },
+        "wishlist_button": {
+          "selector": "nav button[aria-label*='wishlist']",
+          "expected_z_index": "9999",
+          "pointer_events": "auto"
+        }
+      },
+      "potential_overlays": [
+        "Product hero image container",
+        "Chat widget containers",
+        "Modal overlays"
+      ]
+    },
+    "components_analysis": {
+      "UserOrders.tsx": {
+        "lines_of_interest": [304, 306, 318, 127],
+        "issues": ["product name display", "chat button", "date formatting"]
+      },
+      "Navbar.tsx": {
+        "lines_of_interest": [59],
+        "status": "FIXED - z-index updated"
+      },
+      "ProductDetail.tsx": {
+        "lines_of_interest": [239-248],
+        "status": "FIXED - image positioning updated"
+      }
+    },
+    "console_errors": {
+      "expected_errors": [],
+      "notes": "No console errors expected for current issues"
+    },
+    "admin_dashboard_requirements": {
+      "status": "NEW_FEATURE",
+      "routes_needed": [
+        "/admin",
+        "/admin/dashboard", 
+        "/admin/products",
+        "/admin/orders",
+        "/admin/users",
+        "/admin/banners"
+      ],
+      "protection": "NextAuth role-based (admin only)",
+      "ui_framework": "Tailwind CSS",
+      "data_layer": "Prisma suggested"
+    }
+  }
+}
+
