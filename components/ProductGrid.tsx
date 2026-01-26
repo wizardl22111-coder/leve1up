@@ -6,6 +6,7 @@ import { showToast } from '@/components/ToastContainer';
 import { calculatePrice, formatPrice } from '@/lib/currency';
 import products from '@/data/products.json';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 // import { ProductImage } from './OptimizedImage'; // مؤقتاً معطل
 import PriceDisplay from './PriceDisplay';
 import ScrollReveal from './ScrollReveal';
@@ -22,6 +23,7 @@ export default function ProductGrid({
   gridCols = "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" 
 }: ProductGridProps = {}) {
   const { currency, addToCart, addToWishlist, wishlist } = useApp();
+  const router = useRouter();
   
   // Use provided products or default to all products
   const displayProducts = propProducts || products;
@@ -193,7 +195,7 @@ export default function ProductGrid({
                 <div className="flex gap-2 mt-auto">
                   {product.price === 0 || product.price === "مجاني" ? (
                     <button
-                      onClick={() => handleDirectPayment(product)}
+                      onClick={() => router.push(`/products/${getProductId(product)}`)}
                       className="flex-1 bg-gradient-to-r from-green-500 to-green-600 text-white py-2.5 rounded-lg font-semibold hover:shadow-lg hover:shadow-green-500/30 transition-all flex items-center justify-center gap-2"
                     >
                       <Zap className="w-4 h-4" />
